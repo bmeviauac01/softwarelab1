@@ -4,6 +4,20 @@
 
 [Microsoft SQL Server platform programozása](Lab-MSSQL/README.md)
 
+## Adatbázis inicializáló szkriptek
+
+[Microsoft SQL Server](https://raw.githubusercontent.com/bmeviauac01/gyakorlatok/master/mssql.sql)
+
+[MongoDB](https://raw.githubusercontent.com/bmeviauac01/gyakorlatok/master/mongo.js)
+
+## Segédanyagok
+
+[Az adatbázis sémájának leírása](https://bmeviauac01.github.io/gyakorlatok/Adatbazis/sema.html)
+
+[Microsoft SQL Server használata](https://bmeviauac01.github.io/gyakorlatok/Adatbazis/mssql-server.html)
+
+[MongoDB használata](https://bmeviauac01.github.io/gyakorlatok/Adatbazis/mongodb.html)
+
 ## Laborok megoldásainak beadása
 
 A feladatok beadásához a [GitHub Classroom](https://classroom.github.com)-ot használjuk. Minden feladat beadás egy-egy GitHub repository-ban történik. A megoldásként elkészített fájlokat fel kell tölteni egy repository-ba, aminek elkészítését a GitHub classroom segíti.
@@ -49,20 +63,6 @@ A feladatok kiértékelése részben **automatikusan** történik. A futtatható
 
 És ne felejtsd el megadni a Neptun kódodat a gyökérben levő txt fájlban!
 
-## Adatbázis inicializáló szkriptek
-
-[Microsoft SQL Server](https://raw.githubusercontent.com/bmeviauac01/gyakorlatok/master/mssql.sql)
-
-[MongoDB](https://raw.githubusercontent.com/bmeviauac01/gyakorlatok/master/mongo.js)
-
-## Segédanyagok
-
-[Az adatbázis sémájának leírása](https://bmeviauac01.github.io/gyakorlatok/Adatbazis/sema.html)
-
-[Microsoft SQL Server használata](https://bmeviauac01.github.io/gyakorlatok/Adatbazis/mssql-server.html)
-
-[MongoDB használata](https://bmeviauac01.github.io/gyakorlatok/Adatbazis/mongodb.html)
-
 ## Értékelés
 
 Minden laboron 20 pont szerezhető. A teljesítés feltétele a határidőig történő beadás. A labor sikeres teljesítéséhez minimum 8 pont szükséges.
@@ -78,6 +78,14 @@ A labor eredményének osztályzása:
 Az iMsc feladat megoldása opcionális, a többi feladat értékelésébe nem számít bele. Egy iMsc feladat sikeres megoldásával 3 iMsc pont szerezhető. A pont csak jeles eredmény esetén kapható meg.
 
 A félév végi jegy a laborokra kapott osztályzatok matematikailag kerekített számtani átlaga. Hiányzás, nem pótolt labor, határidőig nem leadott megoldás elégtelennel számítódik az átlagba.
+
+## Egyetemi laborokban: GitHub belépési adatok törlése
+
+Az egyetemi laborokban a gépek megjegyzik a GitHub belépési adatokat. Ezt a munka végeztével kézzel kell törölni.
+
+1. Nyisd meg a `Credential Manager`-t a Start menüből.
+1. A `Windows Credentials` oldalon keresd meg a GitHubra mutató bejegyzéseket, és töröld őket.
+   ![GitHub belépési adat törlése](images/git-credential-remove.png)
 
 ---
 
