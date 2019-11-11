@@ -1,22 +1,8 @@
-# BMEVIAUAC01 Adatvezérelt rendszerek - gyakorlatok
+# BMEVIAUAC09 Szoftverfejlesztés laboratórium 1 - labor feladatok
 
 ## Laborok feladatai
 
 [Microsoft SQL Server platform programozása](Lab-MSSQL/README.md)
-
-## Adatbázis inicializáló szkriptek
-
-[Microsoft SQL Server](https://raw.githubusercontent.com/bmeviauac01/gyakorlatok/master/mssql.sql)
-
-[MongoDB](https://raw.githubusercontent.com/bmeviauac01/gyakorlatok/master/mongo.js)
-
-## Segédanyagok
-
-[Az adatbázis sémájának leírása](https://bmeviauac01.github.io/gyakorlatok/Adatbazis/sema.html)
-
-[Microsoft SQL Server használata](https://bmeviauac01.github.io/gyakorlatok/Adatbazis/mssql-server.html)
-
-[MongoDB használata](https://bmeviauac01.github.io/gyakorlatok/Adatbazis/mongodb.html)
 
 ## Laborok megoldásainak beadása
 
@@ -48,7 +34,7 @@ A megoldások beadásának lépései:
 
 Egyes laborok kérik, hogy készíts képenyőképet a megoldás egy-egy részéről. Ez különösen akkor fontos, ha a feladatot otthon készíted el, mert ezzel bizonyítod, hogy a megoldásod saját magad készítetted. Amikor képernyőképet kérünk, az alábbiakra figyelj:
 
-- Látszódjon a fejlesztéséhez használt eszköz (pl. SQL Server Management Studio, Visual Studio).
+- Látszódjon a fejlesztéséhez használt eszköz (pl. SQL Server Management Studio, Visual Studio). Profi fejlesztők vagyunk, így mindig a megfelelő eszköz használjuk - jegyzettömbben nem lehet fejleszteni!
 - Látszódjon a gép és a felhasználó neve, amin a fejlesztést végezted (pl. SQL Server Management Studio-ban az Object Explorer-ben a megnyitott kapcsolat nevében szerepel, vagy konzolban add ki a `whoami` parancsot és ezt a konzolt is rakd a képernyőképre),
 - Az aktuális dátum (pl. az óra a tálcán).
 - Illetve a feladat tartalma, amit a feladat pontosan megnevez.
