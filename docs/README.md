@@ -30,6 +30,19 @@ A megoldások beadásának lépései:
 
 1. Old meg a feladatot. Pushold a határidőig. Ha nem vagy benne biztos, hogy sikerült a git push, mindenképpen ellenőrizd a repository tartalmát a webes GitHub felületén!
 
+## Képernyőképek
+
+Egyes laborok kérik, hogy készíts képenyőképet a megoldás egy-egy részéről. Ez különösen akkor fontos, ha a feladatot otthon készíted el, mert ezzel bizonyítod, hogy a megoldásod saját magad készítetted. Amikor képernyőképet kérünk, az alábbiakra figyelj:
+
+- Látszódjon a fejlesztéséhez használt eszköz (pl. SQL Server Management Studio, Visual Studio).
+- Látszódjon a gép és a felhasználó neve, amin a fejlesztést végezted (pl. SQL Server Management Studio-ban az Object Explorer-ben a megnyitott kapcsolat nevében szerepel, vagy konzolban add ki a `whoami` parancsot és ezt a konzolt is rakd a képernyőképre),
+- Az aktuális dátum (pl. az óra a tálcán).
+- Illetve a feladat tartalma, amit a feladat pontosan megnevez.
+
+A képernyőképeket a megoldás részeként kell beadni, így felkerülnek a git repository tartalmával együtt. Mivel a repository privát, azt az oktatókon kívül más nem látja. Ha mégis szeretnéd, a fent nem jelölt részek mellett kitakarhatod, ha olyan információ kerül a képernyőképre, amit nem szeretnél feltölteni.
+
+Két példa erre: [SQL kód](images/img-screenshot-pl-sql.png) és [Visual Studio-ban C# kód](images/img-screenshot-pl-vs.png). Körülbelül ilyesmit várunk.
+
 ## A feladatok kiértékelése
 
 A feladatok kiértékelése részben **automatikusan** történik. A futtatható kódokat valóban le fogjuk futtatni, ezért minden esetben fontos a feladatleírások pontos követése (kiinduló kód váz használata, csak a megengedett fájlok változtatása, stb.)!
