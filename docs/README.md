@@ -4,6 +4,38 @@
 
 [Microsoft SQL Server platform programozása](Lab-MSSQL/README.md)
 
+## Laborok megoldásainak beadása
+
+A feladatok beadásához a [GitHub Classroom](https://classroom.github.com)-ot használjuk. Minden feladat beadás egy-egy GitHub repository-ban történik. A megoldásként elkészített fájlokat fel kell tölteni egy repository-ba, aminek elkészítését a GitHub classroom segíti.
+
+Minden feladatleírásban található egy link, amin keresztül a feladathoz tartozó repository elkészül. Mindehhez szükséges egy GitHub account.
+
+A megoldások beadásának lépései:
+
+1. [Regisztrálj](https://github.com/join) egy GitHub accountot, ha még nincs.
+
+1. A labor beadásához tartozó linket nyisd meg. Ez minden laborhoz más lesz, a feladat leírásában találod.
+
+1. Ha kéri, adj engedélyt a _GitHub Classroom_ alkalmazásnak, hogy használja az account adataidat.
+
+1. Látni fogsz egy oldalt, ahol elfogadhatod a feladatot ("Accept the ... assignment"). Kattints a gombra.
+
+1. Várd meg, amíg elkészül a repository.
+
+   > A repository privát lesz, azaz az senki nem látja, csak te, és az oktatók.
+
+1. Klónozd le a repository-t. Ebben találni fogsz egy keretet, vagy kiinduló kódot. Ezen dolgozz, ezt változtasd.
+
+   > A git repository kezeléséhez tetszőleges klienst használhatsz. Ha nincs kedvenced még, akkor legegyszerűbb a [GitHub Desktop](https://desktop.github.com/).
+
+1. Old meg a feladatot. Pushold a határidőig. Ha nem vagy benne biztos, hogy sikerült a git push, mindenképpen ellenőrizd a repository tartalmát a webes GitHub felületén!
+
+## A feladatok kiértékelése
+
+A feladatok kiértékelése részben **automatikusan** történik. A futtatható kódokat valóban le fogjuk futtatni, ezért minden esetben fontos a feladatleírások pontos követése (kiinduló kód váz használata, csak a megengedett fájlok változtatása, stb.)!
+
+És ne felejtsd el megadni a Neptun kódodat a gyökérben levő txt fájlban!
+
 ## Adatbázis inicializáló szkriptek
 
 [Microsoft SQL Server](https://raw.githubusercontent.com/bmeviauac01/gyakorlatok/master/mssql.sql)
@@ -17,6 +49,22 @@
 [Microsoft SQL Server használata](https://bmeviauac01.github.io/gyakorlatok/Adatbazis/mssql-server.html)
 
 [MongoDB használata](https://bmeviauac01.github.io/gyakorlatok/Adatbazis/mongodb.html)
+
+## Értékelés
+
+Minden laboron 20 pont szerezhető. A teljesítés feltétele a határidőig történő beadás. A labor sikeres teljesítéséhez minimum 8 pont szükséges.
+
+A labor eredményének osztályzása:
+
+- 0-7.5 pont: elégtelen
+- 8-10.5 pont: elégséges
+- 11-13.5 pont: közepes
+- 14-16.5 pont: jó
+- 17-20 pont: jeles
+
+Az iMsc feladat megoldása opcionális, a többi feladat értékelésébe nem számít bele. Egy iMsc feladat sikeres megoldásával 3 iMsc pont szerezhető. A pont csak jeles eredmény esetén kapható meg.
+
+A félév végi jegy a laborokra kapott osztályzatok matematikailag kerekített számtani átlaga. Hiányzás, nem pótolt labor, határidőig nem leadott megoldás elégtelennel számítódik az átlagba.
 
 ---
 
