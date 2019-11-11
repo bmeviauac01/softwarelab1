@@ -1,0 +1,1 @@
+insert into KategoriaSzulovel values('Labdaaaaa', 'Bizosan NEM lezezo szulo kategoria')
