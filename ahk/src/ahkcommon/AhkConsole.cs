@@ -32,7 +32,7 @@ namespace adatvez
         }
 
         public static void WriteResult(AhkResult result)
-            => WriteResult(result.ExerciseName, result.Points, result.LogLines.ToArray());
+            => WriteResult(result.ExerciseName, result.Points, result.Problems.ToArray());
 
         public static void CheckSchreenshotAndWriteResult(string screenshotFilePath, ref AhkResult result)
         {
@@ -41,22 +41,22 @@ namespace adatvez
             if (!screenshotOk && result.Points > 0)
             {
                 // Hallgato nem adott be screenshotot, de legalabb reszben jo a megoldasa -> kezzel ellenorizzuk
-                Inconclusive(result.ExerciseName, result.LogLines.ToArray());
+                Inconclusive(result.ExerciseName, result.Problems.ToArray());
             }
             else if (screenshotOk && result.Points == 0)
             {
                 // Hallgato beadott screenshotot, de rossz a megoldasa -> kezzel ellenorizzuk
-                Inconclusive(result.ExerciseName, result.LogLines.ToArray());
+                Inconclusive(result.ExerciseName, result.Problems.ToArray());
             }
             else if (!screenshotOk && result.Points == 0)
             {
                 // Nincs screenshot, rossz megoldas -> valoszinuleg nem megoldott feladat, eredmenyt kiirjuk
-                WriteResult(result.ExerciseName, result.Points, result.LogLines.ToArray());
+                WriteResult(result.ExerciseName, result.Points, result.Problems.ToArray());
             }
             else if (screenshotOk && result.Points > 0)
             {
                 // Screenshot is van es a megoldas is reszben jo -> eredmenyt kiirjuk
-                WriteResult(result.ExerciseName, result.Points, result.LogLines.ToArray());
+                WriteResult(result.ExerciseName, result.Points, result.Problems.ToArray());
             }
         }
     }
