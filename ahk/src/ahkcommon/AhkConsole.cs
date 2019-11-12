@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace adatvez
@@ -32,35 +31,32 @@ namespace adatvez
             Console.WriteLine(outputLine);
         }
 
-        public static void CheckSchreenshotAndWriteResult(string screenshotFilePath, string exerciseName, int points, params string[] comments)
-        {
-            var commentsList = new List<string>(comments);
-            CheckSchreenshotAndWriteResult(screenshotFilePath, exerciseName, points, commentsList);
-        }
+        public static void WriteResult(AhkResult result)
+            => WriteResult(result.ExerciseName, result.Points, result.LogLines.ToArray());
 
-        public static void CheckSchreenshotAndWriteResult(string screenshotFilePath, string exerciseName, int points, List<string> comments)
+        public static void CheckSchreenshotAndWriteResult(string screenshotFilePath, ref AhkResult result)
         {
-            var screenshotOk = ScreenshotValidator.IsScreenshotPresent(screenshotFilePath, ref comments);
+            var screenshotOk = ScreenshotValidator.IsScreenshotPresent(System.IO.Path.GetFileName(screenshotFilePath), screenshotFilePath, ref result);
 
-            if (!screenshotOk && points > 0)
+            if (!screenshotOk && result.Points > 0)
             {
                 // Hallgato nem adott be screenshotot, de legalabb reszben jo a megoldasa -> kezzel ellenorizzuk
-                Inconclusive(exerciseName, comments.ToArray());
+                Inconclusive(result.ExerciseName, result.LogLines.ToArray());
             }
-            else if (screenshotOk && points == 0)
+            else if (screenshotOk && result.Points == 0)
             {
                 // Hallgato beadott screenshotot, de rossz a megoldasa -> kezzel ellenorizzuk
-                Inconclusive(exerciseName, comments.ToArray());
+                Inconclusive(result.ExerciseName, result.LogLines.ToArray());
             }
-            else if (!screenshotOk && points == 0)
+            else if (!screenshotOk && result.Points == 0)
             {
                 // Nincs screenshot, rossz megoldas -> valoszinuleg nem megoldott feladat, eredmenyt kiirjuk
-                WriteResult(exerciseName, points, comments.ToArray());
+                WriteResult(result.ExerciseName, result.Points, result.LogLines.ToArray());
             }
-            else if (screenshotOk && points > 0)
+            else if (screenshotOk && result.Points > 0)
             {
                 // Screenshot is van es a megoldas is reszben jo -> eredmenyt kiirjuk
-                WriteResult(exerciseName, points, comments.ToArray());
+                WriteResult(result.ExerciseName, result.Points, result.LogLines.ToArray());
             }
         }
     }

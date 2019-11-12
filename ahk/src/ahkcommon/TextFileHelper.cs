@@ -1,17 +1,16 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 
 namespace adatvez
 {
     public static class TextFileHelper
     {
-        public static bool TryReadTextFileFromWellKnownPath(string fileFullPath, string fileDescription, ref List<string> problems, out string fileContent)
+        public static bool TryReadTextFileFromWellKnownPath(string fileDescription, string fileFullPath, ref AhkResult result, out string fileContent)
         {
             fileFullPath = PathsHelper.GetFileInWellKnownDirectoryWithCaseInsensitiveNameMatching(fileFullPath);
 
             if (!File.Exists(fileFullPath))
             {
-                problems.Add($"Nem talalhato {fileDescription} fajl");
+                result.AddProblem($"Nem talalhato {fileDescription} fajl");
                 fileContent = null;
                 return false;
             }
@@ -20,10 +19,11 @@ namespace adatvez
 
             if (string.IsNullOrEmpty(fileContent))
             {
-                problems.Add($"Ures {fileDescription} fajl");
+                result.AddProblem($"Ures {fileDescription} fajl");
                 return false;
             }
 
+            result.Log($"{fileDescription} fajl beolvasva");
             return true;
         }
     }

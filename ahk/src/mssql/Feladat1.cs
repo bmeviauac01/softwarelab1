@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 
 namespace adatvez
@@ -11,69 +9,43 @@ namespace adatvez
 
         public static void Execute()
         {
-            Console.WriteLine("Feladat 1 ellenorzese");
-
-            using (var db = DbFactory.GetDatabase())
+            var result = new AhkResult(AhkExerciseName);
+            try
             {
-                db.Database.ExecuteSqlCommand(@"create view KategoriaSzulovel as select k.Nev KategoriaNev, sz.Nev SzuloKategoriaNev from Kategoria k left outer join Kategoria sz on k.SzuloKategoria = sz.ID");
-                Console.WriteLine("KategoriaSzulovel nezet letrehozva");
+                Console.WriteLine("Feladat 1 ellenorzese");
+
+                DbHelper.ExecuteInstrumentationSql(@"create view KategoriaSzulovel as select k.Nev KategoriaNev, sz.Nev SzuloKategoriaNev from Kategoria k left outer join Kategoria sz on k.SzuloKategoria = sz.ID");
+                result.Log("KategoriaSzulovel nezet letrehozva");
+
+                test1(ref result);
+                test2(ref result);
+                test3(ref result);
+                test4(ref result);
             }
-
-            var points = 0;
-            var problems = new List<string>();
-
-            test1(ref points, ref problems);
-            test2(ref points, ref problems);
-            test3(ref points, ref problems);
-            test4(ref points, ref problems);
-
-            AhkConsole.WriteResult(AhkExerciseName, points, problems.ToArray());
+            finally
+            {
+                AhkConsole.WriteResult(result);
+            }
         }
 
-        private static void test1(ref int points, ref List<string> problems)
+        private static void test1(ref AhkResult result)
         {
-            bool ok = ScreenshotValidator.IsScreenshotPresent(@"Nezet tartalmat mutato", @"/megoldas/f1-nezet.png", ref problems);
+            bool ok = ScreenshotValidator.IsScreenshotPresent(@"Nezet tartalmat mutato", @"/megoldas/f1-nezet.png", ref result);
             if (ok)
-                points += 1;
+                result.AddPoints(1);
         }
 
-        private static void test2(ref int points, ref List<string> problems)
+        private static void test2(ref AhkResult result)
         {
             var triggerName = @"KategoriaSzulovelBeszur";
 
-            // check sql file existance and content
-            if (!TextFileHelper.TryReadTextFileFromWellKnownPath(@"/megoldas/f1-trigger.sql", @"f1-trigger.sql", ref problems, out var createTriggerSql))
+            // execute script, fail early if it fails
+            if (!DbHelper.FindAndExecutionSolutionSqlFromFile(@"f1-trigger.sql", @"/megoldas/f1-trigger.sql", ref result))
                 return;
 
-            // execute script, fail early if it fails
-
-            using (var db = DbFactory.GetDatabase())
-            {
-                try
-                {
-                    db.Database.ExecuteSqlCommand(createTriggerSql);
-                    Console.WriteLine("f1-trigger.sql sikeresen lefuttatva");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    problems.Add("Hiba az f1-trigger.sql script futtatasa soran");
-                    return;
-                }
-            }
-
-            // check if trigger exists
-
-            var sysobjectsDbContextOptions = DbFactory.GetDbOptions<SysObjectsDbContext.SysObjectsDbContext>();
-            using (var db = new SysObjectsDbContext.SysObjectsDbContext(sysobjectsDbContextOptions))
-            {
-                var trigger = db.ListSysObjects().FirstOrDefault(obj => obj.Type.Equals("TR", StringComparison.OrdinalIgnoreCase) && obj.Name.Equals(triggerName, StringComparison.OrdinalIgnoreCase));
-                if (trigger == null)
-                {
-                    problems.Add("Nem letezik a KategoriaSzulovelBeszur trigger");
-                    return;
-                }
-            }
+            // check if trigger exists, fail eraly if it does not
+            if (!SysObjectsHelper.TriggerExistsWithName(triggerName, ref result))
+                return;
 
             // test insert / 1
 
@@ -91,13 +63,12 @@ namespace adatvez
                 try
                 {
                     db.SaveChanges();
-                    Console.WriteLine("Beszuras KategoriaSzulovel nezeten keresztul sikeres");
-                    points += 1;
+                    result.Log("Beszuras KategoriaSzulovel nezeten keresztul sikeres / 1");
+                    result.AddPoints(1);
                 }
                 catch (Exception ex)
                 {
-                    problems.Add("Beszuras KategoriaSzulovel nezeten keresztul nem sikerul (talan a trigger miatt?)");
-                    problems.Add(ex.Message);
+                    result.AddProblem(ex, "Beszuras KategoriaSzulovel nezeten keresztul nem sikerul (talan a trigger miatt?)");
                 }
             }
 
@@ -111,10 +82,7 @@ namespace adatvez
             {
                 var rec = db.Kategoria.LastOrDefault();
                 if (rec == null)
-                {
-                    problems.Add("Ures a Kategoria tabla. Mi tortent?");
-                    return;
-                }
+                    throw new Exception("Ures a Kategoria tabla. Mi tortent?");
 
                 letezoKategoriaNev = rec.Nev;
             }
@@ -130,13 +98,12 @@ namespace adatvez
                 try
                 {
                     db.SaveChanges();
-                    Console.WriteLine("Beszuras KategoriaSzulovel nezeten keresztul sikeres");
-                    points += 1;
+                    result.Log("Beszuras KategoriaSzulovel nezeten keresztul sikeres / 2");
+                    result.AddPoints(1);
                 }
                 catch (Exception ex)
                 {
-                    problems.Add("Beszuras KategoriaSzulovel nezeten keresztul nem sikerul (talan a trigger miatt?)");
-                    problems.Add(ex.Message);
+                    result.AddProblem(ex, "Beszuras KategoriaSzulovel nezeten keresztul nem sikerul (talan a trigger miatt?)");
                 }
             }
 
@@ -156,88 +123,69 @@ namespace adatvez
                 try
                 {
                     db.SaveChanges();
-
-                    problems.Add("Nem letezo szulo kategoriaval beszuras KategoriaSzulovel nezeten keresztul sikeres");
+                    result.AddProblem("Hibas viselkedes: nem letezo szulo kategoriaval beszuras KategoriaSzulovel nezeten keresztul sikeres");
                 }
                 catch
                 {
-                    Console.WriteLine("Nem letezo szulo kategoriaval beszuras KategoriaSzulovel nezeten keresztul helyesen hibat dob");
-                    points += 2;
+                    result.Log("Nem letezo szulo kategoriaval beszuras KategoriaSzulovel nezeten keresztul helyesen hibat dob");
+                    result.AddPoints(2);
                 }
             }
         }
 
-        private static void test3(ref int points, ref List<string> problems)
+        private static void test3(ref AhkResult result)
         {
+            int countKategoriaBefore;
+            using (var db = DbFactory.GetDatabase())
+                countKategoriaBefore = db.Kategoria.Count();
+
             // f1-trigger-teszt-ok.sql
 
-            if (TextFileHelper.TryReadTextFileFromWellKnownPath(@"/megoldas/f1-trigger-teszt-ok.sql", @"f1-trigger-teszt-ok.sql", ref problems, out var testTriggerOkSql))
+            if (DbHelper.FindAndExecutionSolutionSqlFromFile(@"f1-trigger-teszt-ok.sql", @"/megoldas/f1-trigger-teszt-ok.sql", ref result))
             {
+                int countKategoriaAfter;
                 using (var db = DbFactory.GetDatabase())
+                    countKategoriaAfter = db.Kategoria.Count();
+
+                if (countKategoriaAfter == countKategoriaBefore + 1)
                 {
-                    try
-                    {
-                        var countKategoriaBefore = db.Kategoria.Count();
-
-                        db.Database.ExecuteSqlCommand(testTriggerOkSql);
-
-                        Console.WriteLine("f1-trigger-teszt-ok.sql futtatasa sikeres");
-
-                        var countKategoriaAfter = db.Kategoria.Count();
-
-                        if (countKategoriaAfter == countKategoriaBefore + 1)
-                        {
-                            Console.WriteLine("f1-trigger-teszt-ok.sql sikeresen beszurt egy Kategora rekordot");
-                            points += 1;
-                        }
-                        else
-                        {
-                            problems.Add("f1-trigger-teszt-ok.sql nem szurt be Kategora rekordot");
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        problems.Add("f1-trigger-teszt-ok.sql futtatasa nem sikerul (talan a trigger miatt?)");
-                        problems.Add(ex.Message);
-                    }
+                    result.Log("f1-trigger-teszt-ok.sql sikeresen beszurt egy Kategora rekordot");
+                    result.AddPoints(1);
+                }
+                else
+                {
+                    result.AddProblem("f1-trigger-teszt-ok.sql nem szurt be Kategora rekordot");
                 }
             }
 
             // f1-trigger-teszt-hiba.sql
 
-            if (TextFileHelper.TryReadTextFileFromWellKnownPath(@"/megoldas/f1-trigger-teszt-hiba.sql", @"f1-trigger-teszt-hiba.sql", ref problems, out var testTriggerHibaSql))
+            if (TextFileHelper.TryReadTextFileFromWellKnownPath(@"f1-trigger-teszt-hiba.sql", @"/megoldas/f1-trigger-teszt-hiba.sql", ref result, out var testTriggerHibaSql))
             {
                 if (!(testTriggerHibaSql.Contains("insert", StringComparison.OrdinalIgnoreCase) && testTriggerHibaSql.Contains("KategoriaSzulovel", StringComparison.OrdinalIgnoreCase)))
                 {
-                    problems.Add("f1-trigger-teszt-hiba.sql nem szur be rekordot a nezetbe");
+                    result.AddProblem("f1-trigger-teszt-hiba.sql nem szur be rekordot a nezetbe");
                 }
                 else
                 {
-                    using (var db = DbFactory.GetDatabase())
+                    if (DbHelper.ExecuteSolutionSql("f1-trigger-teszt-hiba.sql", testTriggerHibaSql, ref result))
                     {
-                        try
-                        {
-                            var countKategoriaBefore = db.Kategoria.Count();
-
-                            db.Database.ExecuteSqlCommand(testTriggerHibaSql);
-
-                            problems.Add("f1-trigger-teszt-hiba.sql futtatasa sikeres, pedig hibat kellett volna eredmenyeznie");
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine("f1-trigger-teszt-hiba.sql helyesen hibat jelzett");
-                            points += 1;
-                        }
+                        result.AddProblem("f1-trigger-teszt-hiba.sql futtatasa sikeres, pedig hibat kellett volna eredmenyeznie");
+                    }
+                    else
+                    {
+                        result.Log("f1-trigger-teszt-hiba.sql helyesen hibat jelzett");
+                        result.AddPoints(1);
                     }
                 }
             }
         }
 
-        private static void test4(ref int points, ref List<string> problems)
+        private static void test4(ref AhkResult result)
         {
-            bool ok = ScreenshotValidator.IsScreenshotPresent(@"Trigger kodjat mutato", @"/megoldas/f1-trigger.png", ref problems);
+            bool ok = ScreenshotValidator.IsScreenshotPresent(@"Trigger kodjat mutato", @"/megoldas/f1-trigger.png", ref result);
             if (ok)
-                points += 1;
+                result.AddPoints(1);
         }
     }
 }

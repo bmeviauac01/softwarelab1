@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 
 namespace adatvez
@@ -9,10 +8,7 @@ namespace adatvez
         private static System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create();
         private const string knownHash = "CB96165DFFE7D1BBA338C1C0C99A8B6D";
 
-        public static bool IsScreenshotPresent(string filePath, ref List<string> problems)
-            => IsScreenshotPresent(null, filePath, ref problems);
-
-        public static bool IsScreenshotPresent(string fileDescription, string filePath, ref List<string> problems)
+        public static bool IsScreenshotPresent(string fileDescription, string filePath, ref AhkResult result)
         {
             if (string.IsNullOrEmpty(fileDescription))
                 fileDescription = @"Kepernyokep fajl";
@@ -23,7 +19,7 @@ namespace adatvez
 
             if (!File.Exists(filePath))
             {
-                problems.Add($"{fileDescription} hianyzik.");
+                result.AddProblem($"{fileDescription} hianyzik.");
                 return false;
             }
 
@@ -32,11 +28,12 @@ namespace adatvez
                 var hash = md5.ComputeHash(fs);
                 if (BitConverter.ToString(hash).Replace("-", "") == knownHash)
                 {
-                    problems.Add($"{fileDescription} nem lett felulirva.");
+                    result.AddProblem($"{fileDescription} nem lett felulirva.");
                     return false;
                 }
             }
 
+            result.Log($"{fileDescription} letezik");
             return true;
         }
     }
