@@ -8,7 +8,7 @@
    - Amennyiben eltérés található a kettőben, úgy mindkettő értékét, valamint a termék nevét írd ki a standard outputra.
    - Legyen az eljárás visszatérési értéke 0, ha nem kellett semmit kiírni a kimenetre, és 1, ha kellett.
 
-   A kiíráshoz használd a `print` parancssot: `PRINT 'Szoveg' + @valtozo + 'Szoveg'` Ügyelj rá, hogy a változónak char típusúnak kell lennie, egyéb típus, pl. szám konvertálása: `convert(varchar(5), @valtozo)`, pl. `PRINT 'Szoveg' + convert(varchar(5), @valtozo)`
+   A kiíráshoz használd a `print` parancsot: `PRINT 'Szoveg' + @valtozo + 'Szoveg'` Ügyelj rá, hogy a változónak char típusúnak kell lennie, egyéb típus, pl. szám konvertálása: `convert(varchar(5), @valtozo)`, pl. `PRINT 'Szoveg' + convert(varchar(5), @valtozo)`
 
    > Az eljárás kódját az `f2-eljaras.sql` fájlba írd. A fájlban csak ez az egyetlen `create proc` utasítás legyen!
    >
