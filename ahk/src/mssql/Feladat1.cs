@@ -14,6 +14,7 @@ namespace adatvez
             {
                 Console.WriteLine("Feladat 1 ellenorzese");
 
+                DbHelper.ExecuteInstrumentationSql(@"IF OBJECT_ID('KategoriaSzulovel', 'V') IS NOT NULL DROP VIEW KategoriaSzulovel");
                 DbHelper.ExecuteInstrumentationSql(@"create view KategoriaSzulovel as select k.Nev KategoriaNev, sz.Nev SzuloKategoriaNev from Kategoria k left outer join Kategoria sz on k.SzuloKategoria = sz.ID");
                 result.Log("KategoriaSzulovel nezet letrehozva");
 
