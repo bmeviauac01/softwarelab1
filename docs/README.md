@@ -73,6 +73,26 @@ Az egyetemi laborokban a gépek megjegyzik a GitHub belépési adatokat. Ezt a m
 1. A `Windows Credentials` oldalon keresd meg a GitHubra mutató bejegyzéseket, és töröld őket.
    ![GitHub belépési adat törlése](images/git-credential-remove.png)
 
+## Elvárásaink a munkával kapcsolatban
+
+**Egyéni munka? Otthoni munka?** Mivel a laborokra jegyet kapsz, elvárás, hogy mindenki saját megoldást készítsen el és adjon be. Ez nem zárja ki az egymásnak nyújtott segítséget. Kizárja viszont más megoldásának lemásolását. Ezért kérjük a képernyőképeket, mert így a munka folyamatával bizonyítod a megoldás saját elkészítését.
+
+**Más munkájának lemásolása:** A BME etikai kódexe és a TVSZ szabályozza. Komolyan vesszük.
+
+**Egy labor csak 4 óra, nem?** Nem. A tárgy 3 kredit, amely a félév során megközelítőleg 90 munkaóra befektetését igényli. A labor tehát nem csak a teremben eltöltött 4 óra, hanem az előzetes felkészülés és a feladat befejezése / otthoni elvégzése is.
+
+**Ha otthonról készítem el a megoldást, hogyan kapok segítséget?** Akár otthonról dolgozol, akár egyetemi laborban, egy laborvezetőhöz tartozol. Ő felel nem csak a kontaktóra megtartásáért, hanem azért is, hogy a félév közben a feladatok beadása és ellenőrzése rendben történjen.
+
+**A laborvezető nem válaszol egy emailre, megkeresésre. Mit tegyek?** Adj neki időt. A kommunikáció aszinkron, órákban, akár napokban mérhető. Az oktatóknak is van munkaideje, ne várd el, hogy mindig elérhető legyen (főleg este és hétvégén ne). Ha a leadási határidő előtt egy órával kérdezel, bizony lehet, hogy nem kapsz választ időben.
+
+**Bent vagyok az egyetemi laborban, mégse segít a laborvezető. Miért?** Dehogynem segít. Viszont ha egyből megmondaná a megoldást, csak azt tanulnád meg, hogy legközelebb is meg kell kérdezni. Próbáld magad megoldani, mutass alternatívákat, kérdezz konkrétan. Mutasd meg, hogy professzionális a hozzáállásod.
+
+**Akkor mit kérdezhetek meg a laborvezetőtől?** Röviden: <https://stackoverflow.com/help/how-to-ask>. Hosszabban: Ha valamivel elakadsz, értsd meg a problémát. A probléma nem az, hogy "nem működik" vagy "nem tudom, hogyan csináljam". Akkor tudsz jól kérdezni, ha már körüljártad a problémát, és azt is meg tudod mutatni, mivel próbálkoztál már.
+
+**Szóval Google és StackOverflow a megoldás?** Nem. Minden tudás, amire szükséged van, már előfordult egyetemi tanulmányaid során. A Google jó, a StackOverflow még jobb.... De! A választ is meg kell érteni. Lehet, hogy a megtalált válasz megoldás, csak épp nem a te problémádra.
+
+**Sok a határidő, meg az előírás.** Ez nézőpont kérdése. A mérnök nem csak programozni tud, hanem meghatározott keretek között dolgozni. Mert a világ bonyolult, és a bonyolultságot szabályokkal lehet kordában tartani. Ha időd engedi, érdemes megnézni, mint mond Robert C. Martin (Bob Martin, "Uncle Bob") arról, honnan származik a szoftverfejlesztői szakmai: <https://www.youtube.com/watch?v=ecIWPzGEbFc>
+
 ---
 
 Az itt található oktatási segédanyagok a BMEVIAUAC09 tárgy hallgatóinak készültek. Az anyagok oly módú felhasználása, amely a tárgy oktatásához nem szorosan kapcsolódik, csak a szerző(k) és a forrás megjelölésével történhet.
