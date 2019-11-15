@@ -21,7 +21,5 @@ END
 
 --Itt már biztonságosan törölhetõ minden kategória, ami nem szülõ
 DELETE FROM Kategoria
-WHERE Kategoria.ID IN
-	(SELECT k.ID
 FROM Kategoria k
-WHERE k.SzuloKategoria IS NOT NULL)
+WHERE k.SzuloKategoria IS NOT NULL
