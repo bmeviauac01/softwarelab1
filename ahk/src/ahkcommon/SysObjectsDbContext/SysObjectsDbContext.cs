@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace adatvez.SysObjectsDbContext
 {
@@ -14,9 +14,21 @@ namespace adatvez.SysObjectsDbContext
         {
         }
 
-        public virtual DbSet<SysObject> SysObjects { get; set; }
+        internal virtual DbSet<SysObject> SysObjects { get; set; }
 
         public IEnumerable<SysObject> ListSysObjects()
             => SysObjects.FromSql("select object_id, name, type from sys.objects");
+
+        internal virtual DbSet<SysColumn> SysColumns { get; set; }
+
+        public IEnumerable<SysColumn> ListSysColumns()
+            => SysColumns.FromSql("select table_name, column_name from information_schema.columns");
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<SysColumn>().HasKey(sc => new { sc.TableName, sc.ColumnName });
+        }
     }
 }

@@ -31,7 +31,7 @@ namespace adatvez
 
         private static void test1(ref AhkResult result)
         {
-            bool ok = ScreenshotValidator.IsScreenshotPresent(@"Nezet tartalmat mutato", @"/megoldas/f1-nezet.png", ref result);
+            bool ok = ScreenshotValidator.IsScreenshotPresent(@"Nezet tartalmat mutato kep", @"/megoldas/f1-nezet.png", ref result);
             if (ok)
                 result.AddPoints(1);
         }
@@ -169,7 +169,8 @@ namespace adatvez
                 }
                 else
                 {
-                    if (DbHelper.ExecuteSolutionSql("f1-trigger-teszt-hiba.sql", testTriggerHibaSql, ref result))
+                    var dummyResult = new AhkResult("f1-trigger-teszt-hiba.sql");
+                    if (DbHelper.ExecuteSolutionSql("f1-trigger-teszt-hiba.sql", testTriggerHibaSql, ref dummyResult))
                     {
                         result.AddProblem("f1-trigger-teszt-hiba.sql futtatasa sikeres, pedig hibat kellett volna eredmenyeznie");
                     }
@@ -184,7 +185,7 @@ namespace adatvez
 
         private static void test4(ref AhkResult result)
         {
-            bool ok = ScreenshotValidator.IsScreenshotPresent(@"Trigger kodjat mutato", @"/megoldas/f1-trigger.png", ref result);
+            bool ok = ScreenshotValidator.IsScreenshotPresent(@"Trigger kodjat mutato kep", @"/megoldas/f1-trigger.png", ref result);
             if (ok)
                 result.AddPoints(1);
         }

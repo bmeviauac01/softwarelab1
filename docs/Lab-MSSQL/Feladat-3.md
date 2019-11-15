@@ -2,7 +2,7 @@
 
 ## Új oszlop
 
-1. Módosítsd a `Szamla` táblát: vegyél fel egy új oszlopot a számlához tartozó összes tétel darabszámának tárolásához.
+1. Módosítsd a `Szamla` táblát: vegyél fel egy új oszlopot `TetelSzam` néven a számlához tartozó összes tétel darabszámának tárolásához.
 
    > Az oszlopot hozzáadó kódot az `f3-oszlop.sql` fájlba írd bele. A fájlban csak egyetlen `alter table` utasítás szerepeljen, ne legyen benne se `[use]` se `go` utasítás.
    >

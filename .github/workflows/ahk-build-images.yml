@@ -24,7 +24,7 @@ jobs:
         run: |
           cd ahk/src
           docker-compose build
-      - name: Test sample solution for TSQL
+      - name: Test sample solution for MSSQL
         run: docker run --rm -v $(pwd)/megoldas/Lab-MSSQL:/megoldas docker.pkg.github.com/bmeviauac01/laborok/lab-mssql:2020
       - name: Push Docker images
         run: |

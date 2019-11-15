@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
-using Microsoft.EntityFrameworkCore;
 
 namespace adatvez
 {
@@ -60,12 +60,18 @@ namespace adatvez
                 var logOk = string.IsNullOrEmpty(procOutput1.Trim());
 
                 if (returnValueOk)
+                {
                     ++points;
+                    result.Log("Eljaras teszt ok / 1");
+                }
                 else
                     result.AddProblem("Eljaras visszateresi erteke helytelen, ha nincs hiba");
 
                 if (logOk)
+                {
                     ++points;
+                    result.Log("Eljaras teszt ok / 2");
+                }
                 else
                     result.AddProblem("Eljaras kimenetre irt szovege nem ures, pedig nincs hiba");
             }
@@ -80,12 +86,18 @@ namespace adatvez
                 var logOk = problemProductNames.All(name => procOutput2.Contains(name));
 
                 if (returnValueOk)
+                {
                     ++points;
+                    result.Log("Eljaras teszt ok / 3");
+                }
                 else
                     result.AddProblem("Eljaras visszateresi erteke helytelen, ha hiba van az adatokban");
 
                 if (logOk)
+                {
                     ++points;
+                    result.Log("Eljaras teszt ok / 4");
+                }
                 else
                     result.AddProblem("Eljaras kimenetre irt szovege nem tartalmazza a hibat");
             }
@@ -101,16 +113,22 @@ namespace adatvez
         {
             var problemProductNames = ensureDbWithDiscrepancies(out var szamlaIdWithDiscrepancies);
 
-            if (DbHelper.RunSqlGetOutput("f2-futtatas.sql", @"/megoldas/f2-futtatas.sql", out var output, ref result))
+            if (DbHelper.FindAndExecutionSolutionSqlFromFileGetOutpu("f2-futtatas.sql", @"/megoldas/f2-futtatas.sql", out var output, ref result))
             {
                 if (output.Contains("Helyes szamla"))
+                {
                     result.AddPoints(1);
+                    result.Log("Osszes szamla ellenorzese teszt ok / 1");
+                }
                 else
                     result.AddProblem("Az osszes szamla ellenorzese soran kellene legyen helyes szamla is");
 
                 var logContainsInconsistentProductNames = problemProductNames.All(name => output.Contains(name));
                 if (logContainsInconsistentProductNames)
+                {
                     result.AddPoints(1);
+                    result.Log("Osszes szamla ellenorzese teszt ok / 2");
+                }
                 else
                     result.AddProblem("Az osszes szamla ellenorzese soran nem jelentek meg a hibas termekek a kimenetben");
             }

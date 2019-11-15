@@ -41,7 +41,7 @@ namespace adatvez
                 db.Database.ExecuteSqlCommand(sqlCommand);
         }
 
-        public static bool RunSqlGetOutput(string fileDescription, string fileFullPath, out string output, ref AhkResult result)
+        public static bool FindAndExecutionSolutionSqlFromFileGetOutpu(string fileDescription, string fileFullPath, out string output, ref AhkResult result)
         {
             output = null;
 

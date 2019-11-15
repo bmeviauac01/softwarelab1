@@ -32,7 +32,7 @@ A megoldások beadásának lépései:
 
 ## Képernyőképek
 
-Egyes laborok kérik, hogy készíts képenyőképet a megoldás egy-egy részéről. Ez különösen akkor fontos, ha a feladatot otthon készíted el, mert ezzel bizonyítod, hogy a megoldásod saját magad készítetted. Amikor képernyőképet kérünk, az alábbiakra figyelj:
+Egyes laborok kérik, hogy készíts képernyőképet a megoldás egy-egy részéről. Ez különösen akkor fontos, ha a feladatot otthon készíted el, mert ezzel bizonyítod, hogy a megoldásod saját magad készítetted. Amikor képernyőképet kérünk, az alábbiakra figyelj:
 
 - Látszódjon a fejlesztéséhez használt eszköz (pl. SQL Server Management Studio, Visual Studio). Profi fejlesztők vagyunk, így mindig a megfelelő eszköz használjuk - jegyzettömbben nem lehet fejleszteni!
 - Látszódjon a gép és a felhasználó neve, amin a fejlesztést végezted (pl. SQL Server Management Studio-ban az Object Explorer-ben a megnyitott kapcsolat nevében szerepel, vagy konzolban add ki a `whoami` parancsot és ezt a konzolt is rakd a képernyőképre),
