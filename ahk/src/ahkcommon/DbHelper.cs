@@ -19,6 +19,8 @@ namespace adatvez
 
         public static bool ExecuteSolutionSql(string fileDescription, string sqlCommand, ref AhkResult result)
         {
+            sqlCommand = SqlHelper.RemoveUseAndGoStatements(sqlCommand, ref result);
+
             using (var db = DbFactory.GetDatabase())
             {
                 try
@@ -41,12 +43,14 @@ namespace adatvez
                 db.Database.ExecuteSqlCommand(sqlCommand);
         }
 
-        public static bool FindAndExecutionSolutionSqlFromFileGetOutpu(string fileDescription, string fileFullPath, out string output, ref AhkResult result)
+        public static bool FindAndExecutionSolutionSqlFromFileGetOutput(string fileDescription, string fileFullPath, out string output, ref AhkResult result)
         {
             output = null;
 
             if (!TextFileHelper.TryReadTextFileFromWellKnownPath(fileDescription, fileFullPath, ref result, out var sqlCommand))
                 return false;
+
+            sqlCommand = SqlHelper.RemoveUseAndGoStatements(sqlCommand, ref result);
 
             try
             {

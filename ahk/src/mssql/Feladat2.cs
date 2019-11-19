@@ -113,7 +113,7 @@ namespace adatvez
         {
             var problemProductNames = ensureDbWithDiscrepancies(out var szamlaIdWithDiscrepancies);
 
-            if (DbHelper.FindAndExecutionSolutionSqlFromFileGetOutpu("f2-futtatas.sql", @"/megoldas/f2-futtatas.sql", out var output, ref result))
+            if (DbHelper.FindAndExecutionSolutionSqlFromFileGetOutput("f2-futtatas.sql", @"/megoldas/f2-futtatas.sql", out var output, ref result))
             {
                 if (output.Contains("Helyes szamla"))
                 {
