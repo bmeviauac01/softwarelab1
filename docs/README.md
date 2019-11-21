@@ -81,6 +81,10 @@ Az egyetemi laborokban a gépek megjegyzik a GitHub belépési adatokat. Ezt a m
 
 **Egy labor csak 4 óra, nem?** Nem. A tárgy 3 kredit, amely a félév során megközelítőleg 90 munkaóra befektetését igényli. A labor tehát nem csak a teremben eltöltött 4 óra, hanem az előzetes felkészülés és a feladat befejezése / otthoni elvégzése is.
 
+**Egy apró elírás miatt nem működött a kódom, és nem értékeltétek.** A laborok során működő kódot, kódrészletet kell készíteni. Azért számítógép laborban vagy otthon készítjük a feladatot, mert így tudod magad ellenőrizni. Minimum elvárás, hogy a beadott kód leforduljon, lefusson. Ha a viselkedés nem teljesen helyes, azt értékeljük. De ha egyáltalán nem működik, nem értékeljük a megoldást.
+
+Azért így teszünk, mert mérnökként a feladatod a problémák _megoldása_ lesz, és nem csak egy _kísérlet_ a megoldásra. Mit gondolsz, ha a munkahelyeden a főnöködnek átadsz egy nem forduló kódot, mit fog tenni?
+
 **Ha otthonról készítem el a megoldást, hogyan kapok segítséget?** Akár otthonról dolgozol, akár egyetemi laborban, egy laborvezetőhöz tartozol. Ő felel nem csak a kontaktóra megtartásáért, hanem azért is, hogy a félév közben a feladatok beadása és ellenőrzése rendben történjen.
 
 **A laborvezető nem válaszol egy emailre, megkeresésre. Mit tegyek?** Adj neki időt. A kommunikáció aszinkron, órákban, akár napokban mérhető. Az oktatóknak is van munkaideje, ne várd el, hogy mindig elérhető legyen (főleg este és hétvégén ne). Ha a leadási határidő előtt egy órával kérdezel, bizony lehet, hogy nem kapsz választ időben.
