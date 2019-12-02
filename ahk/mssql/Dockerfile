@@ -1,4 +1,8 @@
 FROM mcr.microsoft.com/dotnet/core/runtime:2.1.14-alpine3.10 as base
+# https://github.com/dotnet/SqlClient/issues/81#issuecomment-545214765
+# https://github.com/dotnet/SqlClient/issues/81#issuecomment-545214765
+RUN apk add --no-cache icu-libs
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
 WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/core/sdk:2.1.802-alpine3.10 AS build
