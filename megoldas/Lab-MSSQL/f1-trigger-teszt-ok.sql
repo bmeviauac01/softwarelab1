@@ -1,1 +1,0 @@
-insert into KategoriaSzulovel values('Labda', 'Játék')

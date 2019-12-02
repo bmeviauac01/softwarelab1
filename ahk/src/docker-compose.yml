@@ -1,8 +1,0 @@
-version: "3.4"
-
-services:
-  hf-tsql:
-    image: docker.pkg.github.com/bmeviauac01/laborok/lab-mssql:2020
-    build:
-      context: .
-      dockerfile: mssql/Dockerfile
