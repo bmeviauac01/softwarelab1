@@ -24,7 +24,7 @@ namespace ahk.common
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Kiertekelsben hiba tortent.");
+                Console.WriteLine("Kiertekelesben hiba tortent.");
                 Console.WriteLine(ex);
                 return -1;
             }
@@ -38,9 +38,12 @@ namespace ahk.common
                 task.ExecuteAction(result);
                 result.WriteToFile();
             }
-            catch
+            catch (Exception ex)
             {
                 AhkOutputWriter.WriteInconclusiveResult(task.ExerciseName, "Nem vart hiba a kiertekeles kozben");
+
+                Console.WriteLine("Kiertekelesben hiba tortent.");
+                Console.WriteLine(ex);
 
                 if (task.Required)
                     throw;
