@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using System.Data.SqlClient;
 
 namespace ahk.adatvez.mssqldb
 {
@@ -20,15 +21,20 @@ namespace ahk.adatvez.mssqldb
 
         public static string GetConnectionString()
         {
-            var environmentConnString = System.Environment.GetEnvironmentVariable("DATABASE_CONNECTIONSTRING");
-            if (!string.IsNullOrEmpty(environmentConnString))
-                return environmentConnString;
-
 #if DEBUG
             return @"Server=(localdb)\mssqllocaldb;Database=adatvez;Trusted_Connection=True;";
-#else
-            return "Server=mssqlserver;Database=adatvez;Trusted_Connection=True;";
 #endif
+
+            var environmentConnString = System.Environment.GetEnvironmentVariable("DATABASE_CONNECTIONSTRING");
+            if (!string.IsNullOrEmpty(environmentConnString))
+            {
+                var connStrBuilder = new SqlConnectionStringBuilder(environmentConnString);
+                connStrBuilder.ConnectTimeout = 3;
+                connStrBuilder.InitialCatalog = "adatvez";
+                return connStrBuilder.ConnectionString;
+            }
+
+            throw new System.Exception("Nincs konfiguralva az adatbazis eleres.");
         }
     }
 }

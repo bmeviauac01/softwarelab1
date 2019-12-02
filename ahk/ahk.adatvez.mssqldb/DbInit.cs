@@ -11,12 +11,17 @@ namespace ahk.adatvez.mssqldb
     {
         public static void WaitForSqlServer()
         {
+            Console.WriteLine("MSSQL szerver kapcsolodas folyamatban...");
+
+            var connStr = new SqlConnectionStringBuilder(DbFactory.GetConnectionString());
+            connStr.InitialCatalog = null; // force connection to the server and not database; there is no database yet
+
             var waitUntil = DateTime.UtcNow.AddMinutes(1);
             while (true)
             {
                 try
                 {
-                    using (var conn = new SqlConnection(DbFactory.GetConnectionString()))
+                    using (var conn = new SqlConnection(connStr.ConnectionString))
                     {
                         conn.Open();
                         using (var cmd = conn.CreateCommand())
@@ -25,6 +30,7 @@ namespace ahk.adatvez.mssqldb
                             cmd.ExecuteNonQuery();
                         }
 
+                        Console.WriteLine("MSSQL szerver kapcsolodas sikeres");
                         return;
                     }
                 }
@@ -33,7 +39,10 @@ namespace ahk.adatvez.mssqldb
                     System.Threading.Thread.Sleep(5);
 
                     if (DateTime.UtcNow > waitUntil)
+                    {
+                        Console.WriteLine("MSSQL szerver kapcsolodas SIKERTELEN; ez valoszinuleg nem a megoldas hibaja");
                         throw;
+                    }
                 }
             }
         }
