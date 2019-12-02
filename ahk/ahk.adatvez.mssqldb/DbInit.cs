@@ -14,7 +14,7 @@ namespace ahk.adatvez.mssqldb
             Console.WriteLine("MSSQL szerver kapcsolodas folyamatban...");
 
             var connStr = new SqlConnectionStringBuilder(DbFactory.GetConnectionString());
-            connStr.InitialCatalog = null; // force connection to the server and not database; there is no database yet
+            connStr.InitialCatalog = ""; // force connection to the server and not database; there is no database yet
 
             var waitUntil = DateTime.UtcNow.AddMinutes(1);
             while (true)
