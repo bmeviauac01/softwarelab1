@@ -12,4 +12,10 @@
     <ProjectReference Include="..\ahk.common\ahk.common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="obfuscar.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

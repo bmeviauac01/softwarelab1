@@ -1,0 +1,14 @@
+﻿<?xml version='1.0'?>
+<Obfuscator>
+  <Var name="InPath" value="/app" />
+  <Var name="OutPath" value="/obf" />
+
+  <Var name="KeepPublicApi" value="false" />
+  <Var name="HidePrivateApi" value="true" />
+
+  <Module file="$(InPath)/mssql.dll" />
+  <Module file="$(InPath)/ahk.common.dll" />
+  <Module file="$(InPath)/ahk.adatvez.mssqldb.dll">
+    <SkipNamespace name="ahk.adatvez.mssqldb.DatabaseContext" />
+  </Module>
+</Obfuscator>
