@@ -6,7 +6,9 @@
   <Var name="KeepPublicApi" value="false" />
   <Var name="HidePrivateApi" value="true" />
 
-  <Module file="$(InPath)/mssql.dll" />
+  <Module file="$(InPath)/mssql.dll">
+    <SkipNamespace name="adatvez.KategoriaSzulovelDatabaseContext" />
+  </Module>
   <Module file="$(InPath)/ahk.common.dll" />
   <Module file="$(InPath)/ahk.adatvez.mssqldb.dll">
     <SkipNamespace name="ahk.adatvez.mssqldb.DatabaseContext" />
