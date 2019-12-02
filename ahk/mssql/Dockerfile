@@ -20,4 +20,4 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
 
-CMD dotnet "mssql.dll"
+CMD dotnet "/app/mssql.dll"
