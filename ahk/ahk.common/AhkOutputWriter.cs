@@ -13,10 +13,13 @@ namespace ahk.common
                 outputFilePath = environmentOutputFilePath;
         }
 
+        private static void AppendStringToFile(string str)
+            => System.IO.File.AppendAllText(outputFilePath, str + System.Environment.NewLine, encoding: System.Text.Encoding.UTF8);
+
         public static void WriteToFile(this AhkResult result)
         {
             var str = result.ToOutputString();
-            System.IO.File.AppendAllText(outputFilePath, str);
+            AppendStringToFile(str);
         }
 
         public static string ToOutputString(this AhkResult result)
@@ -32,7 +35,7 @@ namespace ahk.common
         public static void WriteInconclusiveResult(string exerciseName, string errorText)
         {
             var str = "###ahk#" + exerciseName.Replace("#", "-") + "#" + "inconclusive" + "#" + formatMultilineOutput(errorText);
-            System.IO.File.AppendAllText(outputFilePath, str);
+            AppendStringToFile(str);
         }
 
         private static string formatExerciseName(string exerciseName)
