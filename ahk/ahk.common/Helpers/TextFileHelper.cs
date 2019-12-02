@@ -4,9 +4,9 @@ namespace ahk.common
 {
     public static class TextFileHelper
     {
-        public static bool TryReadTextFileFromWellKnownPath(string fileDescription, string fileFullPath, ref AhkResult result, out string fileContent)
+        public static bool TryReadTextFile(string fileDescription, string fileFullPath, ref AhkResult result, out string fileContent)
         {
-            fileFullPath = PathsHelper.GetFileInWellKnownDirectoryWithCaseInsensitiveNameMatching(fileFullPath);
+            fileFullPath = PathsHelper.FindFileWithCaseInsensitiveNameMatch(fileFullPath, ref result);
 
             if (!File.Exists(fileFullPath))
             {

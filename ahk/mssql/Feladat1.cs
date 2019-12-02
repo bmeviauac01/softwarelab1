@@ -33,7 +33,7 @@ namespace adatvez
 
         private static void test1(ref AhkResult result)
         {
-            bool ok = ScreenshotValidator.IsScreenshotPresent(@"Nezet tartalmat mutato kep", @"/megoldas/f1-nezet.png", ref result);
+            bool ok = ScreenshotValidator.IsScreenshotPresent(@"Nezet tartalmat mutato kep", @"f1-nezet.png", ref result);
             if (ok)
                 result.AddPoints(1);
         }
@@ -43,7 +43,7 @@ namespace adatvez
             var triggerName = @"KategoriaSzulovelBeszur";
 
             // execute script, fail early if it fails
-            if (!DbHelper.FindAndExecutionSolutionSqlFromFile(@"f1-trigger.sql", @"/megoldas/f1-trigger.sql", ref result))
+            if (!DbHelper.FindAndExecutionSolutionSqlFromFile(@"f1-trigger.sql", @"f1-trigger.sql", ref result))
                 return;
 
             // check if trigger exists, fail eraly if it does not
@@ -144,7 +144,7 @@ namespace adatvez
 
             // f1-trigger-teszt-ok.sql
 
-            if (DbHelper.FindAndExecutionSolutionSqlFromFile(@"f1-trigger-teszt-ok.sql", @"/megoldas/f1-trigger-teszt-ok.sql", ref result))
+            if (DbHelper.FindAndExecutionSolutionSqlFromFile(@"f1-trigger-teszt-ok.sql", @"f1-trigger-teszt-ok.sql", ref result))
             {
                 int countKategoriaAfter;
                 using (var db = DbFactory.GetDatabase())
@@ -163,7 +163,7 @@ namespace adatvez
 
             // f1-trigger-teszt-hiba.sql
 
-            if (TextFileHelper.TryReadTextFileFromWellKnownPath(@"f1-trigger-teszt-hiba.sql", @"/megoldas/f1-trigger-teszt-hiba.sql", ref result, out var testTriggerHibaSql))
+            if (TextFileHelper.TryReadTextFile(@"f1-trigger-teszt-hiba.sql", @"f1-trigger-teszt-hiba.sql", ref result, out var testTriggerHibaSql))
             {
                 if (!(testTriggerHibaSql.Contains("insert", StringComparison.OrdinalIgnoreCase) && testTriggerHibaSql.Contains("KategoriaSzulovel", StringComparison.OrdinalIgnoreCase)))
                 {
@@ -187,7 +187,7 @@ namespace adatvez
 
         private static void test4(ref AhkResult result)
         {
-            bool ok = ScreenshotValidator.IsScreenshotPresent(@"Trigger kodjat mutato kep", @"/megoldas/f1-trigger.png", ref result);
+            bool ok = ScreenshotValidator.IsScreenshotPresent(@"Trigger kodjat mutato kep", @"f1-trigger.png", ref result);
             if (ok)
                 result.AddPoints(1);
         }

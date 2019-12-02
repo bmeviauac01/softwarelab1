@@ -12,7 +12,7 @@ namespace ahk.adatvez.mssqldb
     {
         public static bool FindAndExecutionSolutionSqlFromFile(string fileDescription, string fileFullPath, ref AhkResult result)
         {
-            if (!TextFileHelper.TryReadTextFileFromWellKnownPath(fileDescription, fileFullPath, ref result, out var sqlCommand))
+            if (!TextFileHelper.TryReadTextFile(fileDescription, fileFullPath, ref result, out var sqlCommand))
                 return false;
 
             return ExecuteSolutionSql(fileDescription, sqlCommand, ref result);
@@ -48,7 +48,7 @@ namespace ahk.adatvez.mssqldb
         {
             output = null;
 
-            if (!TextFileHelper.TryReadTextFileFromWellKnownPath(fileDescription, fileFullPath, ref result, out var sqlCommand))
+            if (!TextFileHelper.TryReadTextFile(fileDescription, fileFullPath, ref result, out var sqlCommand))
                 return false;
 
             sqlCommand = SqlHelper.RemoveUseAndGoStatements(sqlCommand, ref result);

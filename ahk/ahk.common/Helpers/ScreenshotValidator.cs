@@ -15,7 +15,7 @@ namespace ahk.common
             else
                 fileDescription = fileDescription.Trim();
 
-            filePath = PathsHelper.GetFileInWellKnownDirectoryWithCaseInsensitiveNameMatching(filePath);
+            filePath = PathsHelper.FindFileWithCaseInsensitiveNameMatch(filePath, ref result);
 
             if (!File.Exists(filePath))
             {

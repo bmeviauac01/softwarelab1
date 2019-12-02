@@ -33,7 +33,7 @@ namespace adatvez
         {
             bool columnExists = false;
 
-            if (DbHelper.FindAndExecutionSolutionSqlFromFile(@"f3-oszlop.sql", @"/megoldas/f3-oszlop.sql", ref result))
+            if (DbHelper.FindAndExecutionSolutionSqlFromFile(@"f3-oszlop.sql", @"f3-oszlop.sql", ref result))
             {
                 if (SysObjectsHelper.ColumnExistsInTable("Szamla", "TetelSzam", ref result))
                 {
@@ -62,7 +62,7 @@ namespace adatvez
             DbSampleData.InsertSampleSzamla();
 
             // run the student solution and verify outcome
-            if (DbHelper.FindAndExecutionSolutionSqlFromFile(@"f3-kitolt.sql", @"/megoldas/f3-kitolt.sql", ref result))
+            if (DbHelper.FindAndExecutionSolutionSqlFromFile(@"f3-kitolt.sql", @"f3-kitolt.sql", ref result))
             {
                 if (!verifySzamlaTetelSzam())
                     result.AddProblem("TetelSzam ertek helytelen a kitoltes utan");
@@ -80,7 +80,7 @@ namespace adatvez
             DbHelper.ExecuteInstrumentationSql(@"update Szamla set TetelSzam = (select sum(Mennyiseg) from SzamlaTetel where SzamlaTetel.SzamlaID = Szamla.ID)");
 
             // create trigger, fail early if the create operation fails
-            if (!TextFileHelper.TryReadTextFileFromWellKnownPath(@"f3-trigger.sql", @"/megoldas/f3-trigger.sql", ref result, out var sqlCommand))
+            if (!TextFileHelper.TryReadTextFile(@"f3-trigger.sql", @"f3-trigger.sql", ref result, out var sqlCommand))
                 return;
             if (!DbHelper.ExecuteSolutionSql(@"f3-trigger.sql", sqlCommand, ref result))
                 return;
@@ -196,7 +196,7 @@ namespace adatvez
 
 
             // at last, check for screenshot
-            bool ok = ScreenshotValidator.IsScreenshotPresent(@"f3-trigger.png", @"/megoldas/f3-trigger.png", ref result);
+            bool ok = ScreenshotValidator.IsScreenshotPresent(@"f3-trigger.png", @"f3-trigger.png", ref result);
             if (ok)
                 result.AddPoints(points);
             else

@@ -1,23 +1,35 @@
 ﻿using System.IO;
+using System.Linq;
 
 namespace ahk.common
 {
     public static class PathsHelper
     {
-        public static string GetFileInWellKnownDirectoryWithCaseInsensitiveNameMatching(string filePath)
+        public static string FindFileWithCaseInsensitiveNameMatch(string filePath, ref AhkResult result)
         {
-            var parentDirPath = Path.GetDirectoryName(filePath);
+            var absolutePath = Path.GetFullPath(filePath);
 
+            var parentDirPath = Path.GetDirectoryName(absolutePath);
             if (!Directory.Exists(parentDirPath))
-                return filePath;
+                return absolutePath;
 
-            foreach (var f in Directory.EnumerateFiles(parentDirPath))
+            var matchedFiles = Directory.EnumerateFiles(parentDirPath)
+                                .Where(f => f.ToUpperInvariant() == absolutePath.ToUpperInvariant())
+                                .ToList();
+
+            if (matchedFiles.Count == 1)
             {
-                if (f.ToUpperInvariant() == filePath.ToUpperInvariant())
-                    return f;
+                return matchedFiles[0];
             }
-
-            return filePath;
+            else if (matchedFiles.Count > 1)
+            {
+                result.AddProblem($"Tobb azonos nevu fajl: {filePath}");
+                return matchedFiles[0];
+            }
+            else
+            {
+                return absolutePath;
+            }
         }
     }
 }

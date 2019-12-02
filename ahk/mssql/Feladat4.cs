@@ -61,7 +61,7 @@ namespace adatvez
 
 
             // execute solution, fail early if it failes
-            if (!DbHelper.FindAndExecutionSolutionSqlFromFile(@"f4.sql", @"/megoldas/f4.sql", ref result))
+            if (!DbHelper.FindAndExecutionSolutionSqlFromFile(@"f4.sql", @"f4.sql", ref result))
                 return;
 
             // test outcome
@@ -95,7 +95,7 @@ namespace adatvez
             }
 
             // at last, check for screenshot
-            bool ok = ScreenshotValidator.IsScreenshotPresent(@"f4.png", @"/megoldas/f4.png", ref result);
+            bool ok = ScreenshotValidator.IsScreenshotPresent(@"f4.png", @"f4.png", ref result);
             if (ok)
             {
                 result.AddPoints(3);

@@ -38,7 +38,7 @@ namespace adatvez
         private static bool createStoredProc(ref AhkResult result)
         {
             // execute script, fail early if it fails
-            if (!DbHelper.FindAndExecutionSolutionSqlFromFile(@"f2-eljaras.sql", @"/megoldas/f2-eljaras.sql", ref result))
+            if (!DbHelper.FindAndExecutionSolutionSqlFromFile(@"f2-eljaras.sql", @"f2-eljaras.sql", ref result))
                 return false;
 
             // check if procedure exists, fail early if it does not
@@ -104,7 +104,7 @@ namespace adatvez
                     result.AddProblem("Eljaras kimenetre irt szovege nem tartalmazza a hibat");
             }
 
-            bool ok = ScreenshotValidator.IsScreenshotPresent(@"f2-eljaras.png", @"/megoldas/f2-eljaras.png", ref result);
+            bool ok = ScreenshotValidator.IsScreenshotPresent(@"f2-eljaras.png", @"f2-eljaras.png", ref result);
             if (ok)
                 result.AddPoints(points);
             else
@@ -115,7 +115,7 @@ namespace adatvez
         {
             var problemProductNames = ensureDbWithDiscrepancies(out var szamlaIdWithDiscrepancies);
 
-            if (DbHelper.FindAndExecutionSolutionSqlFromFileGetOutput("f2-futtatas.sql", @"/megoldas/f2-futtatas.sql", out var output, ref result))
+            if (DbHelper.FindAndExecutionSolutionSqlFromFileGetOutput("f2-futtatas.sql", @"f2-futtatas.sql", out var output, ref result))
             {
                 if (output.Contains("Helyes szamla"))
                 {
