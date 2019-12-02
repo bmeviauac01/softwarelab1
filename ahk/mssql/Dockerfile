@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/dotnet/core/runtime:2.1.14-alpine3.10 as base
 WORKDIR /app
 
-FROM mcr.microsoft.com/dotnet/core/sdk:2.1.802-bionic AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:2.1.802-alpine3.10 AS build
 WORKDIR /src
 COPY ["mssql/mssql.csproj", "mssql/"]
 COPY ["ahk.common/ahk.common.csproj", "ahk.common/"]
