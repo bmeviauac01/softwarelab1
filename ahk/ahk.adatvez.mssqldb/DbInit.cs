@@ -47,7 +47,7 @@ namespace ahk.adatvez.mssqldb
             }
         }
 
-        public static void InitializeDatabase()
+        public static void InitializeDatabase(common.AhkResult result)
         {
             WaitForSqlServer();
 

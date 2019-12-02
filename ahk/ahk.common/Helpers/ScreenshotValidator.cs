@@ -8,14 +8,14 @@ namespace ahk.common
         private static System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create();
         private const string knownHash = "CB96165DFFE7D1BBA338C1C0C99A8B6D";
 
-        public static bool IsScreenshotPresent(string fileDescription, string filePath, ref AhkResult result)
+        public static bool IsScreenshotPresent(string fileDescription, string filePath, AhkResult result)
         {
             if (string.IsNullOrEmpty(fileDescription))
                 fileDescription = @"Kepernyokep fajl";
             else
                 fileDescription = fileDescription.Trim();
 
-            filePath = PathsHelper.FindFileWithCaseInsensitiveNameMatch(filePath, ref result);
+            filePath = PathsHelper.FindFileWithCaseInsensitiveNameMatch(filePath, result);
 
             if (!File.Exists(filePath))
             {

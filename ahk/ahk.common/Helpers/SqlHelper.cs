@@ -6,7 +6,7 @@ namespace ahk.common
 {
     public static class SqlHelper
     {
-        public static string RemoveUseAndGoStatements(string sql, ref AhkResult result)
+        public static string RemoveUseAndGoStatements(string sql, AhkResult result)
         {
             if (string.IsNullOrEmpty(sql))
                 return sql;

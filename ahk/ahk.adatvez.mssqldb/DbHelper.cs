@@ -1,26 +1,26 @@
-﻿using System;
+﻿using ahk.common;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
-using ahk.common;
-using Microsoft.EntityFrameworkCore;
 
 namespace ahk.adatvez.mssqldb
 {
     public static class DbHelper
     {
-        public static bool FindAndExecutionSolutionSqlFromFile(string fileDescription, string fileFullPath, ref AhkResult result)
+        public static bool FindAndExecutionSolutionSqlFromFile(string fileDescription, string fileFullPath, AhkResult result)
         {
-            if (!TextFileHelper.TryReadTextFile(fileDescription, fileFullPath, ref result, out var sqlCommand))
+            if (!TextFileHelper.TryReadTextFile(fileDescription, fileFullPath, result, out var sqlCommand))
                 return false;
 
-            return ExecuteSolutionSql(fileDescription, sqlCommand, ref result);
+            return ExecuteSolutionSql(fileDescription, sqlCommand, result);
         }
 
-        public static bool ExecuteSolutionSql(string fileDescription, string sqlCommand, ref AhkResult result)
+        public static bool ExecuteSolutionSql(string fileDescription, string sqlCommand, AhkResult result)
         {
-            sqlCommand = SqlHelper.RemoveUseAndGoStatements(sqlCommand, ref result);
+            sqlCommand = SqlHelper.RemoveUseAndGoStatements(sqlCommand, result);
 
             using (var db = DbFactory.GetDatabase())
             {
@@ -44,14 +44,14 @@ namespace ahk.adatvez.mssqldb
                 db.Database.ExecuteSqlCommand(sqlCommand);
         }
 
-        public static bool FindAndExecutionSolutionSqlFromFileGetOutput(string fileDescription, string fileFullPath, out string output, ref AhkResult result)
+        public static bool FindAndExecutionSolutionSqlFromFileGetOutput(string fileDescription, string fileFullPath, out string output, AhkResult result)
         {
             output = null;
 
-            if (!TextFileHelper.TryReadTextFile(fileDescription, fileFullPath, ref result, out var sqlCommand))
+            if (!TextFileHelper.TryReadTextFile(fileDescription, fileFullPath, result, out var sqlCommand))
                 return false;
 
-            sqlCommand = SqlHelper.RemoveUseAndGoStatements(sqlCommand, ref result);
+            sqlCommand = SqlHelper.RemoveUseAndGoStatements(sqlCommand, result);
 
             try
             {

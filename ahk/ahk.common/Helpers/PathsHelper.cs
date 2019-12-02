@@ -5,7 +5,7 @@ namespace ahk.common
 {
     public static class PathsHelper
     {
-        public static string FindFileWithCaseInsensitiveNameMatch(string filePath, ref AhkResult result)
+        public static string FindFileWithCaseInsensitiveNameMatch(string filePath, AhkResult result)
         {
             var absolutePath = Path.GetFullPath(filePath);
 

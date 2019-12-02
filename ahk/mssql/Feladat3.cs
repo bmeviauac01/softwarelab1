@@ -1,10 +1,10 @@
-﻿using System;
+﻿using ahk.adatvez.mssqldb;
+using ahk.common;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using ahk.adatvez.mssqldb;
-using ahk.common;
-using Microsoft.EntityFrameworkCore;
 
 namespace adatvez
 {
@@ -12,30 +12,22 @@ namespace adatvez
     {
         public const string AhkExerciseName = @"Feladat 3";
 
-        public static void Execute()
+        public static void Execute(AhkResult result)
         {
-            var result = new AhkResult(AhkExerciseName);
-            try
-            {
-                Console.WriteLine("Feladat 3 ellenorzese");
+            Console.WriteLine("Feladat 3 ellenorzese");
 
-                test1(ref result);
-                test2(ref result);
-                test3(ref result);
-            }
-            finally
-            {
-                AhkResultWriter.WriteResult(result);
-            }
+            test1(result);
+            test2(result);
+            test3(result);
         }
 
-        private static void test1(ref AhkResult result)
+        private static void test1(AhkResult result)
         {
             bool columnExists = false;
 
-            if (DbHelper.FindAndExecutionSolutionSqlFromFile(@"f3-oszlop.sql", @"f3-oszlop.sql", ref result))
+            if (DbHelper.FindAndExecutionSolutionSqlFromFile(@"f3-oszlop.sql", @"f3-oszlop.sql", result))
             {
-                if (SysObjectsHelper.ColumnExistsInTable("Szamla", "TetelSzam", ref result))
+                if (SysObjectsHelper.ColumnExistsInTable("Szamla", "TetelSzam", result))
                 {
                     columnExists = true;
                     result.AddPoints(1);
@@ -47,7 +39,7 @@ namespace adatvez
                 DbHelper.ExecuteInstrumentationSql(@"alter table Szamla add TetelSzam int null");
         }
 
-        private static void test2(ref AhkResult result)
+        private static void test2(AhkResult result)
         {
             // change some numbers in the database to make sure the required values are actually calculated and not hard-coded
             using (var db = DbFactory.GetDatabase())
@@ -62,7 +54,7 @@ namespace adatvez
             DbSampleData.InsertSampleSzamla();
 
             // run the student solution and verify outcome
-            if (DbHelper.FindAndExecutionSolutionSqlFromFile(@"f3-kitolt.sql", @"f3-kitolt.sql", ref result))
+            if (DbHelper.FindAndExecutionSolutionSqlFromFile(@"f3-kitolt.sql", @"f3-kitolt.sql", result))
             {
                 if (!verifySzamlaTetelSzam())
                     result.AddProblem("TetelSzam ertek helytelen a kitoltes utan");
@@ -74,15 +66,15 @@ namespace adatvez
             }
         }
 
-        private static void test3(ref AhkResult result)
+        private static void test3(AhkResult result)
         {
             // reset the database to the known consistent state regarding the new column
             DbHelper.ExecuteInstrumentationSql(@"update Szamla set TetelSzam = (select sum(Mennyiseg) from SzamlaTetel where SzamlaTetel.SzamlaID = Szamla.ID)");
 
             // create trigger, fail early if the create operation fails
-            if (!TextFileHelper.TryReadTextFile(@"f3-trigger.sql", @"f3-trigger.sql", ref result, out var sqlCommand))
+            if (!TextFileHelper.TryReadTextFile(@"f3-trigger.sql", @"f3-trigger.sql", result, out var sqlCommand))
                 return;
-            if (!DbHelper.ExecuteSolutionSql(@"f3-trigger.sql", sqlCommand, ref result))
+            if (!DbHelper.ExecuteSolutionSql(@"f3-trigger.sql", sqlCommand, result))
                 return;
             if (!sqlCommand.Contains("inserted", StringComparison.OrdinalIgnoreCase) || !sqlCommand.Contains("deleted", StringComparison.OrdinalIgnoreCase))
             {
@@ -196,7 +188,7 @@ namespace adatvez
 
 
             // at last, check for screenshot
-            bool ok = ScreenshotValidator.IsScreenshotPresent(@"f3-trigger.png", @"f3-trigger.png", ref result);
+            bool ok = ScreenshotValidator.IsScreenshotPresent(@"f3-trigger.png", @"f3-trigger.png", result);
             if (ok)
                 result.AddPoints(points);
             else

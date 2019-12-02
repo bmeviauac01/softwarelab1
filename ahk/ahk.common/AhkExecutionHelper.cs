@@ -4,42 +4,46 @@ namespace ahk.common
 {
     public static class AhkExecutionHelper
     {
-        public static int Execute(params Tuple<string, Action>[] checksToExecute)
+        public static int Execute(params AhkEvaluationTask[] tasksToExecute)
         {
-            Console.WriteLine("Teszteles indul...");
+            Console.WriteLine("Kiertekeles indul...");
 
-            if (checksToExecute == null || checksToExecute.Length == 0)
+            if (tasksToExecute == null || tasksToExecute.Length == 0)
             {
-                AhkResultWriter.Inconclusive("N/A", "Hibas teszt alklamazas");
+                AhkOutputWriter.WriteInconclusiveResult("N/A", "Hibas teszt alkalmazas. Error in the evaluation application.");
                 return -1;
             }
 
             try
             {
-                foreach (var test in checksToExecute)
-                    executeSafe(test.Item1, test.Item2);
+                foreach (var test in tasksToExecute)
+                    executeSafe(test);
 
-                Console.WriteLine("Sikeres teszt lefutas.");
+                Console.WriteLine("Kiertekeles befejezve.");
                 return 0;
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Hiba tortent.");
+                Console.WriteLine("Kiertekelsben hiba tortent.");
                 Console.WriteLine(ex);
                 return -1;
             }
         }
 
-        private static void executeSafe(string ahkExerciseName, Action action)
+        private static void executeSafe(AhkEvaluationTask task)
         {
+            var result = new AhkResult(task.ExerciseName);
             try
             {
-                action();
+                task.ExecuteAction(result);
+                result.WriteToFile();
             }
             catch
             {
-                AhkResultWriter.Inconclusive(ahkExerciseName, "Nem vart hiba a kiertekeles kozben");
-                throw;
+                AhkOutputWriter.WriteInconclusiveResult(task.ExerciseName, "Nem vart hiba a kiertekeles kozben");
+
+                if (task.Required)
+                    throw;
             }
         }
     }

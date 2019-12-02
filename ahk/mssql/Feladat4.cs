@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using ahk.adatvez.mssqldb;
+﻿using ahk.adatvez.mssqldb;
 using ahk.common;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
 
 namespace adatvez
 {
@@ -10,22 +10,13 @@ namespace adatvez
     {
         public const string AhkExerciseName = @"imsc@Feladat 4";
 
-        public static void Execute()
+        public static void Execute(AhkResult result)
         {
-            var result = new AhkResult(AhkExerciseName);
-            try
-            {
-                Console.WriteLine("Feladat 4 ellenorzese");
-
-                test(ref result);
-            }
-            finally
-            {
-                AhkResultWriter.WriteResult(result);
-            }
+            Console.WriteLine("Feladat 4 ellenorzese");
+            test(result);
         }
 
-        private static void test(ref AhkResult result)
+        private static void test(AhkResult result)
         {
             // chane some categories, and get expected outcome
             var productToRootCategory = new Dictionary<int, int>();
@@ -61,7 +52,7 @@ namespace adatvez
 
 
             // execute solution, fail early if it failes
-            if (!DbHelper.FindAndExecutionSolutionSqlFromFile(@"f4.sql", @"f4.sql", ref result))
+            if (!DbHelper.FindAndExecutionSolutionSqlFromFile(@"f4.sql", @"f4.sql", result))
                 return;
 
             // test outcome
@@ -95,7 +86,7 @@ namespace adatvez
             }
 
             // at last, check for screenshot
-            bool ok = ScreenshotValidator.IsScreenshotPresent(@"f4.png", @"f4.png", ref result);
+            bool ok = ScreenshotValidator.IsScreenshotPresent(@"f4.png", @"f4.png", result);
             if (ok)
             {
                 result.AddPoints(3);

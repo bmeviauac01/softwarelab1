@@ -1,12 +1,12 @@
-﻿using System;
+﻿using ahk.adatvez.mssqldb;
+using ahk.common;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
-using ahk.adatvez.mssqldb;
-using ahk.common;
-using Microsoft.EntityFrameworkCore;
 
 namespace adatvez
 {
@@ -16,39 +16,31 @@ namespace adatvez
 
         private const string procName = @"SzamlaEllenoriz";
 
-        public static void Execute()
+        public static void Execute(AhkResult result)
         {
-            var result = new AhkResult(AhkExerciseName);
-            try
-            {
-                Console.WriteLine("Feladat 2 ellenorzese");
+            Console.WriteLine("Feladat 2 ellenorzese");
 
-                if (createStoredProc(ref result))
-                {
-                    test1(ref result);
-                    test2(ref result);
-                }
-            }
-            finally
+            if (createStoredProc(result))
             {
-                AhkResultWriter.WriteResult(result);
+                test1(result);
+                test2(result);
             }
         }
 
-        private static bool createStoredProc(ref AhkResult result)
+        private static bool createStoredProc(AhkResult result)
         {
             // execute script, fail early if it fails
-            if (!DbHelper.FindAndExecutionSolutionSqlFromFile(@"f2-eljaras.sql", @"f2-eljaras.sql", ref result))
+            if (!DbHelper.FindAndExecutionSolutionSqlFromFile(@"f2-eljaras.sql", @"f2-eljaras.sql", result))
                 return false;
 
             // check if procedure exists, fail early if it does not
-            if (!SysObjectsHelper.StoredProcedureExistsWithName(procName, ref result))
+            if (!SysObjectsHelper.StoredProcedureExistsWithName(procName, result))
                 return false;
 
             return true;
         }
 
-        private static void test1(ref AhkResult result)
+        private static void test1(AhkResult result)
         {
             int points = 0;
 
@@ -56,7 +48,7 @@ namespace adatvez
             ensureDbHasNoDiscrepancies();
 
             // Test when everything is ok
-            if (runStoredProcGetReturnValueAndOutput(1, out var procReturn1, out string procOutput1, ref result))
+            if (runStoredProcGetReturnValueAndOutput(1, out var procReturn1, out string procOutput1, result))
             {
                 var returnValueOk = procReturn1.HasValue && procReturn1.Value == 0;
                 var logOk = string.IsNullOrEmpty(procOutput1.Trim());
@@ -82,7 +74,7 @@ namespace adatvez
             var problemProductNames = ensureDbWithDiscrepancies(out var szamlaIdWithDiscrepancies);
 
             // Test when everything is ok
-            if (runStoredProcGetReturnValueAndOutput(szamlaIdWithDiscrepancies, out var procReturn2, out string procOutput2, ref result))
+            if (runStoredProcGetReturnValueAndOutput(szamlaIdWithDiscrepancies, out var procReturn2, out string procOutput2, result))
             {
                 var returnValueOk = procReturn2.HasValue && procReturn2.Value == 1;
                 var logOk = problemProductNames.All(name => procOutput2.Contains(name));
@@ -104,18 +96,18 @@ namespace adatvez
                     result.AddProblem("Eljaras kimenetre irt szovege nem tartalmazza a hibat");
             }
 
-            bool ok = ScreenshotValidator.IsScreenshotPresent(@"f2-eljaras.png", @"f2-eljaras.png", ref result);
+            bool ok = ScreenshotValidator.IsScreenshotPresent(@"f2-eljaras.png", @"f2-eljaras.png", result);
             if (ok)
                 result.AddPoints(points);
             else
                 result.AddProblem($"Kepernyokep hianya miatt feladatresz nem ertekelt, egyebkent {points} pont lett volna");
         }
 
-        private static void test2(ref AhkResult result)
+        private static void test2(AhkResult result)
         {
             var problemProductNames = ensureDbWithDiscrepancies(out var szamlaIdWithDiscrepancies);
 
-            if (DbHelper.FindAndExecutionSolutionSqlFromFileGetOutput("f2-futtatas.sql", @"f2-futtatas.sql", out var output, ref result))
+            if (DbHelper.FindAndExecutionSolutionSqlFromFileGetOutput("f2-futtatas.sql", @"f2-futtatas.sql", out var output, result))
             {
                 if (output.Contains("Helyes szamla"))
                 {
@@ -173,7 +165,7 @@ namespace adatvez
             }
         }
 
-        private static bool runStoredProcGetReturnValueAndOutput(int szamlaId, out int? procedureReturnValue, out string procedureOutput, ref AhkResult result)
+        private static bool runStoredProcGetReturnValueAndOutput(int szamlaId, out int? procedureReturnValue, out string procedureOutput, AhkResult result)
         {
             try
             {

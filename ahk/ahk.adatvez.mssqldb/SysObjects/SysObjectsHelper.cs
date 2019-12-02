@@ -8,13 +8,13 @@ namespace ahk.adatvez.mssqldb
 {
     public static class SysObjectsHelper
     {
-        public static bool TriggerExistsWithName(string triggerName, ref AhkResult result)
-            => SysObjectExistsWithName(triggerName, "TR", "trigger", ref result);
+        public static bool TriggerExistsWithName(string triggerName, AhkResult result)
+            => SysObjectExistsWithName(triggerName, "TR", "trigger", result);
 
-        public static bool StoredProcedureExistsWithName(string precedureName, ref AhkResult result)
-            => SysObjectExistsWithName(precedureName, "P", "tarolt eljaras", ref result);
+        public static bool StoredProcedureExistsWithName(string precedureName, AhkResult result)
+            => SysObjectExistsWithName(precedureName, "P", "tarolt eljaras", result);
 
-        private static bool SysObjectExistsWithName(string objectName, string objectTypeIdInMssql, string objectTypeDescription, ref AhkResult result)
+        private static bool SysObjectExistsWithName(string objectName, string objectTypeIdInMssql, string objectTypeDescription, AhkResult result)
         {
             var item = ListSysObjects().FirstOrDefault(obj => obj.Type.Trim().Equals(objectTypeIdInMssql, StringComparison.OrdinalIgnoreCase) && obj.Name.Trim().Equals(objectName, StringComparison.OrdinalIgnoreCase));
             if (item == null)
@@ -29,7 +29,7 @@ namespace ahk.adatvez.mssqldb
             }
         }
 
-        public static bool ColumnExistsInTable(string tableName, string columnName, ref AhkResult result)
+        public static bool ColumnExistsInTable(string tableName, string columnName, AhkResult result)
         {
             var item = ListSysColumns().FirstOrDefault(obj => obj.TableName.Trim().Equals(tableName, StringComparison.OrdinalIgnoreCase) && obj.ColumnName.Trim().Equals(columnName, StringComparison.OrdinalIgnoreCase));
             if (item == null)

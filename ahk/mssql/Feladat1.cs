@@ -9,45 +9,37 @@ namespace adatvez
     {
         public const string AhkExerciseName = @"Feladat 1";
 
-        public static void Execute()
+        public static void Execute(AhkResult result)
         {
-            var result = new AhkResult(AhkExerciseName);
-            try
-            {
-                Console.WriteLine("Feladat 1 ellenorzese");
+            Console.WriteLine("Feladat 1 ellenorzese");
 
-                DbHelper.ExecuteInstrumentationSql(@"IF OBJECT_ID('KategoriaSzulovel', 'V') IS NOT NULL DROP VIEW KategoriaSzulovel");
-                DbHelper.ExecuteInstrumentationSql(@"create view KategoriaSzulovel as select k.Nev KategoriaNev, sz.Nev SzuloKategoriaNev from Kategoria k left outer join Kategoria sz on k.SzuloKategoria = sz.ID");
-                result.Log("KategoriaSzulovel nezet letrehozva");
+            DbHelper.ExecuteInstrumentationSql(@"IF OBJECT_ID('KategoriaSzulovel', 'V') IS NOT NULL DROP VIEW KategoriaSzulovel");
+            DbHelper.ExecuteInstrumentationSql(@"create view KategoriaSzulovel as select k.Nev KategoriaNev, sz.Nev SzuloKategoriaNev from Kategoria k left outer join Kategoria sz on k.SzuloKategoria = sz.ID");
+            result.Log("KategoriaSzulovel nezet letrehozva");
 
-                test1(ref result);
-                test2(ref result);
-                test3(ref result);
-                test4(ref result);
-            }
-            finally
-            {
-                AhkResultWriter.WriteResult(result);
-            }
+            test1(result);
+            test2(result);
+            test3(result);
+            test4(result);
         }
 
-        private static void test1(ref AhkResult result)
+        private static void test1(AhkResult result)
         {
-            bool ok = ScreenshotValidator.IsScreenshotPresent(@"Nezet tartalmat mutato kep", @"f1-nezet.png", ref result);
+            bool ok = ScreenshotValidator.IsScreenshotPresent(@"Nezet tartalmat mutato kep", @"f1-nezet.png", result);
             if (ok)
                 result.AddPoints(1);
         }
 
-        private static void test2(ref AhkResult result)
+        private static void test2(AhkResult result)
         {
             var triggerName = @"KategoriaSzulovelBeszur";
 
             // execute script, fail early if it fails
-            if (!DbHelper.FindAndExecutionSolutionSqlFromFile(@"f1-trigger.sql", @"f1-trigger.sql", ref result))
+            if (!DbHelper.FindAndExecutionSolutionSqlFromFile(@"f1-trigger.sql", @"f1-trigger.sql", result))
                 return;
 
             // check if trigger exists, fail eraly if it does not
-            if (!SysObjectsHelper.TriggerExistsWithName(triggerName, ref result))
+            if (!SysObjectsHelper.TriggerExistsWithName(triggerName, result))
                 return;
 
             // test insert / 1
@@ -136,7 +128,7 @@ namespace adatvez
             }
         }
 
-        private static void test3(ref AhkResult result)
+        private static void test3(AhkResult result)
         {
             int countKategoriaBefore;
             using (var db = DbFactory.GetDatabase())
@@ -144,7 +136,7 @@ namespace adatvez
 
             // f1-trigger-teszt-ok.sql
 
-            if (DbHelper.FindAndExecutionSolutionSqlFromFile(@"f1-trigger-teszt-ok.sql", @"f1-trigger-teszt-ok.sql", ref result))
+            if (DbHelper.FindAndExecutionSolutionSqlFromFile(@"f1-trigger-teszt-ok.sql", @"f1-trigger-teszt-ok.sql", result))
             {
                 int countKategoriaAfter;
                 using (var db = DbFactory.GetDatabase())
@@ -163,7 +155,7 @@ namespace adatvez
 
             // f1-trigger-teszt-hiba.sql
 
-            if (TextFileHelper.TryReadTextFile(@"f1-trigger-teszt-hiba.sql", @"f1-trigger-teszt-hiba.sql", ref result, out var testTriggerHibaSql))
+            if (TextFileHelper.TryReadTextFile(@"f1-trigger-teszt-hiba.sql", @"f1-trigger-teszt-hiba.sql", result, out var testTriggerHibaSql))
             {
                 if (!(testTriggerHibaSql.Contains("insert", StringComparison.OrdinalIgnoreCase) && testTriggerHibaSql.Contains("KategoriaSzulovel", StringComparison.OrdinalIgnoreCase)))
                 {
@@ -172,7 +164,7 @@ namespace adatvez
                 else
                 {
                     var dummyResult = new AhkResult("f1-trigger-teszt-hiba.sql");
-                    if (DbHelper.ExecuteSolutionSql("f1-trigger-teszt-hiba.sql", testTriggerHibaSql, ref dummyResult))
+                    if (DbHelper.ExecuteSolutionSql("f1-trigger-teszt-hiba.sql", testTriggerHibaSql, dummyResult))
                     {
                         result.AddProblem("f1-trigger-teszt-hiba.sql futtatasa sikeres, pedig hibat kellett volna eredmenyeznie");
                     }
@@ -185,9 +177,9 @@ namespace adatvez
             }
         }
 
-        private static void test4(ref AhkResult result)
+        private static void test4(AhkResult result)
         {
-            bool ok = ScreenshotValidator.IsScreenshotPresent(@"Trigger kodjat mutato kep", @"f1-trigger.png", ref result);
+            bool ok = ScreenshotValidator.IsScreenshotPresent(@"Trigger kodjat mutato kep", @"f1-trigger.png", result);
             if (ok)
                 result.AddPoints(1);
         }
