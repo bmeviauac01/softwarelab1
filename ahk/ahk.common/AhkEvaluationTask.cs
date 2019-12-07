@@ -4,15 +4,15 @@ namespace ahk.common
 {
     public class AhkEvaluationTask
     {
-        public AhkEvaluationTask(string exerciseName, Action<AhkResult> executeAction, bool required = false)
+        public AhkEvaluationTask(string exerciseName, Action<AhkResult> executeAction, bool isPreProcess = false)
         {
             this.ExerciseName = exerciseName;
             this.ExecuteAction = executeAction;
-            this.Required = required;
+            this.IsPreProcess = isPreProcess;
         }
 
         public string ExerciseName { get; }
         public Action<AhkResult> ExecuteAction { get; }
-        public bool Required { get; } = false;
+        public bool IsPreProcess { get; } = false;
     }
 }

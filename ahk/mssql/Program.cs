@@ -8,7 +8,7 @@ namespace adatvez
         static int Main(string[] args)
         {
             return AhkExecutionHelper.Execute(
-                        new AhkEvaluationTask(Feladat1.AhkExerciseName, DbInit.InitializeDatabase, required: true),
+                        new AhkEvaluationTask(Feladat1.AhkExerciseName, DbInit.InitializeDatabase, isPreProcess: true),
                         new AhkEvaluationTask(Feladat1.AhkExerciseName, Feladat1.Execute),
                         new AhkEvaluationTask(Feladat2.AhkExerciseName, Feladat2.Execute),
                         new AhkEvaluationTask(Feladat3.AhkExerciseName, Feladat3.Execute),

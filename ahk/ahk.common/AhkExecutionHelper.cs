@@ -36,7 +36,9 @@ namespace ahk.common
             try
             {
                 task.ExecuteAction(result);
-                result.WriteToFile();
+
+                if (!task.IsPreProcess)
+                    result.WriteToFile();
             }
             catch (Exception ex)
             {
@@ -45,7 +47,7 @@ namespace ahk.common
                 Console.WriteLine("Kiertekelesben hiba tortent.");
                 Console.WriteLine(ex);
 
-                if (task.Required)
+                if (task.IsPreProcess)
                     throw;
             }
         }
