@@ -170,7 +170,7 @@ namespace adatvez
             {
                 try
                 {
-                    db.Database.ExecuteSqlCommand("update SzamlaTetel set Mennyiseg=Mennyiseg*2");
+                    db.Database.ExecuteSqlRaw("update SzamlaTetel set Mennyiseg=Mennyiseg*2");
                 }
                 catch (Exception ex)
                 {
@@ -222,7 +222,7 @@ namespace adatvez
                     new SqlParameter("@outres", SqlDbType.Int) { Direction = ParameterDirection.Output }
                 };
 #pragma warning disable EF1000 // Possible SQL injection vulnerability.
-                db.Database.ExecuteSqlCommand($"select @outres=TetelSzam from szamla where id={szamlaId}", @params);
+                db.Database.ExecuteSqlRaw($"select @outres=TetelSzam from szamla where id={szamlaId}", @params);
 #pragma warning restore EF1000 // Possible SQL injection vulnerability.
 
                 return @params[0].Value as int?;

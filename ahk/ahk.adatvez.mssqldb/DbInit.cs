@@ -83,7 +83,7 @@ namespace ahk.adatvez.mssqldb
                     db.Database.EnsureCreated();
                     Console.WriteLine("Adatbazis letrehozva");
 
-                    db.Database.ExecuteSqlCommand(createDbSql);
+                    db.Database.ExecuteSqlRaw(createDbSql);
                     Console.WriteLine("Adatbazis init script lefuttatva");
                 }
             }

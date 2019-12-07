@@ -183,7 +183,7 @@ namespace adatvez
                         new SqlParameter("@returnVal", SqlDbType.Int) { Direction = ParameterDirection.Output }
                     };
 #pragma warning disable EF1000 // Possible SQL injection vulnerability.
-                    db.Database.ExecuteSqlCommand($"exec @returnVal={procName} @szamlaaz", @params);
+                    db.Database.ExecuteSqlRaw($"exec @returnVal={procName} @szamlaaz", @params);
 #pragma warning restore EF1000 // Possible SQL injection vulnerability.
 
                     procedureReturnValue = @params[1].Value as int?;
