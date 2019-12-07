@@ -1,4 +1,4 @@
-# Feladat 4: Opcionális feladat 3 iMsc pontért
+# Feladat 4: Opcionális feladat (3 iMsc pont)
 
 A termék kategória rendszerünk többszintű, de szeretnénk egyszerűsíteni, egy szintűvé tenni. Írj T-SQL kódblokkot, amely minden kategóriát, amely nem legfelső szintű (amelynek van `SzuloKategoria` értéke), töröl, de előbb az ezen kategóriához tartozó termékeket átsorolja a szülő kategóriába.
 

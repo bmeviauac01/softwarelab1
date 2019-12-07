@@ -2,7 +2,15 @@
 
 ## Laborok feladatai
 
+[Microsoft SQL Server Reporting Services](Lab-ReportingServices/README.md)
+
+Lekérdezés optimalizálás
+
 [Microsoft SQL Server platform programozása](Lab-MSSQL/README.md)
+
+MongoDB programozása
+
+Entity Framework és REST API
 
 ## Laborok megoldásainak beadása
 
