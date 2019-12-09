@@ -48,9 +48,15 @@ Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terve
 
 Vegyél fel indexet a NettoAr oszlopra. Hogyan változnak az előbbi lekérdezések végrehajtási tervei?
 
-> Indexet felvehetünk a baloldali fában Indexes-en jobbklikk -> _New.._, illetve a tábla jobklikk -> _Design_ -> oszlopon jobbklikk -> _Indexes_ menüponttal is. A két felület különböző, az utóbbi némileg korlátozottabb, nem lehet pl. az indexben tárolt extra oszlopokat megadni.
->
-> Adj az indexeknek értelmes, egységes konvcenció szerinti nevet, pl. `IX_Tablanev_MezoNev`!
+Az index felvételéhez használd az _Object Explorer_-t, a fában a táblát kibontva az _Indexes_-en jobbklikk -> _New index_ > _Non-Clustered Index..._
+
+![Index hozzáadása](../images/queryopt-add-index.png)
+
+Adj az indexeknek értelmes, egységes konvcenció szerinti nevet, pl. `IX_Tablanev_MezoNev`, és add a _NettoAr_ oszlopot az _Index key columns_ listában.
+
+![Index tulajdonságok](../images/queryopt-index-properties.png)
+
+Ismételd meg az előbbi lekérdezéseket, és értelmezd a terveket!
 
 ## Feladat 5 (1p)
 
