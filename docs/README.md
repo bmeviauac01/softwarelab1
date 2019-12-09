@@ -4,7 +4,7 @@
 
 [Microsoft SQL Server Reporting Services](Lab-ReportingServices/README.md)
 
-Lekérdezés optimalizálás
+[Lekérdezés optimalizálás](Lab-QueryOptimization/README.md)
 
 [Microsoft SQL Server platform programozása](Lab-MSSQL/README.md)
 
