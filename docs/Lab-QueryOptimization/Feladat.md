@@ -1,9 +1,9 @@
 # Feladatok
 
-A feladatok megoldása során dokumentáld:
+A feladatok megoldása során dokumentáld a `README.md` markdown fájlba:
 
 - a használt SQL utasítást (amennyiben ezt a feladat szövege kérte),
-- a lekérdezési tervről készített képet,
+- a lekérdezési tervről készített képet (csak a tervet, _ne_ az egész képernyőt),
 - és a lekérdezési terv magyarázatát: _mit_ látunk és _miért_.
 
 ## Feladat 1 (2p)
