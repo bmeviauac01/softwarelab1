@@ -1,5 +1,7 @@
 # Lekérdezés optimalizálás Microsoft SQL Server platformon
 
+A labor során az eddig csak elméletben ismert lekérdezés optimalizálást vizsgáljuk a gyakorlatban. Azért, hogy a feladatok során megfelelően megértsük a működést, és dokumentálni is tudjuk, az első 4-5 feladat mindenképpen laborvezetővel együtt megoldott, a továbbiak önálló feladatok, ahol a laborvezető a szükséges magyarázatokat is megadja. A közös feladatmegoldás és az önálló feladatmegoldás eredményét is dokumentálni kell és be kell adni.
+
 ## Célkitűzés
 
 A Microsoft SQL Szerver végrehajtó motorjának bemutatása és a végrehajtási tervek elemzésének megismerése példákon keresztül, továbbá a markdown fájlformátum alapvető megismerése a labor feladatainak dokumentálása során.
