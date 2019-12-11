@@ -14,29 +14,9 @@ Entity Framework és REST API (otthoni feladat)
 
 ## Laborok megoldásainak beadása
 
-A feladatok beadásához a [GitHub Classroom](https://classroom.github.com)-ot használjuk. Minden feladat beadás egy-egy GitHub repository-ban történik. A megoldásként elkészített fájlokat fel kell tölteni egy repository-ba, aminek elkészítését a GitHub classroom segíti.
+Minden labor megoldását egy személyre szóló git repository-ban kell beadni. Ennek pontos [folyamatát lásd itt](GitHub-hasznalat.md). Kérünk, hogy alaposan olvasd végig a leírást!
 
-Minden feladatleírásban található egy link, amin keresztül a feladathoz tartozó repository elkészül. Mindehhez szükséges egy GitHub account.
-
-A megoldások beadásának lépései:
-
-1. [Regisztrálj](https://github.com/join) egy GitHub accountot, ha még nincs.
-
-1. A labor beadásához tartozó linket nyisd meg. Ez minden laborhoz más lesz, a feladat leírásában találod.
-
-1. Ha kéri, adj engedélyt a _GitHub Classroom_ alkalmazásnak, hogy használja az account adataidat.
-
-1. Látni fogsz egy oldalt, ahol elfogadhatod a feladatot ("Accept the ... assignment"). Kattints a gombra.
-
-1. Várd meg, amíg elkészül a repository.
-
-   > A repository privát lesz, azaz az senki nem látja, csak te, és az oktatók.
-
-1. Klónozd le a repository-t. Ebben találni fogsz egy keretet, vagy kiinduló kódot. Ezen dolgozz, ezt változtasd.
-
-   > A git repository kezeléséhez tetszőleges klienst használhatsz. Ha nincs kedvenced még, akkor legegyszerűbb a [GitHub Desktop](https://desktop.github.com/).
-
-1. Old meg a feladatot. Pushold a határidőig. Ha nem vagy benne biztos, hogy sikerült a git push, mindenképpen ellenőrizd a repository tartalmát a webes GitHub felületén!
+> **FONTOS** A beadás menetét az első laboron személyesen is megmutatjuk. A továbbiakban az itt leírtak szerint **kell** eljárnod minden labor megoldásával. A nem ilyen formában beadott megoldásokat nem értékeljük.
 
 ## Képernyőképek
 
@@ -53,9 +33,7 @@ Két példa erre: [SQL kód](images/img-screenshot-pl-sql.png) és [Visual Studi
 
 ## A feladatok kiértékelése
 
-A feladatok kiértékelése részben **automatikusan** történik. A futtatható kódokat valóban le fogjuk futtatni, ezért minden esetben fontos a feladatleírások pontos követése (kiinduló kód váz használata, csak a megengedett fájlok változtatása, stb.)!
-
-És ne felejtsd el megadni a Neptun kódodat a gyökérben levő txt fájlban!
+A feladatok kiértékelése egyes laborok esetén részben **automatikusan** történik. A futtatható kódokat valóban le fogjuk futtatni, ezért minden esetben fontos a feladatleírások pontos követése (kiinduló kód váz használata, csak a megengedett fájlok változtatása, stb.)!
 
 ## Értékelés
 
@@ -89,7 +67,7 @@ Az egyetemi laborokban a gépek megjegyzik a GitHub belépési adatokat. Ezt a m
 
 **Egy labor csak 4 óra, nem?** Nem. A tárgy 3 kredit, amely a félév során megközelítőleg 90 munkaóra befektetését igényli. A labor tehát nem csak a teremben eltöltött 4 óra, hanem az előzetes felkészülés és a feladat befejezése / otthoni elvégzése is.
 
-**Egy apró elírás miatt nem működött a kódom, és nem értékeltétek.** A laborok során működő kódot, kódrészletet kell készíteni. Azért számítógép laborban vagy otthon készítjük a feladatot, mert így tudod magad ellenőrizni. Minimum elvárás, hogy a beadott kód leforduljon, lefusson. Ha a viselkedés nem teljesen helyes, azt értékeljük. De ha egyáltalán nem működik, nem értékeljük a megoldást.
+**Egy apró elírás miatt nem működött a kódom, és nem értékeltétek.** A laborok során működő programot, kódot, kódrészletet kell készíteni. Azért számítógép laborban vagy otthon készítjük a feladatot, mert így tudod magad ellenőrizni. Minimum elvárás, hogy a beadott kód leforduljon, lefusson. Ha a viselkedés nem teljesen helyes, azt értékeljük. De ha egyáltalán nem működik, nem értékeljük a megoldást.
 
 Azért így teszünk, mert mérnökként a feladatod a problémák _megoldása_ lesz, és nem csak egy _kísérlet_ a megoldásra. Mit gondolsz, ha a munkahelyeden a főnöködnek átadsz egy nem forduló kódot, mit fog tenni?
 
