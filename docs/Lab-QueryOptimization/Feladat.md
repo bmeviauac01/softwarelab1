@@ -6,7 +6,7 @@ A feladatok megoldása során dokumentáld:
 - a lekérdezési tervről készített képet,
 - és a lekérdezési terv magyarázatát: _mit_ látunk és _miért_.
 
-## Feladat 1 (1p)
+## Feladat 1 (2p)
 
 Dobd el a _Telephely_ => _Vevo_ idegen kulcsot és a _Vevo_ elsődleges kulcs kényszerét. Legegyszerűbb, ha az _Object Explorer_-ben megkeresed ezeket, és törlöd:
 
@@ -22,7 +22,7 @@ Vizsgáld meg a következő lekérdezések végrehajtási tervét a _Vevo tábl�
 
 Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és adj magyarázatot rájuk!
 
-## Feladat 2 (1p)
+## Feladat 2 (2p)
 
 Hozd létre újra az elsődleges kulcsot a _Vevo_ táblán.
 
@@ -32,7 +32,7 @@ Hozd létre újra az elsődleges kulcsot a _Vevo_ táblán.
 
 Futtasd újra az előbbi lekérdezéseket. Mit tapasztalsz?
 
-## Feladat 3 (1p)
+## Feladat 3 (2p)
 
 Futtasd az alábbi lekérdezéseket a _Termek_ táblán megfogalmazva.
 
@@ -44,7 +44,7 @@ Futtasd az alábbi lekérdezéseket a _Termek_ táblán megfogalmazva.
 
 Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és adj magyarázatot rájuk!
 
-## Feladat 4 (1p)
+## Feladat 4 (2p)
 
 Vegyél fel indexet a NettoAr oszlopra. Hogyan változnak az előbbi lekérdezések végrehajtási tervei?
 
@@ -58,7 +58,7 @@ Adj az indexeknek értelmes, egységes konvcenció szerinti nevet, pl. `IX_Tabla
 
 Ismételd meg az előbbi lekérdezéseket, és értelmezd a terveket!
 
-## Feladat 5 (1p)
+## Feladat 5 (2p)
 
 Szaporítsd meg a Termek tábla sorait az alábbi SQL szkripttel. Hogyan változnak az előbbi végrehajtási tervek?
 
@@ -114,7 +114,7 @@ Elemezd a következő termék táblából történő lekérdezések végrehajtá
 
 Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és adj magyarázatot rájuk!
 
-## Feladat 10 (2p)
+## Feladat 10 (1p)
 
 Rakj indexet a Nev oszlopra, majd elemezd a következő Termek táblából történő lekérdezések végrehajtási tervét:
 
@@ -126,7 +126,7 @@ Rakj indexet a Nev oszlopra, majd elemezd a következő Termek táblából tört
 
 Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és adj magyarázatot rájuk!
 
-## Feladat 11 (2p)
+## Feladat 11 (1p)
 
 Elemezd a következő Termek táblából történő lekérdezések végrehajtási tervét:
 
@@ -135,23 +135,23 @@ Elemezd a következő Termek táblából történő lekérdezések végrehajtás
 
 Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és adj magyarázatot rájuk!
 
-## Feladat 12 (2p)
+## Feladat 12 (1p)
 
 Kérd le termék kategóriánként a kategóriában levé a termékek számát.
 
 Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és adj magyarázatot rájuk!
 
-## Feladat 13 (2p)
+## Feladat 13 (1p)
 
 Hogyan javítható az előző feladat lekérdezéseinek teljesítménye? Add meg a megoldást, és utána elemezd újra az előző lekérdezés tervét.
 
 > Tipp: fel kell venni egy új indexet. De vajon hova, mire?
 
-## Feladat 14 (2p)
+## Feladat 14 (1p)
 
 Listázd egy adott kategóriába tartozó terméket nevét. Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és adj magyarázatot rájuk! Térj ki arra, hogy az előző feladatban felvett index segített-e, és miért?
 
-## Feladat 15 (2p)
+## Feladat 15 (1p)
 
 Javíts az előző feladat lekérdezésének teljesítményén. Az előbb felvett indexet bővítsük a névvel: indexen jobbklikk -> _Properties_ -> a táblázatban az _Included Columns_ fül alatt vegyük fel a _Nev_ oszlopot.
 
