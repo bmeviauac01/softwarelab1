@@ -23,6 +23,8 @@ A labor elvégzéséhez használható segédanyagok és felkészülési anyagok:
 
 ## Előkészület
 
+A feladatok megoldása során ne felejtsd el követni a [feladat beadás folyamatát](../GitHub-hasznalat.md).
+
 ### Git repository létrehozása és letöltése
 
 1. Az alábbi URL-en keresztül hozd létre a saját repository-dat: TBD
