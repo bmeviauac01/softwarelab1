@@ -34,6 +34,8 @@ A labor elvégzéséhez használható segédanyagok és felkészülési anyagok:
 
    > Egyetemi laborokban, ha a checkout során nem kér a rendszer felhasználónevet és jelszót, és nem sikerül a checkout, akkor valószínűleg a gépen korábban megjegyzett felhasználónévvel próbálkozott a rendszer. Először töröld ki a mentett belépési adatokat (lásd a kezdőoldalon a leírást), és próbáld újra.
 
+1. Hozz létre egy új ágat `megoldas` néven, és ezen az ágon dolgozz.
+
 1. A `neptun.txt` fájlba írd bele a Neptun kódodat. A fájlban semmi más ne szerepeljen, csak egyetlen sorban a Neptun kód 6 karaktere.
 
 ### Markdown fájl megnyitása
@@ -96,4 +98,5 @@ A lekérdezési terv a diagramot adatfolyamként kell olvasnunk, az adat folyás
 1. Ellenőrizd, hogy a dokumentációt az előkészített `README.md` fájlba írtad-e.
 1. Ellenőrizd, hogy a lekérdezési tervek illusztrálásához készített képernyőképeket elmentetted-e a repository-ba, és a markdown-ban hivatkoztad-e.
 1. Kommitold és pushold a megoldásod. Ellenőrizd a GitHub webes felületén, hogy minden rendben van-e. Ha mindent jól csináltál, a repository kezdőoldalán megjelenik a dokumentáció, és a hivatkozott képek is látszódnak benne.
+1. Nyiss egy pull request-et a megoldásoddal és rendeld a laborvezetődhöz.
 1. Ha tanszéki laborban vagy, töröld a GitHub belépési adatokat. A lépésekhez nézd meg a kezdőoldalon a leírást.
