@@ -36,6 +36,8 @@ A labor elvégzéséhez használható segédanyagok és felkészülési anyagok:
 
    > Egyetemi laborokban, ha a checkout során nem kér a rendszer felhasználónevet és jelszót, és nem sikerül a checkout, akkor valószínűleg a gépen korábban megjegyzett felhasználónévvel próbálkozott a rendszer. Először töröld ki a mentett belépési adatokat (lásd a kezdőoldalon a leírást), és próbáld újra.
 
+1. Hozz létre egy új ágat `megoldas` néven, és ezen az ágon dolgozz.
+
 1. A `neptun.txt` fájlba írd bele a Neptun kódodat. A fájlban semmi más ne szerepeljen, csak egyetlen sorban a Neptun kód 6 karaktere.
 
 ### Adventure Works 2014 adatbázis létrehozása
@@ -72,4 +74,5 @@ A labor elvégzéséhez használható segédanyagok és felkészülési anyagok:
 1. A feladatok megoldásaként új `.rdl` fájlok készültek a git repository alatt egy alkönyvtárban. Ezeket is fel kell töltened.
 1. Ellenőrizd, hogy a kért képernyőképeket elkészítetted-e.
 1. Kommitold és pushold a megoldásod. Ellenőrizd a GitHub webes felületén, hogy minden rendben van-e.
+1. Nyiss egy pull request-et a megoldásoddal és rendeld a laborvezetődhöz.
 1. Ha tanszéki laborban vagy, töröld a GitHub belépési adatokat. A lépésekhez nézd meg a kezdőoldalon a leírást.
