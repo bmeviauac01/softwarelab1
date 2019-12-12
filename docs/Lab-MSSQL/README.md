@@ -29,6 +29,8 @@ A labor elvégzéséhez használható segédanyagok és felkészülési anyagok:
 
 1. Várd meg, míg elkészül a repository, majd checkout-old ki.
 
+   > Egyetemi laborokban, ha a checkout során nem kér a rendszer felhasználónevet és jelszót, és nem sikerül a checkout, akkor valószínűleg a gépen korábban megjegyzett felhasználónévvel próbálkozott a rendszer. Először töröld ki a mentett belépési adatokat (lásd a kezdőoldalon a leírást), és próbáld újra.
+
 1. A `neptun.txt` fájlba írd bele a Neptun kódodat. A fájlban semmi más ne szerepeljen, csak egyetlen sorban a Neptun kód 6 karaktere.
 
 ### Adatbázis létrehozása
