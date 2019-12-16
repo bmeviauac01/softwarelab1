@@ -8,7 +8,7 @@
 
 [Microsoft SQL Server platform programozása](Lab-MSSQL/README.md) (otthoni feladat)
 
-MongoDB programozása (otthoni feladat)
+[MongoDB programozása](Lab-MongoDB/README.md) (otthoni feladat)
 
 Entity Framework és REST API (otthoni feladat)
 
