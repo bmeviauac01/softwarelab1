@@ -1,7 +1,7 @@
-FROM mcr.microsoft.com/dotnet/core/runtime:2.1.13-stretch-slim as base
+FROM mcr.microsoft.com/dotnet/core/runtime:2.1.14-stretch-slim as base
 WORKDIR /app
 
-FROM mcr.microsoft.com/dotnet/core/sdk:2.1.802-stretch AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:2.1.607-stretch AS build
 WORKDIR /src
 COPY ["mssql/mssql.csproj", "mssql/"]
 COPY ["ahk.common/ahk.common.csproj", "ahk.common/"]
