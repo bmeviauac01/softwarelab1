@@ -1,6 +1,6 @@
-﻿using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -83,7 +83,7 @@ namespace ahk.adatvez.mssqldb
                     db.Database.EnsureCreated();
                     Console.WriteLine("Adatbazis letrehozva");
 
-                    db.Database.ExecuteSqlRaw(createDbSql);
+                    db.Database.ExecuteSqlCommand(createDbSql);
                     Console.WriteLine("Adatbazis init script lefuttatva");
                 }
             }

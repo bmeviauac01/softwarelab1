@@ -1,9 +1,9 @@
 ﻿using ahk.adatvez.mssqldb;
 using ahk.common;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace adatvez
@@ -170,7 +170,7 @@ namespace adatvez
             {
                 try
                 {
-                    db.Database.ExecuteSqlRaw("update SzamlaTetel set Mennyiseg=Mennyiseg*2");
+                    db.Database.ExecuteSqlCommand("update SzamlaTetel set Mennyiseg=Mennyiseg*2");
                 }
                 catch (Exception ex)
                 {
@@ -219,10 +219,10 @@ namespace adatvez
             {
                 var @params = new[]
                 {
-                    new SqlParameter("@outres", SqlDbType.Int) { Direction = ParameterDirection.Output, Value = -1 }
+                    new SqlParameter("@outres", SqlDbType.Int) { Direction = ParameterDirection.Output }
                 };
 #pragma warning disable EF1000 // Possible SQL injection vulnerability.
-                db.Database.ExecuteSqlRaw($"select @outres=TetelSzam from szamla where id={szamlaId}", @params);
+                db.Database.ExecuteSqlCommand($"select @outres=TetelSzam from szamla where id={szamlaId}", @params);
 #pragma warning restore EF1000 // Possible SQL injection vulnerability.
 
                 return @params[0].Value as int?;

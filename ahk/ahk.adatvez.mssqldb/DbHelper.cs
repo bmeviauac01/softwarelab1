@@ -1,7 +1,7 @@
 ﻿using ahk.common;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -26,7 +26,7 @@ namespace ahk.adatvez.mssqldb
             {
                 try
                 {
-                    db.Database.ExecuteSqlRaw(sqlCommand);
+                    db.Database.ExecuteSqlCommand(sqlCommand);
                     result.Log($"{fileDescription} sikeresen lefuttatva");
                     return true;
                 }
@@ -41,7 +41,7 @@ namespace ahk.adatvez.mssqldb
         public static void ExecuteInstrumentationSql(string sqlCommand)
         {
             using (var db = DbFactory.GetDatabase())
-                db.Database.ExecuteSqlRaw(sqlCommand);
+                db.Database.ExecuteSqlCommand(sqlCommand);
         }
 
         public static bool FindAndExecutionSolutionSqlFromFileGetOutput(string fileDescription, string fileFullPath, out string output, AhkResult result)
@@ -63,7 +63,7 @@ namespace ahk.adatvez.mssqldb
                     var sb = new StringBuilder();
                     sqlConnection.InfoMessage += (s, a) => sb.AppendLine(a.Message);
 
-                    db.Database.ExecuteSqlRaw(sqlCommand);
+                    db.Database.ExecuteSqlCommand(sqlCommand);
                     result.Log($"{fileDescription} sikeresen lefuttatva");
 
                     output = sb.ToString();

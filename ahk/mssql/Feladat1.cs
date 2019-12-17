@@ -75,7 +75,7 @@ namespace adatvez
             string letezoKategoriaNev;
             using (var db = DbFactory.GetDatabase())
             {
-                var rec = db.Kategoria.ToList().LastOrDefault();
+                var rec = db.Kategoria.LastOrDefault();
                 if (rec == null)
                     throw new Exception("Ures a Kategoria tabla. Mi tortent?");
 
