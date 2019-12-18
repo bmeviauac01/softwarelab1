@@ -125,11 +125,11 @@ Alább részletesen bemutatjuk a beadás menetét. Itt egy rövid összefoglaló
 
 1. Most végeztél. Miután a laborvezetőhöz rendelted a pull request-et, már **ne módosíts** semmin. A laborvezető értékelni fogja a munkádat, és a pull request lezárásával kommentben jelzi a végeredményt.
 
-## Kapott eredménnyel kapcsolatban kérdés
+## Kapott eredménnyel kapcsolatban kérdés vagy reklamáció
 
-Ha kiértékeltük a feladatokat, és az eredménnyel kapcsolatban kérdésed van, használd a GitHub Issue kezelését ennek jelzésére. De először is, ellenőrizd még egyszer a megoldásod. Lefutottak a tesztek? Ha nem, a pontszámod is ezt tükrözi. A hibaüzenet jogos? Tényleg van egy elírás a kódban? Ha igen, a pontszám ezt tükrözi.
+Ha kiértékeltük a feladatokat, és az eredménnyel kapcsolatban kérdést tennél fel, vagy reklamálnál, használd a GitHub Issue kezelését ennek jelzésére. Ebben az esetben a bizonyítás téged terhel, azaz alá kell támasztanod a reklamációt vagy kérdést (pl. annak leírásával, hogyan tesztelted a megoldásod, és mi bizonyítja a helyességét). Ha ezt nem teszed meg, figyelmen kívül fogjuk hagyni a reklamációt.
 
-Ha mégis úgy gondolod, hogy rosszul értékeltük a feladatot, nyiss egy új issue-t:
+A kérdéshez vagy reklamációhoz nyiss egy új issue-t:
 
 1. Menj a GitHub webes felületén a megoldásodat tartalmazó repository-hoz.
 
@@ -137,7 +137,7 @@ Ha mégis úgy gondolod, hogy rosszul értékeltük a feladatot, nyiss egy új i
 
 1. Írd le, hogy mi a problémád. Pontosan add meg, hogy mivel nem értesz egyet, és hogyan ellenőrizted a megoldásod.
 
-1. Az issue-t rendeld a lavorvezetődhöz.
+1. Az issue-t rendeld a laborvezetődhöz.
 
    ![Create new GitHub issue](images/github-new-issue.png)
 
