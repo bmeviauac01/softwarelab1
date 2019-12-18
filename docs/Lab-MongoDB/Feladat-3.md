@@ -19,13 +19,13 @@ Ne felejtsd el felvenni és inicializálni a `megrendelesCollection`-t!
    Az `OsszErtek` kiszámolásához használd a `Project` utasítást. Ebben összetett LINQ kifejezéseket is megfogalmazhatunk, ezeket a driver a megfelelő _Mongo_ kifejezésekre fordítja. Ennek szintaktikája a következő.
 
    ```csharp
-   await collection
+   collection
        .Find(x => /* filter kifejezés */)
        .Project(x => new { ID = x.ID, Ossz = x.Dolgok.Sum(d => d.Ertek), /* ... */ })
-       .ToListAsync();
+       .ToList();
    ```
 
-1. A `FindMegrendeles` metódus egy konkrét megrendelés adatait adja vissza a `string id` érték alapján szűrve. Itt se feledkezz meg a `null` érték helyes kezeléséről!
+1. A `FindMegrendeles` metódus egy konkrét megrendelés adatait adja vissza a `string id` érték alapján szűrve. Figyelj oda, ha az adott `ID` érték nem található az adatbázisban, akkor `null` értéket adj vissza!
 
 ## Létrehozás
 
