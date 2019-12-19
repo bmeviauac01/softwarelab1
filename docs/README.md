@@ -51,15 +51,9 @@ Az iMsc feladat megoldása opcionális, a többi feladat értékelésébe nem sz
 
 A félév végi jegy a laborokra kapott osztályzatok matematikailag kerekített számtani átlaga. Hiányzás, nem pótolt labor, határidőig nem leadott megoldás elégtelennel számítódik az átlagba.
 
-## Egyetemi laborokban: GitHub belépési adatok törlése
-
-Az egyetemi laborokban a gépek megjegyzik a GitHub belépési adatokat. Ezt a munka végeztével kézzel kell törölni.
-
-1. Nyisd meg a `Credential Manager`-t a Start menüből.
-1. A `Windows Credentials` oldalon keresd meg a GitHubra mutató bejegyzéseket, és töröld őket.
-   ![GitHub belépési adat törlése](images/git-credential-remove.png)
-
 ## Elvárásaink a munkával kapcsolatban
+
+**Hova kell feltölteni a megoldást?** Fentebb megtalálod a leírást.
 
 **Egyéni munka? Otthoni munka?** Mivel a laborokra jegyet kapsz, elvárás, hogy mindenki saját megoldást készítsen el és adjon be. Ez nem zárja ki az egymásnak nyújtott segítséget. Kizárja viszont más megoldásának lemásolását. Ezért kérjük a képernyőképeket, mert így a munka folyamatával bizonyítod a megoldás saját elkészítését.
 
@@ -82,6 +76,14 @@ Azért így teszünk, mert mérnökként a feladatod a problémák _megoldása_ 
 **Szóval Google és StackOverflow a megoldás?** Nem. Minden tudás, amire szükséged van, már előfordult egyetemi tanulmányaid során. A Google jó, a StackOverflow még jobb.... De! A választ is meg kell érteni. Lehet, hogy a megtalált válasz megoldás, csak épp nem a te problémádra.
 
 **Sok a határidő, meg az előírás.** Ez nézőpont kérdése. A mérnök nem csak programozni tud, hanem meghatározott keretek között dolgozni. Mert a világ bonyolult, és a bonyolultságot szabályokkal lehet kordában tartani. Ha időd engedi, érdemes megnézni, mint mond Robert C. Martin (Bob Martin, "Uncle Bob") arról, honnan származik a szoftverfejlesztői szakmai: <https://www.youtube.com/watch?v=ecIWPzGEbFc>
+
+## Egyetemi laborokban: GitHub belépési adatok törlése
+
+Az egyetemi laborokban a gépek megjegyzik a GitHub belépési adatokat. Ezt a munka végeztével kézzel kell törölni.
+
+1. Nyisd meg a `Credential Manager`-t a Start menüből.
+1. A `Windows Credentials` oldalon keresd meg a GitHubra mutató bejegyzéseket, és töröld őket.
+   ![GitHub belépési adat törlése](images/git-credential-remove.png)
 
 ---
 
