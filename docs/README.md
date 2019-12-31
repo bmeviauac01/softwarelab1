@@ -29,7 +29,7 @@ Egyes laborok kérik, hogy készíts képernyőképet a megoldás egy-egy rész�
 
 A képernyőképeket a megoldás részeként kell beadni, így felkerülnek a git repository tartalmával együtt. Mivel a repository privát, azt az oktatókon kívül más nem látja. Ha mégis szeretnéd, a fent nem jelölt részek mellett kitakarhatod, ha olyan információ kerül a képernyőképre, amit nem szeretnél feltölteni.
 
-Két példa erre: [SQL kód](images/img-screenshot-pl-sql.png) és [Visual Studio-ban C# kód](images/img-screenshot-pl-vs.png). Körülbelül ilyesmit várunk.
+Két példa erre: [SQL kód](images/screenshot/screenshot-sql.png) és [Visual Studio-ban C# kód](images/screenshot/screenshot-vs.png). Körülbelül ilyesmit várunk.
 
 ## A feladatok kiértékelése
 
