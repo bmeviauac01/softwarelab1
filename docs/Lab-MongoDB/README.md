@@ -11,7 +11,7 @@ A labor elvégzéséhez szükséges eszközök:
 - MongoDB Community Server ([letöltés](https://www.mongodb.com/download-center/community))
 - Robo 3T ([letöltés](https://robomongo.org/download))
 - Gyakorlatokon is használt minta adatbázis kódja ([mongo.js](https://raw.githubusercontent.com/bmeviauac01/gyakorlatok/master/mongo.js)).
-- Microsoft Visual Studio 2017/2019 [az itt található beállításokkal](VisualStudio-install.md)
+- Microsoft Visual Studio 2017/2019 [az itt található beállításokkal](../VisualStudio-install.md)
 
 A labor elvégzéséhez használható segédanyagok és felkészülési anyagok:
 
