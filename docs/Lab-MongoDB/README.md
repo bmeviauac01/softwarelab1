@@ -1,4 +1,4 @@
-# MongoDB laboratórium
+# MongoDB használata
 
 ## Célkitűzés
 
@@ -12,6 +12,8 @@ A labor elvégzéséhez szükséges eszközök:
 - Robo 3T ([letöltés](https://robomongo.org/download))
 - Gyakorlatokon is használt minta adatbázis kódja ([mongo.js](https://raw.githubusercontent.com/bmeviauac01/gyakorlatok/master/mongo.js)).
 - Microsoft Visual Studio 2017/2019 [az itt található beállításokkal](../VisualStudio-install.md)
+- [.NET Core 2.1 SDK](<(https://dotnet.microsoft.com/download/dotnet-core/2.1)>)
+  - Ez a Visual Studio-val települ, de ha mégse, akkor innen kell telepíteni (az SDK-t és _nem_ a runtime-ot.)
 
 A labor elvégzéséhez használható segédanyagok és felkészülési anyagok:
 
