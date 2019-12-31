@@ -22,27 +22,27 @@ Alább részletesen bemutatjuk a beadás menetét. Itt egy rövid összefoglaló
 
 1. Ha kéri, adj engedélyt a _GitHub Classroom_ alkalmazásnak, hogy használja az account adataidat.
 
-   ![Authorize GitHub classroom](images/github-authorize-classroom.png)
+   ![Authorize GitHub classroom](images/github/github-authorize-classroom.png)
 
 1. Látni fogsz egy oldalt, ahol elfogadhatod a feladatot ("Accept the ... assignment"). Kattints a gombra.
 
-   ![Accept assignment](images/github-accept-assignment.png)
+   ![Accept assignment](images/github/github-accept-assignment.png)
 
 1. Várd meg, amíg elkészül a repository. A repository linkjét itt kapod meg.
 
    > A repository privát lesz, azaz az senki nem látja, csak te, és az oktatók.
 
-   ![Repository created](images/github-repository-create-success.png)
+   ![Repository created](images/github/github-repository-create-success.png)
 
 1. Nyisd meg a repository-t a webes felületen a linkre kattintva. Ezt az URL-t írd fel, vagy mentsd el.
 
-   ![Repository webes felülete](images/github-repository-webpage.png)
+   ![Repository webes felülete](images/github/github-repository-webpage.png)
 
 1. Klónozd le a repository-t. Ehhez szükséges lesz a repository címére, amit a repository webes felületén a _Clone or download_ alatt találsz.
 
    > A git repository kezeléséhez tetszőleges klienst használhatsz. Ha nincs kedvenced még, akkor legegyszerűbb a [GitHub Desktop](https://desktop.github.com/). Ebben az alkalmazásban közvetlenül tudod listázni a repository-kat GitHub-ról, vagy használhatod az URL-t is a klónozáshoz.
 
-   ![GitHub Desktop repository clone](images/github-desktop-clone.png)
+   ![GitHub Desktop repository clone](images/github/github-desktop-clone.png)
 
    Ha konzolt használnál, az alábbi parancs klónozza a repository-t (ha a `git` parancs elérhető): `git clone <repository link>`
 
@@ -50,7 +50,7 @@ Alább részletesen bemutatjuk a beadás menetét. Itt egy rövid összefoglaló
 
    GitHub Desktop-ban a _Branch_ menüben teheted ezt meg.
 
-   ![GitHub Desktop create branch](images/github-desktop-new-branch.png)
+   ![GitHub Desktop create branch](images/github/github-desktop-new-branch.png)
 
    Ha konzolt használsz, az új ág elkészíthető ezzel a paranccsal: `git checkout -b megoldas`
 
@@ -58,11 +58,11 @@ Alább részletesen bemutatjuk a beadás menetét. Itt egy rövid összefoglaló
 
    GitHub Desktop-ban így tudsz kommitolni. Mindig ellenőrizd, hogy jó ágon vagy-e. Első alkalommal a _megoldas_ ág csak helyben létezik, ezért publikálni kell: _Publish this branch_.
 
-   ![GitHub Desktop push branch](images/github-desktop-commit-to-branch.png)
+   ![GitHub Desktop push branch](images/github/github-desktop-commit-to-branch.png)
 
    A további kommitoknál is mindig ellenőrizd a megfelelő ágat. Ha egy kommit még nincs felöltve, azt a _Push origin_ gombbal teheted meg. A kis szám a gombon jelzi, hogy hány, még nem pusholt kommit van.
 
-   ![GitHub Desktop commit and push](images/github-desktop-push-commit.png)
+   ![GitHub Desktop commit and push](images/github/github-desktop-push-commit.png)
 
    Ha konzolt használsz, akkor az alábbi parancsokat használd (feltéve, hogy a jó ágon vagy):
 
@@ -87,7 +87,7 @@ Alább részletesen bemutatjuk a beadás menetét. Itt egy rövid összefoglaló
 
 1. Ha végeztél a megoldással, ellenőrizd a GitHub webes felületén, hogy mindent feltöltöttél-e. Ehhez a webes felületen váltanod kell az ágak között.
 
-   ![GitHub web switch branch](images/github-switch-branch-webpage.png)
+   ![GitHub web switch branch](images/github/github-switch-branch-webpage.png)
 
    > Arra kérünk, hogy **NE használd** a GitHub fájl feltöltés funkcióját. Ha valami hiányzik, a helyi git repository-ban pótold, és kommitold majd pushold.
 
@@ -97,19 +97,19 @@ Alább részletesen bemutatjuk a beadás menetét. Itt egy rövid összefoglaló
 
    A _pull request_ nyitásához a GitHub webes felületére kell menj. Itt, ha nem rég pusholtál, a GitHub fel is ajánlja a pull request létrehozását.
 
-   ![GitHub create pull request](images/github-create-pull-request-1.png)
+   ![GitHub create pull request](images/github/github-create-pull-request-1.png)
 
    A _pull request_-et a fenti menüben is létrehozhatod. Fontos, hogy a megfelelő brancheket válaszd ki: `master`-be megy a `megoldas` ág.
 
-   ![GitHub create pull request](images/github-create-pull-request-2.png)
+   ![GitHub create pull request](images/github/github-create-pull-request-2.png)
 
 1. Ha minden rendben sikerült, a menüben fent látod a kis "1" számot a _Pull request_ elem mellett, jelezve, hogy van egy nyitott pull request. **DE MÉG NEM VÉGEZTÉL!**
 
-   ![GitHub create pull request](images/github-create-pull-request-4.png)
+   ![GitHub create pull request](images/github/github-create-pull-request-4.png)
 
 1. A _pull request_ hatására le fog futni egy előzetes értékelés. Ennek eredényét a pull request alatt kommentben fogod látni.
 
-   ![GitHub create pull request](images/github-pull-request-eval-result.png)
+   ![GitHub create pull request](images/github/github-pull-request-eval-result.png)
 
    > Ez az értékelés minden labor esetében más lesz. Az értékelés eltarthat egy ideig, ne aggódj.
 
@@ -119,7 +119,7 @@ Alább részletesen bemutatjuk a beadás menetét. Itt egy rövid összefoglaló
 
 1. **VÉGEZETÜL**, ha kész vagy, a _pull request_-et rendeld a laborvezetődhöz. Ez a lépés feltétlenül fontos, ez jelzi a beadást.
 
-   ![GitHub create pull request](images/github-create-pull-request-3.png)
+   ![GitHub create pull request](images/github/github-create-pull-request-3.png)
 
    > Ha nincs pull request-et, vagy van, de nincs a laborvezetőhöz rendelve, akkor úgy tekintjük, hogy még nem vagy készen, és nem adtad be a megoldást.
 
@@ -139,7 +139,7 @@ A kérdéshez vagy reklamációhoz nyiss egy új issue-t:
 
 1. Az issue-t rendeld a laborvezetődhöz.
 
-   ![Create new GitHub issue](images/github-new-issue.png)
+   ![Create new GitHub issue](images/github/github-new-issue.png)
 
 Amint megnéztük a problémát, itt fogunk visszajelzést is adni.
 
