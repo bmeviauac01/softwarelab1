@@ -2,7 +2,13 @@
 
 Ebben a feladatban a Termék entitáshoz tartozó CRUD (létrehozás, listázás/olvasás, módosítás és törlés) utasításokat fogjuk megvalósítani.
 
-Munkád során a `MongoLabor.DAL.AdatvezRepository` osztályba dolgozz! Ezen fájl tartalmát tetszőlegesen módosíthatod (feltéve, hogy továbbra is megvalósítja a `MongoLabor.DAL.IAdatvezRepository` interfészt, és természetesen továbbra is fordul a kód). A projekt minden egyáb tartalma már elő van készítve a munkához, ezeket **NE** módosítsd!
+## Visual Studio solution megnyitása
+
+Nyisd meg a letöltött repository-ban a Visual Studio solution-t (`.sln` fájl). Ha a megnyitás során a Visual Studio azt jelezni, hogy a projekt típus nem támogatott, akkor telepítsd a Visual Studio hiányzó komponenseit (lásd az előző oldalon a linket).
+
+> **NE** frissítsd a projektet, se a .NET Core verziót, se a Nuget csomagokat! Ha ilyen kérdéssel találkozol a solution megnyitása során, akkor mindig mondj nemet!
+
+Munkád során a `MongoLabor.DAL.AdatvezRepository` osztályba dolgozz! Ezen fájl tartalmát tetszőlegesen módosíthatod (feltéve, hogy továbbra is megvalósítja a `MongoLabor.DAL.IAdatvezRepository` interfészt, és természetesen továbbra is fordul a kód). A projekt minden egyéb tartalma már elő van készítve a munkához, ezeket **NE** módosítsd!
 
 ## Listázás/olvasás
 
@@ -113,9 +119,9 @@ Munkád során a `MongoLabor.DAL.AdatvezRepository` osztályba dolgozz! Ezen fá
 
 Készíts egy képernyőképet az implementált függvények kódjáról. (A képernyőképpel kapcsolatos elvárásokról lásd a kezdőoldalon.)
 
-   > A képet a megoldásban `f1-termekek.png` néven add be. A képernyőképen szerepeljen legalább egy metódus kódja teljesen.
-   >
-   > A képernyőkép 1 pontot ér.
+> A képet a megoldásban `f1-termekek.png` néven add be. A képernyőképen szerepeljen legalább egy metódus kódja teljesen.
+>
+> A képernyőkép 1 pontot ér.
 
 ## Következő feladat
 
