@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace ahk.common
 {
     public static class AhkExecutionHelper
     {
-        public static int Execute(params AhkEvaluationTask[] tasksToExecute)
+        public async static Task<int> Execute(params AhkEvaluationTask[] tasksToExecute)
         {
             Console.WriteLine("Kiertekeles indul...");
 
@@ -17,7 +18,7 @@ namespace ahk.common
             try
             {
                 foreach (var test in tasksToExecute)
-                    executeSafe(test);
+                    await executeSafe(test);
 
                 Console.WriteLine("Kiertekeles befejezve.");
                 return 0;
@@ -30,24 +31,24 @@ namespace ahk.common
             }
         }
 
-        private static void executeSafe(AhkEvaluationTask task)
+        private static async Task executeSafe(AhkEvaluationTask evalTask)
         {
-            var result = new AhkResult(task.ExerciseName);
+            var result = new AhkResult(evalTask.ExerciseName);
             try
             {
-                task.ExecuteAction(result);
+                await evalTask.Execute(result);
 
-                if (!task.IsPreProcess)
+                if (!evalTask.IsPreProcess)
                     result.WriteToFile();
             }
             catch (Exception ex)
             {
-                AhkOutputWriter.WriteInconclusiveResult(task.ExerciseName, "Nem vart hiba a kiertekeles kozben");
+                AhkOutputWriter.WriteInconclusiveResult(evalTask.ExerciseName, "Nem vart hiba a kiertekeles kozben");
 
                 Console.WriteLine("Kiertekelesben hiba tortent.");
                 Console.WriteLine(ex);
 
-                if (task.IsPreProcess)
+                if (evalTask.IsPreProcess)
                     throw;
             }
         }

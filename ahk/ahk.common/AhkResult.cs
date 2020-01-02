@@ -22,6 +22,7 @@ namespace ahk.common
 
         public void AddProblem(Exception ex, string description)
         {
+            Log(description);
             Log(ex);
             problems.Add(description);
         }

@@ -1,0 +1,11 @@
+﻿<?xml version='1.0'?>
+<Obfuscator>
+  <Var name="InPath" value="/app" />
+  <Var name="OutPath" value="/obf" />
+
+  <Var name="KeepPublicApi" value="false" />
+  <Var name="HidePrivateApi" value="true" />
+
+  <Module file="$(InPath)/efrest.dll" />
+  <Module file="$(InPath)/ahk.common.dll" />
+</Obfuscator>

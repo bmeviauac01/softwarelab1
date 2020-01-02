@@ -6,3 +6,8 @@ services:
     build:
       context: .
       dockerfile: mssql/Dockerfile
+  efrest:
+    image: akosdudas/sflab-ahk:efrest-2020
+    build:
+      context: .
+      dockerfile: efrest/evalapp/Dockerfile

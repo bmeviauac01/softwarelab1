@@ -16,6 +16,16 @@ A solutionben struktúrája a többrétegű alkalmazás felépítésének megfel
 
 Munkád során a `DAL.StatusesRepository` és `Controllers.StatusesController` osztályokba dolgozz! Ezen fájlok tartalmát tetszőlegesen módosíthatod (feltéve, hogy a repository továbbra is megfelel a `IStatusesRepository` interfésznek, és természetesen továbbra is fordul a kód).
 
+## Webalkalmazás elindítása
+
+Próbáld ki, hogy elindul-e a program.
+
+1. Fordítsd le és indítsd el Visual Studio-ból az alkalmazást.
+
+1. Nyisd meg böngészőben a <http://localhost:5000/api/ping> oldalt.
+
+Ha minden rendben ment, akkor a böngészőben a "pong" szöveget látod, és a futó alkalmazás logjában látható a kiszolgált kérés.
+
 ## Minden státusz listázása (4p)
 
 Valósítsuk meg az első műveletet, amely minden státusz entitást listáz.
@@ -55,7 +65,7 @@ Valósítsuk meg az első műveletet, amely minden státusz entitást listáz.
    }
    ```
 
-   A fentiekkel megadtuk a használandó tábla nevét, a kulcsot (amely így automatikusan inkrementált lesz, azaz nem kell értéket adnunk majd neki), és végül a névhez tartozó megkötéseinket.
+   A fentiekkel megadtuk a használandó tábla nevét, a kulcsot (amely így automatikusan inkrementált lesz, azaz nem kell értéket adnunk neki), és végül a névhez tartozó megkötéseinket.
 
 1. Menj a `DAL.StatusesRepository.List()` függvényhez. Ez a repository réteg, amely az adatbázissal Entity Framework-ön keresztül kapcsolatba lép. Listázzuk ki az összes státuszt az adatbázisból:
 
