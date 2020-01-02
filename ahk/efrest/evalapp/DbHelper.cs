@@ -1,4 +1,5 @@
-﻿using api.DAL;
+﻿using ahk.common;
+using api.DAL;
 using api.DAL.EfDbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,40 +23,51 @@ namespace adatvez
         public static DbSet<DbStatus> GetStatusesDbSet(this TasksDbContext dbContext)
             => dbContext.Set<DbStatus>();
 
-        public static int AddStatusRecord(this TasksDbContext dbContext, string name)
+        public static TryResult<int> TryAddStatusRecord(this TasksDbContext dbContext, string name, AhkResult ahkResult)
         {
             var nameProperty = typeof(DbStatus).GetProperties().FirstOrDefault(p => p.CanWrite && p.CanRead && p.PropertyType == typeof(string) && p.Name.Equals("name", StringComparison.OrdinalIgnoreCase));
             if (nameProperty == null)
-                throw new Exception("DbStatus.Name property nem talalhato. DbStatus.Name property does not exist.");
+            {
+                ahkResult.AddProblem("DbStatus.Name property nem talalhato. DbStatus.Name property does not exist.");
+                return TryResult<int>.Failed();
+            }
 
             var idProperty = typeof(DbStatus).GetProperties().FirstOrDefault(p => p.CanWrite && p.CanRead && p.PropertyType == typeof(int) && p.Name.Equals("id", StringComparison.OrdinalIgnoreCase));
             if (idProperty == null)
-                throw new Exception("DbStatus.Id property nem talalhato. DbStatus.Id property does not exist.");
+            {
+                ahkResult.AddProblem("DbStatus.Id property nem talalhato. DbStatus.Id property does not exist.");
+                return TryResult<int>.Failed();
+            }
 
             var newInstance = new DbStatus();
             nameProperty.SetValue(newInstance, name);
 
-            dbContext.GetStatusesDbSet().Add(newInstance);
-            dbContext.SaveChanges();
+            try
+            {
+                dbContext.GetStatusesDbSet().Add(newInstance);
+                dbContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                ahkResult.AddProblem(ex, "DbStatus rekord beszurasa DbContext-be sikertelen. Failed to add new DbStatus record.");
+                return TryResult<int>.Failed();
+            }
 
-            var idValue = idProperty.GetValue(newInstance);
-            if (idValue is int)
-                return (int)idValue;
-            else
-                throw new Exception("DbStatus.Id property megfelelo. DbStatus.Id property invalid.");
+            return TryResult<int>.Ok((int)idProperty.GetValue(newInstance));
         }
 
-        public static string ReadStatusRecordName(this DbStatus value)
+        public static string ReadStatusRecordName(this DbStatus value, AhkResult ahkResult)
         {
             var nameProperty = typeof(DbStatus).GetProperties().FirstOrDefault(p => p.CanWrite && p.CanRead && p.PropertyType == typeof(string) && p.Name.Equals("name", StringComparison.OrdinalIgnoreCase));
             if (nameProperty == null)
-                throw new Exception("DbStatus.Name property nem talalhato. DbStatus.Name property does not exist.");
-
-            var nameValue = nameProperty.GetValue(value);
-            if (nameValue is string)
-                return (string)nameValue;
+            {
+                ahkResult.AddProblem("DbStatus.Name property nem talalhato. DbStatus.Name property does not exist.");
+                return string.Empty;
+            }
             else
-                throw new Exception("DbStatus.Name property megfelelo. DbStatus.Name property invalid.");
+            {
+                return (string)nameProperty.GetValue(value);
+            }
         }
 
         public static IStatusesRepository GetStatusesRepository(this TestRequestScope scope)

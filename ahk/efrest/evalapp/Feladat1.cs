@@ -1,8 +1,6 @@
-﻿using ahk.common;
+﻿using adatvez.Helpers;
+using ahk.common;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace adatvez
@@ -11,7 +9,10 @@ namespace adatvez
     {
         public const string AhkExerciseName = @"Feladat 1";
 
-        public static async Task Execute(AhkResult result)
+        private static readonly string TestStatusRecordName = Guid.NewGuid().ToString();
+        private static int TestStatusRecordId;
+
+        public static async Task Execute(AhkResult ahkResult)
         {
             Console.WriteLine();
             Console.WriteLine();
@@ -19,310 +20,228 @@ namespace adatvez
 
             try
             {
-                await test1(result);
-                await test2(result);
+                if (prepareDb(ahkResult)) // minimum requirement to start evaluation is that the DbContext works
+                {
+                    testRepoList(ahkResult);
+                    await testRESTGetAll(ahkResult);
+                    testRepoInsert(ahkResult);
+                    testRepoGetExist(ahkResult);
+                    await testRESTPost(ahkResult);
+                    await testRESTHeadGet(ahkResult);
+                }
             }
-            catch (MissingMethodException ex)
+            catch (MissingMethodException ex) // expected problem, violates contract, solution evaluation ignored
             {
-                result.AddProblem(ex, "Nem megengedett kodot valtoztattal. Changed code that you should not have.");
+                ahkResult.AddProblem(ex, "Nem megengedett kodot valtoztattal. Changed code that you should not have.");
             }
-            catch (TypeLoadException ex)
+            catch (TypeLoadException ex) // expected problem, violates contract, solution evaluation ignored
             {
-                result.AddProblem(ex, "Nem megengedett kodot valtoztattal. Changed code that you should not have.");
+                ahkResult.AddProblem(ex, "Nem megengedett kodot valtoztattal. Changed code that you should not have.");
             }
         }
 
-        private static async Task test1(AhkResult result)
+        private static bool prepareDb(AhkResult ahkResult)
         {
             using (var scope = WebAppInit.GetRequestScope())
             {
-                // init database
-                var dbContext = DbHelper.GetDbContext(scope);
-                dbContext.Database.EnsureCreated();
-
-                // add test data to database directly
-                var newIds = new List<int>();
                 try
                 {
-                    for (int i = 0; i < 5; ++i)
-                        newIds.Add(dbContext.AddStatusRecord($"stat {DateTime.UtcNow.Millisecond}{i}"));
+                    // init database
+                    var dbContext = DbHelper.GetDbContext(scope);
+                    dbContext.Database.EnsureCreated();
+
+                    // add test data to database directly
+                    var addRecordResult = dbContext.TryAddStatusRecord(TestStatusRecordName, ahkResult);
+                    if (addRecordResult.Success)
+                        TestStatusRecordId = addRecordResult.Value;
+
+                    return addRecordResult.Success;
                 }
                 catch (Exception ex)
                 {
-                    result.AddProblem(ex, "DbStatus rekordok adatbazisba mentese sikertelen. Cannot add DbStatus records to the database.");
-                    return;
-                }
-
-                // List through repository
-                {
-                    IReadOnlyCollection<api.Model.Status> statusesFromRepository = null;
-                    try
-                    {
-                        var repo = DbHelper.GetStatusesRepository(scope);
-                        statusesFromRepository = repo.List();
-                    }
-                    catch (Exception ex)
-                    {
-                        result.AddProblem(ex, "IStatusesRepository.List hibat dob. IStatusesRepository.List throws error.");
-                        return;
-                    }
-
-                    if (statusesFromRepository == null)
-                    {
-                        result.AddProblem("IStatusesRepository.List null-lal ter vissza. IStatusesRepository.List yields null value.");
-                        return;
-                    }
-
-                    if (statusesFromRepository.Count < 5)
-                    {
-                        result.AddProblem("IStatusesRepository.List nem ad vissza az adatbazisban letezo rekordot. IStatusesRepository.List does not return a record from the database.");
-                        return;
-                    }
-
-                    var specificRecordFromRepository = statusesFromRepository.FirstOrDefault(s => s.Name.StartsWith("stat", StringComparison.OrdinalIgnoreCase) && newIds.Contains(s.Id));
-                    if (specificRecordFromRepository == null)
-                    {
-                        result.AddProblem("IStatusesRepository.List nem ad vissza az adatbazisban letezo rekordot. IStatusesRepository.List does not return a record from the database.");
-                        return;
-                    }
-
-                    result.AddPoints(2);
-                    result.Log("IStatusesRepository.List ok");
-                }
-
-                // list through REST
-                {
-                    var httpResponse = await scope.HttpClient.GetAsync("/api/statuses");
-                    if (!httpResponse.IsSuccessStatusCode)
-                    {
-                        result.AddProblem($"GET /api/statuses hibas valaszkod {httpResponse.StatusCode}. GET /api/statuses yields invalid response {httpResponse.StatusCode}.");
-                        return;
-                    }
-
-                    api.Model.Status[] statusesFromController;
-                    try
-                    {
-                        statusesFromController = await httpResponse.Content.ReadAsAsync<api.Model.Status[]>();
-                    }
-                    catch (Exception ex)
-                    {
-                        result.AddProblem(ex, "GET /api/statuses valasz tartalma hibas. GET/api/statuses yields invalid content.");
-                        return;
-                    }
-
-                    if (statusesFromController.Length < 5)
-                    {
-                        result.AddProblem("GET /api/statuses nem ad vissza az adatbazisban letezo rekordot. GET /api/statuses does not return a record from the database.");
-                        return;
-                    }
-
-                    var specificRecordFromController = statusesFromController.FirstOrDefault(s => s.Name.StartsWith("stat", StringComparison.OrdinalIgnoreCase) && newIds.Contains(s.Id));
-                    if (specificRecordFromController == null)
-                    {
-                        result.AddProblem("GET /api/statuses nem ad vissza az adatbazisban letezo rekordot. GET /api/statuses does not return a record from the database.");
-                        return;
-                    }
-
-                    result.AddPoints(2);
-                    result.Log("GET /api/statuses ok");
+                    ahkResult.AddProblem(ex, "DbContext inicializalas / DbStatus rekord mentese sikertelen. Failed to initialize DbContext / failed to add DbStatus to database.");
+                    return false;
                 }
             }
         }
 
-        private static async Task test2(AhkResult result)
+        /// <summary>
+        /// IStatusesRepository.List
+        /// </summary>
+        private static void testRepoList(AhkResult ahkResult)
         {
             using (var scope = WebAppInit.GetRequestScope())
             {
-                // insert using repository
+                var repoListResult = Op.Func(() => scope.GetStatusesRepository().List())
+                                     .TryRunOperationAndFindItem(s => s.Name.Equals(TestStatusRecordName, StringComparison.OrdinalIgnoreCase), ahkResult, "IStatusesRepository.List");
+                if (repoListResult.Success)
                 {
-                    var dbContext = scope.GetDbContext();
-                    bool insertOk = true;
+                    ahkResult.AddPoints(2);
+                    ahkResult.Log("IStatusesRepository.List ok");
+                }
+            }
+        }
 
-                    try
+        /// <summary>
+        /// GET /api/statuses
+        /// </summary>
+        private static async Task testRESTGetAll(AhkResult ahkResult)
+        {
+            using (var scope = WebAppInit.GetRequestScope())
+            {
+                var restListResult = await scope.HttpClient.TryGet<api.Model.Status[]>("/api/statuses", ahkResult)
+                                    .TryFindItem(s => s.Name.Equals(TestStatusRecordName, StringComparison.OrdinalIgnoreCase), ahkResult, "GET /api/statuses");
+                if (restListResult.Success)
+                {
+                    ahkResult.AddPoints(2);
+                    ahkResult.Log("GET /api/statuses ok");
+                }
+            }
+        }
+
+        /// <summary>
+        /// IStatusesRepository.Insert
+        /// </summary>
+        private static void testRepoInsert(AhkResult ahkResult)
+        {
+            using (var scope = WebAppInit.GetRequestScope())
+            {
+                var dbContext = scope.GetDbContext();
+                var newStatusName = Guid.NewGuid().ToString();
+
+                var repoInsertResult = Op.Func(() => scope.GetStatusesRepository().Insert(new api.Controllers.Dto.CreateStatus() { Name = newStatusName }))
+                                       .TryRunOperation(ahkResult, "IStatusesRepository.Insert");
+                if (repoInsertResult.Success)
+                {
+                    if (repoInsertResult.Value == null || !repoInsertResult.Value.Name.Equals(newStatusName, StringComparison.OrdinalIgnoreCase))
                     {
-                        var repo = DbHelper.GetStatusesRepository(scope);
-
-                        var newStatusName = Guid.NewGuid().ToString();
-                        var insertedRecord = repo.Insert(new api.Controllers.Dto.CreateStatus() { Name = newStatusName });
-
-                        if (insertedRecord == null || insertedRecord.Name != newStatusName)
-                        {
-                            insertOk = false;
-                            result.AddProblem("IStatusesRepository.Insert visszateresi erteke hibas. IStatusesRepository.Insert has invalid return value.");
-                        }
-
-                        var insertedRecordFromDbContext = dbContext.GetStatusesDbSet().Find(insertedRecord.Id);
-                        if (insertedRecordFromDbContext == null || insertedRecordFromDbContext.ReadStatusRecordName() != newStatusName)
-                        {
-                            insertOk = false;
-                            result.AddProblem("IStatusesRepository.Insert nem szurt be rekordot adatbazisba. IStatusesRepository.Insert failed to insert data into database.");
-                        }
+                        ahkResult.AddProblem("IStatusesRepository.Insert visszateresi erteke hibas. IStatusesRepository.Insert has invalid return value.");
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        result.AddProblem(ex, "IStatusesRepository.Insert hibat dob. IStatusesRepository.Insert throws error.");
-                    }
-
-                    if (insertOk)
-                    {
-                        result.Log("IStatusesRepository.Insert ok");
-                        result.AddPoints(1);
+                        var insertedRecordFromDbContext = dbContext.GetStatusesDbSet().Find(repoInsertResult.Value.Id);
+                        if (insertedRecordFromDbContext == null || !insertedRecordFromDbContext.ReadStatusRecordName(ahkResult).Equals(newStatusName, StringComparison.OrdinalIgnoreCase))
+                        {
+                            ahkResult.AddProblem("IStatusesRepository.Insert nem szurt be rekordot adatbazisba. IStatusesRepository.Insert failed to insert data into database.");
+                        }
+                        else
+                        {
+                            ahkResult.Log("IStatusesRepository.Insert ok");
+                            ahkResult.AddPoints(1);
+                        }
                     }
                 }
+            }
+        }
 
-                // exists/get using repository
+        /// <summary>
+        /// IStatusesRepository.FindById
+        /// IStatusesRepository.ExistsWithName
+        /// </summary>
+        private static void testRepoGetExist(AhkResult ahkResult)
+        {
+            using (var scope = WebAppInit.GetRequestScope())
+            {
+                var dbContext = scope.GetDbContext();
+                bool existsOk = false;
+                bool findOk = false;
+
+                var existsResult1 = Op.Func(() => scope.GetStatusesRepository().ExistsWithName(TestStatusRecordName))
+                                    .TryRunOperation(ahkResult, "IStatusesRepository.ExistsWithName");
+                var existsResult2 = Op.Func(() => scope.GetStatusesRepository().ExistsWithName(Guid.NewGuid().ToString()))
+                                    .TryRunOperation(ahkResult, "IStatusesRepository.ExistsWithName");
+                if (existsResult1.Success && existsResult2.Success)
                 {
-                    var dbContext = scope.GetDbContext();
-                    bool existsOk = true;
-                    bool findOk = true;
-
-                    try
-                    {
-                        var repo = DbHelper.GetStatusesRepository(scope);
-
-                        var newStatusName = Guid.NewGuid().ToString();
-                        var insertedRecordId = dbContext.AddStatusRecord(newStatusName);
-
-                        if (!repo.ExistsWithName(newStatusName))
-                        {
-                            existsOk = false;
-                            result.AddProblem("IStatusesRepository.ExistsWithName rossz valasz. IStatusesRepository.ExistsWithName returns wrong result.");
-                        }
-
-                        if (repo.ExistsWithName(Guid.NewGuid().ToString()))
-                        {
-                            existsOk = false;
-                            result.AddProblem("IStatusesRepository.ExistsWithName rossz valasz. IStatusesRepository.ExistsWithName returns wrong result.");
-                        }
-
-                        var findByNotExists = repo.FindById(458973459);
-                        if (findByNotExists != null)
-                        {
-                            findOk = false;
-                            result.AddProblem("IStatusesRepository.FindById rossz valasz. IStatusesRepository.FindById returns wrong result.");
-                        }
-
-                        var findByExists = repo.FindById(insertedRecordId);
-                        if (findByExists == null || findByExists.Name != newStatusName)
-                        {
-                            findOk = false;
-                            result.AddProblem("IStatusesRepository.FindById rossz valasz. IStatusesRepository.FindById returns wrong result.");
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        result.AddProblem(ex, "IStatusesRepository.FindById/ExistsWithName hibat dob. IStatusesRepository.ExistsWithName throws error.");
-                    }
-
-                    if (existsOk && findOk)
-                    {
-                        result.Log("IStatusesRepository.FindById & ExistsWithName ok");
-                        result.AddPoints(1);
-                    }
+                    if (existsResult1.Value == true && existsResult2.Value == false)
+                        existsOk = true;
+                    else
+                        ahkResult.AddProblem("IStatusesRepository.ExistsWithName rossz valasz. IStatusesRepository.ExistsWithName returns wrong result.");
                 }
+
+                var findResult1 = Op.Func(() => scope.GetStatusesRepository().FindById(TestStatusRecordId))
+                                    .TryRunOperation(ahkResult, "IStatusesRepository.FindById");
+                var findResult2 = Op.Func(() => scope.GetStatusesRepository().FindById(458973459))
+                                    .TryRunOperation(ahkResult, "IStatusesRepository.FindById");
+
+                if (findResult1.Success && findResult2.Success)
+                {
+                    if (findResult1.Value != null && findResult1.Value.Name.Equals(TestStatusRecordName, StringComparison.OrdinalIgnoreCase)
+                        && findResult2.Value == null)
+                        findOk = true;
+                    else
+                        ahkResult.AddProblem("IStatusesRepository.FindById rossz valasz. IStatusesRepository.ExistsWithName returns wrong result.");
+                }
+
+                if (existsOk && findOk)
+                {
+                    ahkResult.Log("IStatusesRepository.FindById & ExistsWithName ok");
+                    ahkResult.AddPoints(1);
+                }
+            }
+        }
+
+        /// <summary>
+        /// POST /api/statuses
+        /// </summary>
+        private static async Task testRESTPost(AhkResult ahkResult)
+        {
+            using (var scope = WebAppInit.GetRequestScope())
+            {
+                var dbContext = scope.GetDbContext();
 
                 // insert through REST
+                var newStatusNameForPost = Guid.NewGuid().ToString();
+                var postResponse = await scope.HttpClient.TryPostWithReturnValue<api.Model.Status>("/api/statuses", new api.Controllers.Dto.CreateStatus() { Name = newStatusNameForPost }, ahkResult, requireLocationHeader: true);
+                if (postResponse.Success)
                 {
-                    var newStatusName = Guid.NewGuid().ToString();
-                    bool postOk = true;
-
-                    var httpResponse = await scope.HttpClient.PostAsJsonAsync("/api/statuses", new api.Controllers.Dto.CreateStatus() { Name = newStatusName });
-                    if (!httpResponse.IsSuccessStatusCode)
+                    var postInsertedRecordFromDbContext = dbContext.GetStatusesDbSet().Find(postResponse.Value.Id);
+                    if (postInsertedRecordFromDbContext == null || postInsertedRecordFromDbContext.ReadStatusRecordName(ahkResult) != newStatusNameForPost)
                     {
-                        postOk = false;
-                        result.AddProblem($"POST /api/statuses hibas valaszkod {httpResponse.StatusCode}. POST /api/statuses yields invalid response {httpResponse.StatusCode}.");
+                        ahkResult.AddProblem("POST /api/statuses nem szurt be adatbazisba rekordot. POST /api/statuses did not save record into database.");
                     }
-                    if (!httpResponse.Headers.Contains(Microsoft.Net.Http.Headers.HeaderNames.Location) || httpResponse.Headers.Location == null)
+                    else
                     {
-                        postOk = false;
-                        result.AddProblem("POST /api/statuses valaszban hianyzo header. POST /api/statuses reponse missing header.");
-                    }
-
-                    api.Model.Status postResponseAsObject = null;
-                    try
-                    {
-                        postResponseAsObject = await httpResponse.Content.ReadAsAsync<api.Model.Status>();
-                    }
-                    catch (Exception ex)
-                    {
-                        result.AddProblem(ex, "POST /api/statuses valasz tartalma hibas. POST /api/statuses yields invalid content.");
-                        postOk = false;
-                    }
-
-                    if (postResponseAsObject != null)
-                    {
-                        var dbContext = scope.GetDbContext();
-                        var postInsertedRecordFromDbContext = dbContext.GetStatusesDbSet().Find(postResponseAsObject.Id);
-
-                        if (postInsertedRecordFromDbContext == null || postInsertedRecordFromDbContext.ReadStatusRecordName() != newStatusName)
-                        {
-                            result.AddProblem("POST /api/statuses nem szurt be adatbazisba rekordot. POST /api/statuses did not save record into database.");
-                            postOk = false;
-                        }
-                    }
-
-                    if (postOk)
-                    {
-                        result.AddPoints(1);
-                        result.Log("POST /api/statuses ok");
+                        ahkResult.AddPoints(1);
+                        ahkResult.Log("POST /api/statuses ok");
                     }
                 }
+            }
+        }
 
+        /// <summary>
+        /// HEAD /api/statuses/name
+        /// GET /api/statuses/id
+        /// </summary>
+        private static async Task testRESTHeadGet(AhkResult ahkResult)
+        {
+            using (var scope = WebAppInit.GetRequestScope())
+            {
                 // exists/get using REST
+                bool headOk = false;
+                bool getOk = false;
+
+                var httpResponseHead = await scope.HttpClient.TryHead($"/api/statuses/{TestStatusRecordName}", ahkResult);
+                if (httpResponseHead.Success)
                 {
-                    var dbContext = scope.GetDbContext();
-                    bool headOk = true;
-                    bool getOk = true;
+                    if (httpResponseHead.Value == true)
+                        headOk = true;
+                    else
+                        ahkResult.AddProblem($"HEAD /api/statuses/name hibas valasz. HEAD /api/statuses/name yields invalid response.");
+                }
 
-                    try
-                    {
-                        var repo = DbHelper.GetStatusesRepository(scope);
+                var getResponse = await scope.HttpClient.TryGet<api.Model.Status>($"/api/statuses/{TestStatusRecordId}", ahkResult);
+                if (getResponse.Success)
+                {
+                    if (getResponse.Value.Name.Equals(TestStatusRecordName, StringComparison.OrdinalIgnoreCase) && getResponse.Value.Id == TestStatusRecordId)
+                        getOk = true;
+                    else
+                        ahkResult.AddProblem("GET /api/statuses/id valasz tartalma hibas. POST /api/statuses/id yields invalid content.");
+                }
 
-                        var newStatusName = Guid.NewGuid().ToString();
-                        var insertedRecordId = dbContext.AddStatusRecord(newStatusName);
-
-                        var httpResponseHead = await scope.HttpClient.SendAsync(new HttpRequestMessage(HttpMethod.Head, $"/api/statuses/{newStatusName}"));
-                        if (httpResponseHead.StatusCode != System.Net.HttpStatusCode.OK)
-                        {
-                            headOk = false;
-                            result.AddProblem($"HEAD /api/statuses/name hibas valaszkod {httpResponseHead.StatusCode}. HEAD /api/statuses/name yields invalid response {httpResponseHead.StatusCode}.");
-                        }
-
-                        var httpResponseGet = await scope.HttpClient.GetAsync($"/api/statuses/{insertedRecordId}");
-                        if (httpResponseGet.StatusCode != System.Net.HttpStatusCode.OK)
-                        {
-                            getOk = false;
-                            result.AddProblem($"GET /api/statuses/id hibas valaszkod {httpResponseGet.StatusCode}. GET /api/statuses/id yields invalid response {httpResponseGet.StatusCode}.");
-                        }
-
-                        api.Model.Status getResponseAsObject = null;
-                        try
-                        {
-                            getResponseAsObject = await httpResponseGet.Content.ReadAsAsync<api.Model.Status>();
-                        }
-                        catch (Exception ex)
-                        {
-                            result.AddProblem(ex, "GET /api/statuses/id valasz tartalma hibas. POST /api/statuses/id yields invalid content.");
-                            getOk = false;
-                        }
-
-                        if (getResponseAsObject.Name != newStatusName || getResponseAsObject.Id != insertedRecordId)
-                        {
-                            result.AddProblem("GET /api/statuses/id valasz tartalma hibas. POST /api/statuses/id yields invalid content.");
-                            getOk = false;
-                        }
-
-                    }
-                    catch (Exception ex)
-                    {
-                        result.AddProblem(ex, "IStatusesRepository.FindById/ExistsWithName hibat dob. IStatusesRepository.ExistsWithName throws error.");
-                    }
-
-                    if (headOk && getOk)
-                    {
-                        result.Log("IStatusesRepository.FindById & ExistsWithName ok");
-                        result.AddPoints(1);
-                    }
+                if (headOk && getOk)
+                {
+                    ahkResult.Log("GET /api/statuses/id && HEAD /api/statuses/name ok");
+                    ahkResult.AddPoints(1);
                 }
             }
         }
