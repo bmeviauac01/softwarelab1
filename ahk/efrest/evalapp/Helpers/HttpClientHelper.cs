@@ -66,9 +66,19 @@ namespace adatvez.Helpers
             }
         }
 
+        public static async Task<TryResult<TResult>> TryPatch<TResult>(this HttpClient httpClient, string url, AhkResult ahkResult, bool allowNotFound = false)
+        {
+            return await httpClient.PatchAsync(url).TryExecuteAndReadResponse<TResult>("PATCH", url, ahkResult, allowNotFound: allowNotFound);
+        }
+
         public static async Task<HttpResponseMessage> HeadAsync(this HttpClient httpClient, string url)
         {
             return await httpClient.SendAsync(new HttpRequestMessage(HttpMethod.Head, url));
+        }
+
+        public static async Task<HttpResponseMessage> PatchAsync(this HttpClient httpClient, string url)
+        {
+            return await httpClient.SendAsync(new HttpRequestMessage(HttpMethod.Patch, url));
         }
 
         public static async Task<TryResult<T>> TryExecuteAndReadResponse<T>(this Task<HttpResponseMessage> send, string httpMethod, string url, AhkResult ahkResult,
