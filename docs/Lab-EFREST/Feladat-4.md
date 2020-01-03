@@ -88,7 +88,7 @@ Készíts egy képernyőképet Postman-ből (avagy más, hasonló eszközből, h
 
 > A képet a megoldásban `f4.png` néven add be. A képernyőképen látszódjon a kimenő kérés és a válasz is minden részletével.
 >
-> A képernyőkép szükséges feltétele a részpontszám megszerzésének.
+> A képernyőkép szükséges feltétele a pontszám megszerzésének.
 
 ## Következő feladat
 
