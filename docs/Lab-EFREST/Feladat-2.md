@@ -8,7 +8,7 @@ A task-ot a `Model.Task` entitás osztály reprezentálja. A task rendelkezik eg
 
 Első lépésként az Entity Framework modellt kell elkészítened:
 
-1. Hozz létre egy új osztályt a `DAL.EfDbContext` mappában a task adatbázisbeli reprezentációjához `DbTask` néven. Vedd fel bele a szükséges tulajdonságokat, és figyelj arra, hogy a státusz kapcsolat valódi _navigation property_ legyen!
+1. Definiáld a `DAL.EfDbContext.DbTask` osztályban az adatbázis tároláshoz szükséges tulajdonságokat. Figyelj arra, hogy a státusz kapcsolat valódi _navigation property_ legyen!
 
 1. Vedd fel a `TasksDbContext`-be az új `DbSet` típusú property-t.
 
@@ -29,12 +29,6 @@ A többi műveletet egyelőre nem szükséges, azonban azok is kell rendelkezzen
 
 Az adatbázisban használt C# osztály és a modell entitás osztály közötti leképzéshez célszerű lesz egy `ToModel` segédfüggvényt definiálni a korábban látott módon. Ahhoz, hogy a task-hoz kapcsolt státusz entitást is lekérdezze az adatbázis (amire a névhez szükség lesz), fontos lesz a megfelelő `Include` használata.
 
-A kész forráskódról készíts egy képernyőképet. A képernyőképpel kapcsolatos elvárásokról lásd a kezdőoldalon.
-
-> A képet a megoldásban `f2-repository.png` néven add be. A képernyőképen látszódjon a repository kódjnak releváns része.
->
-> A képernyőkép szükséges feltétele a részpontszám megszerzésének.
-
 ## Műveletek REST Api-n
 
 Készíts egy új controller osztály a `Controllers` mappában `TasksController` néven. A controller a `/api/tasks` URL-en kezeli a REST kéréseket.
@@ -50,9 +44,9 @@ A fent implementált repository műveletekre építve valósítsd meg az alábbi
 
 Készíts egy képernyőképet Postman-ből (avagy más, hasonló eszközből, ha nem Postman-t használtál), amely egy tetszőleges REST kérést és választ mutat. A képernyőképpel kapcsolatos elvárásokról lásd a kezdőoldalon.
 
-> A képet a megoldásban `f2-rest.png` néven add be. A képernyőképen látszódjon a kimenő kérés és a válasz is minden részletével.
+> A képet a megoldásban `f2.png` néven add be. A képernyőképen látszódjon a kimenő kérés és a válasz is minden részletével.
 >
-> A képernyőkép szükséges feltétele a részpontszám megszerzésének.
+> A képernyőkép szükséges feltétele a pontszám megszerzésének.
 
 ## Következő feladat
 
