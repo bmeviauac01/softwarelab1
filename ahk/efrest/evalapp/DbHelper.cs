@@ -20,10 +20,11 @@ namespace adatvez
             return dbContext;
         }
 
-        public static DbSet<DbStatus> GetStatusesDbSet(this TasksDbContext dbContext)
-            => dbContext.Set<DbStatus>();
+        public static DbSet<DbStatus> GetStatusesDbSet(this TasksDbContext dbContext) => dbContext.Set<DbStatus>();
 
-        public static TryResult<int> TryAddStatusRecord(this TasksDbContext dbContext, string name, AhkResult ahkResult)
+        public static DbSet<DbTask> GetTasksDbSet(this TasksDbContext dbContext) => dbContext.Set<DbTask>();
+
+        public static TryResult<int> TryAddStatusRecord(this TasksDbContext dbContext, string name, System.Reflection.PropertyInfo idProperty, AhkResult ahkResult)
         {
             var nameProperty = typeof(DbStatus).GetProperties().FirstOrDefault(p => p.CanWrite && p.CanRead && p.PropertyType == typeof(string) && p.Name.Equals("name", StringComparison.OrdinalIgnoreCase));
             if (nameProperty == null)
@@ -32,19 +33,12 @@ namespace adatvez
                 return TryResult<int>.Failed();
             }
 
-            var idProperty = typeof(DbStatus).GetProperties().FirstOrDefault(p => p.CanWrite && p.CanRead && p.PropertyType == typeof(int) && p.Name.Equals("id", StringComparison.OrdinalIgnoreCase));
-            if (idProperty == null)
-            {
-                ahkResult.AddProblem("DbStatus.Id property nem talalhato. DbStatus.Id property does not exist.");
-                return TryResult<int>.Failed();
-            }
-
-            var newInstance = new DbStatus();
-            nameProperty.SetValue(newInstance, name);
-
+            var newStatus = new DbStatus();
             try
             {
-                dbContext.GetStatusesDbSet().Add(newInstance);
+                nameProperty.SetValue(newStatus, name);
+
+                dbContext.GetStatusesDbSet().Add(newStatus);
                 dbContext.SaveChanges();
             }
             catch (Exception ex)
@@ -53,7 +47,49 @@ namespace adatvez
                 return TryResult<int>.Failed();
             }
 
-            return TryResult<int>.Ok((int)idProperty.GetValue(newInstance));
+            return TryResult<int>.Ok((int)idProperty.GetValue(newStatus));
+        }
+
+        public static TryResult<int> TryAddTaskRecord(this TasksDbContext dbContext, string name, System.Reflection.PropertyInfo idProperty, System.Reflection.PropertyInfo statusNavigationProperty, AhkResult ahkResult)
+        {
+            var possibleTitleProperties = typeof(DbTask).GetProperties().Where(p => p.CanWrite && p.CanRead && p.PropertyType == typeof(string)).ToList();
+            if (possibleTitleProperties.Count == 0)
+            {
+                ahkResult.AddProblem("DbTask-ban nincs string Title property. DbTask has no string Title property.");
+                return TryResult<int>.Failed();
+            }
+            if (possibleTitleProperties.Count > 1)
+            {
+                ahkResult.AddProblem("DbTask-ban tobb string property van, de csak egy Title kell (statusz nevet szovegkent tarolod?). DbTask has more than one string property, but only need a single Title (are you storing the status name too?).");
+                return TryResult<int>.Failed();
+            }
+            var titleProperty = possibleTitleProperties.Single();
+
+            var statusNameProperty = typeof(DbStatus).GetProperties().FirstOrDefault(p => p.CanWrite && p.CanRead && p.PropertyType == typeof(string) && p.Name.Equals("name", StringComparison.OrdinalIgnoreCase));
+            if (statusNameProperty == null)
+            {
+                ahkResult.AddProblem("DbStatus.Name property nem talalhato. DbStatus.Name property does not exist.");
+                return TryResult<int>.Failed();
+            }
+
+            var newTask = new DbTask();
+            var newAttachedStatus = new DbStatus();
+            try
+            {
+                titleProperty.SetValue(newTask, name);
+                statusNameProperty.SetValue(newAttachedStatus, name);
+                statusNavigationProperty.SetValue(newTask, newAttachedStatus);
+
+                dbContext.GetTasksDbSet().Add(newTask);
+                dbContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                ahkResult.AddProblem(ex, "DbTask rekord beszurasa DbContext-be sikertelen. Failed to add new DbTask record.");
+                return TryResult<int>.Failed();
+            }
+
+            return TryResult<int>.Ok((int)idProperty.GetValue(newTask));
         }
 
         public static string ReadStatusRecordName(this DbStatus value, AhkResult ahkResult)

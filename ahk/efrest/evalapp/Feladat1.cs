@@ -7,7 +7,7 @@ namespace adatvez
 {
     internal class Feladat1
     {
-        public const string AhkExerciseName = @"Feladat 1";
+        public const string AhkExerciseName = @"Feladat 1 - Exercise 1";
 
         private static readonly string TestStatusRecordName = Guid.NewGuid().ToString();
         private static int TestStatusRecordId;
@@ -16,7 +16,7 @@ namespace adatvez
         {
             Console.WriteLine();
             Console.WriteLine();
-            Console.WriteLine("###### Feladat 1 ######");
+            Console.WriteLine("###### Feladat 1 ###### Exercise 1 ######");
 
             try
             {
@@ -50,8 +50,13 @@ namespace adatvez
                     var dbContext = DbHelper.GetDbContext(scope);
                     dbContext.Database.EnsureCreated();
 
+                    // get primary key of EF entity
+                    var findEntityPrimaryKey = dbContext.TryGetPrimaryKey<api.DAL.EfDbContext.DbStatus>(ahkResult);
+                    if (!findEntityPrimaryKey.Success)
+                        return false;
+
                     // add test data to database directly
-                    var addRecordResult = dbContext.TryAddStatusRecord(TestStatusRecordName, ahkResult);
+                    var addRecordResult = dbContext.TryAddStatusRecord(TestStatusRecordName, findEntityPrimaryKey.Value, ahkResult);
                     if (addRecordResult.Success)
                         TestStatusRecordId = addRecordResult.Value;
 
@@ -187,13 +192,11 @@ namespace adatvez
         {
             using (var scope = WebAppInit.GetRequestScope())
             {
-                var dbContext = scope.GetDbContext();
-
-                // insert through REST
                 var newStatusNameForPost = Guid.NewGuid().ToString();
                 var postResponse = await scope.HttpClient.TryPostWithReturnValue<api.Model.Status>("/api/statuses", new api.Controllers.Dto.CreateStatus() { Name = newStatusNameForPost }, ahkResult, requireLocationHeader: true);
                 if (postResponse.Success)
                 {
+                    var dbContext = scope.GetDbContext();
                     var postInsertedRecordFromDbContext = dbContext.GetStatusesDbSet().Find(postResponse.Value.Id);
                     if (postInsertedRecordFromDbContext == null || postInsertedRecordFromDbContext.ReadStatusRecordName(ahkResult) != newStatusNameForPost)
                     {
@@ -235,7 +238,7 @@ namespace adatvez
                     if (getResponse.Value.Name.Equals(TestStatusRecordName, StringComparison.OrdinalIgnoreCase) && getResponse.Value.Id == TestStatusRecordId)
                         getOk = true;
                     else
-                        ahkResult.AddProblem("GET /api/statuses/id valasz tartalma hibas. POST /api/statuses/id yields invalid content.");
+                        ahkResult.AddProblem("GET /api/statuses/id valasz tartalma hibas. GET /api/statuses/id yields invalid content.");
                 }
 
                 if (headOk && getOk)

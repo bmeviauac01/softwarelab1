@@ -42,5 +42,8 @@ namespace ahk.common
 
         public void AddPoints(int pointToAdd)
             => Points += pointToAdd;
+
+        public void ResetPointToZero()
+            => Points = 0;
     }
 }

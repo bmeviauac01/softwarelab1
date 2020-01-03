@@ -7,9 +7,9 @@ namespace adatvez.Helpers
 {
     public static class HttpClientHelper
     {
-        public static async Task<TryResult<TResult>> TryGet<TResult>(this HttpClient httpClient, string url, AhkResult ahkResult)
+        public static async Task<TryResult<TResult>> TryGet<TResult>(this HttpClient httpClient, string url, AhkResult ahkResult, bool allowNotFound = false)
         {
-            return await httpClient.GetAsync(url).TryExecuteAndReadResponse<TResult>("GET", url, ahkResult);
+            return await httpClient.GetAsync(url).TryExecuteAndReadResponse<TResult>("GET", url, ahkResult, allowNotFound: allowNotFound);
         }
 
         public static async Task<TryResult<TResult>> TryPostWithReturnValue<TResult>(this HttpClient httpClient, string url, object value, AhkResult ahkResult, bool requireLocationHeader = false)
@@ -48,13 +48,31 @@ namespace adatvez.Helpers
             }
         }
 
+        public static async Task<TryResult<bool>> TryDelete(this HttpClient httpClient, string url, AhkResult ahkResult)
+        {
+            var requestMethodAndUrl = $"DELETE {url}";
+            try
+            {
+                var responseMessage = await httpClient.DeleteAsync(url);
+                if (responseMessage.StatusCode == System.Net.HttpStatusCode.OK || responseMessage.StatusCode == System.Net.HttpStatusCode.NoContent)
+                    return TryResult<bool>.Ok(true);
+                else
+                    return TryResult<bool>.Ok(false);
+            }
+            catch (Exception ex)
+            {
+                ahkResult.AddProblem(ex, $"{requestMethodAndUrl} keres sikertelen. {requestMethodAndUrl} request unsuccessful.");
+                return TryResult<bool>.Failed();
+            }
+        }
+
         public static async Task<HttpResponseMessage> HeadAsync(this HttpClient httpClient, string url)
         {
             return await httpClient.SendAsync(new HttpRequestMessage(HttpMethod.Head, url));
         }
 
         public static async Task<TryResult<T>> TryExecuteAndReadResponse<T>(this Task<HttpResponseMessage> send, string httpMethod, string url, AhkResult ahkResult,
-            Predicate<HttpResponseMessage> responseAdditionalCheck = null)
+            bool allowNotFound = false, Predicate<HttpResponseMessage> responseAdditionalCheck = null)
         {
             var requestMethodAndUrl = $"{httpMethod.ToUpperInvariant()} {url}";
             HttpResponseMessage responseMessage;
@@ -73,6 +91,9 @@ namespace adatvez.Helpers
                 if (!responseAdditionalCheck(responseMessage))
                     return TryResult<T>.Failed();
             }
+
+            if (allowNotFound && responseMessage.StatusCode == System.Net.HttpStatusCode.NotFound)
+                return TryResult<T>.Ok(default(T));
 
             return await responseMessage.TryReadResponse<T>(ahkResult);
         }
