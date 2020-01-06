@@ -1,7 +1,7 @@
-﻿using ahk.adatvez.mssqldb;
-using ahk.common;
-using System;
+﻿using System;
 using System.Linq;
+using ahk.adatvez.mssqldb;
+using ahk.common;
 
 namespace adatvez
 {
@@ -9,37 +9,32 @@ namespace adatvez
     {
         public const string AhkExerciseName = @"Feladat 1";
 
-        public static void Execute(AhkResult result)
+        public static void Execute(AhkResult ahkResult)
         {
             Console.WriteLine("Feladat 1 ellenorzese");
 
             DbHelper.ExecuteInstrumentationSql(@"IF OBJECT_ID('KategoriaSzulovel', 'V') IS NOT NULL DROP VIEW KategoriaSzulovel");
             DbHelper.ExecuteInstrumentationSql(@"create view KategoriaSzulovel as select k.Nev KategoriaNev, sz.Nev SzuloKategoriaNev from Kategoria k left outer join Kategoria sz on k.SzuloKategoria = sz.ID");
-            result.Log("KategoriaSzulovel nezet letrehozva");
+            ahkResult.Log("KategoriaSzulovel nezet letrehozva");
 
-            test1(result);
-            test2(result);
-            test3(result);
-            test4(result);
+            test1(ahkResult);
+            test2(ahkResult);
+
+            bool ok = ScreenshotValidator.IsScreenshotPresent(@"Trigger kodjat mutato kep", @"f1.png", ahkResult);
+            if (!ok)
+                ahkResult.ResetPointToZero();
         }
 
-        private static void test1(AhkResult result)
-        {
-            bool ok = ScreenshotValidator.IsScreenshotPresent(@"Nezet tartalmat mutato kep", @"f1-nezet.png", result);
-            if (ok)
-                result.AddPoints(1);
-        }
-
-        private static void test2(AhkResult result)
+        private static void test1(AhkResult ahkResult)
         {
             var triggerName = @"KategoriaSzulovelBeszur";
 
             // execute script, fail early if it fails
-            if (!DbHelper.FindAndExecutionSolutionSqlFromFile(@"f1-trigger.sql", @"f1-trigger.sql", result))
+            if (!DbHelper.FindAndExecutionSolutionSqlFromFile(@"f1-trigger.sql", @"f1-trigger.sql", ahkResult))
                 return;
 
             // check if trigger exists, fail eraly if it does not
-            if (!SysObjectsHelper.TriggerExistsWithName(triggerName, result))
+            if (!SysObjectsHelper.TriggerExistsWithName(triggerName, ahkResult))
                 return;
 
             // test insert / 1
@@ -58,12 +53,12 @@ namespace adatvez
                 try
                 {
                     db.SaveChanges();
-                    result.Log("Beszuras KategoriaSzulovel nezeten keresztul sikeres / 1");
-                    result.AddPoints(1);
+                    ahkResult.Log("Beszuras KategoriaSzulovel nezeten keresztul sikeres");
+                    ahkResult.AddPoints(1);
                 }
                 catch (Exception ex)
                 {
-                    result.AddProblem(ex, "Beszuras KategoriaSzulovel nezeten keresztul nem sikerul (talan a trigger miatt?)");
+                    ahkResult.AddProblem(ex, "Beszuras KategoriaSzulovel nezeten keresztul nem sikerul (talan a trigger miatt?)");
                 }
             }
 
@@ -93,12 +88,12 @@ namespace adatvez
                 try
                 {
                     db.SaveChanges();
-                    result.Log("Beszuras KategoriaSzulovel nezeten keresztul sikeres / 2");
-                    result.AddPoints(1);
+                    ahkResult.Log("Beszuras KategoriaSzulovel nezeten keresztul sikeres");
+                    ahkResult.AddPoints(1);
                 }
                 catch (Exception ex)
                 {
-                    result.AddProblem(ex, "Beszuras KategoriaSzulovel nezeten keresztul nem sikerul (talan a trigger miatt?)");
+                    ahkResult.AddProblem(ex, "Beszuras KategoriaSzulovel nezeten keresztul nem sikerul (talan a trigger miatt?)");
                 }
             }
 
@@ -118,17 +113,17 @@ namespace adatvez
                 try
                 {
                     db.SaveChanges();
-                    result.AddProblem("Hibas viselkedes: nem letezo szulo kategoriaval beszuras KategoriaSzulovel nezeten keresztul sikeres");
+                    ahkResult.AddProblem("Hibas viselkedes: nem letezo szulo kategoriaval beszuras KategoriaSzulovel nezeten keresztul sikeres");
                 }
                 catch
                 {
-                    result.Log("Nem letezo szulo kategoriaval beszuras KategoriaSzulovel nezeten keresztul helyesen hibat dob");
-                    result.AddPoints(2);
+                    ahkResult.Log("Nem letezo szulo kategoriaval beszuras KategoriaSzulovel nezeten keresztul helyesen hibat dob");
+                    ahkResult.AddPoints(2);
                 }
             }
         }
 
-        private static void test3(AhkResult result)
+        private static void test2(AhkResult ahkResult)
         {
             int countKategoriaBefore;
             using (var db = DbFactory.GetDatabase())
@@ -136,7 +131,7 @@ namespace adatvez
 
             // f1-trigger-teszt-ok.sql
 
-            if (DbHelper.FindAndExecutionSolutionSqlFromFile(@"f1-trigger-teszt-ok.sql", @"f1-trigger-teszt-ok.sql", result))
+            if (DbHelper.FindAndExecutionSolutionSqlFromFile(@"f1-trigger-teszt-ok.sql", @"f1-trigger-teszt-ok.sql", ahkResult))
             {
                 int countKategoriaAfter;
                 using (var db = DbFactory.GetDatabase())
@@ -144,44 +139,37 @@ namespace adatvez
 
                 if (countKategoriaAfter == countKategoriaBefore + 1)
                 {
-                    result.Log("f1-trigger-teszt-ok.sql sikeresen beszurt egy Kategora rekordot");
-                    result.AddPoints(1);
+                    ahkResult.Log("f1-trigger-teszt-ok.sql sikeresen beszurt egy Kategora rekordot");
+                    ahkResult.AddPoints(2);
                 }
                 else
                 {
-                    result.AddProblem("f1-trigger-teszt-ok.sql nem szurt be Kategora rekordot");
+                    ahkResult.AddProblem("f1-trigger-teszt-ok.sql nem szurt be Kategora rekordot");
                 }
             }
 
             // f1-trigger-teszt-hiba.sql
 
-            if (TextFileHelper.TryReadTextFile(@"f1-trigger-teszt-hiba.sql", @"f1-trigger-teszt-hiba.sql", result, out var testTriggerHibaSql))
+            if (TextFileHelper.TryReadTextFile(@"f1-trigger-teszt-hiba.sql", @"f1-trigger-teszt-hiba.sql", ahkResult, out var testTriggerHibaSql))
             {
                 if (!(testTriggerHibaSql.Contains("insert", StringComparison.OrdinalIgnoreCase) && testTriggerHibaSql.Contains("KategoriaSzulovel", StringComparison.OrdinalIgnoreCase)))
                 {
-                    result.AddProblem("f1-trigger-teszt-hiba.sql nem szur be rekordot a nezetbe");
+                    ahkResult.AddProblem("f1-trigger-teszt-hiba.sql nem szur be rekordot a nezetbe");
                 }
                 else
                 {
                     var dummyResult = new AhkResult("f1-trigger-teszt-hiba.sql");
                     if (DbHelper.ExecuteSolutionSql("f1-trigger-teszt-hiba.sql", testTriggerHibaSql, dummyResult))
                     {
-                        result.AddProblem("f1-trigger-teszt-hiba.sql futtatasa sikeres, pedig hibat kellett volna eredmenyeznie");
+                        ahkResult.AddProblem("f1-trigger-teszt-hiba.sql futtatasa sikeres, pedig hibat kellett volna eredmenyeznie");
                     }
                     else
                     {
-                        result.Log("f1-trigger-teszt-hiba.sql helyesen hibat jelzett");
-                        result.AddPoints(1);
+                        ahkResult.Log("f1-trigger-teszt-hiba.sql helyesen hibat jelzett");
+                        ahkResult.AddPoints(2);
                     }
                 }
             }
-        }
-
-        private static void test4(AhkResult result)
-        {
-            bool ok = ScreenshotValidator.IsScreenshotPresent(@"Trigger kodjat mutato kep", @"f1-trigger.png", result);
-            if (ok)
-                result.AddPoints(1);
         }
     }
 }

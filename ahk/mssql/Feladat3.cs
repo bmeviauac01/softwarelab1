@@ -1,10 +1,10 @@
-﻿using ahk.adatvez.mssqldb;
-using ahk.common;
-using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using ahk.adatvez.mssqldb;
+using ahk.common;
+using Microsoft.EntityFrameworkCore;
 
 namespace adatvez
 {
@@ -12,25 +12,25 @@ namespace adatvez
     {
         public const string AhkExerciseName = @"Feladat 3";
 
-        public static void Execute(AhkResult result)
+        public static void Execute(AhkResult ahkResult)
         {
             Console.WriteLine("Feladat 3 ellenorzese");
 
-            test1(result);
-            test2(result);
-            test3(result);
+            test1(ahkResult);
+            test2(ahkResult);
+            test3(ahkResult);
         }
 
-        private static void test1(AhkResult result)
+        private static void test1(AhkResult ahkResult)
         {
             bool columnExists = false;
 
-            if (DbHelper.FindAndExecutionSolutionSqlFromFile(@"f3-oszlop.sql", @"f3-oszlop.sql", result))
+            if (DbHelper.FindAndExecutionSolutionSqlFromFile(@"f3-oszlop.sql", @"f3-oszlop.sql", ahkResult))
             {
-                if (SysObjectsHelper.ColumnExistsInTable("Szamla", "TetelSzam", result))
+                if (SysObjectsHelper.ColumnExistsInTable("Szamla", "TetelSzam", ahkResult))
                 {
                     columnExists = true;
-                    result.AddPoints(1);
+                    ahkResult.AddPoints(1);
                 }
             }
 
@@ -39,7 +39,7 @@ namespace adatvez
                 DbHelper.ExecuteInstrumentationSql(@"alter table Szamla add TetelSzam int null");
         }
 
-        private static void test2(AhkResult result)
+        private static void test2(AhkResult ahkResult)
         {
             // change some numbers in the database to make sure the required values are actually calculated and not hard-coded
             using (var db = DbFactory.GetDatabase())
@@ -54,31 +54,31 @@ namespace adatvez
             DbSampleData.InsertSampleSzamla();
 
             // run the student solution and verify outcome
-            if (DbHelper.FindAndExecutionSolutionSqlFromFile(@"f3-kitolt.sql", @"f3-kitolt.sql", result))
+            if (DbHelper.FindAndExecutionSolutionSqlFromFile(@"f3-kitolt.sql", @"f3-kitolt.sql", ahkResult))
             {
                 if (!verifySzamlaTetelSzam())
-                    result.AddProblem("TetelSzam ertek helytelen a kitoltes utan");
+                    ahkResult.AddProblem("TetelSzam ertek helytelen a kitoltes utan");
                 else
                 {
-                    result.AddPoints(1);
-                    result.Log("TetelSzam ertekek helyesek a kitoltes utan");
+                    ahkResult.AddPoints(1);
+                    ahkResult.Log("TetelSzam ertekek helyesek a kitoltes utan");
                 }
             }
         }
 
-        private static void test3(AhkResult result)
+        private static void test3(AhkResult ahkResult)
         {
             // reset the database to the known consistent state regarding the new column
             DbHelper.ExecuteInstrumentationSql(@"update Szamla set TetelSzam = (select sum(Mennyiseg) from SzamlaTetel where SzamlaTetel.SzamlaID = Szamla.ID)");
 
             // create trigger, fail early if the create operation fails
-            if (!TextFileHelper.TryReadTextFile(@"f3-trigger.sql", @"f3-trigger.sql", result, out var sqlCommand))
+            if (!TextFileHelper.TryReadTextFile(@"f3-trigger.sql", @"f3-trigger.sql", ahkResult, out var sqlCommand))
                 return;
-            if (!DbHelper.ExecuteSolutionSql(@"f3-trigger.sql", sqlCommand, result))
+            if (!DbHelper.ExecuteSolutionSql(@"f3-trigger.sql", sqlCommand, ahkResult))
                 return;
             if (!sqlCommand.Contains("inserted", StringComparison.OrdinalIgnoreCase) || !sqlCommand.Contains("deleted", StringComparison.OrdinalIgnoreCase))
             {
-                result.AddProblem("Trigger nem hasznalja a trigger tablakat");
+                ahkResult.AddProblem("Trigger nem hasznalja a trigger tablakat");
                 return;
             }
 
@@ -95,16 +95,16 @@ namespace adatvez
                 }
                 catch (Exception ex)
                 {
-                    result.AddProblem(ex, "SzamlaTetel valtoztatas soran hiba (a trigger miatt ??!!)");
+                    ahkResult.AddProblem(ex, "SzamlaTetel valtoztatas soran hiba (a trigger miatt ??!!)");
                     return;
                 }
             }
             if (!verifySzamlaTetelSzam())
-                result.AddProblem("TetelSzam ertek helytelen valtozas utan");
+                ahkResult.AddProblem("TetelSzam ertek helytelen valtozas utan");
             else
             {
                 ++points;
-                result.Log("TetelSzam ertek kitoltes triggerrel teszt ok / 1");
+                ahkResult.Log("TetelSzam ertek kitoltes triggerrel teszt ok / 1");
             }
 
 
@@ -127,16 +127,16 @@ namespace adatvez
                 }
                 catch (Exception ex)
                 {
-                    result.AddProblem(ex, "SzamlaTetel valtoztatas soran hiba (a trigger miatt ??!!)");
+                    ahkResult.AddProblem(ex, "SzamlaTetel valtoztatas soran hiba (a trigger miatt ??!!)");
                     return;
                 }
             }
             if (!verifySzamlaTetelSzam())
-                result.AddProblem("TetelSzam ertek helytelen beszuras utan");
+                ahkResult.AddProblem("TetelSzam ertek helytelen beszuras utan");
             else
             {
                 ++points;
-                result.Log("TetelSzam ertek kitoltes triggerrel teszt ok / 2");
+                ahkResult.Log("TetelSzam ertek kitoltes triggerrel teszt ok / 2");
             }
 
 
@@ -152,16 +152,16 @@ namespace adatvez
                 }
                 catch (Exception ex)
                 {
-                    result.AddProblem(ex, "SzamlaTetel valtoztatas soran hiba (a trigger miatt ??!!)");
+                    ahkResult.AddProblem(ex, "SzamlaTetel valtoztatas soran hiba (a trigger miatt ??!!)");
                     return;
                 }
             }
             if (!verifySzamlaTetelSzam())
-                result.AddProblem("TetelSzam ertek helytelen beszuras utan");
+                ahkResult.AddProblem("TetelSzam ertek helytelen beszuras utan");
             else
             {
                 ++points;
-                result.Log("TetelSzam ertek kitoltes triggerrel teszt ok / 3");
+                ahkResult.Log("TetelSzam ertek kitoltes triggerrel teszt ok / 3");
             }
 
 
@@ -174,25 +174,25 @@ namespace adatvez
                 }
                 catch (Exception ex)
                 {
-                    result.AddProblem(ex, "SzamlaTetel valtoztatas soran hiba (a trigger miatt ??!!)");
+                    ahkResult.AddProblem(ex, "SzamlaTetel valtoztatas soran hiba (a trigger miatt ??!!)");
                     return;
                 }
             }
             if (!verifySzamlaTetelSzam())
-                result.AddProblem("TetelSzam ertek helytelen beszuras utan");
+                ahkResult.AddProblem("TetelSzam ertek helytelen beszuras utan");
             else
             {
                 ++points;
-                result.Log("TetelSzam ertek kitoltes triggerrel teszt ok / 4");
+                ahkResult.Log("TetelSzam ertek kitoltes triggerrel teszt ok / 4");
             }
 
 
             // at last, check for screenshot
-            bool ok = ScreenshotValidator.IsScreenshotPresent(@"f3-trigger.png", @"f3-trigger.png", result);
+            bool ok = ScreenshotValidator.IsScreenshotPresent(@"f3-trigger.png", @"f3-trigger.png", ahkResult);
             if (ok)
-                result.AddPoints(points);
+                ahkResult.AddPoints(points);
             else
-                result.AddProblem($"Kepernyokep hianya miatt feladatresz nem ertekelt, egyebkent {points} pont lett volna");
+                ahkResult.AddProblem($"Kepernyokep hianya miatt feladatresz nem ertekelt, egyebkent {points} pont lett volna");
         }
 
         private static bool verifySzamlaTetelSzam()

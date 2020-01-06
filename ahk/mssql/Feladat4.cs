@@ -10,13 +10,13 @@ namespace adatvez
     {
         public const string AhkExerciseName = @"imsc@Feladat 4";
 
-        public static void Execute(AhkResult result)
+        public static void Execute(AhkResult ahkResult)
         {
             Console.WriteLine("Feladat 4 ellenorzese");
-            test(result);
+            test(ahkResult);
         }
 
-        private static void test(AhkResult result)
+        private static void test(AhkResult ahkResult)
         {
             // chane some categories, and get expected outcome
             var productToRootCategory = new Dictionary<int, int>();
@@ -52,7 +52,7 @@ namespace adatvez
 
 
             // execute solution, fail early if it failes
-            if (!DbHelper.FindAndExecutionSolutionSqlFromFile(@"f4.sql", @"f4.sql", result))
+            if (!DbHelper.FindAndExecutionSolutionSqlFromFile(@"f4.sql", @"f4.sql", ahkResult))
                 return;
 
             // test outcome
@@ -62,7 +62,7 @@ namespace adatvez
                 {
                     if (k.SzuloKategoria != null)
                     {
-                        result.AddProblem("SzuloKategoria kitoltve maradt");
+                        ahkResult.AddProblem("SzuloKategoria kitoltve maradt");
                         return;
                     }
 
@@ -79,21 +79,21 @@ namespace adatvez
                 {
                     if (ter.KategoriaId != productToRootCategory[ter.Id])
                     {
-                        result.AddProblem("Termek nem lett atsorolva a legfelso szintu kategoriaba");
+                        ahkResult.AddProblem("Termek nem lett atsorolva a legfelso szintu kategoriaba");
                         return;
                     }
                 }
             }
 
             // at last, check for screenshot
-            bool ok = ScreenshotValidator.IsScreenshotPresent(@"f4.png", @"f4.png", result);
+            bool ok = ScreenshotValidator.IsScreenshotPresent(@"f4.png", @"f4.png", ahkResult);
             if (ok)
             {
-                result.AddPoints(3);
-                result.Log("Kategoria hierarchia kilapitas ok");
+                ahkResult.AddPoints(3);
+                ahkResult.Log("Kategoria hierarchia kilapitas ok");
             }
             else
-                result.AddProblem($"Kepernyokep hianya miatt feladatresz nem ertekelt");
+                ahkResult.AddProblem($"Kepernyokep hianya miatt feladatresz nem ertekelt");
         }
     }
 }

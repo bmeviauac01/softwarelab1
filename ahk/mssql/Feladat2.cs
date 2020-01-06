@@ -1,12 +1,12 @@
-﻿using ahk.adatvez.mssqldb;
-using ahk.common;
-using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using ahk.adatvez.mssqldb;
+using ahk.common;
+using Microsoft.EntityFrameworkCore;
 
 namespace adatvez
 {
@@ -16,31 +16,31 @@ namespace adatvez
 
         private const string procName = @"SzamlaEllenoriz";
 
-        public static void Execute(AhkResult result)
+        public static void Execute(AhkResult ahkResult)
         {
             Console.WriteLine("Feladat 2 ellenorzese");
 
-            if (createStoredProc(result))
+            if (createStoredProc(ahkResult))
             {
-                test1(result);
-                test2(result);
+                test1(ahkResult);
+                test2(ahkResult);
             }
         }
 
-        private static bool createStoredProc(AhkResult result)
+        private static bool createStoredProc(AhkResult ahkResult)
         {
             // execute script, fail early if it fails
-            if (!DbHelper.FindAndExecutionSolutionSqlFromFile(@"f2-eljaras.sql", @"f2-eljaras.sql", result))
+            if (!DbHelper.FindAndExecutionSolutionSqlFromFile(@"f2-eljaras.sql", @"f2-eljaras.sql", ahkResult))
                 return false;
 
             // check if procedure exists, fail early if it does not
-            if (!SysObjectsHelper.StoredProcedureExistsWithName(procName, result))
+            if (!SysObjectsHelper.StoredProcedureExistsWithName(procName, ahkResult))
                 return false;
 
             return true;
         }
 
-        private static void test1(AhkResult result)
+        private static void test1(AhkResult ahkResult)
         {
             int points = 0;
 
@@ -48,7 +48,7 @@ namespace adatvez
             ensureDbHasNoDiscrepancies();
 
             // Test when everything is ok
-            if (runStoredProcGetReturnValueAndOutput(1, out var procReturn1, out string procOutput1, result))
+            if (runStoredProcGetReturnValueAndOutput(1, out var procReturn1, out string procOutput1, ahkResult))
             {
                 var returnValueOk = procReturn1.HasValue && procReturn1.Value == 0;
                 var logOk = string.IsNullOrEmpty(procOutput1.Trim());
@@ -56,25 +56,25 @@ namespace adatvez
                 if (returnValueOk)
                 {
                     ++points;
-                    result.Log("Eljaras teszt ok / 1");
+                    ahkResult.Log("Eljaras teszt ok / 1");
                 }
                 else
-                    result.AddProblem("Eljaras visszateresi erteke helytelen, ha nincs hiba");
+                    ahkResult.AddProblem("Eljaras visszateresi erteke helytelen, ha nincs hiba");
 
                 if (logOk)
                 {
                     ++points;
-                    result.Log("Eljaras teszt ok / 2");
+                    ahkResult.Log("Eljaras teszt ok / 2");
                 }
                 else
-                    result.AddProblem("Eljaras kimenetre irt szovege nem ures, pedig nincs hiba");
+                    ahkResult.AddProblem("Eljaras kimenetre irt szovege nem ures, pedig nincs hiba");
             }
 
             // Ensure two discrepancies
             var problemProductNames = ensureDbWithDiscrepancies(out var szamlaIdWithDiscrepancies);
 
             // Test when everything is ok
-            if (runStoredProcGetReturnValueAndOutput(szamlaIdWithDiscrepancies, out var procReturn2, out string procOutput2, result))
+            if (runStoredProcGetReturnValueAndOutput(szamlaIdWithDiscrepancies, out var procReturn2, out string procOutput2, ahkResult))
             {
                 var returnValueOk = procReturn2.HasValue && procReturn2.Value == 1;
                 var logOk = problemProductNames.All(name => procOutput2.Contains(name));
@@ -82,49 +82,49 @@ namespace adatvez
                 if (returnValueOk)
                 {
                     ++points;
-                    result.Log("Eljaras teszt ok / 3");
+                    ahkResult.Log("Eljaras teszt ok / 3");
                 }
                 else
-                    result.AddProblem("Eljaras visszateresi erteke helytelen, ha hiba van az adatokban");
+                    ahkResult.AddProblem("Eljaras visszateresi erteke helytelen, ha hiba van az adatokban");
 
                 if (logOk)
                 {
                     ++points;
-                    result.Log("Eljaras teszt ok / 4");
+                    ahkResult.Log("Eljaras teszt ok / 4");
                 }
                 else
-                    result.AddProblem("Eljaras kimenetre irt szovege nem tartalmazza a hibat");
+                    ahkResult.AddProblem("Eljaras kimenetre irt szovege nem tartalmazza a hibat");
             }
 
-            bool ok = ScreenshotValidator.IsScreenshotPresent(@"f2-eljaras.png", @"f2-eljaras.png", result);
+            bool ok = ScreenshotValidator.IsScreenshotPresent(@"f2-eljaras.png", @"f2-eljaras.png", ahkResult);
             if (ok)
-                result.AddPoints(points);
+                ahkResult.AddPoints(points);
             else
-                result.AddProblem($"Kepernyokep hianya miatt feladatresz nem ertekelt, egyebkent {points} pont lett volna");
+                ahkResult.AddProblem($"Kepernyokep hianya miatt feladatresz nem ertekelt, egyebkent {points} pont lett volna");
         }
 
-        private static void test2(AhkResult result)
+        private static void test2(AhkResult ahkResult)
         {
             var problemProductNames = ensureDbWithDiscrepancies(out var szamlaIdWithDiscrepancies);
 
-            if (DbHelper.FindAndExecutionSolutionSqlFromFileGetOutput("f2-futtatas.sql", @"f2-futtatas.sql", out var output, result))
+            if (DbHelper.FindAndExecutionSolutionSqlFromFileGetOutput("f2-futtatas.sql", @"f2-futtatas.sql", out var output, ahkResult))
             {
                 if (output.Contains("Helyes szamla"))
                 {
-                    result.AddPoints(1);
-                    result.Log("Osszes szamla ellenorzese teszt ok / 1");
+                    ahkResult.AddPoints(1);
+                    ahkResult.Log("Osszes szamla ellenorzese teszt ok / 1");
                 }
                 else
-                    result.AddProblem("Az osszes szamla ellenorzese soran kellene legyen helyes szamla is");
+                    ahkResult.AddProblem("Az osszes szamla ellenorzese soran kellene legyen helyes szamla is");
 
                 var logContainsInconsistentProductNames = problemProductNames.All(name => output.Contains(name));
                 if (logContainsInconsistentProductNames)
                 {
-                    result.AddPoints(1);
-                    result.Log("Osszes szamla ellenorzese teszt ok / 2");
+                    ahkResult.AddPoints(1);
+                    ahkResult.Log("Osszes szamla ellenorzese teszt ok / 2");
                 }
                 else
-                    result.AddProblem("Az osszes szamla ellenorzese soran nem jelentek meg a hibas termekek a kimenetben");
+                    ahkResult.AddProblem("Az osszes szamla ellenorzese soran nem jelentek meg a hibas termekek a kimenetben");
             }
         }
 

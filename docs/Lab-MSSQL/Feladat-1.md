@@ -18,12 +18,6 @@ Hozz létre egy nézetet `KategoriaSzulovel` néven a `Kategória` tábla kénye
 
    ![Nézet tartalmának listázása](../images/sql-management-query-view.png)
 
-1. Készíts egy képernyőképet a nézet tartalmáról. (A képernyőképpel kapcsolatos elvárásokról lásd a kezdőoldalon.)
-
-   > A képet a megoldásban `f1-nezet.png` néven add be. A képernyőképen szerepeljen a nézet lekérdezésének eredménye, és látszódjon az _Object Explorer_-ben a nézet (ahogy a fenti képen is).
-   >
-   > A képernyőképpel 1 pont szerezhető.
-
 ## Beszúrás a nézeten keresztül
 
 Készíts triggert `KategoriaSzulovelBeszur` néven, ami lehetővé teszi új kategória beszúrását az előbb létrehozott nézeten keresztül (tehát a kategória nevét és a szülőkategória nevét megadva). Amennyiben a szülő kategória nem létezik, dobj hibát, és ne vedd fel az adatot a táblába.
@@ -68,21 +62,21 @@ end
 
    > A trigger kódját az `f1-trigger.sql` fájlba írd. A fájlban csak ez az egyetlen `create trigger` utasítás legyen!
    >
-   > A feladat 4 pontot ér. Részpontszám jár a nem teljesen helyes viselkedésért.
+   > A feladat 4 pontot ér.
 
 1. Próbáld ki, jól működik-e a trigger! Írj egy olyan beszúró utasítást, amely sikeresen felvesz egy új elemet, és egy olyan teszt utasítást, amely során nem sikerül a beszúrás.
 
-   A helyes és helytelen viselkedéshez feltételezheted, hogy az adatbázis a kiinduló állapotban van: olyan kategória rekordok léteznek csupán, amelyeket a létrehozó script beszúrt.
+   A helyes és helytelen viselkedéshez feltételezheted, hogy az adatbázis a kiinduló állapotban van: olyan kategória rekordok léteznek csupán, amelyeket a létrehozó script beszúrt. (A két teszt _ne_ épüljön egymásra! Mindkettő az elvárt eredményt adja attól függetlenül, hogy a másik lefutott-e már!)
 
    > A teszt utasításokat az `f1-trigger-teszt-ok.sql` és `f1-trigger-teszt-hiba.sql` fájlokba írd. Mindkét fájlban csak egyetlen `insert` utasítás legyen! Semmiképpen ne legyen `[use]`, se `go` utasítás bennük!
    >
-   > Mindkét utasítás 1-1 pont.
+   > Mindkét utasítás 2-2 pont.
 
 1. Készíts egy képernyőképet a trigger kódjáról. (A képernyőképpel kapcsolatos elvárásokról lásd a kezdőoldalon.)
 
-   > A képet a megoldásban `f1-trigger.png` néven add be. A képernyőképen szerepeljen a trigger kódja, és látszódjon az _Object Explorer_-ben a trigger (a nézet alatti mappákat kibontva).
+   > A képet a megoldásban `f1.png` néven add be. A képernyőképen szerepeljen a trigger kódja, és látszódjon az _Object Explorer_-ben a trigger (a nézet alatti mappákat kibontva).
    >
-   > A képernyőkép 1 pontot ér.
+   > A képernyőkép szükséges feltétele a pontszám megszerzésének.
 
 ## Következő feladat
 
