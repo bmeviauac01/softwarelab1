@@ -38,7 +38,7 @@ A feladatok megoldása során ne felejtsd el követni a [feladat beadás folyama
 
 ### Adatbázis létrehozása
 
-Kövesd a [gyakorlatanyagban](https://bmeviauac01.github.io/gyakorlatok/Gyak4-MongoDB/#feladat-0-adatb%C3%A1zis-l%C3%A9trehoz%C3%A1sa-projekt-megnyit%C3%A1sa) leírt utasításokat az adatbáziskezelő rendszer elindításához és az adatbázis létrehozásához.
+Kövesd a [gyakorlatanyagban](https://bmeviauac01.github.io/gyakorlatok/Gyak-MongoDB/#feladat-0-adatb%C3%A1zis-l%C3%A9trehoz%C3%A1sa-projekt-megnyit%C3%A1sa) leírt utasításokat az adatbáziskezelő rendszer elindításához és az adatbázis létrehozásához.
 
 ## Feladatok
 
