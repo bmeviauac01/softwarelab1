@@ -8,11 +8,16 @@ Az Entity Framework alapú adatbázis elérés és a REST API készítésének g
 
 A labor elvégzéséhez szükséges eszközök:
 
+- Windows, Linux, vagy MacOS
+  - Minden szükséges program platform független, vagy van platformfüggetlen alternatívája.
 - Microsoft Visual Studio 2017/2019 [az itt található beállításokkal](../VisualStudio-install.md)
+  - Linux és MacOS esetén Visual Studio Code és a .NET Core SDK-val települő [dotnet CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/?tabs=netcore2x) használható.
 - [.NET Core 2.1 SDK](<(https://dotnet.microsoft.com/download/dotnet-core/2.1)>)
-  - Ez a Visual Studio-val települ, de ha mégse, akkor innen kell telepíteni (az SDK-t és _nem_ a runtime-ot.)
+  - Visual Studio esetén települ, de ha mégse, akkor innen kell telepíteni (az SDK-t és _nem_ a runtime-ot.)
+  - Linux és MacOS esetén telepíteni szükséges.
 - [Postman](https://www.getpostman.com/)
 - [DB Browser for SQLite](https://sqlitebrowser.org/), ha az adatbázisba szeretnél belezézni (nem feltétlenül szükséges)
+- GitHub account és egy git kliens
 
 A labor elvégzéséhez használható segédanyagok és felkészülési anyagok:
 

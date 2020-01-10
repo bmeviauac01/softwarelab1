@@ -10,11 +10,17 @@ A Microsoft SQL Szerver végrehajtó motorjának bemutatása és a végrehajtás
 
 A labor elvégzéséhez szükséges eszközök:
 
-- [Visual Studio Code](https://code.visualstudio.com/) vagy más, markdown kompatibilis szerkesztő
+- Windows, Linux vagy MacOS
+  - Minden szükséges program platform független, vagy van platformfüggetlen alternatívája.
 - Microsoft SQL Server
   - Express változat ingyenesen használható, avagy Visual Studio mellett feltelepülő _localdb_ változat is megfelelő
+  - Van [Linux változata](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup) is.
+  - MacOS-en Docker-rel futtatható.
+- [Visual Studio Code](https://code.visualstudio.com/) vagy más, markdown kompatibilis szerkesztő
 - [SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms)
+  - Vagy kipróbálható a platformfüggetlen [Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/download) is
 - Az adatbázist létrehozó script: [mssql.sql](https://raw.githubusercontent.com/bmeviauac01/gyakorlatok/master/mssql.sql)
+- GitHub account és egy git kliens
 
 A labor elvégzéséhez használható segédanyagok és felkészülési anyagok:
 
@@ -79,6 +85,8 @@ A feladatok megoldása során a dokumentációt markdown formátumban készítsd
    ![Adatbázis kiválasztása](../images/sql-managment-tablak.png).
 
 ### Lekérdezési terv bekapcsolása
+
+> A lekérdezési tervhez alapvetően Microsoft SQL Server Management Studio-t használunk. Ha nem Windows platformon dolgozol, kipróbálhatod az Azure Data Studio-t, ebben is [lekérdezhető a végrehajtási terv](https://richbenner.com/2019/02/azure-data-studio-execution-plans/).
 
 Az összes feladat során szükségünk lesz a legjobb lekérdezési tervre, amit a szerver végeredményben választott. Ezt SQL Server Management Studio-ban a _Query_ menüben az [_Include Actual Execution Plan_ opcióval](https://docs.microsoft.com/en-us/sql/relational-databases/performance/display-an-actual-execution-plan) kapcsolhatjuk be.
 
