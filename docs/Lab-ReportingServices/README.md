@@ -10,6 +10,7 @@ A Microsoft SQL Server Reporting Services képességeinek megismerése, és egys
 
 A labor elvégzéséhez szükséges eszközök:
 
+- Windows
 - Microsoft SQL Server
   - Express változat ingyenesen használható, avagy Visual Studio mellett feltelepülő _localdb_ változat is megfelelő
 - [SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms)

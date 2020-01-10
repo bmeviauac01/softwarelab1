@@ -8,11 +8,16 @@ A Microsoft SQL Server programozási lehetőségeinek gyakorlása komplexebb fel
 
 A labor elvégzéséhez szükséges eszközök:
 
+- Windows, Linux vagy MacOS
+  - Minden szükséges program platform független, vagy van platformfüggetlen alternatívája.
 - Microsoft SQL Server
   - Express változat ingyenesen használható, avagy Visual Studio mellett feltelepülő _localdb_ változat is megfelelő
+  - Van [Linux változata](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup) is.
+  - MacOS-en Docker-rel futtatható.
 - [SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms)
   - Vagy kipróbálható a platformfüggetlen [Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/download) is
 - Az adatbázist létrehozó script: [mssql.sql](https://raw.githubusercontent.com/bmeviauac01/gyakorlatok/master/mssql.sql)
+- GitHub account és egy git kliens
 
 A labor elvégzéséhez használható segédanyagok és felkészülési anyagok:
 
