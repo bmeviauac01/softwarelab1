@@ -2,7 +2,7 @@
 
 Ebben a feladatban a vevőket fogjuk listázni — az általuk megrendelt termékek összértékével együtt. Ehhez a második feladathoz hasonlatosan aggregációs utasítást és C# kódban történő "összefésülést" kell majd használnunk.
 
-A `Models.Vevo` entitás adattagjai:
+A megvalósítandó metódus az `IList<Vevo> ListVevok()`. Ennek minden vevőt vissza kell adnia. A `Models.Vevo` entitás adattagjai:
 * `Nev`: a vevő neve
 * `IR`, `Utca`, `Varos`: a vevő központi telephelyéhez tartozó cím
 * `OsszMegrendeles`: a vevőhöz tartozó összes megrendelés összértékének (lásd előző feladat) összege. Amennyiben még nincs az adott vevőhöz tartozó megrendelés, akkor ennek az értéke legyen `null`!
@@ -27,4 +27,4 @@ A feladat megoldásához ajánlott lépések:
 
 ## Következő feladat
 
-Nincs több feladat. Add be a megoldásod az [itt](README.md) leírtak szerint.
+Folytasd az [opcionális feladattal](Feladat-5.md) vagy add be a megoldásod az [itt](README.md) leírtak szerint.
