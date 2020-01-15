@@ -1,4 +1,4 @@
-# Feladat 1: Táblázatos riport (5+5p)
+# Feladat 1: Táblázatos riport
 
 Nyisd meg a checkoutolt git repository-ban a `reportserver.sln` fájlt. Ez egy üres _Report Server_ típusú projekt, amelyet Visual Studio-ban fejlesztünk.
 
@@ -73,7 +73,7 @@ Ahhoz, hogy riportokat készíthessük, az adatforráshoz adathalmazokat (datase
 
    A többi fülön most nincs dolgunk, kattintsunk az OK-ra.
 
-## Táblázatos riport készítése
+## Táblázatos riport készítése (5p)
 
 Most, hogy megvan a kapcsolatunk az adatbázis felé, és a lekérdezést is megírtuk, elkezdhetünk riportokat gyártani. A riport nem más, mint a lekérdezés eredménye megjelenítve táblázatokban, diagramokban.
 
@@ -129,7 +129,7 @@ Most, hogy megvan a kapcsolatunk az adatbázis felé, és a lekérdezést is meg
    >
    > A képernyőkép szükséges feltétele a feladat teljesítésének.
 
-## Csoportosítás és összegzés
+## Csoportosítás és összegzés (5p)
 
 A riport jelenleg ömlesztve tartalmazza az adatokat. Ezek eladási adatok, adott termékekből adott napon eladott mennyiség. Rendezzük csoportokba az adatokat.
 
