@@ -31,7 +31,7 @@ A feladatok megoldása során ne felejtsd el követni a [feladat beadás folyama
 
 ### Git repository létrehozása és letöltése
 
-1. Az alábbi URL-en keresztül hozd létre a saját repository-dat: TBD
+1. Az alábbi URL-en keresztül hozd létre a saját repository-dat: <https://classroom.github.com/a/3cRQr_HJ>
 
 1. Várd meg, míg elkészül a repository, majd checkout-old ki.
 
