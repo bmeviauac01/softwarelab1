@@ -1,12 +1,31 @@
 # BMEVIAUAC09 Szoftverfejlesztés laboratórium 1 - labor feladatok
 
-## Laborok feladatai
+A tárgykövetelményeket lásd a [hivatalos tantárgyi adatlapon](https://portal.vik.bme.hu/kepzes/targyak/VIAUAC09/).
 
-- [Microsoft SQL Server Reporting Services](Lab-ReportingServices/README.md) (laborban teljesített, részben vezetett feladat)
-- [Lekérdezés optimalizálás](Lab-QueryOptimization/README.md) (laborban teljesített, részben vezetett feladat)
-- [Microsoft SQL Server platform programozása](Lab-MSSQL/README.md) (otthoni feladat)
-- [MongoDB programozása](Lab-MongoDB/README.md) (otthoni feladat)
-- [Entity Framework és REST API](Lab-EFREST/README.md) (otthoni feladat)
+## Laborok időrendje és feladatai
+
+- Első oktatási héten nincs labor.
+- 2-3. oktatási hetek (2020. február 17-28)
+  - [Microsoft SQL Server Reporting Services](Lab-ReportingServices/README.md)
+  - laborban teljesített, részben vezetett feladat
+  - beadási határidő: 2020. március 2. hétfő 23.59 CET
+- 4-5. oktatási hetek (2020. március 2-13)
+  - [Lekérdezés optimalizálás](Lab-QueryOptimization/README.md)
+  - laborban teljesített, részben vezetett feladat
+  - beadási határidő: 2020. március 16. hétfő 23.59 CET
+- 6-7. oktatási hetek (2020. március 16-27)
+  - [Microsoft SQL Server platform programozása](Lab-MSSQL/README.md)
+  - otthoni feladat
+  - beadási határidő: 2020. március 30. hétfő 23.59 CET
+- 8-9. oktatási hetek (2020. március 30-április 9)
+  - [MongoDB programozása](Lab-MongoDB/README.md)
+  - otthoni feladat
+  - beadási határidő: 2020. április 20. hétfő 23.59 CET
+- 10-11. oktatási hetek (2020. április 20-30)
+  - [Entity Framework és REST API](Lab-EFREST/README.md)
+  - otthoni feladat
+  - beadási határidő: 2020. május 4. hétfő 23.59 CET
+- 12-13. oktatási héten ellenőrző mérés, csak szükség esetén (lásd tantárgyi adatlapon a követelményeket).
 
 ## Laborok megoldásainak beadása
 
