@@ -49,7 +49,7 @@ A megvalósítás lépései a következők.
 
    > A képet a megoldásban `f2-kategoriak.png` néven add be.
    >
-   > A képernyőkép 1 pontot ér.
+   > A képernyőkép szükséges feltétele a pontszám megszerzésének.
 
 ## Következő feladat
 
