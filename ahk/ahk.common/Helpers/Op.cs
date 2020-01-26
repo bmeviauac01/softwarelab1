@@ -5,6 +5,7 @@ namespace ahk.common
 {
     public static class Op
     {
+        public static Func<bool> Func(Action a) => () => { a(); return true; };
         public static Func<T> Func<T>(Func<T> a) => a;
         public static Func<IEnumerable<T>> Func<T>(Func<IEnumerable<T>> a) => a;
 

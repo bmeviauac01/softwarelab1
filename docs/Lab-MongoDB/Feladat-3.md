@@ -65,7 +65,7 @@ Készíts egy képernyőképet az implementált függvények kódjáról. (A ké
 
    > A képet a megoldásban `f3-megrendelesek.png` néven add be. A képernyőképen szerepeljen legalább egy metódus kódja teljesen.
    >
-   > A képernyőkép 1 pontot ér.
+   > A képernyőkép szükséges feltétele a pontszám megszerzésének.
 
 ## Következő feladat
 

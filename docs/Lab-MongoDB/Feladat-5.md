@@ -56,7 +56,7 @@ A megoldás során feltételezheted a következőket:
 
    > A képet a megoldásban `f5-megrendelescsoportok.png` néven add be.
    >
-   > A képernyőkép 1 pontot ér.
+   > A képernyőkép szükséges feltétele a pontszám megszerzésének.
 
 ## Következő feladat
 

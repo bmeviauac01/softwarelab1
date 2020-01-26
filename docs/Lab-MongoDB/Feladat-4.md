@@ -23,7 +23,7 @@ A feladat megoldásához ajánlott lépések:
 
    > A képet a megoldásban `f4-vevok.png` néven add be.
    >
-   > A képernyőkép 1 pontot ér.
+   > A képernyőkép szükséges feltétele a pontszám megszerzésének.
 
 ## Következő feladat
 

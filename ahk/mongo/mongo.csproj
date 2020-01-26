@@ -14,4 +14,10 @@
     <ProjectReference Include="..\ahk.common\ahk.common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="MongoLabor">
+      <HintPath>MongoLabor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

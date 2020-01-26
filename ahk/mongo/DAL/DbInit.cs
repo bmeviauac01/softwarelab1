@@ -66,6 +66,8 @@ namespace adatvez.DAL
         {
             try
             {
+                DbFactory.Client.DropDatabase(DbFactory.DatabaseName);
+
                 var database = DbFactory.Database;
                 var regex = new Regex(@"db\.(?<collectionName>\w*?)\.insertMany\(\[(?<documents>.*?)\]\)", RegexOptions.Singleline | RegexOptions.ExplicitCapture);
 

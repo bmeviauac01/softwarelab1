@@ -8,6 +8,7 @@ namespace adatvez
     {
         public static Task<int> Main(string[] args)
             => AhkExecutionHelper.Execute(
-                new AhkEvaluationTask("Database init", DbInit.InitializeDatabase, isPreProcess: true));
+                new AhkEvaluationTask("Database init", DbInit.InitializeDatabase, isPreProcess: true),
+                new AhkEvaluationTask(Feladat1.AhkExerciseName, Feladat1.Execute));
     }
 }

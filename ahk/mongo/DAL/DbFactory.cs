@@ -6,6 +6,8 @@ namespace adatvez.DAL
 {
     public static class DbFactory
     {
+        public const string DatabaseName = "aaf"; 
+
         private static readonly Lazy<IMongoClient> mongoClient = new Lazy<IMongoClient>(() =>
         {
 #if DEBUG
@@ -27,7 +29,7 @@ namespace adatvez.DAL
         }, System.Threading.LazyThreadSafetyMode.ExecutionAndPublication);
 
         public static IMongoClient Client => mongoClient.Value;
-        public static IMongoDatabase Database => Client.GetDatabase("aaf");
+        public static IMongoDatabase Database => Client.GetDatabase(DatabaseName);
 
         public static IMongoCollection<Entities.Termek> TermekCollection => Database.GetCollection<Entities.Termek>("termekek");
         public static IMongoCollection<Entities.Kategoria> KategoriaCollection => Database.GetCollection<Entities.Kategoria>("kategoriak");
