@@ -55,5 +55,48 @@ namespace ahk.common
         {
             return (await listResult).TryFindItem<T>(matcher, ahkResult, operationNameForError);
         }
+
+        public static TryResult<T[]> TryRunOperationAndCheckLength<T>(this Func<T[]> operation, int expectedLength, AhkResult ahkResult, string operationNameForError)
+        {
+            T[] list = null;
+            try
+            {
+                list = operation();
+            }
+            catch (Exception ex)
+            {
+                ahkResult.AddProblem(ex, $"{operationNameForError} hibat dob. {operationNameForError} throws error.");
+                return TryResult<T[]>.Failed();
+            }
+
+            return list.TryCheckLength(expectedLength, ahkResult, operationNameForError);
+        }
+
+        public static TryResult<T[]> TryCheckLength<T>(this T[] collection, int expectedLength, AhkResult ahkResult, string operationNameForError)
+        {
+            if (collection == null)
+            {
+                ahkResult.AddProblem($"{operationNameForError} null-lal ter vissza. {operationNameForError} yields null value.");
+                return TryResult<T[]>.Failed();
+            }
+
+            if (collection.Length != expectedLength)
+            {
+                ahkResult.AddProblem($"{operationNameForError} nem a megfelelo mennyisegu elemet adja vissza. {operationNameForError} does not return the proper amount of items");
+                return TryResult<T[]>.Failed();
+            }
+            else
+            {
+                return TryResult<T[]>.Ok(collection);
+            }
+        }
+
+        public static TryResult<T[]> TryCheckLength<T>(this TryResult<T[]> listResult, int expectedLength, AhkResult ahkResult, string operationNameForError)
+        {
+            if (!listResult.Success)
+                return TryResult<T[]>.Failed();
+            else
+                return listResult.Value.TryCheckLength(expectedLength, ahkResult, operationNameForError);
+        }
     }
 }

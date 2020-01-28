@@ -72,15 +72,9 @@ namespace adatvez
         {
             string operationName = $"{nameof(MongoLabor.DAL.IAdatvezRepository)}.{nameof(MongoLabor.DAL.IAdatvezRepository.ListTermekek)}";
 
-            var repoListResult = Op.Func(() => repository.ListTermekek().ToArray()).TryRunOperation(ahkResult, operationName);
+            var repoListResult = Op.Func(() => repository.ListTermekek().ToArray()).TryRunOperationAndCheckLength(11, ahkResult, operationName);
             if (!repoListResult.Success)
                 return;
-
-            if (repoListResult.Value.Length != 11)
-            {
-                ahkResult.AddProblem($"{operationName} nem a megfelelo mennyisegu elemet adja vissza. {operationName} does not return the proper amount of items");
-                return;
-            }
 
             var repoItemResult = repoListResult.TryFindItem(t => t.ID == termek.ID.ToString() && t.Nev == termek.Nev, ahkResult, operationName);
             if (repoListResult.Success)
