@@ -22,5 +22,5 @@ WORKDIR /app
 COPY --from=publish /app .
 COPY --from=publish /obf .
 
-CMD cp ./api/bin/Debug/netcoreapp2.1/MongoLabor.dll /app || (echo "Solution application not found - Nem talalhato a megoldas alkalmazas"; exit 1) \
+CMD cp ./MongoLabor/bin/Debug/netcoreapp2.1/MongoLabor.dll /app || (echo "Solution application not found - Nem talalhato a megoldas alkalmazas"; exit 1) \
 	&& dotnet "/app/mongo.dll"
