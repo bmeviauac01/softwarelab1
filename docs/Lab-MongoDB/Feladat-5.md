@@ -21,9 +21,9 @@ További követelmények:
    * A `Hatarok` lista elemszáma így **pontosan** `csoportDarab + 1`.
    * A `Csoportok` elemszáma **legfeljebb** `csoportDarab` — az üres (megrendelést nem tartalmazó) intervallumoknak nem kell listaelem
 1. A legelső határ legyen az adatbázisban található legrégebbi megrendelés dátuma
-1. A legutolsó határ legyen az adatbázisban található legújabb megrendelés dátuma + 1 nap
+1. A legutolsó határ legyen az adatbázisban található legújabb megrendelés dátuma + 1 óra
    * Ez azért kell, mert az intervallum felső határa exkluzív. Így garantáljuk, hogy az adatbázisban található minden megrendelés belekerül egy intervallumba.
-   * _Tipp: a következő módon tudsz egy napot hozzáadni egy dátumhoz: `datum + TimeSpan.FromDays(1)`._
+   * _Tipp: a következő módon tudsz egy órát hozzáadni egy dátumhoz: `datum.AddHours(1)`._
 1. Az intervallumok legyenek egyenlő méretűek
    * _Tipp: a C# nyelv beépítve kezeli matematikai műveletek végzését dátum és `TimeSpan` objektumokon — lásd pl. előző pont._
 
