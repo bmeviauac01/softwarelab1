@@ -11,29 +11,12 @@ namespace adatvez
     {
         public const string AhkExerciseName = @"Feladat 2 - Exercise 2";
 
-        private static readonly Kategoria szuloKategoria = new Kategoria
-        {
-            Nev = Guid.NewGuid().ToString(),
-        };
-
-        private static readonly Kategoria emptyKategoria = new Kategoria
-        {
-            Nev = Guid.NewGuid().ToString(),
-        };
-
-        private static readonly Kategoria kategoria = new Kategoria
-        {
-            Nev = Guid.NewGuid().ToString(),
-        };
+        private static readonly Kategoria szuloKategoria = RandomEntityFactory.CreateRandomKategoria();
+        private static readonly Kategoria emptyKategoria = RandomEntityFactory.CreateRandomKategoria();
+        private static readonly Kategoria kategoria = RandomEntityFactory.CreateRandomKategoria();
 
         private static readonly int termekCount = RandomHelper.GetRandomValue(3, 11);
-
-        private static readonly Termek termek = new Termek
-        {
-            Nev = Guid.NewGuid().ToString(),
-            NettoAr = 432.1,
-            Raktarkeszlet = 10,
-        };
+        private static readonly Termek termek = RandomEntityFactory.CreateRandomTermek();
 
         public static void Execute(AhkResult ahkResult)
         {
@@ -87,7 +70,7 @@ namespace adatvez
             }
             catch (Exception ex)
             {
-                ahkResult.AddProblem(ex, "Db inicializalas / Termek mentese sikertelen. Failed to initialize Db / failed to add Product to database.");
+                ahkResult.AddProblem(ex, "Db inicializalas / Kategoria es Termek mentese sikertelen. Failed to initialize Db / failed to add Category and Product to database.");
                 return false;
             }
         }

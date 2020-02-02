@@ -1,6 +1,7 @@
 ﻿using adatvez.DAL;
 using adatvez.DAL.Entities;
 using ahk.common;
+using ahk.common.Helpers;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
@@ -12,14 +13,7 @@ namespace adatvez
     {
         public const string AhkExerciseName = @"Feladat 1 - Exercise 1";
 
-        private static readonly Termek termek = new Termek
-        {
-            KategoriaID = ObjectId.Parse("5d7e42adcffa8e1b64f7dbce"),
-            Nev = Guid.NewGuid().ToString(),
-            NettoAr = 1212.34,
-            Raktarkeszlet = 56,
-        };
-        private static readonly string insertedNev = Guid.NewGuid().ToString();
+        private static readonly Termek termek = RandomEntityFactory.CreateRandomTermek();
 
         public static void Execute(AhkResult ahkResult)
         {
@@ -77,7 +71,7 @@ namespace adatvez
                 return;
 
             var repoItemResult = repoListResult.TryFindItem(t => t.ID == termek.ID.ToString() && t.Nev == termek.Nev, ahkResult, operationName);
-            if (repoListResult.Success)
+            if (repoItemResult.Success)
             {
                 ahkResult.AddPoints(1);
                 ahkResult.Log($"{operationName} ok");
@@ -90,7 +84,7 @@ namespace adatvez
 
             var successful = true;
             var repoFindResult = Op.Func(() => repository.FindTermek(termek.ID.ToString())).TryRunOperation(ahkResult, operationName);
-            if (repoFindResult.Success && repoFindResult.Value.ID == termek.ID.ToString() && repoFindResult.Value.Nev == termek.Nev)
+            if (repoFindResult.Success && repoFindResult.Value != null && repoFindResult.Value.ID == termek.ID.ToString() && repoFindResult.Value.Nev == termek.Nev)
             {
                 ahkResult.Log($"{operationName} - letezo termek ok. {operationName} - existing product ok");
             }
@@ -121,13 +115,13 @@ namespace adatvez
 
             var termekToInsert = new MongoLabor.Models.Termek
             {
-                Nev = insertedNev,
+                Nev = Guid.NewGuid().ToString(),
                 NettoAr = 345.6,
-                Raktarkeszlet = 12,
+                Raktarkeszlet = RandomHelper.GetRandomValue(15, 30),
             };
 
             var repoInsertResult = Op.Func(() => repository.InsertTermek(termekToInsert)).TryRunOperation(ahkResult, operationName);
-            if (repoInsertResult.Success && DbFactory.TermekCollection.Find(t => t.Nev == insertedNev).SingleOrDefault()?.Raktarkeszlet == 12)
+            if (repoInsertResult.Success && DbFactory.TermekCollection.Find(t => t.Nev == termekToInsert.Nev).SingleOrDefault()?.Raktarkeszlet == termekToInsert.Raktarkeszlet)
             {
                 ahkResult.AddPoints(1);
                 ahkResult.Log($"{operationName} ok");
