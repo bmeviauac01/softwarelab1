@@ -8,7 +8,7 @@ Nyisd meg a letöltött repository-ban a Visual Studio solution-t (`.sln` fájl)
 
 > **NE** frissítsd a projektet, se a .NET Core verziót, se a Nuget csomagokat! Ha ilyen kérdéssel találkozol a solution megnyitása során, akkor mindig mondj nemet!
 
-Munkád során a `MongoLabor.DAL.AdatvezRepository` osztályba dolgozz! Ezen fájl tartalmát tetszőlegesen módosíthatod (feltéve, hogy továbbra is megvalósítja a `MongoLabor.DAL.IAdatvezRepository` interfészt, és természetesen továbbra is fordul a kód). A projekt minden egyéb tartalma már elő van készítve a munkához, ezeket **NE** módosítsd!
+Munkád során a `MongoLabor.DAL.AdatvezRepository` osztályba dolgozz! Ezen fájl tartalmát tetszőlegesen módosíthatod (feltéve, hogy továbbra is megvalósítja a `MongoLabor.DAL.IAdatvezRepository` interfészt, továbbra is van egy konstruktora egyetlen `IMongoDatabase` paraméterrel és természetesen továbbra is fordul a kód). A projekt minden egyéb tartalma már elő van készítve a munkához, ezeket **NE** módosítsd!
 
 ## Listázás/olvasás
 

@@ -11,3 +11,8 @@ services:
     build:
       context: .
       dockerfile: efrest/evalapp/Dockerfile
+  mongo:
+    image: akosdudas/sflab-ahk:mongo-2020
+    build:
+      context: .
+      dockerfile: mongo/Dockerfile

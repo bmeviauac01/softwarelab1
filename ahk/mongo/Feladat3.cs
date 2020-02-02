@@ -13,8 +13,11 @@ namespace adatvez
     {
         public const string AhkExerciseName = @"Feladat 3 - Exercise 3";
 
-        private static readonly Termek termek1 = RandomEntityFactory.CreateRandomTermek();
-        private static readonly Termek termek2 = RandomEntityFactory.CreateRandomTermek();
+        private static readonly Termek[] termekek = new[]
+        {
+            RandomEntityFactory.CreateRandomTermek(),
+            RandomEntityFactory.CreateRandomTermek(),
+        };
 
         private static Megrendeles megrendeles;
         private static double? osszErtek;
@@ -55,10 +58,9 @@ namespace adatvez
         {
             try
             {
-                DbFactory.TermekCollection.InsertOne(termek1);
-                DbFactory.TermekCollection.InsertOne(termek2);
+                DbFactory.TermekCollection.InsertMany(termekek);
 
-                megrendeles = RandomEntityFactory.CreateRandomMegrendeles(vevoId: ObjectId.Parse("5d7e42adcffa8e1b64f7dbb9"), telephelyId: ObjectId.Parse("5d7e42adcffa8e1b64f7dbba"), termek1, termek2);
+                megrendeles = RandomEntityFactory.CreateRandomMegrendeles(vevoId: ObjectId.Parse("5d7e42adcffa8e1b64f7dbb9"), telephelyId: ObjectId.Parse("5d7e42adcffa8e1b64f7dbba"), DateTime.UtcNow, termekek);
                 DbFactory.MegrendelesCollection.InsertOne(megrendeles);
                 osszErtek = megrendeles.MegrendelesTetelek.Sum(mt => mt.Mennyiseg * mt.NettoAr);
 
@@ -150,10 +152,10 @@ namespace adatvez
 
             var termekToInsert = new MongoLabor.Models.Termek
             {
-                ID = termek1.ID.ToString(),
-                Nev = termek1.Nev,
-                NettoAr = termek1.NettoAr,
-                Raktarkeszlet = termek1.Raktarkeszlet,
+                ID = termekek[0].ID.ToString(),
+                Nev = termekek[0].Nev,
+                NettoAr = termekek[0].NettoAr,
+                Raktarkeszlet = termekek[0].Raktarkeszlet,
             };
             var megrendelesToInsert = new MongoLabor.Models.Megrendeles
             {
@@ -169,7 +171,7 @@ namespace adatvez
                 return;
 
             var inserted = DbFactory.MegrendelesCollection.Find(m => m.Statusz == megrendelesToInsert.Statusz).SingleOrDefault();
-            if (areEqual(inserted, megrendelesToInsert) && inserted.MegrendelesTetelek.Length == 1 && inserted.MegrendelesTetelek[0].TermekID == termek1.ID
+            if (areEqual(inserted, megrendelesToInsert) && inserted.MegrendelesTetelek.Length == 1 && inserted.MegrendelesTetelek[0].TermekID == termekek[0].ID
                 && inserted.MegrendelesTetelek[0].Mennyiseg == mennyiseg && inserted.MegrendelesTetelek[0].NettoAr == termekToInsert.NettoAr
                 && inserted.MegrendelesTetelek[0].Statusz == megrendelesToInsert.Statusz)
             {

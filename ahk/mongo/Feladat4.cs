@@ -1,8 +1,6 @@
 ﻿using adatvez.DAL;
 using adatvez.DAL.Entities;
 using ahk.common;
-using ahk.common.Helpers;
-using MongoDB.Bson;
 using System;
 using System.Linq;
 
@@ -12,9 +10,12 @@ namespace adatvez
     {
         public const string AhkExerciseName = @"Feladat 4 - Exercise 4";
 
-        private static readonly Termek termek1 = RandomEntityFactory.CreateRandomTermek();
-        private static readonly Termek termek2 = RandomEntityFactory.CreateRandomTermek();
-        private static readonly Termek termek3 = RandomEntityFactory.CreateRandomTermek();
+        private static readonly Termek[] termekek = new[]
+        {
+            RandomEntityFactory.CreateRandomTermek(),
+            RandomEntityFactory.CreateRandomTermek(),
+            RandomEntityFactory.CreateRandomTermek(),
+        };
 
         private static readonly Vevo vevo1 = RandomEntityFactory.CreateRandomVevo(3);
         private static readonly Vevo vevo2 = RandomEntityFactory.CreateRandomVevo(1);
@@ -54,15 +55,13 @@ namespace adatvez
         {
             try
             {
-                DbFactory.TermekCollection.InsertOne(termek1);
-                DbFactory.TermekCollection.InsertOne(termek2);
-                DbFactory.TermekCollection.InsertOne(termek3);
+                DbFactory.TermekCollection.InsertMany(termekek);
 
                 DbFactory.VevoCollection.InsertOne(vevo1);
                 DbFactory.VevoCollection.InsertOne(vevo2);
 
-                megrendeles1 = RandomEntityFactory.CreateRandomMegrendeles(vevo1.ID, vevo1.KozpontiTelephelyID, termek1, termek2);
-                megrendeles2 = RandomEntityFactory.CreateRandomMegrendeles(vevo1.ID, vevo1.KozpontiTelephelyID, termek3);
+                megrendeles1 = RandomEntityFactory.CreateRandomMegrendeles(vevo1.ID, vevo1.KozpontiTelephelyID, DateTime.UtcNow, termekek[0], termekek[1]);
+                megrendeles2 = RandomEntityFactory.CreateRandomMegrendeles(vevo1.ID, vevo1.KozpontiTelephelyID, DateTime.UtcNow, termekek[2]);
                 DbFactory.MegrendelesCollection.InsertOne(megrendeles1);
                 DbFactory.MegrendelesCollection.InsertOne(megrendeles2);
 
@@ -98,7 +97,7 @@ namespace adatvez
                 && v.OsszMegrendeles == null, ahkResult, $"{operationName} (megrendeles nelkul - without orders)");
             if (repoItemResult.Success)
             {
-                ahkResult.AddPoints(1);
+                ahkResult.AddPoints(2);
                 ahkResult.Log($"{operationName} - megrendeles nelkul ok. {operationName} - without orders ok");
             }
         }

@@ -52,7 +52,7 @@ namespace adatvez
                 NettoAr = termek.NettoAr,
             };
 
-        public static Megrendeles CreateRandomMegrendeles(ObjectId vevoId, ObjectId telephelyId, params Termek[] termekek)
+        public static Megrendeles CreateRandomMegrendeles(ObjectId vevoId, ObjectId telephelyId, DateTime datum, params Termek[] termekek)
         {
             var statusz = Guid.NewGuid().ToString();
             var megrendelesTetelek = termekek
@@ -65,8 +65,8 @@ namespace adatvez
                 TelephelyID = telephelyId,
                 Statusz = statusz,
                 FizetesMod = new FizetesMod { Mod = Guid.NewGuid().ToString(), Hatarido = 999 },
-                Datum = DateTime.UtcNow,
-                Hatarido = DateTime.UtcNow.AddDays(RandomHelper.GetRandomValue(7, 14)),
+                Datum = datum,
+                Hatarido = datum.AddDays(RandomHelper.GetRandomValue(7, 14)),
                 MegrendelesTetelek = megrendelesTetelek,
             };
         }
