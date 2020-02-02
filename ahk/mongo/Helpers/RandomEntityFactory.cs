@@ -4,7 +4,7 @@ using MongoLabor.DAL.Entities;
 using System;
 using System.Linq;
 
-namespace adatvez
+namespace adatvez.Helpers
 {
     public class RandomEntityFactory
     {

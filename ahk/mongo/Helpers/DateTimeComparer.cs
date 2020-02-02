@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace adatvez
+namespace adatvez.Helpers
 {
     internal class DateTimeComparer : IEqualityComparer<DateTime>
     {
