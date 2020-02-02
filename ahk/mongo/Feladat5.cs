@@ -1,9 +1,9 @@
 ﻿using adatvez.DAL;
-using adatvez.DAL.Entities;
 using ahk.common;
 using ahk.common.Helpers;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using MongoLabor.DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,6 +1,6 @@
 ﻿using adatvez.DAL;
-using adatvez.DAL.Entities;
 using ahk.common;
+using MongoLabor.DAL.Entities;
 using System;
 using System.Linq;
 

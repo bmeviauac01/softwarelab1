@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Driver;
+using MongoLabor.DAL.Entities;
 using System;
 
 namespace adatvez.DAL
@@ -31,9 +32,9 @@ namespace adatvez.DAL
         public static IMongoClient Client => mongoClient.Value;
         public static IMongoDatabase Database => Client.GetDatabase(DatabaseName);
 
-        public static IMongoCollection<Entities.Termek> TermekCollection => Database.GetCollection<Entities.Termek>("termekek");
-        public static IMongoCollection<Entities.Kategoria> KategoriaCollection => Database.GetCollection<Entities.Kategoria>("kategoriak");
-        public static IMongoCollection<Entities.Vevo> VevoCollection => Database.GetCollection<Entities.Vevo>("vevok");
-        public static IMongoCollection<Entities.Megrendeles> MegrendelesCollection => Database.GetCollection<Entities.Megrendeles>("megrendelesek");
+        public static IMongoCollection<Termek> TermekCollection => Database.GetCollection<Termek>("termekek");
+        public static IMongoCollection<Kategoria> KategoriaCollection => Database.GetCollection<Kategoria>("kategoriak");
+        public static IMongoCollection<Vevo> VevoCollection => Database.GetCollection<Vevo>("vevok");
+        public static IMongoCollection<Megrendeles> MegrendelesCollection => Database.GetCollection<Megrendeles>("megrendelesek");
     }
 }
