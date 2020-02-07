@@ -8,19 +8,25 @@ Az új riporthoz új adatokra lesz szükségünk. Bővítsük ki a lekérdezés�
 
 1. A _Report Data_ panelen a _DataSets_ alatt az _AdventureWorksDataset_-en jobb kattintással válasszuk a _Dataset properties_-t, majd bővítsük a query-t:
 
-   ```sql
-   SELECT soh.OrderDate AS Date, soh.SalesOrderNumber AS [Order], pps.Name AS Subcat,
-     pp.Name AS Product, SUM(sd.OrderQty) AS Qty, SUM(sd.LineTotal) AS LineTotal
-     CONCAT(pepe.FirstName, ' ', pepe.LastName) AS SalesPersonName
-   FROM Sales.SalesPerson AS sp
+   ```diff
+   SELECT
+     soh.OrderDate AS [Date],
+     soh.SalesOrderNumber AS [Order],
+     pps.Name AS Subcat, pp.Name as Product,
+     SUM(sd.OrderQty) AS Qty,
+     SUM(sd.LineTotal) AS LineTotal,
+   +  CONCAT(pepe.FirstName, ' ', pepe.LastName) AS SalesPersonName
+   FROM Sales.SalesPerson sp
      INNER JOIN Person.Person as pepe ON sp.BusinessEntityID = pepe.BusinessEntityID
      INNER JOIN Sales.SalesOrderHeader AS soh ON sp.BusinessEntityID = soh.SalesPersonID
      INNER JOIN Sales.SalesOrderDetail AS sd ON sd.SalesOrderID = soh.SalesOrderID
      INNER JOIN Production.Product AS pp ON sd.ProductID = pp.ProductID
      INNER JOIN Production.ProductSubcategory AS pps ON pp.ProductSubcategoryID = pps.ProductSubcategoryID
      INNER JOIN Production.ProductCategory AS ppc ON ppc.ProductCategoryID = pps.ProductCategoryID
-   GROUP BY ppc.Name, soh.OrderDate, soh.SalesOrderNumber, pps.Name, pp.Name, soh.SalesPersonID, pepe.FirstName, pepe.LastName
-   HAVING (ppc.Name = 'Clothing')
+   GROUP BY ppc.Name, soh.OrderDate, soh.SalesOrderNumber,
+            pps.Name, pp.Name, soh.SalesPersonID
+   +        , pepe.FirstName, pepe.LastName
+   HAVING ppc.Name = 'Clothing'
    ```
 
 1. A _Refresh Fields_ gombra kattintva ellenőrizhetjük, sikerült-e jól beírnunk. Ha nem jön hibaüzenet, akkor jók vagyunk. Zárjuk be a szerkesztő ablakot.
@@ -33,6 +39,8 @@ Az új riporthoz új adatokra lesz szükségünk. Bővítsük ki a lekérdezés�
 
 ## Új riport és adatforrások
 
+Az előbb megosztottá konvertáltuk a data source-t és dataset-et. Ezeket fogjuk egy új riportban felhasználni.
+
 1. _Solution Explorer_-ben jobb klikk a _Reports_ mappára > _Add new
    item_ > _Report_. Az új riport neve legyen "Sales People".
 
@@ -40,13 +48,13 @@ Az új riporthoz új adatokra lesz szükségünk. Bővítsük ki a lekérdezés�
 
    - Jobb klikk a _Data Sources_ node-on > _Add Data Source_
 
-   - Válasszuk ki a meglevő adatforrást, és fent a _Name_ mezőbe is írjuk be, hogy "AdventureWorks2014"
+   - Válasszuk a _Use shared data source reference_ opciót, és válasszuk ki az "AdventureWorks2014" nevűt.
 
      ![Megosztott adatforrás](../images/rs-add-datasource-shared.png)
 
    - Jobb klikk a _Datasets_-en > _Add Dataset_
 
-   - Itt is válasszuk ki a meglevőt, illetve nevezzük el AdventureWorksDataset-nek
+   - Válasszuk ki a _Use a shared dataset_ opciót, és alatta válasszuk ki a már létező AdventureWorksDataset-et
 
      ![Megosztott adathalmaz](../images/rs-add-dataset-shared.png)
 

@@ -62,8 +62,8 @@ Ahhoz, hogy riportokat készíthessük, az adatforráshoz adathalmazokat (datase
          ON pp.ProductSubcategoryID = pps.ProductSubcategoryID
      INNER JOIN Production.ProductCategory AS ppc
          ON ppc.ProductCategoryID = pps.ProductCategoryID
-   GROUP BY ppc.Name, soh.OrderDate, soh.SalesOrderNumber, pps.Name, pp.Name,
-     soh.SalesPersonID
+   GROUP BY ppc.Name, soh.OrderDate, soh.SalesOrderNumber,
+            pps.Name, pp.Name, soh.SalesPersonID
    HAVING ppc.Name = 'Clothing'
    ```
 
@@ -105,7 +105,7 @@ Most, hogy megvan a kapcsolatunk az adatbázis felé, és a lekérdezést is meg
 
    Az elkészült riportot például kinyomtathatjuk, vagy exportálhatjuk több féle formátumba (Word, Excel, PowerPoint, PDF…). Jelen állapotában azért van rajta még mit csiszolni, pl. a végösszeg mezőnél nincs jelölve a valuta, és az értéket is bőven elég lenne 2 tizedesjelre kerekítve megmutatni. A dátum formázása és az oszlopok szélessége sem az igazi.
 
-1. Menjünk vissza a _Design_ fülre, és kattintsunk jobb egérgombbal a \[Date\] kifejezésen, majd válasszuk a _Text Box Properties_ opciót. Itt a _Number_ fülön válasszuk a \_Dat_e kategóriát, és válasszunk ki egy szimpatikus dátumformátumot.
+1. Menjünk vissza a _Design_ fülre, és kattintsunk jobb egérgombbal a \[Date\] kifejezésen, majd válasszuk a _Text Box Properties_ opciót. Itt a _Number_ fülön válasszuk a _Date_ kategóriát, és válasszunk ki egy szimpatikus dátumformátumot.
 
    ![Date oszlop formázása](../images/rs-table-date-col-properties.png)
 
