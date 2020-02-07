@@ -84,7 +84,7 @@ Az alábbi kérés-válasz sorozat mutatja a működést:
    }
    ```
 
-Készíts egy képernyőképet Postman-ből (avagy más, hasonló eszközből, ha nem Postman-t használtál), amely egy tetszőleges REST kérést és választ mutat. A képernyőképpel kapcsolatos elvárásokról lásd a kezdőoldalon.
+Készíts egy képernyőképet Postman-ből (avagy más, hasonló eszközből, ha nem Postman-t használtál), amely egy tetszőleges REST kérést és választ mutat. A képernyőképpel kapcsolatos elvárásokat lásd [itt](../README.md#képernyőképek).
 
 > A képet a megoldásban `f4.png` néven add be. A képernyőképen látszódjon a kimenő kérés és a válasz is minden részletével.
 >

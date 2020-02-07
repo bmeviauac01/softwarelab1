@@ -15,7 +15,7 @@
    >
    > A feladat 4 pontot ér. Helyesség függvényében részpontszám is kapható.
 
-1. Készíts egy képernyőképet a tárolt eljárás kódjáról. (A képernyőképpel kapcsolatos elvárásokról lásd a kezdőoldalon.)
+1. Készíts egy képernyőképet a tárolt eljárás kódjáról. A képernyőképpel kapcsolatos elvárásokat lásd [itt](../README.md#képernyőképek).
 
    > A képet a megoldásban `f2-eljaras.png` néven add be. A képernyőképen szerepeljen a tárolt eljárás kódja, és látszódjon az _Object Explorer_-ben az eljárás (az adatbázis alatti `Programmability` nevű mappában keresd).
    >

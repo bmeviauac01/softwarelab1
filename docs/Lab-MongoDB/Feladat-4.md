@@ -19,7 +19,7 @@ A feladat megoldásához ajánlott lépések:
 
 1. A kód kipróbálásához a weboldal `Vevők` menüpontjára kell navigálni. Itt táblázatos formában megjelenítve láthatod az összegyűjtött információkat. Teszteléshez alkalmazhatod az előző feladatban elkészített `Új megrendelés felvétele` funkciót — itt új megrendelés felvétele esetén `Grosz János` mellett növekednie kell a hozzá tartozó megrendelések összértékének.
 
-1. Készíts egy képernyőképet implementált függvény kódjáról. (A képernyőképpel kapcsolatos elvárásokról lásd a kezdőoldalon.)
+1. Készíts egy képernyőképet implementált függvény kódjáról. A képernyőképpel kapcsolatos elvárásokat lásd [itt](../README.md#képernyőképek).
 
    > A képet a megoldásban `f4-vevok.png` néven add be.
    >

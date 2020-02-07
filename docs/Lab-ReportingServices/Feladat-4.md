@@ -10,7 +10,7 @@
 
    ![Tortadiagramban használandó értékek](../images/rs-sales-person-pie-char-valuest.png)
 
-1. Készíts egy képernyőképet a riport előnézetéről. (A képernyőképpel kapcsolatos elvárásokról lásd a kezdőoldalon.)
+1. Készíts egy képernyőképet a riport előnézetéről. A képernyőképpel kapcsolatos elvárásokat lásd [itt](../README.md#képernyőképek).
 
    > A képet a megoldásban `f4-chart.png` néven add be. A képernyőképen a Visual Studio ablaka, és azon belül a riport előnézetén belül a diagram látszódjon.
    >

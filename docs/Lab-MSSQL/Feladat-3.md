@@ -28,7 +28,7 @@
 
 1. Próbáld ki, jól működik-e a trigger. A teszteléshez használt utasításokat nem kell beadnod a megoldásban, de fontos, hogy ellenőrizd a viselkedést.
 
-1. Készíts egy képernyőképet a trigger kódjáról. (A képernyőképpel kapcsolatos elvárásokról lásd a kezdőoldalon.)
+1. Készíts egy képernyőképet a trigger kódjáról. A képernyőképpel kapcsolatos elvárásokat lásd [itt](../README.md#képernyőképek).
 
    > A képet a megoldásban `f3-trigger.png` néven add be. A képernyőképen szerepeljen a trigger kódja, és látszódjon az _Object Explorer_-ben a trigger (a megfelelő tábla alatti mappákat kibontva).
    >

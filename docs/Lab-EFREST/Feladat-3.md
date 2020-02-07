@@ -29,7 +29,7 @@ Válasz:
 
 ### Képernyőkép
 
-A kész forráskódról (akár a repository, akár a controller releváns részéről) készíts egy képernyőképet. A képernyőképpel kapcsolatos elvárásokról lásd a kezdőoldalon.
+A kész forráskódról (akár a repository, akár a controller releváns részéről) készíts egy képernyőképet. A képernyőképpel kapcsolatos elvárásokat lásd [itt](../README.md#képernyőképek).
 
 > A képet a megoldásban `f3.png` néven add be. A képernyőképen látszódjon a repository vagy a controller kódjnak releváns része.
 >

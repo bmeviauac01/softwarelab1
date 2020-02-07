@@ -123,7 +123,7 @@ Most, hogy megvan a kapcsolatunk az adatbázis felé, és a lekérdezést is meg
 
    ![Riport előnézete](../images/rs-table-preview-2.png)
 
-1. Készíts egy képernyőképet a riport előnézetéről. (A képernyőképpel kapcsolatos elvárásokról lásd a kezdőoldalon.)
+1. Készíts egy képernyőképet a riport előnézetéről. A képernyőképpel kapcsolatos elvárásokat lásd [itt](../README.md#képernyőképek).
 
    > A képet a megoldásban `f1-table.png` néven add be. A képernyőképen a Visual Studio ablaka, és azon belül a riport előnézete látszódjon.
    >
@@ -191,7 +191,7 @@ A riport jelenleg ömlesztve tartalmazza az adatokat. Ezek eladási adatok, adot
 
 1. A _Preview_ fülön ez értelemszerűen csak a riport legvégén fog megjelenni. Használjuk a nézegetőben a _Last page_ ![Utolsó oldal](../images/rs-last-page-button.png) gombot.
 
-1. Készíts egy képernyőképet a riport előnézetéről. (A képernyőképpel kapcsolatos elvárásokról lásd a kezdőoldalon.)
+1. Készíts egy képernyőképet a riport előnézetéről. A képernyőképpel kapcsolatos elvárásokat lásd [itt](../README.md#képernyőképek).
 
    > A képet a megoldásban `f1-grouptotal.png` néven add be. A képernyőképen a Visual Studio ablaka, és azon belül a riport előnézete látszódjon. Látszódjon legalább egy összegző sor a nézetben.
    >
