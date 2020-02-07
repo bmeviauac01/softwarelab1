@@ -104,9 +104,11 @@ A lekérdezési terv a diagramot adatfolyamként kell olvasnunk, az adat folyás
 
 ## Végezetül: a megoldások feltöltése
 
+Emlékeztetőül: a beadás módjának részletes lépéseit [itt](GitHub-hasznalat.md#a-megoldás-beadása) találod.
+
 1. Ellenőrizd, hogy a `neptun.txt`-ben szerepel-e a Neptun kódod.
 1. Ellenőrizd, hogy a dokumentációt az előkészített `README.md` fájlba írtad-e.
 1. Ellenőrizd, hogy a lekérdezési tervek illusztrálásához készített képernyőképeket elmentetted-e a repository-ba, és a markdown-ban hivatkoztad-e.
-1. Kommitold és pushold a megoldásod. Ellenőrizd a GitHub webes felületén, hogy minden rendben van-e. Ha mindent jól csináltál, a repository kezdőoldalán megjelenik a dokumentáció, és a hivatkozott képek is látszódnak benne.
+1. Kommitold és pushold a megoldásod az újonnan készített ágra. Ellenőrizd a GitHub webes felületén, hogy minden rendben van-e. Ha mindent jól csináltál, a repository kezdőoldalán megjelenik a dokumentáció, és a hivatkozott képek is látszódnak benne.
 1. Nyiss egy pull request-et a megoldásoddal és rendeld a laborvezetődhöz.
-1. Ha tanszéki laborban vagy, töröld a GitHub belépési adatokat. A lépésekhez nézd meg a kezdőoldalon a leírást.
+1. Ha tanszéki laborban vagy, [töröld a GitHub belépési adatokat](../README.md#egyetemi-laborokban-github-belépési-adatok-törlése).
