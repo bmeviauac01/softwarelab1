@@ -56,7 +56,7 @@ A megjelenés még nem az igazi, de ezen könnyen segíthetünk.
 
    ![Előnézet](../images/rs-chart-preview-1.png)
 
-1. Készíts egy képernyőképet a diagram előnézetéről. (A képernyőképpel kapcsolatos elvárásokról lásd a kezdőoldalon.)
+1. Készíts egy képernyőképet a diagram előnézetéről. A képernyőképpel kapcsolatos elvárásokat lásd [itt](../README.md#képernyőképek).
 
    > A képet a megoldásban `f2-chart.png` néven add be. A képernyőképen a Visual Studio ablaka, és azon belül a riport előnézetében a diagram látszódjon.
    >

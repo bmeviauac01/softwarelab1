@@ -236,7 +236,7 @@ Az összes státusz listázása mellett még vár ránk pár alapvető művelet:
 
 1. Fordítsd le az alkalmazást és indítsd el. Próbáld ki a megírt kéréseket! Állítsd elő a sikeres és a sikertelen ágakat is.
 
-1. Készíts egy képernyőképet Postman-ből (avagy más, hasonló eszközből, ha nem Postman-t használtál), amely egy **sikertelen** beszúrást mutat. (A sikertelenség oka a már létező név lesz.) A képernyőképpel kapcsolatos elvárásokról lásd a kezdőoldalon.
+1. Készíts egy képernyőképet Postman-ből (avagy más, hasonló eszközből, ha nem Postman-t használtál), amely egy **sikertelen** beszúrást mutat. (A sikertelenség oka a már létező név lesz.) A képernyőképpel kapcsolatos elvárásokat lásd [itt](../README.md#képernyőképek).
 
    > A képet a megoldásban `f1.png` néven add be. A képernyőképen látszódjon a kimenő kérés és a válasz is minden részletével.
    >

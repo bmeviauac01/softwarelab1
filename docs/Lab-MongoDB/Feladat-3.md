@@ -61,11 +61,11 @@ A megírt függvényeket a weboldalon a `Megrendelések` menüpont alatt tudod k
 
 ## Képernyőkép
 
-Készíts egy képernyőképet az implementált függvények kódjáról. (A képernyőképpel kapcsolatos elvárásokról lásd a kezdőoldalon.)
+Készíts egy képernyőképet az implementált függvények kódjáról. A képernyőképpel kapcsolatos elvárásokat lásd [itt](../README.md#képernyőképek).
 
-   > A képet a megoldásban `f3-megrendelesek.png` néven add be. A képernyőképen szerepeljen legalább egy metódus kódja teljesen.
-   >
-   > A képernyőkép szükséges feltétele a pontszám megszerzésének.
+> A képet a megoldásban `f3-megrendelesek.png` néven add be. A képernyőképen szerepeljen legalább egy metódus kódja teljesen.
+>
+> A képernyőkép szükséges feltétele a pontszám megszerzésének.
 
 ## Következő feladat
 

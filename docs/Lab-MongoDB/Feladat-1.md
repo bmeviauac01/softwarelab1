@@ -117,7 +117,7 @@ Munkád során a `MongoLabor.DAL.AdatvezRepository` osztályba dolgozz! Ezen fá
 
 ## Képernyőkép
 
-Készíts egy képernyőképet az implementált függvények kódjáról. (A képernyőképpel kapcsolatos elvárásokról lásd a kezdőoldalon.)
+Készíts egy képernyőképet az implementált függvények kódjáról. A képernyőképpel kapcsolatos elvárásokat lásd [itt](../README.md#képernyőképek).
 
 > A képet a megoldásban `f1-termekek.png` néven add be. A képernyőképen szerepeljen legalább egy metódus kódja teljesen.
 >

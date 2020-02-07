@@ -42,7 +42,7 @@ A fent implementált repository műveletekre építve valósítsd meg az alábbi
 - `POST /api/tasks`: új task felvétele, body-ban egy `Dto.CreateTask` entitást vár, válasza `201 Created`, az új entitás body-ban, és a megfelelő _Location_ header
 - `DELETE /api/tasks/{id}`: adott azonosítójú task törlése, válasza `204 No content` vagy `404 Not found`
 
-Készíts egy képernyőképet Postman-ből (avagy más, hasonló eszközből, ha nem Postman-t használtál), amely egy tetszőleges REST kérést és választ mutat. A képernyőképpel kapcsolatos elvárásokról lásd a kezdőoldalon.
+Készíts egy képernyőképet Postman-ből (avagy más, hasonló eszközből, ha nem Postman-t használtál), amely egy tetszőleges REST kérést és választ mutat. A képernyőképpel kapcsolatos elvárásokat lásd [itt](../README.md#képernyőképek).
 
 > A képet a megoldásban `f2.png` néven add be. A képernyőképen látszódjon a kimenő kérés és a válasz is minden részletével.
 >

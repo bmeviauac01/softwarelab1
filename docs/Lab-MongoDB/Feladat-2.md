@@ -45,7 +45,7 @@ A megvalósítás lépései a következők.
 
 1. A kód kipróbálásához a weboldal `Kategóriák` menüpontjára kell navigálni. Itt táblázatos formában megjelenítve láthatod az összegyűjtött információkat. Teszteléshez alkalmazhatod az előző feladatban elkészített `Új termék hozzáadása` funkciót — itt a hozzáadás esetén az egyik kategória mellett növekednie kell a hozzá tartozó termékek darabszámának.
 
-1. Készíts egy képernyőképet implementált függvény kódjáról. (A képernyőképpel kapcsolatos elvárásokról lásd a kezdőoldalon.)
+1. Készíts egy képernyőképet implementált függvény kódjáról. A képernyőképpel kapcsolatos elvárásokat lásd [itt](../README.md#képernyőképek).
 
    > A képet a megoldásban `f2-kategoriak.png` néven add be.
    >

@@ -75,7 +75,7 @@ Az előbb megosztottá konvertáltuk a data source-t és dataset-et. Ezeket fogj
 
    > Tipp: Ugyanúgy az _Add Total_ > _After_ funkciót kell használni, mint a közös feladatoknál. Amit itt el lehet rontani, hogy az _Add Total_ > _After_-t **nem** a \[SalesPersonName\]-en jobb klikkelve kell kiválasztani, hanem a \[Subcat\]-en jobbklikkelve – hiszen őket akarjuk összegezni, nem a Sales Person sorokat. (Ha a SalesPersonName-re kattintva csináljuk, abból Grand Total lesz, hiszen minden értékesítőt összegzünk.)
 
-1. Készíts egy képernyőképet a riport előnézetéről. (A képernyőképpel kapcsolatos elvárásokról lásd a kezdőoldalon.)
+1. Készíts egy képernyőképet a riport előnézetéről. A képernyőképpel kapcsolatos elvárásokat lásd [itt](../README.md#képernyőképek).
 
    > A képet a megoldásban `f3-table.png` néven add be. A képernyőképen a Visual Studio ablaka, és azon belül a riport előnézete látszódjon. Látszódjon legalább egy összegző sor is a nézetben.
    >

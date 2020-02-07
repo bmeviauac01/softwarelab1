@@ -52,7 +52,7 @@ A megoldás során feltételezheted a következőket:
 
 1. A kód kipróbálásához a weboldal `Megrendelések csoportosítása` menüpontjára kell navigálni. Itt diagramokon megjelenítve láthatod az összegyűjtött információkat. Tesztelés során módosítsd a csoportok számát, és vegyél fel új megrendeléseket különböző dátumokkal korábbi feladatokban elkészített `Új megrendelés felvétele` segítségével!
 
-1. Készíts egy képernyőképet az egyik diagramról! A diagramon látsszon, hogy vettél fel új megrendelést is! (A képernyőképpel kapcsolatos elvárásokról lásd a kezdőoldalon.)
+1. Készíts egy képernyőképet az egyik diagramról! A diagramon látszon, hogy vettél fel új megrendelést is! A képernyőképpel kapcsolatos elvárásokat lásd [itt](../README.md#képernyőképek).
 
    > A képet a megoldásban `f5-megrendelescsoportok.png` néven add be.
    >
