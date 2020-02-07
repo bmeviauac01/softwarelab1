@@ -60,4 +60,4 @@ A megoldás során feltételezheted a következőket:
 
 ## Következő feladat
 
-Nincs több feladat. Add be a megoldásod az [itt](README.md) leírtak szerint.
+Nincs több feladat. Add be a megoldásod az [itt](README.md#végezetül-a-megoldások-feltöltése) leírtak szerint.

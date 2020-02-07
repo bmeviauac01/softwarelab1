@@ -23,4 +23,4 @@ Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terve
 
 ## Következő feladat
 
-Nincs több feladat. Add be a megoldásod az [itt](README.md) leírtak szerint.
+Nincs több feladat. Add be a megoldásod az [itt](README.md#végezetül-a-megoldások-feltöltése) leírtak szerint.
