@@ -59,7 +59,7 @@ Az adatbázis sémát a _code first_ modell szerint fogjuk létrehozni, így C# 
 
 ## Végezetül: a megoldások feltöltése
 
-Emlékeztetőül: a beadás módjának részletes lépéseit [itt](GitHub-hasznalat.md#a-megoldás-beadása) találod.
+Emlékeztetőül: a beadás módjának részletes lépéseit [itt](../GitHub-hasznalat.md#a-megoldás-beadása) találod.
 
 1. Ellenőrizd, hogy a `neptun.txt`-ben szerepel-e a Neptun kódod.
 1. Nézd meg, hogy a megoldásaidat a feladatban meghatározott fájlnévvel mentetted-e el. Minden fájl már ott volt a letöltött repository-ban, neked csak felül kellett őket írnod.

@@ -75,7 +75,7 @@ A feladatok során az _Adventure Works_ minta adatbázissal dolgozunk. Az adatb�
 
 ## Végezetül: a megoldások feltöltése
 
-Emlékeztetőül: a beadás módjának részletes lépéseit [itt](GitHub-hasznalat.md#a-megoldás-beadása) találod.
+Emlékeztetőül: a beadás módjának részletes lépéseit [itt](../GitHub-hasznalat.md#a-megoldás-beadása) találod.
 
 1. Ellenőrizd, hogy a `neptun.txt`-ben szerepel-e a Neptun kódod.
 1. A feladatok megoldásaként új `.rdl` fájlok készültek a git repository alatt egy alkönyvtárban. Ezeket is fel kell töltened.
