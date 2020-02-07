@@ -1,10 +1,12 @@
 # Feladat 4: Opcionális feladat (3 iMsc pont)
 
-1. Készíts tortadiagramot az egyes értékesítők teljesítményének összehasonlítására, a hozzájuk tartozó összbevétel szerint!
+1. Készíts tortadiagramot az egyes értékesítők teljesítményének összehasonlítására, a hozzájuk tartozó összbevétel szerint! A cél az alábbi, vagy legalábbis ehhez hasolító grafikon elkészítése.
 
    ![Elvárt tortadiagram](../images/rs-sales-person-pie-chart.png)
 
-   > Tipp: A tortadiagram használata nagyon hasonló az oszlopdiagraméhoz. A lényeg, hogy a _∑ Values_ mezőbe a _LineTotal_-t, a _Category Groups_-ba a _SalesPersonName_-et húzzuk. (A _Series Groups_ ezúttal üres.) A diagram magasságát most is nyújtani kell, hogy a teljes jelmagyarázat kiférjen.
+   > Tipp: A tortadiagram használata nagyon hasonló az oszlopdiagraméhoz. A lényeg, hogy a _∑ Values_ mezőbe a _LineTotal_-t, a _Category Groups_-ba a _SalesPersonName_-et húzzuk. (A _Series Groups_ ezúttal üres.)
+   >
+   > Ügyelj arra is, hogy a megfelelő nevek jelenjenek meg a jelmagyarázatban. A diagram magasságát valószínűleg növelni kell, hogy a teljes jelmagyarázat kiférjen.
 
    ![Tortadiagramban használandó értékek](../images/rs-sales-person-pie-char-valuest.png)
 
