@@ -104,7 +104,7 @@ A lekérdezési terv a diagramot adatfolyamként kell olvasnunk, az adat folyás
 
 ## Végezetül: a megoldások feltöltése
 
-Emlékeztetőül: a beadás módjának részletes lépéseit [itt](GitHub-hasznalat.md#a-megoldás-beadása) találod.
+Emlékeztetőül: a beadás módjának részletes lépéseit [itt](../GitHub-hasznalat.md#a-megoldás-beadása) találod.
 
 1. Ellenőrizd, hogy a `neptun.txt`-ben szerepel-e a Neptun kódod.
 1. Ellenőrizd, hogy a dokumentációt az előkészített `README.md` fájlba írtad-e.
