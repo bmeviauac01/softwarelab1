@@ -92,4 +92,4 @@ Készíts egy képernyőképet Postman-ből (avagy más, hasonló eszközből, h
 
 ## Következő feladat
 
-Nincs több feladat. Add be a megoldásod az [itt](README.md) leírtak szerint.
+Nincs több feladat. Add be a megoldásod az [itt](README.md#végezetül-a-megoldások-feltöltése) leírtak szerint.

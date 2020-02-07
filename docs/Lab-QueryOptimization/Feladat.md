@@ -159,4 +159,4 @@ Javíts az előző feladat lekérdezésének teljesítményén. Az előbb felvet
 
 ## Következő feladat
 
-Folytasd az [opcionális feladatokkal](Feladat-imsc.md) vagy add be a megoldásod az [itt](README.md) leírtak szerint.
+Folytasd az [opcionális feladatokkal](Feladat-imsc.md) vagy add be a megoldásod az [itt](README.md#végezetül-a-megoldások-feltöltése) leírtak szerint.

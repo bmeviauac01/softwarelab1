@@ -37,4 +37,4 @@ A kész forráskódról (akár a repository, akár a controller releváns rész�
 
 ## Következő feladat
 
-Folytasd az [opcionális feladattal](Feladat-4.md) vagy add be a megoldásod az [itt](README.md) leírtak szerint.
+Folytasd az [opcionális feladattal](Feladat-4.md) vagy add be a megoldásod az [itt](README.md#végezetül-a-megoldások-feltöltése) leírtak szerint.

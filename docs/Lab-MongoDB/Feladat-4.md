@@ -27,4 +27,4 @@ A feladat megoldásához ajánlott lépések:
 
 ## Következő feladat
 
-Folytasd az [opcionális feladattal](Feladat-5.md) vagy add be a megoldásod az [itt](README.md) leírtak szerint.
+Folytasd az [opcionális feladattal](Feladat-5.md) vagy add be a megoldásod az [itt](README.md#végezetül-a-megoldások-feltöltése) leírtak szerint.
