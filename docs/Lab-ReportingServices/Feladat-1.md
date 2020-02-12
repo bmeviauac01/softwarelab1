@@ -1,4 +1,4 @@
-# Feladat 1: Táblázatos riport
+# Feladat 1: Táblázatos riport (közösen megoldott)
 
 Nyisd meg a checkoutolt git repository-ban a `reportserver.sln` fájlt. Ez egy üres _Report Server_ típusú projekt, amelyet Visual Studio-ban fejlesztünk.
 
