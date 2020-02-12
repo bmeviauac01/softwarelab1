@@ -2,7 +2,9 @@
 
 Nyisd meg a checkoutolt git repository-ban a `reportserver.sln` fájlt. Ez egy üres _Report Server_ típusú projekt, amelyet Visual Studio-ban fejlesztünk.
 
-A Report Server projekt elsősorban úgynevezett _Report Definition_ (.rdl) fájlokból áll, amelyek definiálják a riport előállításához szükséges adatforrásokat (lekérdezéseket), és a kinézet sablonját, amit adatokkal feltöltve kapjuk az eredmény riportot. A neve onnan ered, hogy ezeket a riportokat természetesen nem csak a fejlesztői gépen lehet lefuttatni, hanem egy _Report Server_-re telepíthetőek, ahonnan a vállalat megfelelő üzleti szereplői mindig friss riportokat kérhetnek, az aktuális adatok alapján.
+A Report Server projekt elsősorban úgynevezett _Report Definition_ (.rdl) fájlokból áll, amelyek definiálják a riport előállításához szükséges adatforrásokat (lekérdezéseket), és a kinézet sablonját, amit adatokkal feltöltve kapjuk az eredmény riportot. A neve onnan ered, hogy ezeket a riportokat nem csak a fejlesztői gépen lehet lefuttatni, hanem egy un. _Report Server_-re publikálhatóak, ahonnan a vállalat megfelelő üzleti szereplői mindig friss riportokat kérhetnek, az aktuális adatok alapján.
+
+> Ezen a laboron nem tudjuk megmutatni a Report Server-t. Ennek csupán technikai okai vannak, a Report Server telepítés után kézi konfigurációt igényel, amit a laborokban megfelelő jogosultság nélkül nem tudunk megtenni. Ezért csak a Visual Studio-ban fogjuk látni a riportot.
 
 ## Hozzuk létre az első Report Definition fájlt.
 
@@ -38,7 +40,7 @@ Az adatforrás definálja, a riport adatai honnan származnak. A mi esetünkben 
 
 Ahhoz, hogy riportokat készíthessük, az adatforráshoz adathalmazokat (dataset) is meg kell adnunk. Ez gyakorlatilag egy lekérdezést fog jelenteni az adatforrás felé.
 
-1. A _Report Data_ panelen válasszuk a _New_ > _Dataset_ opciót. Nevezzük el a satasetet "AdventureWorksDataset"-nek. Data source-ot legördülő menüből tudunk választani, használjuk az előzőleg elészítettet, és alkalmazzuk az alábbi beállításokat:
+1. A _Report Data_ panelen válasszuk a _New_ > _Dataset_ opciót. Nevezzük el a datasetet "AdventureWorksDataset"-nek. Data source-ot a legördülő menüből tudunk választani, használjuk az előzőleg elészítettet, és alkalmazzuk az alábbi beállításokat:
 
    ![Data set tulajdonságok](../images/rs-data-set-properties.png)
 
@@ -83,7 +85,7 @@ Most, hogy megvan a kapcsolatunk az adatbázis felé, és a lekérdezést is meg
 
    ![Table hozzáadása](../images/rs-add-table.png)
 
-1. Váltsunk vissza a Report Data panelre, és nyissuk le az AdventureWorksDataset-et.
+1. Váltsunk vissza a _Report Data_ panelre, és nyissuk le az AdventureWorksDataset-et.
 
    ![Dataset mezők](../images/rs-dataset-fields.png)
 
@@ -95,7 +97,7 @@ Most, hogy megvan a kapcsolatunk az adatbázis felé, és a lekérdezést is meg
 
    > Megjegyzés: a második sorban látható \[Date\] jelöli a kiértékelendő kifejezést, míg az eső sorban látható "Date" felirat lesz az oszlop fejléce a riportban – ez utóbbit át is írhatjuk.
 
-1. Az előbbi módszerrel húzzuk be a második oszlopba az _Order_, a harmadikba a _Product_ mezőt. A _Qty_ mezőt is húzzuk be, de a jobb szélső oszlop szélére, úgy, hogy felengedés előtt egy + jelet lássunk az egérkurzor alatt, és egy függőleges kék vonalat a táblázat szélén. Így egy új, negyedik oszlopba fog kerülni a mező. Ugyanígy eljárva húzzuk be a _LineTotal_ mezőt is ötödik oszlopnak.
+1. Az előbbi módszerrel húzzuk be a második oszlopba az _Order_, a harmadikba a _Product_ mezőt. A _Qty_ mezőt is húzzuk be a jobb szélső oszlop szélére úgy, hogy felengedés előtt egy + jelet lássunk az egérkurzor alatt, és egy függőleges kék vonalat a táblázat szélén. Így egy új, negyedik oszlopba fog kerülni a mező. Ugyanígy eljárva húzzuk be a _LineTotal_ mezőt is ötödik oszlopnak.
 
    ![További oszlopok](../images/rs-table-add-order-product-qty-col.png)
 
@@ -105,11 +107,11 @@ Most, hogy megvan a kapcsolatunk az adatbázis felé, és a lekérdezést is meg
 
    Az elkészült riportot például kinyomtathatjuk, vagy exportálhatjuk több féle formátumba (Word, Excel, PowerPoint, PDF…). Jelen állapotában azért van rajta még mit csiszolni, pl. a végösszeg mezőnél nincs jelölve a valuta, és az értéket is bőven elég lenne 2 tizedesjelre kerekítve megmutatni. A dátum formázása és az oszlopok szélessége sem az igazi.
 
-1. Menjünk vissza a _Design_ fülre, és kattintsunk jobb egérgombbal a \[Date\] kifejezésen, majd válasszuk a _Text Box Properties_ opciót. Itt a _Number_ fülön válasszuk a _Date_ kategóriát, és válasszunk ki egy szimpatikus dátumformátumot.
+1. Menjünk vissza a _Design_ fülre, és a táblázatunkban kattintsunk jobb egérgombbal a \[Date\] kifejezésen, majd válasszuk a _Text Box Properties_ opciót. Itt a _Number_ fülön válasszuk a _Date_ kategóriát, és válasszunk ki egy szimpatikus dátumformátumot.
 
    ![Date oszlop formázása](../images/rs-table-date-col-properties.png)
 
-1. A \[LineTotal\] kifejezésen jobb klikkelve, az előbbivel analóg módon, a _Text Box Properties_-t kiválasztva történik, csak a _Currency_ kategóriát kell választani a _Number_ fülön.
+1. A \[LineTotal\] kifejezésen jobb klikkelve az előbbivel analóg módon a _Text Box Properties_-t kiválasztva formázzuk _Number_ alatt _Currency_-ként az összeget.
 
    ![Line total formázása](../images/rs-table-linetotal-col-properties.png)
 
@@ -159,7 +161,7 @@ A riport jelenleg ömlesztve tartalmazza az adatokat. Ezek eladási adatok, adot
 
    > Megjegyzés: Az új _Date_ oszlop formátuma ezzel visszaállt az eredeti formátumra, de a _Text Style Properties_ segítségével újra be tudjuk állítani.)
 
-1. Váltsunk vissza _Design_ nézetre. Kattintsunk jobb egérgombbal a \[LineTotal\] cellára, és válasszuk az _Add Total_ opciót. Ezzel az egyes _Order_-ekhez (amik mentén csoportosítottunk) meg fog jelenni a rendelések összege. Ehhez alapból nem rendelődik címke, de beírhatunk egyet: csak bal gombbal kattintsunk a megfelelő üres cellába, és írjuk be: "Order Total"
+1. Váltsunk vissza _Design_ nézetre. Kattintsunk jobb egérgombbal a \[LineTotal\] cellára, és válasszuk az _Add Total_ opciót. Ezzel az egyes _Order_-ekhez (amik mentén csoportosítottunk) meg fog jelenni a rendelések összege. Ehhez alapból nem rendelődik címke, de beírhatunk egyet: bal gombbal kattintsunk a megfelelő üres cellába, és írjuk be: "Order Total"
 
    ![Rendelés összege](../images/rs-add-total-order.png)
 
@@ -183,7 +185,7 @@ A riport jelenleg ömlesztve tartalmazza az adatokat. Ezek eladási adatok, adot
    ![Napi összeg](../images/rs-add-total-daily.png)
 
 1. Zárásként végösszeget is készíthetünk. Mivel ez nagyon hasonló az előző
-   feladathoz, ezt is megpróbálhatjuk a hallgatókra bízni. Megoldás:
+   feladathoz, ezt akár önállóan is csinálhatjuk már. Megoldás:
 
    - Jobb klikk a \[Date\] cellán, _Add Total_ > _After_
    - A \[Date\] alatti "Total" cella feliratát írjuk át pl. "Grand Total"-ra

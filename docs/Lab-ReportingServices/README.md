@@ -65,7 +65,7 @@ A feladatok során az _Adventure Works_ minta adatbázissal dolgozunk. Az adatb�
 
    ![SQLCMD mód](../images/sql-management-sqlcmd-mode.png)
 
-1. Ellenőrizd, hogy létrejött-e az adatbázis és a táblák. Ha a baloldali fában a _Databases_-en _Refresh_-t nyomsz: meg kell jelenjen az _AdventureWorks2014_ adatbázis a listában, és alatta számtalan tábla.
+1. Ellenőrizd, hogy létrejött-e az adatbázis és a táblák. Ha a baloldali fában a _Databases_-en _Refresh_-t nyomsz, meg kell jelenjen az _AdventureWorks2014_ adatbázis a listában, és alatta számtalan tábla.
 
    ![AdventureWorks adatbázis táblák](../images/rs-adventureworks-tablak.png).
 

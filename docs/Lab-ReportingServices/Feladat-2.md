@@ -1,6 +1,6 @@
 # Feladat 2: Vizualizáció (önálló feladat, 5p)
 
-A táblázatos megjelenítés részletesen mutatja az eladási adatokat. Egy diagram azonban gyorsabban áttekinthetővé magasz szinten nézve az adatokat. Készítsünk egy diagramot, az egyes termékkategóriák eladásait mutatja.
+A táblázatos megjelenítés részletesen mutatja az eladási adatokat. Egy diagram azonban gyorsabban áttekinthető. Készítsünk egy diagramot, ami az egyes termékkategóriák eladásait mutatja.
 
 ## Diagram beszúrása
 
