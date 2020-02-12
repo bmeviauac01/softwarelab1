@@ -1,6 +1,6 @@
 # Microsoft SQL Server Reporting Services használata
 
-A labor során egy új eszközzel ismerkedünk meg, így a labor részben vezetett. Az első feladat mindenképpen laborvezetővel együtt megoldott, a továbbiak önálló feladatok. A közös feladatmegoldás és az önálló feladatmegoldás eredményét is be kell adni.
+A labor során egy új eszközzel ismerkedünk meg, így a labor részben vezetett. Az első feladat laborvezetővel együtt megoldott, a továbbiak önálló feladatok. A közös feladatmegoldás és az önálló feladatmegoldás eredményét is be kell adni.
 
 ## Célkitűzés
 

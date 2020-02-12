@@ -1,4 +1,4 @@
-# Feladat 3: Értékesítői riport (5p)
+# Feladat 3: Értékesítői riport (önálló feladat, 5p)
 
 Ebben a feladatban az értékesítőkről fogunk riportot készíteni.
 
