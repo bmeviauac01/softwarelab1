@@ -2,7 +2,7 @@
 
 ## Nézet létrehozása
 
-Hozz létre egy nézetet `KategoriaSzulovel` néven a `Kategória` tábla kényelmesebb használatához. A nézetben két oszlop legyen: a kategória megnevezése, és a szülőkategória megnevezése, amennyiben létezik, vagy null.
+Hozz létre egy nézetet `KategoriaSzulovel` néven a `Kategoria` tábla kényelmesebb használatához. A nézetben két oszlop legyen: a kategória megnevezése, és a szülőkategória megnevezése, amennyiben létezik, vagy null.
 
 1. Nyiss egy új _Query_ ablakot. Ügyelj rá, hogy a jó adatbázis legyen kiválasztva. Hozd létre a nézetet az alábbi utasítás lefuttatásával.
 
