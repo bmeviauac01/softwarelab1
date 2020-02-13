@@ -8,7 +8,7 @@ Nyisd meg a letöltött repository-ban a Visual Studio solution-t (`.sln` fájl)
 
 > **NE** frissítsd a projektet, se a .NET Core verziót, se a Nuget csomagokat! Ha ilyen kérdéssel találkozol a solution megnyitása során, akkor mindig mondj nemet!
 
-A solutionben struktúrája a többrétegű alkalmazás felépítésének megfelelő:
+A solution struktúrája a többrétegű alkalmazás felépítésének megfelelő:
 
 - A `Controllers` mappa tartalmazza a Web Api controllereket, mely a REST kéréseket kiszolgálja.
 - A `DAL` mappa tartalmazza az adatelérést, amely egyrészt egy repository réteget, másrészt egy Entity Framework Code First modellt tartalmaz.
@@ -141,7 +141,7 @@ Az összes státusz listázása mellett még vár ránk pár alapvető művelet:
 - ID alapján keresés (`GET /api/statuses/{id}`),
 - és új létrehozása (`POST /api/statuses`).
 
-1. Implementáljuk az első kettőt a repository-ban először. Ügyeljünk rá, hogy a név alapú keresésnél kisbetű-nagybetű függetlenül keressünk!
+1. Implementáljuk az első kettőt először a repository-ban. Ügyeljünk rá, hogy a név alapú keresésnél kisbetű-nagybetű függetlenül keressünk!
 
    ```csharp
    public bool ExistsWithName(string statusName)

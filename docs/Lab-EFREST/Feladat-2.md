@@ -18,20 +18,20 @@ Első lépésként az Entity Framework modellt kell elkészítened:
 
 ## Műveletek repository szinten
 
-Készíts a `DAL` mappában egy új osztályt `TasksRepository` néven, amely implementálja az `ITasksRepository` interfészt. Valósítsd meg az alábbi műveleteit:
+Készíts a `DAL` mappában egy új osztályt `TasksRepository` néven, amely implementálja a már létező `ITasksRepository` interfészt. Valósítsd meg az alábbi műveleteit:
 
 - `IReadOnlyCollection<Task> List()`: listázza az összes task-ot
 - `Task FindById(int taskId)`: adja vissza azt a task-ot, melynek illeszkedik az id-ja a paraméterre; vagy térjen vissza null értékkel, ha nincs ilyen
 - `Task Insert(CreateTask value)`: vegyen fel egy új task-ot adatbázisba a megadott címmel, és rendelje hozzá a megadott státuszhoz; ha nem létezik státusz a megadott névvel, akkor vegyen fel egy új státuszt is; visszatérési értéke az új task entitás az új azonosítóval
 - `Task Delete(int taskId)`: törölje a megadott task példányt; visszatérési értéke az törölt task entitás (a törlés előtti állapotban), vagy null, ha nem létezik
 
-A többi műveletet egyelőre nem szükséges, azonban azok is kell rendelkezzenek implementációval, hogy a kód leforduljon. Megfelelő, ha ezeknek a törzse egyszerűen hibát dob: `throw new NotImplementedException();`
+A többi műveletet egyelőre ne valósítsd meg, azonban azok is kell rendelkezzenek implementációval, hogy a kód leforduljon. Elegendő egyelőre, ha ezeknek a törzse egyszerűen hibát dob: `throw new NotImplementedException();`
 
-Az adatbázisban használt C# osztály és a modell entitás osztály közötti leképzéshez célszerű lesz egy `ToModel` segédfüggvényt definiálni a korábban látott módon. Ahhoz, hogy a task-hoz kapcsolt státusz entitást is lekérdezze az adatbázis (amire a névhez szükség lesz), fontos lesz a megfelelő `Include` használata.
+> Tipp: Az adatbázisban használt C# osztály és a modell entitás osztály közötti leképzéshez célszerű lesz egy `ToModel` segédfüggvényt definiálni a korábban látott módon. Ahhoz, hogy a task-hoz kapcsolt státusz entitást is lekérdezze az adatbázis (amire a névhez szükség lesz), fontos lesz a megfelelő `Include` használata.
 
 ## Műveletek REST Api-n
 
-Készíts egy új controller osztály a `Controllers` mappában `TasksController` néven. A controller a `/api/tasks` URL-en kezeli a REST kéréseket.
+Készíts egy új controller osztály a `Controllers` mappában `TasksController` néven. A controller a `/api/tasks` URL-en kezelje a REST kéréseket.
 
 A controller konstruktor paraméterben egy `ITasksRepository` példányt vegyen át. Ahhoz, hogy a dependency injection keretrendszer ezt fel tudja oldani futási időben, szükséges lesz még konfigurációra is. A `Startup` osztályban a `ConfigureServices`-ben kell a másik repository-hoz hasonlóan beregisztrálni ezt az interfészt. (A controller-t _nem_ kell regisztrálni.)
 
