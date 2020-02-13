@@ -4,7 +4,7 @@ Ebben a feladatban a Termék entitáshoz tartozó CRUD (létrehozás, listázás
 
 ## Visual Studio solution megnyitása
 
-Nyisd meg a letöltött repository-ban a Visual Studio solution-t (`.sln` fájl). Ha a megnyitás során a Visual Studio azt jelezni, hogy a projekt típus nem támogatott, akkor telepítsd a Visual Studio hiányzó komponenseit (lásd az előző oldalon a linket).
+Nyisd meg a letöltött repository-ban a Visual Studio solution-t (`.sln` fájl). Ha a megnyitás során a Visual Studio azt jelezni, hogy a projekt típus nem támogatott, akkor telepítsd a Visual Studio hiányzó komponenseit (lásd [itt](../VisualStudio-install.md)).
 
 > **NE** frissítsd a projektet, se a .NET Core verziót, se a Nuget csomagokat! Ha ilyen kérdéssel találkozol a solution megnyitása során, akkor mindig mondj nemet!
 
@@ -55,6 +55,7 @@ Munkád során a `MongoLabor.DAL.AdatvezRepository` osztályba dolgozz! Ezen fá
    var dbTermek = termekCollection
        .Find(t => t.ID == ObjectId.Parse(id))
        .SingleOrDefault();
+   // ... model konverzio
    ```
 
    Figyeljük itt meg, hogy hogyan módosult a filter kifejezés! Fontos továbbá, hogy itt `ToList` helyett a `SingleOrDefault` kiértékelő kifejezést használjuk. Ez a megszokott módon vagy egy konkrét terméket ad vissza, vagy `null` értéket. Így tudunk tehát `ID` alapján megtalálni egy entitást az adatbázisban. Jegyezzük ezt meg, mert ez még sok következő feladatban hasznos lesz!
@@ -78,6 +79,7 @@ Munkád során a `MongoLabor.DAL.AdatvezRepository` osztályba dolgozz! Ezen fá
        AFA = new Entities.AFA { Nev = "Általános", Kulcs = 20 },
        KategoriaID = ObjectId.Parse("5d7e42adcffa8e1b64f7dbbb"),
    };
+   // ... beszuras
    ```
 
    Ha megvan az adatbázisentitás objektum, akkor az `InsertOne` utasítás segítségével tudjuk elmenteni az adatbázisba.

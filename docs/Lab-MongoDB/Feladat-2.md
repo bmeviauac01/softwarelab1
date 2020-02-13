@@ -1,6 +1,6 @@
 # Feladat 2: Kategóriák listázása (4p)
 
-Ebben a feladatban a kategóriákat fogjuk listázni — az adott kategóriába tartozó termékek számával együtt. Ehhez már aggregációs utasítást is használnuk kell majd.
+Ebben a feladatban a kategóriákat fogjuk listázni — az adott kategóriába tartozó termékek számával együtt. Ehhez már aggregációs utasítást is használnuk kell majd. (Továbbra is a `MongoLabor.DAL.AdatvezRepository` osztályba dolgozunk.)
 
 A megvalósítandó függvény a `IList<Kategoria> ListKategoriak()`. Ennek minden kategóriát vissza kell adnia. A `Models.Kategoria` osztály 3 adattagot tartalmaz.
 
@@ -10,11 +10,11 @@ A megvalósítandó függvény a `IList<Kategoria> ListKategoriak()`. Ennek mind
 
 A megvalósítás lépései a következők.
 
-1. Első lépésként a `termekCollection` mintájára vedd fel és inicializáld a `kategoriaCollection`-t is. Az adatbázisban a kollekció neve `kategoriak` — ezt _Robo3T_ segítségével tudod megnézni.
+1. Első lépésként a `termekCollection` mintájára vedd fel és inicializáld a `kategoriaCollection`-t is. Az adatbázisban a kollekció neve `kategoriak` — ezt _Robo3T_ segítségével tudod ellenőrizni.
 
 1. A `ListKategoriak()` metódusban először kérdezzük le a kategóriák teljes listáját. Ez pontosan ugyanúgy történik, mint az előző feladatban a termékek esetében. A lekérdezés értékét tegyük a `dbKategoriak` változóba.
 
-1. Ezután kérdezzük le, hogy az egyes `KategoriaID`-khez hány darab termék tartozik. Ehhez már az aggregációs pipeline-t kell használnunk, azon belül pedig a `$group` lépést.
+1. Ezután kérdezzük le, hogy az egyes `KategoriaID`-khez hány darab termék tartozik. Ehhez már az aggregációs pipeline-t kell használnunk, azon belül pedig a [`$group`](https://docs.mongodb.com/manual/reference/operator/aggregation/group/) lépést.
 
    ```csharp
    var termekDarabok = termekCollection
@@ -25,7 +25,7 @@ A megvalósítás lépései a következők.
 
    Ez az utasítás egy olyan listával tér vissza, melyben minden elem egy `KategoriaID` értéket tartalmaz a hozzá tartozó termékek számával együtt.
 
-1. Ezen a ponton minden számunkra szükséges információ rendelkezésünkre áll — ismerjük az összes kategóriát (a szülőkategória megkereséséhez), és ismerjük a kategóriákhoz tartozó termékek számát. Egyetlen dolgunk van, hogy ezeket az információkat (C# kódból) "összeésüljük".
+1. Ezen a ponton minden számunkra szükséges információ rendelkezésünkre áll — ismerjük az összes kategóriát (a szülőkategória megkereséséhez), és ismerjük a kategóriákhoz tartozó termékek számát. Egyetlen dolgunk van, hogy ezeket az információkat (C# kódból) "összefésüljük".
 
    ```csharp
    return dbKategoriak
