@@ -1,6 +1,6 @@
 # Feladat 5: Opcionális feladat (3 iMsc pont)
 
-Ebben a feladatban az adatbázisban található megrendeléseket fogjuk dátum szerint csoportosítani — kíváncsiak vagyunk ugyanis az elmúlt időszakokban a megrendelések mennyiségének és összértékének alakulására. Ennek megvalósításához a `$bucket` aggregációs lépést fogjuk használni.
+Ebben a feladatban az adatbázisban található megrendeléseket fogjuk dátum szerint csoportosítani — kíváncsiak vagyunk ugyanis az elmúlt időszakokban a megrendelések mennyiségének és összértékének alakulására. Ennek megvalósításához a (`$bucket`)[https://docs.mongodb.com/manual/reference/operator/aggregation/bucket/] aggregációs lépést fogjuk használni.
 
 ## Követelmények
 

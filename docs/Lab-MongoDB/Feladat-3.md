@@ -5,13 +5,13 @@ Ebben a feladatban a Megrendelés entitáshoz tartozó CRUD (létrehozás, list�
 A `Models.Megrendeles` entitás adattagjai:
 
 - `ID`: az adatbázisentitás `ID`-ja, `ToString`-gel sorosítva
-- `Datum`, `Hatarido`, `Statusz`: egy az egyben másolandók az adatbázisentitásból
-- `FizetesMod`: az adatbázisentitásban található `FizetesMod` komplex objektum `Mod` mezője
+- `Datum`, `Hatarido`, `Statusz`: egy az egyben másolandók az adatbázis entitásból
+- `FizetesMod`: az adatbázis entitásban található `FizetesMod` komplex objektum `Mod` mezője
 - `OsszErtek`: a megrendelésben található megrendeléstételek `Mennyiseg` és `NettoAr` szorzatainak összege
 
 Ennek a feladatnak a megoldásához a megrendeléssel kapcsolatos metódusok implementációja szükséges (`List`, `Find`, `Insert`, `Delete` és `Update`).
 
-Ne felejtsd el felvenni és inicializálni a `megrendelesCollection`-t!
+Az alábbi feladatok előtt ne felejtsd el felvenni és inicializálni a `megrendelesCollection`-t a repository osztályba a korábban látottak mintájára!
 
 ## Listázás/olvasás
 
@@ -44,17 +44,17 @@ Ne felejtsd el felvenni és inicializálni a `megrendelesCollection`-t!
 
 ## Törlés
 
-1. A törlés (`DeleteMegrendeles`) értelemszerűen törli a megadott `ID`-hoz tartozó megrendelést.
+A `DeleteMegrendeles` törölje a megadott `ID`-hoz tartozó megrendelést.
 
 ## Módosítás
 
-1. A módosító utasításban (`UpdateMegrendeles`) arra figyelj oda, hogy csak azokat a mezőket írd felül, melyek a `Models.Megrendeles` osztályban megtalálhatóak: `Datum`, `Hatarido`, `Statusz` és `FizetesMod`. Az `OsszErtek`-et itt nem kell figyelembe venni, ennek értéke nem fog változni.
+A módosító utasításban (`UpdateMegrendeles`) arra figyelj oda, hogy csak azokat a mezőket írd felül, melyek a `Models.Megrendeles` osztályban megtalálhatóak: `Datum`, `Hatarido`, `Statusz` és `FizetesMod`. Az `OsszErtek`-et itt nem kell figyelembe venni, ennek értéke nem fog változni.
 
-   > Tipp: több módosító kifejezést a `Builders<Entities.Megrendeles>.Update.Combine` segítségével lehet összevonni.
+> Tipp: több módosító kifejezést a `Builders<Entities.Megrendeles>.Update.Combine` segítségével lehet összevonni.
 
-   Itt is figyelj oda, hogy az update során az `IsUpsert` beállítás értéke legyen `false`!
+Itt is figyelj oda, hogy az update során az `IsUpsert` beállítás értéke legyen `false`!
 
-   A metódus visszatérési értéke akkor és csak akkor legyen `true`, ha létezik megrendelés a megadott `ID`-val — azaz volt illeszkedés a filterre.
+A metódus visszatérési értéke akkor és csak akkor legyen `true`, ha létezik megrendelés a megadott `ID`-val — azaz volt illeszkedés a filterre.
 
 ## Kipróbálás
 
