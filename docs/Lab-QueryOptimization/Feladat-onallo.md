@@ -12,7 +12,7 @@ Ismételd meg a termék kereséseket, de ezúttal ne a teljes sort, csak a netto
 
 ## Feladat 7 (1p)
 
-Elemezd a következő két, Termek táblából történő lekérdezés végrehajtási tervét:
+Elemezd a következő két, _Termek_ táblából történő lekérdezés végrehajtási tervét:
 
 - k) olyan rekordok lekérdezése, ahol az elsődleges kulcs értéke két érték között van (használd a `BETWEEN` operátort)
 - l) olyan rekordok lekérdezése, ahol az elsődleges kulcs értéke két érték között van (itt is használd a `BETWEEN`-t) **vagy** megegyezik egy intervallumon kívüli értékkel
@@ -30,30 +30,30 @@ Válassz egy tetszőleges egész számot a lekérdezésekhez, és így kérd le 
 
 ## Feladat 9 (1p)
 
-Elemezd a következő termék táblából történő lekérdezések végrehajtási tervét:
+Elemezd a következő, _Termek_ táblából történő lekérdezések végrehajtási tervét:
 
-- o) olyan rekordok lekérdezése, ahol a nettó ár kisebb, mint egy kis konstans érték (legyen az érték jól szűrő, azaz kevés rekordot adjon vissza), elsődleges kulcs szerint csökkenő sorrendbe rendezve
-- p) Mint az előző, de csak a nettó ár, azonosító párokat kérjük vissza
-- q) olyan rekordok lekérdezése, ahol a nettó ár nagyobb, mint egy kis konstans érték (nem szűr jól, sok eredménye legyen), elsődleges kulcs szerint csökkenő sorrendbe rendezve
-- r) Mint az előző, de csak a nettó ár, azonosító párokat kérjük vissza
+- o) olyan teljes rekordok lekérdezése, ahol a nettó ár kisebb, mint egy kis konstans érték (legyen az érték jól szűrő, azaz kevés rekordot adjon vissza), elsődleges kulcs szerint csökkenő sorrendbe rendezve
+- p) mint az előző, de csak az id és nettó ár adatokat kérjük vissza
+- q) olyan teljes rekordok lekérdezése, ahol a nettó ár nagyobb, mint egy kis konstans érték (nem szűr jól, sok eredménye legyen), elsődleges kulcs szerint csökkenő sorrendbe rendezve
+- r) mint az előző, de csak az id és nettó ár adatokt kérjük vissza
 
 Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és adj magyarázatot rájuk!
 
 ## Feladat 10 (1p)
 
-Rakj indexet a Nev oszlopra, majd elemezd a következő Termek táblából történő lekérdezések végrehajtási tervét:
+Rakj indexet a _Nev_ oszlopra, majd elemezd a következő, _Termek_ táblából történő lekérdezések végrehajtási tervét:
 
 - s) olyan név-azonosító párok lekérdezése, ahol a termék neve Z-vel kezdődik, [`SUBSTRING`](https://docs.microsoft.com/en-us/sql/t-sql/functions/substring-transact-sql)-et használva
-- t) Mint az előző, de [`LIKE`](https://docs.microsoft.com/en-us/sql/t-sql/language-elements/like-transact-sql)-ot használva
+- t) mint az előző, de [`LIKE`](https://docs.microsoft.com/en-us/sql/t-sql/language-elements/like-transact-sql)-ot használva
 - u) olyan név-azonosító párok lekérdezése, ahol a termék neve Z-t tartalmaz (LIKE)
 - v) egy konkrét termék azonosítójának kikeresése pontos név egyezés (=) alapján
-- w) Mint az előző, de kisbetű-nagybetű-érzéketlenül ([`UPPER`](https://docs.microsoft.com/en-us/sql/t-sql/functions/upper-transact-sql?view=sql-server-ver15) használatával)
+- w) mint az előző, de kisbetű-nagybetű-érzéketlenül ([`UPPER`](https://docs.microsoft.com/en-us/sql/t-sql/functions/upper-transact-sql?view=sql-server-ver15) használatával)
 
 Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és adj magyarázatot rájuk!
 
 ## Feladat 11 (1p)
 
-Elemezd a következő Termek táblából történő lekérdezések végrehajtási tervét:
+Elemezd a következő, _Termek_ táblából történő lekérdezések végrehajtási tervét:
 
 - x) a maximális azonosító lekérdezése
 - y) a minimális nettó ár lekérdezése
@@ -62,7 +62,7 @@ Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terve
 
 ## Feladat 12 (1p)
 
-Kérd le termék kategóriánként a kategóriában levé a termékek számát.
+Kérd le termék kategóriánként a kategóriában levő termékek számát.
 
 Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és adj magyarázatot rájuk!
 
@@ -70,7 +70,7 @@ Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terve
 
 Hogyan javítható az előző feladat lekérdezéseinek teljesítménye? Add meg a megoldást, és utána elemezd újra az előző lekérdezés tervét.
 
-> Tipp: fel kell venni egy új indexet. De vajon hova, mire?
+> Tipp: fel kell venni egy új indexet. De vajon mire?
 
 ## Feladat 14 (1p)
 

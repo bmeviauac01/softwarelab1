@@ -74,9 +74,7 @@ A feladatok megoldása során a dokumentációt markdown formátumban készítsd
 
 1. Hozz létre egy új adatbázist (ha még nem létezik). Az adatbázis neve legyen a Neptun kódod: _Object Explorer_-ben Databases-en jobb kattintás, és _Create Database_.
 
-   > Fontos, hogy az adatbázis neve egyezzen meg a Neptun kódoddal. A labor megoldásában kérünk képernyőképeket, amelyeken így kell szerepelnie az adatbázisnak!
-
-1. Hozd létre a minta adatbázist a generáló script lefuttatásával. Nyiss egy új _Query_ ablakot, másold be a script tartalmát, és futtasd le. Ügyelj az eszköztáron levő legördülő menüben a megfelelő adatbázis kiválasztására.
+1. Hozd létre a minta adatbázist a [generáló script](https://raw.githubusercontent.com/bmeviauac01/gyakorlatok/master/mssql.sql) lefuttatásával. Nyiss egy új _Query_ ablakot, másold be a script tartalmát, és futtasd le. Ügyelj az eszköztáron levő legördülő menüben a megfelelő adatbázis kiválasztására.
 
    ![Adatbázis kiválasztása](../images/sql-management-database-dropdown.png)
 
@@ -96,7 +94,7 @@ A tervet a lekérdezés lefuttatása után az ablak alján, az eredmények néze
 
 ![Lekérdezési terv bekapcsolása](../images/queryopt-plan-result.png)
 
-A lekérdezési terv a diagramot adatfolyamként kell olvasnunk, az adat folyásának iránya a lekérdezés végrehajtása. Az egyes elemek a lekérdezési terv műveletei, a százalékos érték pedig az egész lekérdezéshez viszonyított relatív költség.
+A lekérdezési terv diagramot adatfolyamként kell olvasnunk, az adat folyásának iránya a lekérdezés végrehajtása. Az egyes elemek a lekérdezési terv műveletei, a százalékos érték pedig az egész lekérdezéshez viszonyított relatív költség.
 
 ## Feladatok
 
