@@ -3,10 +3,11 @@
 Ebben a feladatban a Megrendelés entitáshoz tartozó CRUD (létrehozás, listázás/olvasás, módosítás és törlés) utasításokat fogjuk megvalósítani. Ez a feladat nagyon hasonlít az első feladathoz, amennyiben elakadnál nyugodtan meríts ihletet az ottani megoldásokból!
 
 A `Models.Megrendeles` entitás adattagjai:
-* `ID`: az adatbázisentitás `ID`-ja, `ToString`-gel sorosítva
-* `Datum`, `Hatarido`, `Statusz`: egy az egyben másolandók az adatbázisentitásból
-* `FizetesMod`: az adatbázisentitásban található `FizetesMod` komplex objektum `Mod` mezője
-* `OsszErtek`: a megrendelésben található megrendeléstételek `Mennyiseg` és `NettoAr` szorzatainak összege
+
+- `ID`: az adatbázisentitás `ID`-ja, `ToString`-gel sorosítva
+- `Datum`, `Hatarido`, `Statusz`: egy az egyben másolandók az adatbázisentitásból
+- `FizetesMod`: az adatbázisentitásban található `FizetesMod` komplex objektum `Mod` mezője
+- `OsszErtek`: a megrendelésben található megrendeléstételek `Mennyiseg` és `NettoAr` szorzatainak összege
 
 Ennek a feladatnak a megoldásához a megrendeléssel kapcsolatos metódusok implementációja szükséges (`List`, `Find`, `Insert`, `Delete` és `Update`).
 
@@ -32,14 +33,14 @@ Ne felejtsd el felvenni és inicializálni a `megrendelesCollection`-t!
 1. Az `InsertMegrendeles` metódusban a létrehozást kell megvalósítanod. Ehhez háromféle információt kapsz: `Megrendeles megrendeles`, `Termek termek` és `int mennyiseg`.
 
 1. Az adatbázisentitás létrehozásához a következő információkra van szükség:
-   * `VevoID`, `TelephelyID`: az adatbázisból keresd ki a `Grosz János`-hoz tartozó dokumentum `_id` és `kozpontiTelephelyID` értékét. Ezeket az értékeket drótozd bele a kódodba.
-   * `Datum`, `Hatarido`, `Statusz`: ezeket az értékeket a `megrendeles` paraméterből veheted
-   * `FizetesMod`: hozz létre egy `FizetesMod` objektumot a `megrendeles` paraméterben található `Mod` értékkel. A `Hatarido` maradjon `null`!
-   * `MegrendelesTetelek`: egyetlen megrendeléstételt hozz létre! Ennek adattagjai:
-     * `TermekID` és `NettoAr`: a `termek` paraméterből veheted
-     * `Mennyiseg`: a `mennyiseg` paraméterből jön
-     * `Statusz`: a `megrendeles` paraméter `Statusz` mezőjével egyezik meg
-   * minden más adattag (a számlázással kapcsolatos információk) maradjon `null` értéken!
+   - `VevoID`, `TelephelyID`: az adatbázisból keresd ki a `Grosz János`-hoz tartozó dokumentum `_id` és `kozpontiTelephelyID` értékét. Ezeket az értékeket drótozd bele a kódodba.
+   - `Datum`, `Hatarido`, `Statusz`: ezeket az értékeket a `megrendeles` paraméterből veheted
+   - `FizetesMod`: hozz létre egy `FizetesMod` objektumot a `megrendeles` paraméterben található `Mod` értékkel. A `Hatarido` maradjon `null`!
+   - `MegrendelesTetelek`: egyetlen megrendeléstételt hozz létre! Ennek adattagjai:
+     - `TermekID` és `NettoAr`: a `termek` paraméterből veheted
+     - `Mennyiseg`: a `mennyiseg` paraméterből jön
+     - `Statusz`: a `megrendeles` paraméter `Statusz` mezőjével egyezik meg
+   - minden más adattag (a számlázással kapcsolatos információk) maradjon `null` értéken!
 
 ## Törlés
 
