@@ -6,45 +6,48 @@ Ebben a feladatban az adatbázisban található megrendeléseket fogjuk dátum s
 
 A megvalósítandó metódus a `MegrendelesCsoportok MegrendelesCsoportosit(int csoportDarab)`. Ez az adatbázisban található megrendeléseket `csoportDarab` egyenlő időintervallumra csoportosítja. A visszatérési érték két adattagot tartalmaz:
 
-* `IList<DateTime> Hatarok`: Az időpontok amik az időintervallumok határait jelentik.
-  * Az intervallumok alsó határa inkluzív, a felső határ exkluzív
-  * `n` darab intervallum esetén a `Hatarok` lista `n + 1` elemű
-  * _Pl.: Ha a `Hatarok` lista elemei `a, b, c, d`, akkor az időintervallumok a következők: `[a, b[`, `[b, c[` és `[c, d[`._
-* `IList<MegrendelesCsoport> Csoportok`: A megrendelések csoportjai. A `MegrendelesCsoport` entitás adattagjai:
-  * `Datum`: Az adott intervallum **kezdő** dátuma. Tehát `[a, b[` intervallum esetén `a`.
-  * `Darab`: Az adott intervallumba eső megrendelések darabszáma.
-  * `OsszErtek`: Az adott intervallumba tartozó összes megrendelés összértékének összege (lásd előző feladat).
+- `IList<DateTime> Hatarok`: Az időpontok amik az időintervallumok határait jelentik.
+  - Az intervallumok alsó határa inkluzív, a felső határ exkluzív
+  - `n` darab intervallum esetén a `Hatarok` lista `n + 1` elemű
+  - _Pl.: Ha a `Hatarok` lista elemei `a, b, c, d`, akkor az időintervallumok a következők: `[a, b[`, `[b, c[` és `[c, d[`._
+- `IList<MegrendelesCsoport> Csoportok`: A megrendelések csoportjai. A `MegrendelesCsoport` entitás adattagjai:
+  - `Datum`: Az adott intervallum **kezdő** dátuma. Tehát `[a, b[` intervallum esetén `a`.
+  - `Darab`: Az adott intervallumba eső megrendelések darabszáma.
+  - `OsszErtek`: Az adott intervallumba tartozó összes megrendelés összértékének összege (lásd előző feladat).
 
 További követelmények:
 
 1. Pontosan `csoportDarab` intervallumra bontsd a megrendeléseket.
-   * A `Hatarok` lista elemszáma így **pontosan** `csoportDarab + 1`.
-   * A `Csoportok` elemszáma **legfeljebb** `csoportDarab` — az üres (megrendelést nem tartalmazó) intervallumoknak nem kell listaelem
+   - A `Hatarok` lista elemszáma így **pontosan** `csoportDarab + 1`.
+   - A `Csoportok` elemszáma **legfeljebb** `csoportDarab` — az üres (megrendelést nem tartalmazó) intervallumoknak nem kell listaelem
 1. A legelső határ legyen az adatbázisban található legrégebbi megrendelés dátuma
 1. A legutolsó határ legyen az adatbázisban található legújabb megrendelés dátuma + 1 óra
-   * Ez azért kell, mert az intervallum felső határa exkluzív. Így garantáljuk, hogy az adatbázisban található minden megrendelés belekerül egy intervallumba.
-   * _Tipp: a következő módon tudsz egy órát hozzáadni egy dátumhoz: `datum.AddHours(1)`._
+   - Ez azért kell, mert az intervallum felső határa exkluzív. Így garantáljuk, hogy az adatbázisban található minden megrendelés belekerül egy intervallumba.
+   - _Tipp: a következő módon tudsz egy órát hozzáadni egy dátumhoz: `datum.AddHours(1)`._
 1. Az intervallumok legyenek egyenlő méretűek
-   * _Tipp: a C# nyelv beépítve kezeli matematikai műveletek végzését dátum és `TimeSpan` objektumokon — lásd pl. előző pont._
+   - _Tipp: a C# nyelv beépítve kezeli matematikai műveletek végzését dátum és `TimeSpan` objektumokon — lásd pl. előző pont._
 
 A megoldás során feltételezheted a következőket:
 
-* Az adatbázisban található minden megrendelésnek van `Datum` értéke, annak ellenére, hogy az adattag típusa _nullable_ `DateTime?`.
-  * Használd tehát nyugodtan a `datum.Value` értéket a `datum.HasValue` érték ellenőrzése nélkül.
-* A `csoportDarab` egy pozitív egész szám (tehát értéke **legalább 1**).
+- Az adatbázisban található minden megrendelésnek van `Datum` értéke, annak ellenére, hogy az adattag típusa _nullable_ `DateTime?`.
+  - Használd tehát nyugodtan a `datum.Value` értéket a `datum.HasValue` érték ellenőrzése nélkül.
+- A `csoportDarab` egy pozitív egész szám (tehát értéke **legalább 1**).
 
 ## Megoldás vázlata
 
 1. Kérdezd le az adatbázisból a legrégebbi és a legújabb megrendelés dátumát.
-   * _Tipp: Ezt megoldhatod két lekérdezéssel vagy akár egyetlen aggregáció segítségével is._
+
+   - _Tipp: Ezt megoldhatod két lekérdezéssel vagy akár egyetlen aggregáció segítségével is._
 
 1. Számold ki az intervallumok határait a követelményeknek megfelelően.
-   * Ezzel már meg is fogod kapni a visszatérési értékben szükséges `Hatarok` listát.
+
+   - Ezzel már meg is fogod kapni a visszatérési értékben szükséges `Hatarok` listát.
 
 1. A megrendelések kollekción hajts végre egy `$bucket` aggregációt. Ennek dokumentációját [itt](https://docs.mongodb.com/manual/reference/operator/aggregation/bucket/) találhatod meg.
-   * a `groupBy` kifejezés a megrendelés dátuma lesz
-   * a `boundaries` kifejezés pontosan abban a formában várja az értékeket, amit a követelmények között is olvashattál, tehát az előző pontban előállított lista pontosan megfelel
-   * az `output` kifejezésben fogalmazhatod meg a szükséges kiszámolandó értékeket (darabszám, összérték)
+
+   - a `groupBy` kifejezés a megrendelés dátuma lesz
+   - a `boundaries` kifejezés pontosan abban a formában várja az értékeket, amit a követelmények között is olvashattál, tehát az előző pontban előállított lista pontosan megfelel
+   - az `output` kifejezésben fogalmazhatod meg a szükséges kiszámolandó értékeket (darabszám, összérték)
 
    > _Tipp: ha `"Element '...' does not match any field or property of class..."` kezdetű exceptiont kapsz, akkor az `output` kifejezésben írj át minden property-t **kisbetűsre** (pl.: `Darab` -> `darab`). Sajnos úgy tűnik, hogy a Mongo C# driver ezen a ponton nem konzisztensen transzformálja az adattagok neveit._
 

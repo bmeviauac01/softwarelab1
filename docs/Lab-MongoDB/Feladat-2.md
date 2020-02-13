@@ -3,9 +3,10 @@
 Ebben a feladatban a kategóriákat fogjuk listázni — az adott kategóriába tartozó termékek számával együtt. Ehhez már aggregációs utasítást is használnuk kell majd.
 
 A megvalósítandó függvény a `IList<Kategoria> ListKategoriak()`. Ennek minden kategóriát vissza kell adnia. A `Models.Kategoria` osztály 3 adattagot tartalmaz.
-* `Nev`: értelemszerűen a kategória neve
-* `SzuloKategoriaNev`: a kategória szülókategóriájának neve. Amennyiben nincs szülőkategória, értéke legyen `null`.
-* `TermekDarab`: a kategóriába tartozó termékek száma. Amennyiben nincs ilyen, értéke legyen **0**.
+
+- `Nev`: értelemszerűen a kategória neve
+- `SzuloKategoriaNev`: a kategória szülókategóriájának neve. Amennyiben nincs szülőkategória, értéke legyen `null`.
+- `TermekDarab`: a kategóriába tartozó termékek száma. Amennyiben nincs ilyen, értéke legyen **0**.
 
 A megvalósítás lépései a következők.
 
