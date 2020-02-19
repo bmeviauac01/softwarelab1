@@ -14,10 +14,10 @@ Az új riporthoz új adatokra lesz szükségünk. Bővítsük ki a lekérdezés�
      soh.SalesOrderNumber AS [Order],
      pps.Name AS Subcat, pp.Name as Product,
      SUM(sd.OrderQty) AS Qty,
-     SUM(sd.LineTotal) AS LineTotal,
-   +  CONCAT(pepe.FirstName, ' ', pepe.LastName) AS SalesPersonName
+     SUM(sd.LineTotal) AS LineTotal
+   + , CONCAT(pepe.FirstName, ' ', pepe.LastName) AS SalesPersonName
    FROM Sales.SalesPerson sp
-     INNER JOIN Person.Person as pepe ON sp.BusinessEntityID = pepe.BusinessEntityID
+   + INNER JOIN Person.Person as pepe ON sp.BusinessEntityID = pepe.BusinessEntityID
      INNER JOIN Sales.SalesOrderHeader AS soh ON sp.BusinessEntityID = soh.SalesPersonID
      INNER JOIN Sales.SalesOrderDetail AS sd ON sd.SalesOrderID = soh.SalesOrderID
      INNER JOIN Production.Product AS pp ON sd.ProductID = pp.ProductID
