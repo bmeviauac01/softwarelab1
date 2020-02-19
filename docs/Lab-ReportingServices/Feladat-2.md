@@ -34,7 +34,7 @@ A táblázatos megjelenítés részletesen mutatja az eladási adatokat. Egy dia
 
 1. Ha most megnézzük a Preview-t, az egyes kategóriák termelte bevételt fogjuk látni, év szerint csoportosítva:
 
-   ![Diagram előnézete](../images/rs-chart-preview-1.png)
+   ![Diagram előnézete](../images/rs-chart-preview-2.png)
 
 ## A diagram formázása
 
