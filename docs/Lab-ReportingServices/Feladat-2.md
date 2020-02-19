@@ -34,7 +34,7 @@ A táblázatos megjelenítés részletesen mutatja az eladási adatokat. Egy dia
 
 1. Ha most megnézzük a Preview-t, az egyes kategóriák termelte bevételt fogjuk látni, év szerint csoportosítva:
 
-   ![Diagram előnézete](../images/rs-chart-preview-2.png)
+   ![Diagram előnézete](../images/rs-chart-preview-1.png)
 
 ## A diagram formázása
 
@@ -54,7 +54,7 @@ A megjelenés még nem az igazi, de ezen könnyen segíthetünk.
 
 1. Ha most megnézzük a _Preview_ fület, már szép lesz a riportunk:
 
-   ![Előnézet](../images/rs-chart-preview-1.png)
+   ![Előnézet](../images/rs-chart-preview-2.png)
 
 1. Készíts egy képernyőképet a diagram előnézetéről. A képernyőképpel kapcsolatos elvárásokat lásd [itt](../README.md#képernyőképek).
 
