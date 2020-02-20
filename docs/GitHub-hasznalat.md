@@ -56,6 +56,22 @@ Alább részletesen bemutatjuk a beadás menetét. Itt egy rövid összefoglaló
 
 1. Ezen a megoldás ágon dolgozva készítsd el a beadandókat. Akárhányszor kommitolhatsz és pusholhatsz.
 
+   Laborgépeken mindig ellenőrízd, hogy a megfelelő névvel és email címmel kommitolsz-e. Ezt a következő command line paranccsal tudod megtenni.
+   
+   ```bash
+   git config user.name
+   git config user.email
+   ```
+   
+   Ha ez nem megfelelő lenne, akkor add ki az alábbi parancsokat a git repository mappájában. Ezzel az adott repository-ra fogod beállítani a kívánt nevet és email címet. (Érdemes olyan email címet, megadni ami a github useretekhez van rendelve)
+   
+   ```bash
+   git config user.name "John Doe"
+   git config user.email "john@doe.org"
+   ```
+   
+   > TIP: Otthon érdemes lehet a globális beállításokat vizsgálni és felülírni a `--global` kapcsolóval.
+
    GitHub Desktop-ban így tudsz kommitolni. Mindig ellenőrizd, hogy jó ágon vagy-e. Első alkalommal a _megoldas_ ág csak helyben létezik, ezért publikálni kell: _Publish this branch_.
 
    ![GitHub Desktop push branch](images/github/github-desktop-commit-to-branch.png)
