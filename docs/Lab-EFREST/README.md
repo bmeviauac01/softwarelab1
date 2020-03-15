@@ -12,7 +12,7 @@ A labor elvégzéséhez szükséges eszközök:
   - Minden szükséges program platform független, vagy van platformfüggetlen alternatívája.
 - Microsoft Visual Studio 2017/2019 [az itt található beállításokkal](../VisualStudio-install.md)
   - Linux és MacOS esetén Visual Studio Code és a .NET Core SDK-val települő [dotnet CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/?tabs=netcore2x) használható.
-- [.NET Core 2.1 SDK](<(https://dotnet.microsoft.com/download/dotnet-core/2.1)>)
+- [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/2.1)
   - Visual Studio esetén települ, de ha mégse, akkor a fenti linkről kell telepíteni (az SDK-t és _nem_ a runtime-ot.)
   - Linux és MacOS esetén telepíteni szükséges.
 - [Postman](https://www.getpostman.com/)
