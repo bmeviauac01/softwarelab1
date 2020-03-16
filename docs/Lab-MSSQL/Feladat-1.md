@@ -68,6 +68,8 @@ end
 
    A helyes és helytelen viselkedéshez feltételezheted, hogy az adatbázis a kiinduló állapotban van: olyan kategória rekordok léteznek csupán, amelyeket a létrehozó script beszúrt. (A két teszt _ne_ épüljön egymásra! Mindkettő az elvárt eredményt adja attól függetlenül, hogy a másik lefutott-e már!)
 
+   Érdemes olyan tesz adatokat választani, amiben nincs ékezet! Különben problémákat okozhat az sql fájl kódolásának helytelen beállítása. Hogy ezt elkerüljük, használható például a _LEGO_, mint szülő kategória név.
+
    > A teszt utasításokat az `f1-trigger-teszt-ok.sql` és `f1-trigger-teszt-hiba.sql` fájlokba írd. Mindkét fájlban csak egyetlen `insert` utasítás legyen! Semmiképpen ne legyen `[use]`, se `go` utasítás bennük!
    >
    > Mindkét utasítás 2-2 pont.
