@@ -12,6 +12,8 @@
 
    Ha például egy számlán megrendeltek 2 darab piros pöttyös labdát és 1 darab tollasütőt, akkor 3 tétel szerepel a számlán.
 
+   Figyelem, itt a **számlához** tartozó tételeket kell nézni (és nem a megrendelés tételeket)!
+
    > A kódot az `f3-kitolt.sql` fájlba írd. A fájlban csak egy T-SQL kódblokk legyen, ne használj tárolt eljárást vagy triggert, és ne legyen a kódban se `[use]` se `go` utasítás.
    >
    > A feladatrésszel 1 pont szerezhető.
