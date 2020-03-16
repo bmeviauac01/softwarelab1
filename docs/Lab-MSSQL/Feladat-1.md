@@ -37,7 +37,7 @@ begin
   -- több elem is lehet, és mi egyesével dolgozzuk fel
   declare ic cursor for select * from inserted
   open ic
-  -- standard kurzus használat
+  -- standard kurzor használat
   fetch next from ic into @ujnev, @szulonev
   while @@FETCH_STATUS = 0
   begin
@@ -54,7 +54,7 @@ end
 
 1. Egészítsd ki a trigger vázat a ciklusban.
 
-   1. Ellenőrizd, hogy létezik-e kategória olyan névvel, mint ami a `@szulonev` változóban van.
+   1. Ha érkezik szülő kategória név, ellenőrizd, hogy létezik-e kategória olyan névvel, mint ami a `@szulonev` változóban van.
 
    1. Ha nincs ilyen, akkor dobj hibát, amivel leáll a trigger futása.
 
