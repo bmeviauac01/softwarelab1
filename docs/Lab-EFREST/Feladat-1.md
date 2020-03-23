@@ -192,7 +192,7 @@ Az összes státusz listázása mellett még vár ránk pár alapvető művelet:
 1. Az új státusz beszúrásához ismét a repository felől induljunk. A létrehozáshoz egy segéd modell osztályt, a `CreateStatus`-t kapjuk, ebben csak egy név van. Garantálni szeretnénk a nevek egyediségét, hogy ne legyen két státusz ugyanazzal a névvel. A beszúrásnál ezt ellenőrizni fogjuk, méghozzá itt is kisbetű-nagybetű függetlenül.
 
    ```csharp
-   public Model.Status Insert(CreateUpdateStatus value)
+   public Model.Status Insert(CreateStatus value)
    {
        using (var tran = db.Database.BeginTransaction(System.Data.IsolationLevel.RepeatableRead))
        {
@@ -218,7 +218,7 @@ Az összes státusz listázása mellett még vár ránk pár alapvető művelet:
    [HttpPost]
    [ProducesResponseType(StatusCodes.Status201Created)]
    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-   public ActionResult<Status> Create([FromBody] Dto.CreateUpdateStatus value)
+   public ActionResult<Status> Create([FromBody] Dto.CreateStatus value)
    {
        try
        {
