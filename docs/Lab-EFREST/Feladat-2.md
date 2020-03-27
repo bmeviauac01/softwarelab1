@@ -4,7 +4,7 @@ Ebben a feladatban az alkalmazásban kezelt másik entitás, a task alapművelet
 
 ## Entity Framework séma előkészítése
 
-A task-ot a `Model.Task` entitás osztály reprezentálja. A task rendelkezik egy azonosítóval (`Id`), egy címmel (`Title`), a `Done` flag jelzi ha készen van, és a `Status` mutatja azon státusz nevét, amelyhez a task rendelve van (1-\* multiplicitással).
+A task-ot a `Model.Task` entitás osztály reprezentálja. A task rendelkezik egy azonosítóval (`Id`), egy címmel (`Title`), a `Done` flag jelzi ha készen van, és a `Status` mutatja azon státuszt, amelyhez a task rendelve van (1-\* multiplicitással).
 
 Első lépésként az Entity Framework modellt kell elkészítened:
 
