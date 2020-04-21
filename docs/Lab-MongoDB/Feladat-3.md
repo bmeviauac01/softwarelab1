@@ -35,7 +35,7 @@ Az alábbi feladatok előtt ne felejtsd el felvenni és inicializálni a `megren
 1. Az adatbázisentitás létrehozásához a következő információkra van szükség:
    - `VevoID`, `TelephelyID`: az adatbázisból keresd ki a `Grosz János`-hoz tartozó dokumentum `_id` és `kozpontiTelephelyID` értékét. Ezeket az értékeket drótozd bele a kódodba.
    - `Datum`, `Hatarido`, `Statusz`: ezeket az értékeket a `megrendeles` paraméterből veheted
-   - `FizetesMod`: hozz létre egy `FizetesMod` objektumot a `megrendeles` paraméterben található `Mod` értékkel. A `Hatarido` maradjon `null`!
+   - `FizetesMod`: hozz létre egy `FizetesMod` objektumot. A `Mod` legyen a `megrendeles` paraméterben található `FizetesMod` érték. A `Hatarido` maradjon `null`!
    - `MegrendelesTetelek`: egyetlen megrendeléstételt hozz létre! Ennek adattagjai:
      - `TermekID` és `NettoAr`: a `termek` paraméterből veheted
      - `Mennyiseg`: a `mennyiseg` paraméterből jön
