@@ -1,0 +1,1038 @@
+
+
+
+<!doctype html>
+<html lang="hu" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Dudás Ákos">
+      
+      <link rel="shortcut icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.1.6">
+    
+    
+      
+        <title>BMEVIAUAC09 Szoftverfejlesztés laboratórium 1</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.4b9ffd7b.min.css">
+      
+        <link rel="stylesheet" href="assets/stylesheets/palette.b79bcd20.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#ef5350">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="extra-material-theme.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="red" data-md-color-accent="red">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#targy-ismerteto" class="md-skip">
+          Kihagyás
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="." title="BMEVIAUAC09 Szoftverfejlesztés laboratórium 1" class="md-header-nav__button md-logo" aria-label="BMEVIAUAC09 Szoftverfejlesztés laboratórium 1">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            BMEVIAUAC09 Szoftverfejlesztés laboratórium 1
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Tárgy ismertető
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Keresés" placeholder="Keresés" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+          
+
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="." class="md-tabs__link md-tabs__link--active">
+        Tárgy ismertető
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="Lab-ReportingServices/" class="md-tabs__link">
+          Reporting Services
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="Lab-QueryOptimization/" class="md-tabs__link">
+          Lekérdezés optimalizálás
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="Lab-MSSQL/" class="md-tabs__link">
+          MSSQL
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="Lab-MongoDB/" class="md-tabs__link">
+          MongoDB
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="Lab-EFREST/" class="md-tabs__link">
+          Entity Framework & REST
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="BMEVIAUAC09 Szoftverfejlesztés laboratórium 1" class="md-nav__button md-logo" aria-label="BMEVIAUAC09 Szoftverfejlesztés laboratórium 1">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    BMEVIAUAC09 Szoftverfejlesztés laboratórium 1
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Tárgy ismertető
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="." title="Tárgy ismertető" class="md-nav__link md-nav__link--active">
+      Tárgy ismertető
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Tartalomjegyzék
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#laborok-idorendje" class="md-nav__link">
+    Laborok időrendje
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#laborok-megoldasainak-beadasa" class="md-nav__link">
+    Laborok megoldásainak beadása
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kepernyokepek" class="md-nav__link">
+    Képernyőképek
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ertekeles" class="md-nav__link">
+    Értékelés
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elvarasaink-a-munkaval-kapcsolatban" class="md-nav__link">
+    Elvárásaink a munkával kapcsolatban
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="GitHub/" title="Feladatok beadása (GitHub)" class="md-nav__link">
+      Feladatok beadása (GitHub)
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="GitHub-Actions/" title="GitHub Actions ismertető" class="md-nav__link">
+      GitHub Actions ismertető
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="VisualStudio/" title="Visual Studio telepítése és beállítása" class="md-nav__link">
+      Visual Studio telepítése és beállítása
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="GitHub-credentials/" title="Egyetemi laborokban: GitHub belépés" class="md-nav__link">
+      Egyetemi laborokban: GitHub belépés
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Reporting Services
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Reporting Services" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Reporting Services
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="Lab-ReportingServices/" title="Microsoft SQL Server Reporting Services használata" class="md-nav__link">
+      Microsoft SQL Server Reporting Services használata
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="Lab-ReportingServices/Feladat-1/" title="Feladat 1: Táblázatos riport (közösen megoldott)" class="md-nav__link">
+      Feladat 1: Táblázatos riport (közösen megoldott)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="Lab-ReportingServices/Feladat-2/" title="Feladat 2: Vizualizáció (önálló feladat, 5p)" class="md-nav__link">
+      Feladat 2: Vizualizáció (önálló feladat, 5p)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="Lab-ReportingServices/Feladat-3/" title="Feladat 3: Értékesítői riport (önálló feladat, 5p)" class="md-nav__link">
+      Feladat 3: Értékesítői riport (önálló feladat, 5p)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="Lab-ReportingServices/Feladat-4/" title="Feladat 4: Opcionális feladat (3 iMsc pont)" class="md-nav__link">
+      Feladat 4: Opcionális feladat (3 iMsc pont)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Lekérdezés optimalizálás
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Lekérdezés optimalizálás" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Lekérdezés optimalizálás
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="Lab-QueryOptimization/" title="Lekérdezés optimalizálás Microsoft SQL Server platformon" class="md-nav__link">
+      Lekérdezés optimalizálás Microsoft SQL Server platformon
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="Lab-QueryOptimization/Feladat-1.md" title="None" class="md-nav__link">
+      None
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="Lab-QueryOptimization/Feladat-2.md" title="None" class="md-nav__link">
+      None
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="Lab-QueryOptimization/Feladat-3.md" title="None" class="md-nav__link">
+      None
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="Lab-QueryOptimization/Feladat-4.md" title="None" class="md-nav__link">
+      None
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      MSSQL
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="MSSQL" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        MSSQL
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="Lab-MSSQL/" title="Microsoft SQL Szerver programozása" class="md-nav__link">
+      Microsoft SQL Szerver programozása
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="Lab-MSSQL/Feladat-1/" title="Feladat 1: Kategória nézet és adatbeszúrás (8p)" class="md-nav__link">
+      Feladat 1: Kategória nézet és adatbeszúrás (8p)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="Lab-MSSQL/Feladat-2/" title="Feladat 2: Számla ellenőrzése tárolt eljárással (6 pont)" class="md-nav__link">
+      Feladat 2: Számla ellenőrzése tárolt eljárással (6 pont)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="Lab-MSSQL/Feladat-3/" title="Feladat 3: Számla tábla denormalizálása (6 pont)" class="md-nav__link">
+      Feladat 3: Számla tábla denormalizálása (6 pont)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="Lab-MSSQL/Feladat-4/" title="Feladat 4: Opcionális feladat (3 iMsc pont)" class="md-nav__link">
+      Feladat 4: Opcionális feladat (3 iMsc pont)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      MongoDB
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="MongoDB" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        MongoDB
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="Lab-MongoDB/" title="MongoDB használata" class="md-nav__link">
+      MongoDB használata
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="Lab-MongoDB/Feladat-1/" title="Feladat 1: Termékek lekérdezése és módosítása (7p)" class="md-nav__link">
+      Feladat 1: Termékek lekérdezése és módosítása (7p)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="Lab-MongoDB/Feladat-2/" title="Feladat 2: Kategóriák listázása (4p)" class="md-nav__link">
+      Feladat 2: Kategóriák listázása (4p)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="Lab-MongoDB/Feladat-3/" title="Feladat 3: Megrendelések lekérdezése és módosítása (5p)" class="md-nav__link">
+      Feladat 3: Megrendelések lekérdezése és módosítása (5p)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="Lab-MongoDB/Feladat-4/" title="Feladat 4: Vevők listázása (4p)" class="md-nav__link">
+      Feladat 4: Vevők listázása (4p)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Entity Framework & REST
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Entity Framework & REST" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Entity Framework & REST
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="Lab-EFREST/" title="Entity Framework és REST" class="md-nav__link">
+      Entity Framework és REST
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="Lab-EFREST/Feladat-1/" title="Feladat 1: Státuszok kezelése (8p)" class="md-nav__link">
+      Feladat 1: Státuszok kezelése (8p)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="Lab-EFREST/Feladat-2/" title="Feladat 2: Task alapműveletek (6p)" class="md-nav__link">
+      Feladat 2: Task alapműveletek (6p)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="Lab-EFREST/Feladat-3/" title="Feladat 3: Task-on végzett műveletek (6p)" class="md-nav__link">
+      Feladat 3: Task-on végzett műveletek (6p)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="Lab-EFREST/Feladat-4/" title="Feladat 4: Opcionális feladat (3 iMsc pont)" class="md-nav__link">
+      Feladat 4: Opcionális feladat (3 iMsc pont)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Tartalomjegyzék
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#laborok-idorendje" class="md-nav__link">
+    Laborok időrendje
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#laborok-megoldasainak-beadasa" class="md-nav__link">
+    Laborok megoldásainak beadása
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kepernyokepek" class="md-nav__link">
+    Képernyőképek
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ertekeles" class="md-nav__link">
+    Értékelés
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elvarasaink-a-munkaval-kapcsolatban" class="md-nav__link">
+    Elvárásaink a munkával kapcsolatban
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="targy-ismerteto">Tárgy ismertető<a class="headerlink" href="#targy-ismerteto" title="Permanent link">&para;</a></h1>
+<p>A tárgykövetelményeket lásd a <a href="https://portal.vik.bme.hu/kepzes/targyak/VIAUAC09/">hivatalos tantárgyi adatlapon</a>.</p>
+<h2 id="laborok-idorendje">Laborok időrendje<a class="headerlink" href="#laborok-idorendje" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Első oktatási héten nincs labor.</li>
+<li>2-3. oktatási hetek (TBD): <strong>Microsoft SQL Server Reporting Services</strong><ul>
+<li>laborban teljesített, részben vezetett feladat</li>
+<li>beadási határidő: TBD</li>
+</ul>
+</li>
+<li>4-5. oktatási hetek (TBD): <strong>Lekérdezés optimalizálás</strong><ul>
+<li>laborban teljesített, részben vezetett feladat</li>
+<li>beadási határidő: TBD</li>
+</ul>
+</li>
+<li>6-7. oktatási hetek (TBD): <strong>Microsoft SQL Server programozása</strong><ul>
+<li>otthoni feladat</li>
+<li>beadási határidő: TBD</li>
+</ul>
+</li>
+<li>8-9. oktatási hetek (TDB): <strong>MongoDB programozása</strong><ul>
+<li>otthoni feladat</li>
+<li>beadási határidő: TBD</li>
+</ul>
+</li>
+<li>10-11. oktatási hetek (TBD): <strong>Entity Framework és REST API</strong><ul>
+<li>otthoni feladat</li>
+<li>beadási határidő: TBD</li>
+</ul>
+</li>
+<li>12-13. oktatási héten ellenőrző mérés, csak szükség esetén (lásd tantárgyi adatlapon a követelményeket).</li>
+</ul>
+<h2 id="laborok-megoldasainak-beadasa">Laborok megoldásainak beadása<a class="headerlink" href="#laborok-megoldasainak-beadasa" title="Permanent link">&para;</a></h2>
+<p>Minden labor megoldását egy személyre szóló git repository-ban kell beadni. Ennek pontos <a href="GitHub/">folyamatát lásd itt</a>. Kérünk, hogy alaposan olvasd végig a leírást!</p>
+<div class="admonition important">
+<p class="admonition-title">FONTOS</p>
+<p>A beadás menetét az első laboron személyesen is megmutatjuk. A továbbiakban az itt leírtak szerint <strong>kell</strong> eljárnod minden labor megoldásával. A nem ilyen formában beadott megoldásokat nem értékeljük.</p>
+</div>
+<h2 id="kepernyokepek">Képernyőképek<a class="headerlink" href="#kepernyokepek" title="Permanent link">&para;</a></h2>
+<p>Egyes laborok kérik, hogy készíts képernyőképet a megoldás egy-egy részéről. Ez különösen akkor fontos, ha a feladatot otthon készíted el, mert ezzel bizonyítod, hogy a megoldásod saját magad készítetted. Amikor képernyőképet kérünk, az alábbiakra figyelj:</p>
+<ul>
+<li>Látszódjon a fejlesztéséhez használt eszköz (pl. SQL Server Management Studio, Visual Studio). Profi fejlesztők vagyunk, így mindig a megfelelő eszköz használjuk - jegyzettömbben nem lehet fejleszteni!</li>
+<li>Látszódjon a gép és a felhasználó neve, amin a fejlesztést végezted (pl. SQL Server Management Studio-ban az Object Explorer-ben a megnyitott kapcsolat nevében szerepel, vagy konzolban add ki a <code>whoami</code> parancsot és ezt a konzolt is rakd a képernyőképre),</li>
+<li>Az aktuális dátum (pl. az óra a tálcán).</li>
+<li>Illetve a feladat tartalma, amit a feladat pontosan megnevez.</li>
+</ul>
+<div class="admonition info">
+<p>A képernyőképeket a megoldás részeként kell beadni, így felkerülnek a git repository tartalmával együtt. Mivel a repository privát, azt az oktatókon kívül más nem látja. Ha mégis szeretnéd, a fent nem jelölt részek mellett kitakarhatod, ha olyan információ kerül a képernyőképre, amit nem szeretnél feltölteni.</p>
+</div>
+<p>Két példa erre: <a href="images/screenshot/screenshot-sql.png">SQL kód</a> és <a href="images/screenshot/screenshot-vs.png">Visual Studio-ban C# kód</a>. Körülbelül ilyesmit várunk.</p>
+<h2 id="ertekeles">Értékelés<a class="headerlink" href="#ertekeles" title="Permanent link">&para;</a></h2>
+<p>Minden laboron 20 pont szerezhető. A teljesítés feltétele a határidőig történő beadás. A labor sikeres teljesítéséhez minimum 8 pont szükséges.</p>
+<p>A labor eredményének osztályzása:</p>
+<ul>
+<li>0-7.5 pont: elégtelen</li>
+<li>8-10.5 pont: elégséges</li>
+<li>11-13.5 pont: közepes</li>
+<li>14-16.5 pont: jó</li>
+<li>17-20 pont: jeles</li>
+</ul>
+<p>Az iMsc feladat megoldása opcionális, a többi feladat értékelésébe nem számít bele. Egy iMsc feladat sikeres megoldásával 3 iMsc pont szerezhető. A pont csak jeles eredmény esetén kapható meg.</p>
+<p>A félév végi jegy a laborokra kapott osztályzatok matematikailag kerekített számtani átlaga. Hiányzás, nem pótolt labor, határidőig nem leadott megoldás elégtelennel számítódik az átlagba.</p>
+<p>A feladatok kiértékelése egyes laborok esetén részben <strong>automatikusan</strong> történik. A futtatható kódokat valóban le fogjuk futtatni, ezért minden esetben fontos a feladatleírások pontos követése (kiinduló kód váz használata, csak a megengedett fájlok változtatása, stb.)!</p>
+<p>A kiértékelés eredményéről a GitHub-on kapsz szöveges visszajelzést (lásd <a href="GitHub/">itt</a>). Ha ennél több információra van szükséged, a <em>GitHub Actions</em> webes felülete segítségül szolgálhat. Erről <a href="GitHub-Actions/">itt</a> találsz egy rövid ismertetőt.</p>
+<h2 id="elvarasaink-a-munkaval-kapcsolatban">Elvárásaink a munkával kapcsolatban<a class="headerlink" href="#elvarasaink-a-munkaval-kapcsolatban" title="Permanent link">&para;</a></h2>
+<p><strong>Hova kell feltölteni a megoldást?</strong> Fentebb megtalálod a leírást.</p>
+<p><strong>Egyéni munka? Otthoni munka?</strong> Mivel a laborokra jegyet kapsz, elvárás, hogy mindenki saját megoldást készítsen el és adjon be. Ez nem zárja ki az egymásnak nyújtott segítséget. Kizárja viszont más megoldásának lemásolását. Ezért kérjük a képernyőképeket, mert így a munka folyamatával bizonyítod a megoldás saját elkészítését.</p>
+<p><strong>Más munkájának lemásolása:</strong> A BME etikai kódexe és a TVSZ szabályozza. Komolyan vesszük.</p>
+<p><strong>Egy labor csak 4 óra, nem?</strong> Nem. A tárgy 3 kredit, amely a félév során megközelítőleg 90 munkaóra befektetését igényli. A labor tehát nem csak a teremben eltöltött 4 óra, hanem az előzetes felkészülés és a feladat befejezése / otthoni elvégzése is.</p>
+<p><strong>Egy apró elírás miatt nem működött a kódom, és nem értékeltétek.</strong> A laborok során működő programot, kódot, kódrészletet kell készíteni. Azért számítógép laborban vagy otthon készítjük a feladatot, mert így tudod magad ellenőrizni. Minimum elvárás, hogy a beadott kód leforduljon, lefusson. Ha a viselkedés nem teljesen helyes, azt értékeljük. De ha egyáltalán nem működik, nem értékeljük a megoldást.</p>
+<p>Azért így teszünk, mert mérnökként a feladatod a problémák <em>megoldása</em> lesz, és nem csak egy <em>kísérlet</em> a megoldásra. Mit gondolsz, ha a munkahelyeden a főnöködnek átadsz egy nem forduló kódot, mit fog tenni?</p>
+<p><strong>Ha otthonról készítem el a megoldást, hogyan kapok segítséget?</strong> Akár otthonról dolgozol, akár egyetemi laborban, egy laborvezetőhöz tartozol. Ő felel nem csak a kontaktóra megtartásáért, hanem azért is, hogy a félév közben a feladatok beadása és ellenőrzése rendben történjen.</p>
+<p><strong>Nem segít a laborvezető. Miért?</strong> Dehogynem segít. Viszont ha egyből megmondaná a megoldást, csak azt tanulnád meg, hogy legközelebb is meg kell kérdezni. Próbáld magad megoldani, mutass alternatívákat, kérdezz konkrétan. Mutasd meg, hogy professzionális a hozzáállásod.</p>
+<p><strong>Akkor mit kérdezhetek meg a laborvezetőtől?</strong> Röviden: <a href="https://stackoverflow.com/help/how-to-ask">https://stackoverflow.com/help/how-to-ask</a>. Hosszabban: Ha valamivel elakadsz, értsd meg a problémát. A probléma nem az, hogy "nem működik" vagy "nem tudom, hogyan csináljam". Akkor tudsz jól kérdezni, ha már körüljártad a problémát, és azt is meg tudod mutatni, mivel próbálkoztál már.</p>
+<p><strong>Szóval Google és StackOverflow a megoldás?</strong> Nem. Minden tudás, amire szükséged van, már előfordult egyetemi tanulmányaid során. A Google jó, a StackOverflow még jobb.... De! A választ is meg kell érteni. Lehet, hogy a megtalált válasz megoldás, csak épp nem a te problémádra.</p>
+<p><strong>Sok a határidő, meg az előírás.</strong> Ez nézőpont kérdése. A mérnök nem csak programozni tud, hanem meghatározott keretek között dolgozni. Mert a világ bonyolult, és a bonyolultságot szabályokkal lehet kordában tartani. Ha időd engedi, érdemes megnézni, mint mond Robert C. Martin (Bob Martin, "Uncle Bob") arról, honnan származik a szoftverfejlesztői szakmai: <a href="https://www.youtube.com/watch?v=ecIWPzGEbFc">https://www.youtube.com/watch?v=ecIWPzGEbFc</a></p>
+<hr />
+<p>Az itt található oktatási segédanyagok a BMEVIAUAC09 tárgy hallgatóinak készültek. Az anyagok oly módú felhasználása, amely a tárgy oktatásához nem szorosan kapcsolódik, csak a szerző(k) és a forrás megjelölésével történhet.</p>
+<p>Az anyagok a tárgy keretében oktatott kontextusban értelmezhetőek. Az anyagokért egyéb felhasználás esetén a szerző(k) felelősséget nem vállalnak.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+
+<!-- Application footer -->
+<footer class="md-footer">
+
+  <!-- Further information -->
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+
+      <!-- Copyright and theme information -->
+      <div class="md-footer-copyright">
+        
+        <div class="md-footer-copyright__highlight">
+          Copyright &copy; BME AUT
+        </div>
+        
+      </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.a0c4167b.min.js"></script>
+      <script src="assets/javascripts/bundle.fb26dd1d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "search.config.lang": "hu", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum"}</script>
+      
+      <script>
+        app = initialize({
+          base: ".",
+          features: ["tabs"],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.37585f48.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
