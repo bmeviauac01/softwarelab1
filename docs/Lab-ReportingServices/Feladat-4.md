@@ -1,21 +1,17 @@
-# Feladat 4: Opcionális feladat (3 iMsc pont)
+# Feladat 4: Opcionális feladat
 
-1. Készíts tortadiagramot az egyes értékesítők teljesítményének összehasonlítására, a hozzájuk tartozó összbevétel szerint! A cél az alábbi, vagy legalábbis ehhez hasolító grafikon elkészítése.
+**A feladat megoldásával 3 iMsc pont szerezhető.**
 
-   ![Elvárt tortadiagram](../images/rs-sales-person-pie-chart.png)
+Készíts tortadiagramot az egyes értékesítők teljesítményének összehasonlítására, a hozzájuk tartozó összbevétel szerint! **A diagram címébe írd bele a Neptun kódod!** A cél az alábbi, vagy legalábbis ehhez hasolító grafikon elkészítése.
 
-   > Tipp: A tortadiagram használata nagyon hasonló az oszlopdiagraméhoz. A lényeg, hogy a _∑ Values_ mezőbe a _LineTotal_-t, a _Category Groups_-ba a _SalesPersonName_-et húzzuk. (A _Series Groups_ ezúttal üres.)
-   >
-   > Ügyelj arra is, hogy a megfelelő nevek jelenjenek meg a jelmagyarázatban. A diagram magasságát valószínűleg növelni kell, hogy a teljes jelmagyarázat kiférjen.
+![Elvárt tortadiagram](../images/reportingservices/rs-sales-person-pie-chart.png)
 
-   ![Tortadiagramban használandó értékek](../images/rs-sales-person-pie-char-valuest.png)
+!!! tip "Tipp"
+    A tortadiagram használata nagyon hasonló az oszlopdiagraméhoz. A lényeg, hogy a _∑ Values_ mezőbe a _LineTotal_-t, a _Category Groups_-ba a _SalesPersonName_-et húzzuk. (A _Series Groups_ ezúttal üres.)
+    
+    Ügyelj arra is, hogy a megfelelő nevek jelenjenek meg a jelmagyarázatban. A diagram magasságát valószínűleg növelni kell, hogy a teljes jelmagyarázat kiférjen.
 
-1. Készíts egy képernyőképet a riport előnézetéről. A képernyőképpel kapcsolatos elvárásokat lásd [itt](../README.md#képernyőképek).
+   ![Tortadiagramban használandó értékek](../images/reportingservices/rs-sales-person-pie-char-valuest.png)
 
-   > A képet a megoldásban `f4-chart.png` néven add be. A képernyőképen a Visual Studio ablaka, és azon belül a riport előnézetén belül a diagram látszódjon.
-   >
-   > A képernyőkép szükséges feltétele a feladat teljesítésének.
-
-## Következő feladat
-
-Nincs több feladat. Add be a megoldásod az [itt](README.md#végezetül-a-megoldások-feltöltése) leírtak szerint.
+!!! example "BEADANDÓ"
+    Készíts egy képernyőképet a **report előnézetéről** a preview fülön. A képet a megoldásban `f4.png` néven add be. A képernyőképen a Visual Studio ablaka, és azon belül a riport előnézete látszódjon. Ellenőrizd, hogy a **Neptun kódod** látható-e a diagram címében!

@@ -1,6 +1,8 @@
-# Feladat 2: Task alapműveletek (6p)
+# Feladat 2: Task alapműveletek
 
 Ebben a feladatban az alkalmazásban kezelt másik entitás, a task alapműveleteit implementáljuk az előzőekhez hasonlóan.
+
+**A feladat megoldásával 6 pont szerezhető.**
 
 ## Entity Framework séma előkészítése
 
@@ -27,27 +29,21 @@ Készíts a `DAL` mappában egy új osztályt `TasksRepository` néven, amely im
 
 A többi műveletet egyelőre ne valósítsd meg, azonban azok is kell rendelkezzenek implementációval, hogy a kód leforduljon. Elegendő egyelőre, ha ezeknek a törzse egyszerűen hibát dob: `throw new NotImplementedException();`
 
-> Tipp: Az adatbázisban használt C# osztály és a modell entitás osztály közötti leképzéshez célszerű lesz egy `ToModel` segédfüggvényt definiálni a korábban látott módon. Ahhoz, hogy a task-hoz kapcsolt státusz entitást is lekérdezze az adatbázis (amire a névhez szükség lesz), fontos lesz a megfelelő `Include` használata.
+!!! tip "Tipp"
+    Az adatbázisban használt C# osztály és a modell entitás osztály közötti leképzéshez célszerű lesz egy `ToModel` segédfüggvényt definiálni a korábban látott módon. Ahhoz, hogy a task-hoz kapcsolt státusz entitást is lekérdezze az adatbázis (amire a névhez szükség lesz), fontos lesz a megfelelő `Include` használata.
 
 ## Műveletek REST Api-n
 
-Készíts egy új controller osztály a `Controllers` mappában `TasksController` néven. A controller a `/api/tasks` URL-en kezelje a REST kéréseket.
+Készíts egy új controller osztály a `Controllers` mappában `TasksController` néven. A controller a `/api/tasks/neptun` URL-en kezelje a REST kéréseket, ahol az URL vége a **saját Neptun kódod** kisbetűsen.
 
 A controller konstruktor paraméterben egy `ITasksRepository` példányt vegyen át. Ahhoz, hogy a dependency injection keretrendszer ezt fel tudja oldani futási időben, szükséges lesz még konfigurációra is. A `Startup` osztályban a `ConfigureServices`-ben kell a másik repository-hoz hasonlóan beregisztrálni ezt az interfészt. (A controller-t _nem_ kell regisztrálni.)
 
 A fent implementált repository műveletekre építve valósítsd meg az alábbi műveleteket:
 
-- `GET /api/tasks`: minden task listázása, válasza `200 OK`
-- `GET /api/tasks/{id}`: adott azonosítójú task lekérdezése, válasza `200 OK` vagy `404 Not found`
-- `POST /api/tasks`: új task felvétele, body-ban egy `Dto.CreateTask` entitást vár, válasza `201 Created`, az új entitás body-ban, és a megfelelő _Location_ header
-- `DELETE /api/tasks/{id}`: adott azonosítójú task törlése, válasza `204 No content` vagy `404 Not found`
+- `GET /api/tasks/neptun`: minden task listázása, válasza `200 OK`
+- `GET /api/tasks/neptun/{id}`: adott azonosítójú task lekérdezése, válasza `200 OK` vagy `404 Not found`
+- `POST /api/tasks/neptun`: új task felvétele, body-ban egy `Dto.CreateTask` entitást vár, válasza `201 Created`, az új entitás body-ban, és a megfelelő _Location_ header
+- `DELETE /api/tasks/neptun/{id}`: adott azonosítójú task törlése, válasza `204 No content` vagy `404 Not found`
 
-Készíts egy képernyőképet Postman-ből (avagy más, hasonló eszközből, ha nem Postman-t használtál), amely egy tetszőleges REST kérést és választ mutat. A képernyőképpel kapcsolatos elvárásokat lásd [itt](../README.md#képernyőképek).
-
-> A képet a megoldásban `f2.png` néven add be. A képernyőképen látszódjon a kimenő kérés és a válasz is minden részletével.
->
-> A képernyőkép szükséges feltétele a pontszám megszerzésének.
-
-## Következő feladat
-
-Folytasd a [következő feladattal](Feladat-3.md).
+!!! example "BEADANDÓ"
+    Készíts egy **képernyőképet** Postman-ből (avagy más, hasonló eszközből, ha nem Postman-t használtál), amely egy **tetszőleges** kérést és válaszát mutatja a fentiek közül. A képet a megoldásban `f2.png` néven add be. A képernyőképen látszódjon a **kimenő kérés és a válasz is minden részletével** (URL, body, válasz kód, válasz body). Ellenőrizd, hogy a **Neptun kódod** az URL-ben szerepel-e! A képernyőkép szükséges feltétele a részpontszám megszerzésének.

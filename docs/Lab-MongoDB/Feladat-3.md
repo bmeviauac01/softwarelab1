@@ -1,56 +1,51 @@
-# Feladat 3: Megrendelések lekérdezése és módosítása (5p)
+# Feladat 3: Megrendelések lekérdezése és módosítása
 
-Ebben a feladatban a Megrendelés entitáshoz tartozó CRUD (létrehozás, listázás/olvasás, módosítás és törlés) utasításokat fogjuk megvalósítani. Ez a feladat nagyon hasonlít az első feladathoz, amennyiben elakadnál nyugodtan meríts ihletet az ottani megoldásokból!
+**A feladat megoldásával 5 pont szerezhető.**
 
-A `Models.Megrendeles` entitás adattagjai:
+Ebben a feladatban a Megrendelés (`Order`) entitáshoz tartozó CRUD (létrehozás, listázás/olvasás, módosítás és törlés) utasításokat fogjuk megvalósítani. Ez a feladat nagyon hasonlít az első feladathoz, amennyiben elakadnál nyugodtan meríts ihletet az ottani megoldásokból!
+
+A `Models.Order` entitás adattagjai:
 
 - `ID`: az adatbázisentitás `ID`-ja, `ToString`-gel sorosítva
-- `Datum`, `Hatarido`, `Statusz`: egy az egyben másolandók az adatbázis entitásból
-- `FizetesMod`: az adatbázis entitásban található `FizetesMod` komplex objektum `Mod` mezője
-- `OsszErtek`: a megrendelésben található megrendeléstételek `Mennyiseg` és `NettoAr` szorzatainak összege
+- `Date`, `Deadline`, `Status`: egy az egyben másolandók az adatbázis entitásból
+- `PaymentMethod`: az adatbázis entitásban található `PaymentMethod` komplex objektum `Method` mezője
+- `Total`: a megrendelésben található tételek (`OrderItems`) `Amount` és `Price` szorzatainak összege
 
 Ennek a feladatnak a megoldásához a megrendeléssel kapcsolatos metódusok implementációja szükséges (`List`, `Find`, `Insert`, `Delete` és `Update`).
 
-Az alábbi feladatok előtt ne felejtsd el felvenni és inicializálni a `megrendelesCollection`-t a repository osztályba a korábban látottak mintájára!
+Az alábbi feladatok előtt ne felejtsd el felvenni és inicializálni a `orderCollection`-t a repository osztályba a korábban látottak mintájára!
 
 ## Listázás/olvasás
 
-1. A `ListMegrendelesek` függvény paraméterként kap egy `string keresetStatusz` értéket. Ha ez az érték üres vagy `null` (lásd: `string.IsNullOrEmpty`), akkor minden megrendelést listázz. Ellenkező esetben csak azokat a megrendeléseket listázd, melyeknek a `Statusz` értéke teljesen egyezik a `keresettStatusz` értékkel.
+1. A `ListOrders` függvény paraméterként kap egy `string status` értéket. Ha ez az érték üres vagy `null` (lásd: `string.IsNullOrEmpty`), akkor minden megrendelést listázz. Ellenkező esetben csak azokat a megrendeléseket listázd, melyeknek a `Status` értéke teljesen egyezik a paraméterben érkező `statusz` értékkel.
 
-   Az `OsszErtek` kiszámolásához használd a `Project` utasítást. Ebben összetett LINQ kifejezéseket is megfogalmazhatunk, ezeket a driver a megfelelő _Mongo_ kifejezésekre fordítja. Ennek szintaktikája a következő.
-
-   ```csharp
-   collection
-       .Find(x => /* filter kifejezés */)
-       .Project(x => new { ID = x.ID, Ossz = x.Dolgok.Sum(d => d.Ertek), /* ... */ })
-       .ToList();
-   ```
-
-1. A `FindMegrendeles` metódus egy konkrét megrendelés adatait adja vissza a `string id` érték alapján szűrve. Figyelj oda, ha az adott `ID` érték nem található az adatbázisban, akkor `null` értéket adj vissza!
+1. A `FindOrder` metódus egy konkrét megrendelés adatait adja vissza a `string id` érték alapján szűrve. Figyelj oda, ha az adott `ID` érték nem található az adatbázisban, akkor `null` értéket adj vissza!
 
 ## Létrehozás
 
-1. Az `InsertMegrendeles` metódusban a létrehozást kell megvalósítanod. Ehhez háromféle információt kapsz: `Megrendeles megrendeles`, `Termek termek` és `int mennyiseg`.
+1. Az `InsertOrder` metódusban a létrehozást kell megvalósítanod. Ehhez háromféle információt kapsz: `Order order`, `Product product` és `int amount`.
 
 1. Az adatbázisentitás létrehozásához a következő információkra van szükség:
-   - `VevoID`, `TelephelyID`: az adatbázisból keresd ki a `Grosz János`-hoz tartozó dokumentum `_id` és `kozpontiTelephelyID` értékét. Ezeket az értékeket drótozd bele a kódodba.
-   - `Datum`, `Hatarido`, `Statusz`: ezeket az értékeket a `megrendeles` paraméterből veheted
-   - `FizetesMod`: hozz létre egy `FizetesMod` objektumot. A `Mod` legyen a `megrendeles` paraméterben található `FizetesMod` érték. A `Hatarido` maradjon `null`!
-   - `MegrendelesTetelek`: egyetlen megrendeléstételt hozz létre! Ennek adattagjai:
-     - `TermekID` és `NettoAr`: a `termek` paraméterből veheted
-     - `Mennyiseg`: a `mennyiseg` paraméterből jön
-     - `Statusz`: a `megrendeles` paraméter `Statusz` mezőjével egyezik meg
-   - minden más adattag (a számlázással kapcsolatos információk) maradjon `null` értéken!
+
+    - `CustomerID`, `SiteID`: az adatbázisból keresd ki egy tetszőleges vevőhöz (`Customer`) tartozó dokumentum `_id` és `mainSiteId` értékét. Ezeket az értékeket drótozd bele a kódodba.
+    - `Date`, `Deadline`, `Status`: ezeket az értékeket ay `order` paraméterből veheted
+    - `PaymentMethod`: hozz létre egy új `PaymentMethod` objektumot. A `Method` legyen az `order` paraméterben található `PaymentMethod` érték. A `Deadline` maradjon `null`!
+    - `OrderItems`: egyetlen tételt hozz létre! Ennek adattagjai:
+        - `ProductID` és `Price`: a `product` paraméterből veheted
+        - `Amount`: a függvényparaméter `amount` paraméterből jön
+        - `Status`: az `order` paraméter `Status` mezőjével egyezik meg
+    - minden más adattag (a számlázással kapcsolatos információk) maradjon `null` értéken!
 
 ## Törlés
 
-A `DeleteMegrendeles` törölje a megadott `ID`-hoz tartozó megrendelést.
+A `DeleteOrder` törölje a megadott `ID`-hoz tartozó megrendelést.
 
 ## Módosítás
 
-A módosító utasításban (`UpdateMegrendeles`) arra figyelj oda, hogy csak azokat a mezőket írd felül, melyek a `Models.Megrendeles` osztályban megtalálhatóak: `Datum`, `Hatarido`, `Statusz` és `FizetesMod`. Az `OsszErtek`-et itt nem kell figyelembe venni, ennek értéke nem fog változni.
+A módosító utasításban (`UpdateOrder`) arra figyelj oda, hogy csak azokat a mezőket írd felül, melyek a `Models.Order` osztályban megtalálhatóak: `Date`, `Deadline`, `Status` és `PaymentMethod`. Az `Total`-t itt nem kell figyelembe venni, ennek értéke nem fog változni.
 
-> Tipp: több módosító kifejezést a `Builders<Entities.Megrendeles>.Update.Combine` segítségével lehet összevonni.
+!!! tip ""
+    Több módosító kifejezést a `Builders<Entities.Order>.Update.Combine` segítségével lehet összevonni.
 
 Itt is figyelj oda, hogy az update során az `IsUpsert` beállítás értéke legyen `false`!
 
@@ -58,16 +53,7 @@ A metódus visszatérési értéke akkor és csak akkor legyen `true`, ha létez
 
 ## Kipróbálás
 
-A megírt függvényeket a weboldalon a `Megrendelések` menüpont alatt tudod kipróbálni. Teszteld le a `Szűrés`, `Új megrendelés felvétele`, `Módosítás`, `Részletek` és `Törlés` opciókat is!
+A megírt függvényeket a weboldalon a `Orders` menüpont alatt tudod kipróbálni. Teszteld le a `Filter`, `Add new order`, `Edit`, `Details` és `Delete` opciókat is!
 
-## Képernyőkép
-
-Készíts egy képernyőképet az implementált függvények kódjáról. A képernyőképpel kapcsolatos elvárásokat lásd [itt](../README.md#képernyőképek).
-
-> A képet a megoldásban `f3-megrendelesek.png` néven add be. A képernyőképen szerepeljen legalább egy metódus kódja teljesen.
->
-> A képernyőkép szükséges feltétele a pontszám megszerzésének.
-
-## Következő feladat
-
-Folytasd a [következő feladattal](Feladat-4.md).
+!!! example "BEADANDÓ"
+    Készíts egy **képernyőképet** a megrendelés listázó weboldalról. A képet a megoldásban `f3.png` néven add be. A képernyőképen látszódjon a **megrendelések listája**. Ellenőrizd, hogy a **Neptun kódod** (az oldal aljáról) látható-e a képen! A képernyőkép szükséges feltétele a pontszám megszerzésének.
