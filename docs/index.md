@@ -80,8 +80,7 @@ Azért így teszünk, mert mérnökként a feladatod a problémák _megoldása_ 
 
 **Sok a határidő, meg az előírás.** Ez nézőpont kérdése. A mérnök nem csak programozni tud, hanem meghatározott keretek között dolgozni. Mert a világ bonyolult, és a bonyolultságot szabályokkal lehet kordában tartani. Ha időd engedi, érdemes megnézni, mint mond Robert C. Martin (Bob Martin, "Uncle Bob") arról, honnan származik a szoftverfejlesztői szakmai: <https://www.youtube.com/watch?v=ecIWPzGEbFc>
 
----
+!!! quote "Felhasználási feltételek"
+    Az itt található oktatási segédanyagok a BMEVIAUAC09 tárgy hallgatóinak készültek. Az anyagok oly módú felhasználása, amely a tárgy oktatásához nem szorosan kapcsolódik, csak a szerző(k) és a forrás megjelölésével történhet.
 
-Az itt található oktatási segédanyagok a BMEVIAUAC09 tárgy hallgatóinak készültek. Az anyagok oly módú felhasználása, amely a tárgy oktatásához nem szorosan kapcsolódik, csak a szerző(k) és a forrás megjelölésével történhet.
-
-Az anyagok a tárgy keretében oktatott kontextusban értelmezhetőek. Az anyagokért egyéb felhasználás esetén a szerző(k) felelősséget nem vállalnak.
+    Az anyagok a tárgy keretében oktatott kontextusban értelmezhetőek. Az anyagokért egyéb felhasználás esetén a szerző(k) felelősséget nem vállalnak.

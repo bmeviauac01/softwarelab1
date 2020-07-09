@@ -12,15 +12,15 @@ A labor elvégzéséhez szükséges eszközök:
     - Van [Linux változata](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup) is.
     - MacOS-en Docker-rel futtatható.
 - [SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms), vagy kipróbálható a platformfüggetlen [Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/download) is
-- Az adatbázist létrehozó script: [mssql.sql](https://raw.githubusercontent.com/bmeviauac01/gyakorlatok/master/mssql.sql)
+- Az adatbázist létrehozó script: [mssql.sql](https://bmeviauac01.github.io/adatvezerelt/db/mssql.sql)
 - GitHub account és egy git kliens
 
 A labor elvégzéséhez használható segédanyagok és felkészülési anyagok:
 
-- Microsoft SQL Server használata: [leírás](https://bmeviauac01.github.io/gyakorlatok/Adatbazis/mssql-server.html) és [videó](https://youtu.be/gmY8reqSL7U)
-- Az adatbázis [sémájának leírása](https://bmeviauac01.github.io/gyakorlatok/Adatbazis/sema.html)
+- Microsoft SQL Server használata: [leírás](https://bmeviauac01.github.io/adatvezerelt/db/mssql/) és [videó](https://youtu.be/gmY8reqSL7U)
+- Az adatbázis [sémájának leírása](https://bmeviauac01.github.io/adatvezerelt/db/)
 - Microsoft SQL Server programozási lehetőségei és az SQL nyelv
-    - Lásd az Adatvezérelt rendszerek c. tárgy [jegyzetei](https://www.aut.bme.hu/Course/adatvezerelt) és [gyakorlati anyagai](https://bmeviauac01.github.io/gyakorlatok/) között
+    - Lásd az Adatvezérelt rendszerek c. tárgy [jegyzetei](https://www.aut.bme.hu/Course/adatvezerelt) és [gyakorlati anyagai](https://bmeviauac01.github.io/adatvezerelt/) között
 
 ## Előkészület
 
@@ -51,7 +51,7 @@ A feladatok megoldása során ne felejtsd el követni a [feladat beadás folyama
     !!! warning "FONTOS"
         Az adatbázis neve egyezzen meg a **Neptun kódoddal**. A labor megoldásában kérünk képernyőképeket, amelyeken így kell szerepelnie az adatbázisnak!
 
-1. Hozd létre a minta adatbázist a [generáló script](https://raw.githubusercontent.com/bmeviauac01/gyakorlatok/master/mssql.sql) lefuttatásával. Nyiss egy új _Query_ ablakot, másold be a script tartalmát, és futtasd le. Ügyelj az eszköztáron levő legördülő menüben a megfelelő adatbázis kiválasztására.
+1. Hozd létre a minta adatbázist a [generáló script](https://bmeviauac01.github.io/adatvezerelt/db/mssql.sql) lefuttatásával. Nyiss egy új _Query_ ablakot, másold be a script tartalmát, és futtasd le. Ügyelj az eszköztáron levő legördülő menüben a megfelelő adatbázis kiválasztására.
 
     ![Adatbázis kiválasztása](../images/sql-management-database-dropdown.png)
 

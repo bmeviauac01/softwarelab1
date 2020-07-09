@@ -16,7 +16,7 @@ A labor elvégzéséhez szükséges eszközök:
 
 A labor elvégzéséhez használható segédanyagok és felkészülési anyagok:
 
-- Microsoft SQL Server használata: [leírás](https://bmeviauac01.github.io/gyakorlatok/Adatbazis/mssql-server.html) és [videó](https://youtu.be/gmY8reqSL7U)
+- Microsoft SQL Server használata: [leírás](https://bmeviauac01.github.io/adatvezerelt/db/mssql/) és [videó](https://youtu.be/gmY8reqSL7U)
 - SQL Reporting Services [hivatalos tutorial](https://docs.microsoft.com/en-us/sql/reporting-services/create-a-basic-table-report-ssrs-tutorial)
 
 ## Előkészület

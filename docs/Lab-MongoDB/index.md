@@ -9,7 +9,7 @@ A labor elvégzéséhez szükséges eszközök:
 - Windows, Linux, vagy MacOS: Minden szükséges program platform független, vagy van platformfüggetlen alternatívája.
 - MongoDB Community Server ([letöltés](https://www.mongodb.com/download-center/community))
 - Robo 3T ([letöltés](https://robomongo.org/download))
-- Minta adatbázis kódja ([mongo.js](https://raw.githubusercontent.com/bmeviauac01/gyakorlatok/master/mongo.js))
+- Minta adatbázis kódja ([mongo.js](https://bmeviauac01.github.io/adatvezerelt/db/mongo.js))
 - Microsoft Visual Studio 2019 [az itt található beállításokkal](../VisualStudio.md)
     - Linux és MacOS esetén Visual Studio Code és a .NET Core SDK-val települő [dotnet CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/) használható.
 - [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)
@@ -20,7 +20,7 @@ A labor elvégzéséhez szükséges eszközök:
 A labor elvégzéséhez használható segédanyagok és felkészülési anyagok:
 
 - MongoDB adatbáziskezelő rendszer és a C# driver használata
-    - Lásd az Adatvezérelt rendszerek c. tárgy [jegyzetei](https://www.aut.bme.hu/Course/adatvezerelt) és [gyakorlati anyagai](https://bmeviauac01.github.io/gyakorlatok/) között
+    - Lásd az Adatvezérelt rendszerek c. tárgy [jegyzetei](https://www.aut.bme.hu/Course/adatvezerelt) és [gyakorlati anyagai](https://bmeviauac01.github.io/adatvezerelt/) között
 - Hivatalos Microsoft tutorial [Mongo-t használó Web API készítéséhez](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mongo-app?view=aspnetcore-3.1&tabs=visual-studio)
     - A labor során nem WebAPI-t készítünk, de a Mongo használat azonos formában törénik.
 
@@ -43,4 +43,4 @@ A feladatok megoldása során ne felejtsd el követni a [feladat beadás folyama
 
 ### Adatbázis létrehozása
 
-Kövesd a [gyakorlatanyagban](https://bmeviauac01.github.io/gyakorlatok/Gyak-MongoDB/#feladat-0-adatb%C3%A1zis-l%C3%A9trehoz%C3%A1sa-projekt-megnyit%C3%A1sa) leírt utasításokat az adatbáziskezelő rendszer elindításához és az adatbázis létrehozásához.
+Kövesd a [gyakorlatanyagban](https://bmeviauac01.github.io/adatvezerelt/gyakorlat/mongodb/#feladat-0-adatbazis-letrehozasa-projekt-megnyitasa) leírt utasításokat az adatbáziskezelő rendszer elindításához és az adatbázis létrehozásához.
