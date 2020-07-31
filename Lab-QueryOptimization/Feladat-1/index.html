@@ -1001,11 +1001,11 @@
 <p>Vegyél fel indexet a <code>Price</code> oszlopra. Hogyan változnak az előbbi lekérdezések végrehajtási tervei?</p>
 <p>Az index felvételéhez használd az <em>Object Explorer</em>-t, a fában a táblát kibontva az <em>Indexes</em>-en jobbklikk -&gt; <em>New index</em> &gt; <em>Non-Clustered Index...</em></p>
 <p><img alt="Index hozzáadása" src="../../images/queryopt/queryopt-add-index.png" /></p>
-<p>Adj az indexeknek értelmes, egységes konvenció szerinti nevet, pl. <code>IX_Tablanev_MezoNev</code>, és add a <em>NettoAr</em> oszlopot az <em>Index key columns</em> listában.</p>
+<p>Adj az indexeknek értelmes, egységes konvenció szerinti nevet, pl. <code>IX_Tablanev_MezoNev</code>. Add a <em>Price</em> oszlopot az <em>Index key columns</em> listához.</p>
 <p><img alt="Index tulajdonságok" src="../../images/queryopt/queryopt-index-properties.png" /></p>
 <p>Ismételd meg az előbbi lekérdezéseket, és értelmezd a terveket!</p>
 <h2 id="feladat-5-2p">Feladat 5 (2p)<a class="headerlink" href="#feladat-5-2p" title="Permanent link">&para;</a></h2>
-<p>Szaporítsd meg a Termek tábla sorait az alábbi SQL szkripttel. Hogyan változnak az előbbi végrehajtási tervek?</p>
+<p>Szaporítsd meg a <em>Product</em> tábla sorait az alábbi SQL szkripttel. Hogyan változnak az előbbi végrehajtási tervek?</p>
 <p>Az i) típusú lekérdezést próbáld ki úgy is, hogy a választott konstans miatt kicsi legyen az eredményhalmaz, és úgy is, hogy lényegében a teljes tábla benne legyen. Adj magyarázatot is a változásokra.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">TOP</span> <span class="p">(</span><span class="mi">1000000</span><span class="p">)</span> <span class="n">n</span> <span class="o">=</span> <span class="k">ABS</span><span class="p">(</span><span class="n">CHECKSUM</span><span class="p">(</span><span class="n">NEWID</span><span class="p">()))</span>
 <span class="k">INTO</span> <span class="n">dbo</span><span class="p">.</span><span class="n">Numbers</span>
