@@ -1,0 +1,84 @@
+site_name: BMEVIAUAC09 Software development laboratory 1
+site_author: Dudás Ákos
+copyright: Copyright &copy; BME AUT
+repo_name: bmeviauac01/laboratories-en
+repo_url: https://github.com/bmeviauac01/laboratories-en
+
+theme:
+  name: material
+  custom_dir: theme-overrides
+  language: hu
+  palette:
+    primary: red
+    accent: red
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - tabs
+
+extra_css:
+  - extra-material-theme.css
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - meta
+  - toc:
+      permalink: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed
+  - pymdownx.tilde
+
+plugins:
+  - search:
+      prebuild_index: true
+
+nav:
+  - index.md
+  - GitHub.md
+  - GitHub-Actions.md
+  - FAQ.md
+  - VisualStudio.md
+  - GitHub-credentials.md
+  - "Reporting Services":
+      - Lab-ReportingServices/index.md
+      - Lab-ReportingServices/Exercise-1.md
+      - Lab-ReportingServices/Exercise-2.md
+      - Lab-ReportingServices/Exercise-3.md
+      - Lab-ReportingServices/Exercise-4.md
+  - "Query optimization":
+      - Lab-QueryOptimization/index.md
+      - Lab-QueryOptimization/Exercise-1.md
+      - Lab-QueryOptimization/Exercise-2.md
+      - Lab-QueryOptimization/Exercise-3.md
+  - "MSSQL":
+      - Lab-MSSQL/index.md
+      - Lab-MSSQL/Exercise-1.md
+      - Lab-MSSQL/Exercise-2.md
+      - Lab-MSSQL/Exercise-3.md
+      - Lab-MSSQL/Exercise-4.md
+  - "MongoDB":
+      - Lab-MongoDB/index.md
+      - Lab-MongoDB/Exercise-1.md
+      - Lab-MongoDB/Exercise-2.md
+      - Lab-MongoDB/Exercise-3.md
+      - Lab-MongoDB/Exercise-4.md
+      - Lab-MongoDB/Exercise-5.md
+  - "Entity Framework & REST":
+      - Lab-EFREST/index.md
+      - Lab-EFREST/Exercise-1.md
+      - Lab-EFREST/Exercise-2.md
+      - Lab-EFREST/Exercise-3.md
+      - Lab-EFREST/Exercise-4.md
