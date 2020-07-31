@@ -55,7 +55,7 @@ Az index felvételéhez használd az _Object Explorer_-t, a fában a táblát ki
 
 ![Index hozzáadása](../images/queryopt/queryopt-add-index.png)
 
-Adj az indexeknek értelmes, egységes konvenció szerinti nevet, pl. `IX_Tablanev_MezoNev`, és add a _NettoAr_ oszlopot az _Index key columns_ listában.
+Adj az indexeknek értelmes, egységes konvenció szerinti nevet, pl. `IX_Tablanev_MezoNev`. Add a _Price_ oszlopot az _Index key columns_ listához.
 
 ![Index tulajdonságok](../images/queryopt/queryopt-index-properties.png)
 
@@ -63,7 +63,7 @@ Ismételd meg az előbbi lekérdezéseket, és értelmezd a terveket!
 
 ## Feladat 5 (2p)
 
-Szaporítsd meg a Termek tábla sorait az alábbi SQL szkripttel. Hogyan változnak az előbbi végrehajtási tervek?
+Szaporítsd meg a _Product_ tábla sorait az alábbi SQL szkripttel. Hogyan változnak az előbbi végrehajtási tervek?
 
 Az i) típusú lekérdezést próbáld ki úgy is, hogy a választott konstans miatt kicsi legyen az eredményhalmaz, és úgy is, hogy lényegében a teljes tábla benne legyen. Adj magyarázatot is a változásokra.
 

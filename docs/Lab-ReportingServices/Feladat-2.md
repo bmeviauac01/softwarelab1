@@ -20,7 +20,7 @@ A táblázatos megjelenítés részletesen mutatja az eladási adatokat. Egy dia
 
     Ezzel azt érjük el, hogy a vízszintes tengelyen az alkategória szerint külön oszlop csoportokat kapunk, és a dátum szerint pedig külön oszlop sorozatokat.
 
-1. A `[Date]` feliraton jobb klikkeljünk, és válasszuk a _Series Groups Properties_-t. Itt nyomjuk meg a _Group Expressions_ csoportban az **_fx_** gombot
+1. A `[Date]` feliraton jobb klikkeljünk, és válasszuk a _Series Groups Properties_-t. Itt nyomjuk meg a _Group Expressions_ csoportban az **_fx_** gombot.
 
     ![Expression megadása](../images/reportingservices/rs-chart-group-expression.png)
 

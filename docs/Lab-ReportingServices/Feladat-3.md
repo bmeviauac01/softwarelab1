@@ -41,8 +41,7 @@ Az új riporthoz új adatokra lesz szükségünk. Bővítsük ki a lekérdezés�
 
 Az előbb megosztottá konvertáltuk a data source-t és dataset-et. Ezeket fogjuk egy új riportban felhasználni.
 
-1. _Solution Explorer_-ben jobb klikk a _Reports_ mappára > _Add new
-   item_ > _Report_. Az új riport neve legyen "Sales People".
+1. _Solution Explorer_-ben jobb klikk a _Reports_ mappára > _Add new item_ > _Report_. Az új riport neve legyen "Sales People".
 
 1. Nyissuk meg az új riportot. Az új riporthoz még nincsenek adatforrások. A _Report Data_ panelen vegyük fel a már meglevő adatforrásokat:
 
