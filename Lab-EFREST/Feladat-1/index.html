@@ -1198,7 +1198,7 @@
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Figyeljük meg a sikeres és a sikertelen válaszokat is. Ha sikerült a beszúrás, akkor a <code>CreatedAdAction</code> segédfüggvény olyan válasszal fog visszatérni, ahol a body tartalmazza az új entitást, a <em>Location</em> header pedig a linket, ahol az entitás lekérdezhető (ezért a hivatkozás a <code>nameof(Get)</code>-tel). Ha viszont a repository-ban eldobott kivétel érkezik, akkor jelezzük a problémát a hívónak. Ebben a válaszban a státuszkód 400 lesz, és itt is lesz body, amiben hibaszöveg lesz (hiszen a REST nem definiálja a hibajelzés további módjait a 400 válaszkódon túl).</p>
+<p>Figyeljük meg a sikeres és a sikertelen válaszokat is. Ha sikerült a beszúrás, akkor a <code>CreatedAtAction</code> segédfüggvény olyan válasszal fog visszatérni, ahol a body tartalmazza az új entitást, a <em>Location</em> header pedig a linket, ahol az entitás lekérdezhető (ezért a hivatkozás a <code>nameof(Get)</code>-tel). Ha viszont a repository-ban eldobott kivétel érkezik, akkor jelezzük a problémát a hívónak. Ebben a válaszban a státuszkód 400 lesz, és itt is lesz body, amiben hibaszöveg lesz (hiszen a REST nem definiálja a hibajelzés további módjait a 400 válaszkódon túl).</p>
 </li>
 <li>
 <p>Fordítsd le az alkalmazást és indítsd el. Próbáld ki a megírt kéréseket! Állítsd elő a sikeres és a sikertelen ágakat is.</p>
