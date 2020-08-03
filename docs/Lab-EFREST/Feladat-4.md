@@ -37,13 +37,13 @@ Az alábbi kérés-válasz sorozat mutatja a működést:
           "id": 1,
           "title": "doing homework",
           "done": false,
-          "statusz": "pending"
+          "status": "pending"
         },
         {
           "id": 2,
           "title": "doing more homework",
           "done": false,
-          "statusz": "new"
+          "status": "new"
         }
       ],
       "count": 2,
@@ -65,7 +65,7 @@ Az alábbi kérés-válasz sorozat mutatja a működést:
           "id": 3,
           "title": "hosework",
           "done": true,
-          "statusz": "done"
+          "status": "done"
         }
       ],
       "count": 1,
