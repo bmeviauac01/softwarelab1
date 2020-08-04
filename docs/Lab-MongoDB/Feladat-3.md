@@ -17,7 +17,7 @@ Az alábbi feladatok előtt ne felejtsd el felvenni és inicializálni a `orderC
 
 ## Listázás/olvasás
 
-1. A `ListOrders` függvény paraméterként kap egy `string status` értéket. Ha ez az érték üres vagy `null` (lásd: `string.IsNullOrEmpty`), akkor minden megrendelést listázz. Ellenkező esetben csak azokat a megrendeléseket listázd, melyeknek a `Status` értéke teljesen egyezik a paraméterben érkező `statusz` értékkel.
+1. A `ListOrders` függvény paraméterként kap egy `string status` értéket. Ha ez az érték üres vagy `null` (lásd: `string.IsNullOrEmpty`), akkor minden megrendelést listázz. Ellenkező esetben csak azokat a megrendeléseket listázd, melyeknek a `Status` értéke teljesen egyezik a paraméterben érkező `status` értékkel.
 
 1. A `FindOrder` metódus egy konkrét megrendelés adatait adja vissza a `string id` érték alapján szűrve. Figyelj oda, ha az adott `ID` érték nem található az adatbázisban, akkor `null` értéket adj vissza!
 
@@ -28,7 +28,7 @@ Az alábbi feladatok előtt ne felejtsd el felvenni és inicializálni a `orderC
 1. Az adatbázisentitás létrehozásához a következő információkra van szükség:
 
     - `CustomerID`, `SiteID`: az adatbázisból keresd ki egy tetszőleges vevőhöz (`Customer`) tartozó dokumentum `_id` és `mainSiteId` értékét. Ezeket az értékeket drótozd bele a kódodba.
-    - `Date`, `Deadline`, `Status`: ezeket az értékeket ay `order` paraméterből veheted
+    - `Date`, `Deadline`, `Status`: ezeket az értékeket az `order` paraméterből veheted
     - `PaymentMethod`: hozz létre egy új `PaymentMethod` objektumot. A `Method` legyen az `order` paraméterben található `PaymentMethod` érték. A `Deadline` maradjon `null`!
     - `OrderItems`: egyetlen tételt hozz létre! Ennek adattagjai:
         - `ProductID` és `Price`: a `product` paraméterből veheted

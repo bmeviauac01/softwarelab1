@@ -115,7 +115,7 @@ A forráskód melletti képernyőképeken szerepelnie kell a Neptun kódodnak.
 
 1. Ebben a pontban az `InsertProduct(Product product)` függvényt valósítjuk meg. A bemenő `Models.Product` entitás adatait a felhasználó szolgáltatja a felhasználói felületen keresztül.
 
-1. Egy termék létrehozásához először létre kell hoznunk egy új adatbázisentitás objektumot. Jelen esetben ez egy `Enites.Product` objektum lesz. Az `ID` értéket nem kell megadnunk — ezt majd az adatbázis generálja. A `Name`, `Price` és `Stock` értékeket a felhasználó szolgáltatja. Két érték maradt ki: az `VAT` és a `CategoryID`. Az előbbinek adjunk tetszőleges értéket, az utóbbinak pedig keressünk egy szimpatikus kategóriát az adatbázisban _Robo3T_ segítségével, és annak az `_id` értékét drótozzuk be!
+1. Egy termék létrehozásához először létre kell hoznunk egy új adatbázisentitás objektumot. Jelen esetben ez egy `Entites.Product` objektum lesz. Az `ID` értéket nem kell megadnunk — ezt majd az adatbázis generálja. A `Name`, `Price` és `Stock` értékeket a felhasználó szolgáltatja. Két érték maradt ki: az `VAT` és a `CategoryID`. Az előbbinek adjunk tetszőleges értéket, az utóbbinak pedig keressünk egy szimpatikus kategóriát az adatbázisban _Robo3T_ segítségével, és annak az `_id` értékét drótozzuk be!
 
     ```csharp
     var dbProduct = new Enites.Product
