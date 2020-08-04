@@ -970,7 +970,7 @@
 <h2 id="listazasolvasas">Listázás/olvasás<a class="headerlink" href="#listazasolvasas" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p>A <code>ListOrders</code> függvény paraméterként kap egy <code>string status</code> értéket. Ha ez az érték üres vagy <code>null</code> (lásd: <code>string.IsNullOrEmpty</code>), akkor minden megrendelést listázz. Ellenkező esetben csak azokat a megrendeléseket listázd, melyeknek a <code>Status</code> értéke teljesen egyezik a paraméterben érkező <code>statusz</code> értékkel.</p>
+<p>A <code>ListOrders</code> függvény paraméterként kap egy <code>string status</code> értéket. Ha ez az érték üres vagy <code>null</code> (lásd: <code>string.IsNullOrEmpty</code>), akkor minden megrendelést listázz. Ellenkező esetben csak azokat a megrendeléseket listázd, melyeknek a <code>Status</code> értéke teljesen egyezik a paraméterben érkező <code>status</code> értékkel.</p>
 </li>
 <li>
 <p>A <code>FindOrder</code> metódus egy konkrét megrendelés adatait adja vissza a <code>string id</code> érték alapján szűrve. Figyelj oda, ha az adott <code>ID</code> érték nem található az adatbázisban, akkor <code>null</code> értéket adj vissza!</p>
@@ -985,7 +985,7 @@
 <p>Az adatbázisentitás létrehozásához a következő információkra van szükség:</p>
 <ul>
 <li><code>CustomerID</code>, <code>SiteID</code>: az adatbázisból keresd ki egy tetszőleges vevőhöz (<code>Customer</code>) tartozó dokumentum <code>_id</code> és <code>mainSiteId</code> értékét. Ezeket az értékeket drótozd bele a kódodba.</li>
-<li><code>Date</code>, <code>Deadline</code>, <code>Status</code>: ezeket az értékeket ay <code>order</code> paraméterből veheted</li>
+<li><code>Date</code>, <code>Deadline</code>, <code>Status</code>: ezeket az értékeket az <code>order</code> paraméterből veheted</li>
 <li><code>PaymentMethod</code>: hozz létre egy új <code>PaymentMethod</code> objektumot. A <code>Method</code> legyen az <code>order</code> paraméterben található <code>PaymentMethod</code> érték. A <code>Deadline</code> maradjon <code>null</code>!</li>
 <li><code>OrderItems</code>: egyetlen tételt hozz létre! Ennek adattagjai:<ul>
 <li><code>ProductID</code> és <code>Price</code>: a <code>product</code> paraméterből veheted</li>
