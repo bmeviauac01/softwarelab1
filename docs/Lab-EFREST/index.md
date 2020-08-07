@@ -45,7 +45,7 @@ Keep in mind that you are expected to follow the [submission process](../GitHub.
 
 1. Open the checked out folder and type your Neptun code into the `neptun.txt` file. There should be a single line with the 6 characters of your Neptun code and nothing else in this file.
 
-### ~~Creating~~ database
+### ~~Creating~~ the database
 
 We will not be using Microsoft SQL Server here, but _Sqlite_. It is a light-weight relational database management system mainly for client-side applications. Although it is not recommended for servers, we will use it for simplicity. **Sqlite requires no installation.**
 

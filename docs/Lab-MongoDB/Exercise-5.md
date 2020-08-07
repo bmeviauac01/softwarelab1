@@ -1,6 +1,6 @@
 ﻿# Exercise 5: Optional exercise
 
-**You can earn an additional +3 points with the completion of this exercise. (In the evaluation, you will see the text "imsc" in the exercise title; this is meant for the Hungarian students. Please ignore that.)
+**You can earn an additional +3 points with the completion of this exercise.** (In the evaluation, you will see the text "imsc" in the exercise title; this is meant for the Hungarian students. Please ignore that.)
 
 We will group the orders in this exercise by date. We would like to see how our company performs by comparing the sales across time. We will use a [`$bucket`](https://docs.mongodb.com/manual/reference/operator/aggregation/bucket/) aggregation.
 

@@ -7,7 +7,7 @@ repo_url: https://github.com/bmeviauac01/laboratories-en
 theme:
   name: material
   custom_dir: theme-overrides
-  language: hu
+  language: en
   palette:
     primary: red
     accent: red
