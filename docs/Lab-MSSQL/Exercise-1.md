@@ -4,7 +4,7 @@
 
 ## Create a view
 
-Create a new `CategoryWithParent` view that lists the contents of the `Category` table as follows. It should have two columns: the `Name` of the category and the name of the parent category (or null if it does not exist).
+Create a new `CategoryWithParent` view that lists the `Category` table's contents as follows. It should have two columns: the `Name` of the category and the name of the parent category (or null if it does not exist).
 
 Open a new _Query_ window. Make sure to select the right database. Create the view by executing the T-SQL command below.
 
@@ -22,7 +22,7 @@ Check the contents of the view!
 
 ## Insert via the view
 
-Create a trigger with the name `InsertCategoryWithParent` that allows inserting a new category through the view (that is, by specifying the category name and the parent category name). It is not necessary to set a parent category, but if it is specified and there is no category with the provided name, an error should be raised and the operation aborted.
+Create a trigger with the name `InsertCategoryWithParent` that allows inserting a new category through the view (that is, by specifying the category name and the parent category name). It is not necessary to set a parent category. Still, if it is specified and there is no category with the provided name, an error should be raised, and the operation aborted.
 
 You will need an _instead of_ trigger that allows us to define how to insert the data. The skeleton of the trigger is provided below.
 
@@ -56,9 +56,9 @@ end
 
 1. Finish this trigger by completing the code in the cycle.
 
-    - If a parent category name is provided, check whether any category with the same name as `@parentname` exist.
+    - If a parent category name is provided, check whether any category with the same name as `@parentname` exists.
 
-    - If not, raise and error and abort the trigger.
+    - If not, raise an error and abort the trigger.
 
     - If everything is fine, insert the data into the `Category` table (and not the view... since the view does not store any data, hence this trigger).
 
@@ -67,10 +67,10 @@ end
 
 1. Verify the correct behavior of the trigger! Write an insert statement that successfully inserts a new category record through the view. Then write an insert statement that fails.
 
-    Suppose that the database is in its initial state: the categories in the table are the ones included in the initializer script. The two tests should _not_ depend on each other. Both shall produce the expected output regardless whether the other was executed before!
+    Suppose that the database is in its initial state: the categories in the table are the ones included in the initializer script. The two tests should _not_ depend on each other. Both shall produce the expected output regardless of whether the other was executed before!
 
     !!! warning "Use simple names"
-        It is recommended to use names (i.e. category names) that contain no special characters. Incorrect encoding of the SQL file might result in incorrect behavior otherwise. E.g. you may use the _LEGO_ category as a known existing category.
+        It is recommended to use names (i.e., category names) that contain no special characters. Incorrect encoding of the SQL file might result in incorrect behavior otherwise. E.g., you may use the _LEGO_ category as a known existing category.
 
     !!! example "SUBMISSION"
-        Write the test insert statements into files `f1-ok.sql` and `f1-error.sql`. Each file shall contain a single `insert` statement! They should not contain any `use` or `go` commands. Each file can earn you 2 points.
+        Write the test insert statements into files `f1-ok.sql` and `f1-error.sql`. Each file shall contain a single `insert` statement! They should not include any `use` or `go` commands. Each file can earn you 2 points.

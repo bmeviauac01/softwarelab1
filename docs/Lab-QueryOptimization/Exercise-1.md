@@ -8,7 +8,7 @@
     - and an explanation: _what_ do you see on the query plan and _why_ the system chose this option.
 
 !!! tip ""
-    If the query plan and/or the explanation of subsequent exercises is the same, or at least very similar, it is enough to document everything once (one screenshot and one explanation); and list which (sub)exercises it the solution for.
+    If the query plan or the explanation of subsequent exercises is the same, or at least very similar, it is enough to document everything once (one screenshot and one explanation); and list which (sub)exercises it the solution for.
 
 ## Exercise 1 (2p)
 
@@ -30,7 +30,7 @@ Document the SQL commands you used and explain the actual query execution plan!
 
 Re-create the primary key of the `Customer` table:
 
-- Right click the table > Design > then right click the ID column "Set Primary Key " then Save,
+- Right-click the table > Design > then right-click the ID column "Set Primary Key " then Save,
 - or execute `ALTER TABLE [dbo].[Customer] ADD PRIMARY KEY CLUSTERED ([ID] ASC)`
 
 Re-run the same queries as in the previous exercise. What do you experience?
@@ -51,11 +51,11 @@ Document the SQL commands you used and explain the actual query execution plan!
 
 Add a new non-clustered index on column `Price`. How do the execution plans change?
 
-To add the index use _Object Explorer_, find the table, expand it and right click _Indexes_ -> _New index_ > _Non-Clustered Index..._
+To add the index use _Object Explorer_, find the table, expand it and right-click _Indexes_ -> _New index_ > _Non-Clustered Index..._
 
 ![Create index](../images/queryopt/queryopt-add-index.png)
 
-Indices should have meaningful names, e.g. `IX_Tablename_Fieldname`. Add _Price_ column to the _Index key columns_ list.
+Indices should have meaningful names, e.g., `IX_Tablename_Fieldname`. Add _Price_ column to the _Index key columns_ list.
 
 ![Index properties](../images/queryopt/queryopt-index-properties.png)
 

@@ -1,6 +1,6 @@
 ﻿# Reporting Services
 
-In this lab we will work with _Microsoft SQL Server Reporting Services_, a tool we have not seen before. We will start working together, then some of the exercises will be individual work. You shall submit the solution of all exercises.
+In this lab, we will work with _Microsoft SQL Server Reporting Services_, a tool we have not seen before. We will start working together, then some of the exercises will be individual work. You shall submit the solution to all exercises.
 
 ## Pre-requisites and preparation
 
@@ -25,7 +25,7 @@ Keep in mind that you are expected to follow the [submission process](../GitHub.
 
 ### Create and check out your Git repository
 
-1. Create your personal git repository at: <TBD>
+1. Create your git repository at: <TBD>
 
 1. Wait for the repository creation to complete, then check out the repository.
 
@@ -43,7 +43,7 @@ We will work with the _Adventure Works_ sample database. This database contains 
 1. Download  [adventure-works-2014-oltp-script.zip](adventure-works-2014-oltp-script.zip) and extract it to folder `C:\work\Adventure Works 2014 OLTP Script` (create the folder if it does not exist yet).
 
     !!! important ""
-        The folder name should be as above, otherwise you need change the path in the sql script:
+        The folder name should be as above; otherwise, you need to change the path in the sql script:
 
         ```sql
         -- NOTE: Change this path if you copied the script source to another path
@@ -57,7 +57,7 @@ We will work with the _Adventure Works_ sample database. This database contains 
     - Server name: `(localdb)\mssqllocaldb`
     - Authentication: `Windows authentication`
 
-1. Use _File / Open / File..._ to open `instawdb.sql` from the folder created above. **Do not execute it yet!** First you should turn on SQLCMD mode: in the _Query_ menu click _SQLCMD Mode_; then click _Execute_.
+1. Use _File / Open / File..._ to open `instawdb.sql` from the folder created above. **Do not execute it yet!** First, you should turn on SQLCMD mode: in the _Query_ menu click _SQLCMD Mode_; then click _Execute_.
 
     ![SQLCMD mode](../images/sql-management-sqlcmd-mode.png)
 
@@ -65,13 +65,13 @@ We will work with the _Adventure Works_ sample database. This database contains 
 
     ![AdventureWorks database tables](../images/reportingservices/rs-adventureworks-tablak.png).
 
-1. Open a new SQL Query window on this database (right click the database and chose _New query_), and execute the following script **with your own Neptun code** substituted:
+1. Open a new SQL Query window on this database (right-click the database and chose _New query_), and execute the following script **with your own Neptun code** substituted:
 
     ```sql
     update Production.Product set Name='NEPTUN'+Name
     ```
 
-    Check the contents of table `Production.Product` and verify if it has your Neptun code in the product names: right click the table and chose _Select top 1000 rows_.
+    Check the contents of the table `Production.Product` and verify if it has your Neptun code in the product names: right-click the table and choose _Select top 1000 rows_.
 
     !!! warning "IMPORTANT"
-        It is important that your Neptun code is listed in the names. You will need to create screenshots in the following exercises, and your Neptun code **must** appear on these images.
+        Your Neptun code must be listed in the names. You will need to create screenshots in the following exercises, and your Neptun code **must** appear on these images.

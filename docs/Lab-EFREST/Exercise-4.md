@@ -1,8 +1,8 @@
 ﻿# Exercise 4: Optional exercise
 
-**You can earn an additional +3 points with the completion of this exercise.** (In the evaluation you will see the text "imsc" in the exercise title; this is meant for the Hungarian students. Please ignore that.)
+**You can earn an additional +3 points with the completion of this exercise.** (In the evaluation, you will see the text "imsc" in the exercise title; this is meant for the Hungarian students. Please ignore that.)
 
-If we have lots of tasks listing them should not return all of them at once. Implement a new endpoint to return a subset of the tasks (i.e. "paging"):
+If we have lots of tasks listing them should not return all of them at once. Implement a new endpoint to return a subset of the tasks (i.e., "paging"):
 
 - It returns the tasks in a deterministic fashion sorted by ID.
 - The query accepts a `count` parameter that specifies how many tasks to return.
@@ -18,9 +18,9 @@ If we have lots of tasks listing them should not return all of them at once. Imp
         !!! tip ""
             Use the `Url.Action` helper method to assemble this URL. Do not hardcode "localhost:5000" or "/api/tasks/paged" in the source code! You will _not_ need string operations to achieve this.
 
-            `Url.Action` will give you an absolute URL when all parameters (`action`, `controller`, `values`, `protocol` and `host`) are specified; for the latter ones `this.HttpContext.Request` can provide you the required values.
+            `Url.Action` will give you an absolute URL when all parameters (`action`, `controller`, `values`, `protocol`, and `host`) are specified; for the latter ones `this.HttpContext.Request` can provide you the required values.
 
-- The request always returns 200 OK; if there are no items the result set shall be empty.
+- The request always returns 200 OK; if there are no items, the result set shall be empty.
 
 The requests-responses shows you the expected behavior:
 

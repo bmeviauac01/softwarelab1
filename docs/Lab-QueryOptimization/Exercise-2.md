@@ -5,7 +5,7 @@
 
 ## Exercise 6 (1p)
 
-Repeat the queries on the `Product` table but instead of fetching the entire record only get the ID and the `Price` columns. How do the execution plans change? Explain the differences!
+Repeat the queries on the `Product` table, but instead of fetching the entire record, only get the ID and the `Price` columns. How do the execution plans change? Explain the differences!
 
 ## Exercise 7 (1p)
 
@@ -18,12 +18,12 @@ Document the SQL commands you used and explain the actual query execution plan!
 
 ## Exercise 8 (1p)
 
-In Exercises 6 `WHERE Price=` compared an integer and a floating point number. Let us experiment with this:
+In Exercises 6 `WHERE Price=` compared an integer and a floating-point number. Let us experiment with this:
 
 - m) `where cast(Price as int) = integer number`
 - n) `where Price BETWEEN integer number-0.0001 AND integer number+0.0001`
 
-Chose a random integer number of these queries, and fetch **only the primary key**. Analyze the execution plans.
+Chose a random integer number in these queries and fetch **only the primary key**. Analyze the execution plans.
 
 ## Exercise 9 (1p)
 
@@ -31,7 +31,7 @@ Analyze the following queries execute on the `Product` table:
 
 - o) query entire records where `Price` is less than a constant value (the filter should yield few matches), ordered by ID descending
 - p) the same, but fetch only `ID` and `Price`
-- q) query entire records where `Price` is greater than a constant value (the filter should yield a lot of matches), ordered by ID descending
+- q) query entire records where `Price` is greater than a constant value (the filter should yield many matches), ordered by ID descending
 - r) the same, but fetch only `ID` and `Price`
 
 Document the SQL commands you used and explain the actual query execution plan!
@@ -76,6 +76,6 @@ List the `Name` of each `Product` where `CategoryId` equals 2. Document the SQL 
 
 ## Exercise 15 (1p)
 
-Improve the performance of the previous query. Extend the index added before by adding the name: right click the index -> _Properties_ -> and add `Name` to _Included columns_.
+Improve the performance of the previous query. Extend the index added before by adding the name: right-click the index -> _Properties_ -> and add `Name` to _Included columns_.
 
-Repeat the previous query again and analyze the plan.
+Repeat the previous query and analyze the plan.

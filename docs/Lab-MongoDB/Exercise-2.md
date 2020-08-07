@@ -8,13 +8,13 @@ The method you should implement is `IList<Category> ListCategories()`. The metho
 
 - `Name`: the name of the category
 - `ParentCategoryName`: the name of the parent category. If there is no parent, the value should be `null`.
-- `NumberOfProducts`: number of products in this categeory. If there are no products the value should be **0**.
+- `NumberOfProducts`: number of products in this category. If there are no products, the value should be **0**.
 
 The outline of the solution is as follows.
 
-1. Create an initialize a new `productCollection` similarly to how `categoryCollection` is initialized. The name of the collection is `categories` - you can verify this using _Robo3T_.
+1. Create and initialize a new `productCollection` similar to how `categoryCollection` is initialized. The name of the collection is `categories` - you can verify this using _Robo3T_.
 
-1. `ListCategories()` should first query all categoires. Perform this similarly to how it was done in the previous exercise. Store the result set in variable `dbCategories`.
+1. `ListCategories()` should first query all categories. Perform this similarly to how it was done in the previous exercise. Store the result set in variable `dbCategories`.
 
 1. Query the number of products associated with each category (`Product.CategoryID`). Use an aggregation pipeline and a [`$group`](https://docs.mongodb.com/manual/reference/operator/aggregation/group/) step as follows.
 
@@ -27,7 +27,7 @@ The outline of the solution is as follows.
 
     This query yields a list where each item has a `CategoryID` and the number of associated products.
 
-1. At this stage we have all information we need: all categories (including the parents) and the number of products for each. The final step is to "merge" the results in C# code.
+1. We have all information we need: all categories (including the parents) and the number of products for each. The final step is to "merge" the results in C# code.
 
     ```csharp
     return dbCategories
@@ -43,12 +43,12 @@ The outline of the solution is as follows.
     .ToList();
     ```
 
-    As seen above this is performed using LINQ. 
+    As seen above, this is performed using LINQ. 
 
     !!! note ""
-        This is not the only solution to "join" collections in MongoDB. Although there is no `join` operation there are ways to query data across collections. Instead of doing this in MongoDB we do the merging in C# as above. This would not be good if the data set was large. Also, if there was filtering involved, the code above would be much more complicated.
+        This is not the only solution to "join" collections in MongoDB. Although there is no `join` operation, there are ways to query data across collections. Instead of doing this in MongoDB, we do the merging in C# as above. This would not be good if the data set was large. Also, if there was filtering involved, the code above would be much more complicated.
 
-1. Use the `Categories` link of the website to test your solution. This will list the data provided by your code in a tabular format. You can use the `Add new product` functionality from before to create new products. This must result in an increase of the number of product in one of the categories. (Remember that inserting the product hard-coded a category ID.)
+1. Use the `Categories` link of the website to test your solution. This will list the data provided by your code in a tabular format. You can use the `Add new product` functionality from before to create new products. This must result in an increase in the number of products in one of the categories. (Remember that inserting the product hard-coded a category ID.)
 
 !!! example "SUBMISSION"
     Create a **screenshot** of the web page listing the categories. Save the screenshot as `f2.png` and submit with the other files of the solution. The screenshot shall display the **list of categories**. Verify that your **Neptun code** is visible on the image at the bottom of the page! The screenshot is required to earn the points.

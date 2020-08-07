@@ -1,12 +1,12 @@
 ﻿# Exercise 2: Task operations
 
-In this exercise we will implement the basic services for _tasks_.
+In this exercise, we will implement the basic services for _tasks_.
 
 **You can earn 6 points with the completion of this exercise.**
 
 ## Preparation with Entity Framework
 
-The task entity is represented by class `Model.Task`. It has a unique `ID`, a text `Title`, a `Done` flag to signal completion and a `Status` field referencing the status of this task (with 1-\* multiplicity).
+The task entity is represented by class `Model.Task`. It has a unique `ID`, a text `Title`, a `Done` flag to signal completion, and a `Status` field referencing the status of this task (with 1-\* multiplicity).
 
 Define the Entity Framework model first:
 
@@ -16,7 +16,7 @@ Define the Entity Framework model first:
 
 1. Specify the configuration of the mapping of this entity in `OnModelCreating`. Make sure to configure the _navigation property_ here correctly!
 
-1. Add some initial ("seed") data too as seen previously.
+1. Add some initial ("seed") data, as seen previously.
 
 ## Operations in the repository
 
@@ -24,19 +24,19 @@ Create a new class `TasksRepository` in the `DAL` folder that implements the exi
 
 - `IReadOnlyCollection<Task> List()`: lists all available tasks
 - `Task FindById(int taskId)`: returns the single task with the specified ID if it exists; returns null otherwise
-- `Task Insert(CreateTask value)`: adds a new task to the database with the specified title and associtates it with the specified status; if no status with the provided name exists, create a new status record; the return value is the new task entity as created in the database with its assigned ID
+- `Task Insert(CreateTask value)`: adds a new task to the database with the specified title and associates it with the specified status; if no status with the provided name exists, create a new status record; the return value is the new task entity as created in the database with its assigned ID
 - `Task Delete(int taskId)`: deletes the specified task; return value is the task (state before deletion), or null if the task is not found
 
-You don't need to implement the other operations yet; however an implementation needs to be provided so that the code compiles. You may use `throw new NotImplementedException();` as a placeholder for now.
+You don't need to implement the other operations yet; however, an implementation needs to be provided so that the code compiles. You may use `throw new NotImplementedException();` as a placeholder for now.
 
 !!! tip "Tip"
-    You will need to map the database entity to the model class in the repository. It is recommended to create a `ToModel` helper method as seen previously. When querying the tasks you will need the associated status record too (to get the name). You will need to use an `.Include()`.
+    You will need to map the database entity to the model class in the repository. It is recommended to create a `ToModel` helper method, as seen previously. When querying the tasks, you will need the associated status record too (to get the name). You will need to use an `.Include()`.
 
 ## Operations on the REST Api
 
 Create a new `TasksController` in the `Controllers` folder. The controller shall handle REST queries on URL `/api/tasks/neptun` where the last part is your **own Neptun code** lowercase.
 
-The controller shall take an `ITasksRepository` as parameter. In order for the dependency injection framework to resolve this in runtime, further configuration is needed. In the `Startup` class register this interface and its corresponding implementation in method `ConfigureServices` similarly to how the other repository is registered. (The controller does _not_ need registration.)
+The controller shall take an `ITasksRepository` as a parameter. For the dependency injection framework to resolve this in runtime, further configuration is needed. In the `Startup` class, register this interface and its corresponding implementation in the method `ConfigureServices` similarly to how the other repository is registered. (The controller does _not_ need registration.)
 
 Implement the following operations using the previously implemented repository methods:
 

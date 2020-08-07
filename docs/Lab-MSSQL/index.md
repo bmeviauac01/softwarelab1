@@ -1,16 +1,16 @@
 ﻿# MSSQL
 
-In this lab we will practice working with the server-side programming features of Microsoft SQL Server.
+In this lab, we will practice working with the server-side programming features of Microsoft SQL Server.
 
 ## Pre-requisites and preparation
 
 Required tools to complete the tasks:
 
-- Windows, Linux or MacOS: All tools are platform-independent, or a platform-independent alternative is available.
+- Windows, Linux, or macOS: All tools are platform-independent, or a platform-independent alternative is available.
 - Microsoft SQL Server
     - The free Express version is sufficient, or you may also use _localdb_ installed with Visual Studio
     - A [Linux version](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup) is also available.
-    - On MacOS you can use Docker.
+    - On macOS, you can use Docker.
 - [SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms), or you may also use the platform-independent [Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/download) is
 - Database initialization script: [mssql.sql](https://bmeviauac01.github.io/adatvezerelt/db/mssql.sql)
 - GitHub account and a git client
@@ -28,7 +28,7 @@ Keep in mind that you are expected to follow the [submission process](../GitHub.
 
 ### Create and check out your Git repository
 
-1. Create your personal git repository at: <TBD>
+1. Create your git repository at: <TBD>
 
 1. Wait for the repository creation to complete, then check out the repository.
 
@@ -46,7 +46,7 @@ Keep in mind that you are expected to follow the [submission process](../GitHub.
     - Server name: `(localdb)\mssqllocaldb` or `.\sqlexpress` (which is short for: `localhost\sqlexpress`)
     - Authentication: `Windows authentication`
 
-1. Create a new database (if it does not exist yet). The name should be your **Neptun code**: in _Object Explorer_ right click _Databases_ and choose _Create Database_.
+1. Create a new database (if it does not exist yet). The name should be your **Neptun code**: in _Object Explorer_ right-click _Databases_ and choose _Create Database_.
 
     !!! warning "IMPORTANT"
         The name of the database must be your **Neptun code**. You will need to submit screenshots that display the database name this way!

@@ -1,20 +1,20 @@
 ﻿# MongoDB
 
-In this lab we will work with the MongoDB NoSQL database and the Mongo C# driver.
+In this lab, we will work with the MongoDB NoSQL database and the Mongo C# driver.
 
 ## Pre-requisites and preparation
 
 Required tools to complete the tasks:
 
-- Windows, Linux or MacOS: All tools are platform-independent, or a platform-independent alternative is available.
+- Windows, Linux, or macOS: All tools are platform-independent, or a platform-independent alternative is available.
 - MongoDB Community Server ([download](https://www.mongodb.com/download-center/community))
 - Robo 3T ([download](https://robomongo.org/download))
 - Sample database initialization script: ([mongo.js](https://bmeviauac01.github.io/adatvezerelt/db/mongo.js))
 - Microsoft Visual Studio 2019 [with the settings here](../VisualStudio.md)
-    - When using Linux or MacOS you can use Visual Studio Code, the .NET Core SDK and [dotnet CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/).
+    - When using Linux or macOS, you can use Visual Studio Code, the .NET Core SDK, and [dotnet CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/).
 - [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)
     - Usually installed with Visual Studio; if not, use the link above to install (the SDK and _not_ the runtime).
-    - You need to install it manually when using Linux or MacOS.
+    - You need to install it manually when using Linux or macOS.
 - GitHub account and a git client
 
 Materials for preparing for this laboratory:
@@ -30,7 +30,7 @@ Keep in mind that you are expected to follow the [submission process](../GitHub.
 
 ### Create and check out your Git repository
 
-1. Create your personal git repository at: <TBD>
+1. Create your git repository at: <TBD>
 
 1. Wait for the repository creation to complete, then check out the repository.
 

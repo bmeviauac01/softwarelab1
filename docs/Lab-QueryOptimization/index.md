@@ -1,16 +1,16 @@
 ﻿# Query optimization
 
-We will examine the query optimization behavior of Microsoft SQL Server. In order to properly understand the behavior of the optimizer and be able to document it, the **first 5 exercises are solved together** and the instructor will explain the queries and the behavior. The **rest of the exercises is individual work** where it is your task to infer the reason for a specific plan. You shall submit the documentation of all exercises.
+We will examine the query optimization behavior of Microsoft SQL Server. To properly understand the optimizer's behavior and be able to document it, the **first 5 exercises are solved together**, and the instructor will explain the queries and the behavior. The **rest of the exercises is individual work** where it is your task to infer the reason for a specific plan. You shall submit the documentation of all exercises.
 
 ## Pre-requisites and preparation
 
 Required tools to complete the tasks:
 
-- Windows, Linux or MacOS: All tools are platform-independent, or a platform-independent alternative is available.
+- Windows, Linux, or macOS: All tools are platform-independent, or a platform-independent alternative is available.
 - Microsoft SQL Server
     - The free Express version is sufficient, or you may also use _localdb_ installed with Visual Studio
     - A [Linux version](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup) is also available.
-    - On MacOS you can use Docker.
+    - On macOS, you can use Docker.
 - [Visual Studio Code](https://code.visualstudio.com/) or any other tool for writing markdown
 - [SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms), or you may also use the platform-independent [Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/download) is
 - Database initialization script: [mssql.sql](https://bmeviauac01.github.io/adatvezerelt/db/mssql.sql)
@@ -30,7 +30,7 @@ Keep in mind that you are expected to follow the [submission process](../GitHub.
 
 ### Create and check out your Git repository
 
-1. Create your personal git repository at: <TBD>
+1. Create your git repository at: <TBD>
 
 1. Wait for the repository creation to complete, then check out the repository.
 
@@ -60,7 +60,7 @@ Create the documentation in a markdown file. Open the checked out git repository
 1. For convenient editing open the [preview](https://code.visualstudio.com/docs/languages/markdown#_markdown-preview) (_Ctrl-K + V_).
 
     !!! note "Alternative editor"
-        If you do not like VS code, you can also use the [GitHub web interface](https://help.github.com/en/github/managing-files-in-a-repository/editing-files-in-your-repository) a to edit the markdown; you also have a preview here. [File upload](https://help.github.com/en/github/managing-files-in-a-repository/adding-a-file-to-a-repository) will be trickier though.
+        If you do not like VS code, you can also use the [GitHub web interface](https://help.github.com/en/github/managing-files-in-a-repository/editing-files-in-your-repository) a to edit the markdown; you also have a preview here. [File upload](https://help.github.com/en/github/managing-files-in-a-repository/adding-a-file-to-a-repository) will be trickier.
 
 ### Create the database
 
@@ -69,7 +69,7 @@ Create the documentation in a markdown file. Open the checked out git repository
     - Server name: `(localdb)\mssqllocaldb` or `.\sqlexpress` (which is short for: `localhost\sqlexpress`)
     - Authentication: `Windows authentication`
 
-1. Create a new databse (if it does not exist yet). The name should be your Neptun code: in _Object Explorer_ right click _Databases_ and choose _Create Database_.
+1. Create a new database (if it does not exist yet). The name should be your Neptun code: in _Object Explorer_ right-click _Databases_ and choose _Create Database_.
 
 1. Create the sample database by executing the [initializer script](https://bmeviauac01.github.io/adatvezerelt/db/mssql.sql) Open a new _Query_ window, paste the script into the window, then execute it. Make sure to select the right database in the toolbar dropdown.
 
@@ -84,7 +84,7 @@ Create the documentation in a markdown file. Open the checked out git repository
 !!! tip "If you are not using Windows"
     We are primarily using SQL Server Management Studio to get the execution plans. If you are not using Windows, you can also use Azure Data Studio-t to [obtain the query plan](https://richbenner.com/2019/02/azure-data-studio-execution-plans/).
 
-In the following exercises we will check the best query plan the optimizer chose and the server executed. In SQL Server Management Studio open the _Query_ menu and check [_Include Actual Execution Plan_](https://docs.microsoft.com/en-us/sql/relational-databases/performance/display-an-actual-execution-plan).
+In the following exercises, we will check the best query plan the optimizer chose and the server executed. In SQL Server Management Studio, open the _Query_ menu and check [_Include Actual Execution Plan_](https://docs.microsoft.com/en-us/sql/relational-databases/performance/display-an-actual-execution-plan).
 
 ![Enable query plan](../images/queryopt/queryopt-include-plan.png)
 
@@ -92,4 +92,4 @@ The plan will be displayed after the query is completed at the bottom of the win
 
 ![View query plan](../images/queryopt/queryopt-plan-result.png)
 
-The plan is a data flow diagram where the query execution is the flow of the data. The items are the individual steps and the percentages are the relative cost of each step with regards to the whole query.
+The plan is a data flow diagram where the query execution is the flow of the data. The items are the individual steps, and the percentages are the relative cost of each step with regards to the whole query.
