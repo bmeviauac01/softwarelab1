@@ -131,7 +131,7 @@ Alább részletesen bemutatjuk a beadás menetét. Itt egy rövid összefoglaló
 
     ![GitHub create pull request](images/github/github-create-pull-request-4.png)
 
-1. A _pull request_ hatására le fog futni egy értékelés. Ennek eredényét a pull request alatt kommentben fogod látni.
+1. A _pull request_ hatására le fog futni egy értékelés. Ennek eredményét a pull request alatt kommentben fogod látni.
 
     Ez az értékelés minden labor esetében más lesz. Egyes laboroknál a programodat lefuttatjuk, és előzetes pontszámot is kapsz. Más laboroknál csak "szintaktikai ellenőrzést" végzünk.
 
@@ -141,18 +141,24 @@ Alább részletesen bemutatjuk a beadás menetét. Itt egy rövid összefoglaló
 
 1. Ha nem vagy megelégedve a munkáddal, akkor még javíthatsz rajta. Ehhez kommitolj és pusholj újra. Ha továbbra is a megfelelő ágon dolgozol, akkor a _pull request_ újból le fogja futtatni a kiértékelést. Arra kérünk, hogy **MAXIMUM 5 alkalommal** futtasd le a kiértékelést!
 
-    !!! tip "Javítás"
-        Ha úgy látod, hogy a megoldásodat még javítani akarod, és nem szeretnéd, hogy mindig lefusson az értékelés, akkor **zárd le** a pull request-et a webes felületen. Ha kész vagy, nyiss majd egy újat.
+    !!! tip "Megoldás javítása kiértékelés nélkül"
+        Ha úgy látod, hogy a megoldásodat még javítani akarod, és nem szeretnéd, hogy mindig lefusson az értékelés, akkor állítsd át a pull request-et a webes felületen **draft** állapotra.
+
+        ![GitHub create pull request](images/github/github-convert-pr-to-draft.png)
+
+        Ezzel az állapottal jelzed, hogy még dolgozol. Kommitolj és pusholj. Ilyenkor nem fog futni kiértékelés. Ha végeztél, akkor vissza **kell** állítanod a pull request-et: menj a PR aljára és kattints a "Ready for review" gombra. Ennek hatására visszaáll a PR és le fog futni az automata értékelés.
+
+        ![GitHub create pull request](images/github/github-draft-pr-ready.png)
 
     !!! info "Maximum 5"
         A maximum 5 alkalomba nem számoljuk bele az esetlegesen megszakadt, vagy tranziens hiba miatt sikertelen futtatásokat. Ha viszont figyelmetlenségből, vagy szándékosan túlléped az ötöt, akkor pontlevonással szankcionálunk. Arra kérünk, hogy beadás előtt **teszteld a megoldásod**, ne a GitHub platformot "dolgoztasd" magad helyett!
 
-1. **VÉGEZETÜL**, ha kész vagy, a _pull request_-et rendeld a laborvezetődhöz. Ez a lépés feltétlenül fontos, ez jelzi a beadást.
+1. **VÉGEZETÜL**, ha kész vagy, a _pull request_-et rendeld a **laborvezetődhöz**. Ez a lépés feltétlenül fontos, ez jelzi a beadást.
 
     ![GitHub create pull request](images/github/github-create-pull-request-3.png)
 
     !!! error "Pull request nélkül"
-        Ha nincs pull request-et, vagy van, de nincs a laborvezetőhöz rendelve, akkor úgy tekintjük, hogy még nem vagy készen, és nem adtad be a megoldást.
+        Ha nincs pull request-et, vagy nincs a laborvezetőhöz rendelve, akkor úgy tekintjük, hogy még nem vagy készen, és nem adtad be a megoldást.
 
     !!! success "Végeztél"
         Miután a laborvezetőhöz rendelted a pull request-et, már **ne módosíts** semmin. A laborvezető értékelni fogja a munkádat, és a pull request lezárásával kommentben jelzi a végeredményt.
