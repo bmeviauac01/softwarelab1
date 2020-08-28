@@ -959,24 +959,20 @@
 <p>A labor elvégzéséhez szükséges eszközök:</p>
 <ul>
 <li>Windows, Linux vagy MacOS: Minden szükséges program platform független, vagy van platformfüggetlen alternatívája.</li>
-<li>Microsoft SQL Server<ul>
+<li>Microsoft SQL Server</li>
 <li>Express változat ingyenesen használható, avagy Visual Studio mellett feltelepülő <em>localdb</em> változat is megfelelő</li>
 <li>Van <a href="https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup">Linux változata</a> is.</li>
 <li>MacOS-en Docker-rel futtatható.</li>
-</ul>
-</li>
 <li><a href="https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms">SQL Server Management Studio</a>, vagy kipróbálható a platformfüggetlen <a href="https://docs.microsoft.com/en-us/sql/azure-data-studio/download">Azure Data Studio</a> is</li>
 <li>Az adatbázist létrehozó script: <a href="https://bmeviauac01.github.io/adatvezerelt/db/mssql.sql">mssql.sql</a></li>
 <li>GitHub account és egy git kliens</li>
 </ul>
 <p>A labor elvégzéséhez használható segédanyagok és felkészülési anyagok:</p>
 <ul>
-<li>Microsoft SQL Server használata: <a href="https://bmeviauac01.github.io/adatvezerelt/db/mssql/">leírás</a> és <a href="https://youtu.be/gmY8reqSL7U">videó</a></li>
+<li>Microsoft SQL Server használata: <a href="https://bmeviauac01.github.io/adatvezerelt/db/mssql/">leírás</a> és <a href="https://web.microsoftstream.com/video/e3a83d16-b5c4-4fe9-b027-703347951621">videó</a></li>
 <li>Az adatbázis <a href="https://bmeviauac01.github.io/adatvezerelt/db/">sémájának leírása</a></li>
-<li>Microsoft SQL Server programozási lehetőségei és az SQL nyelv<ul>
+<li>Microsoft SQL Server programozási lehetőségei és az SQL nyelv</li>
 <li>Lásd az Adatvezérelt rendszerek c. tárgy <a href="https://www.aut.bme.hu/Course/adatvezerelt">jegyzetei</a> és <a href="https://bmeviauac01.github.io/adatvezerelt/">gyakorlati anyagai</a> között</li>
-</ul>
-</li>
 </ul>
 <h2 id="elokeszulet">Előkészület<a class="headerlink" href="#elokeszulet" title="Permanent link">&para;</a></h2>
 <p>A feladatok megoldása során ne felejtsd el követni a <a href="../GitHub/">feladat beadás folyamatát</a>.</p>
@@ -987,10 +983,11 @@
 </li>
 <li>
 <p>Várd meg, míg elkészül a repository, majd checkout-old ki.</p>
-<div class="admonition tip">
-<p>Egyetemi laborokban, ha a checkout során nem kér a rendszer felhasználónevet és jelszót, és nem sikerül a checkout, akkor valószínűleg a gépen korábban megjegyzett felhasználónévvel próbálkozott a rendszer. Először töröld ki a mentett belépési adatokat (lásd <a href="../GitHub-credentials/">itt</a>), és próbáld újra.</p>
-</div>
 </li>
+</ol>
+<p>!!! tip ""
+   Egyetemi laborokban, ha a checkout során nem kér a rendszer felhasználónevet és jelszót, és nem sikerül a checkout, akkor valószínűleg a gépen korábban megjegyzett felhasználónévvel próbálkozott a rendszer. Először töröld ki a mentett belépési adatokat (lásd <a href="../GitHub-credentials/">itt</a>), és próbáld újra.</p>
+<ol>
 <li>
 <p>Hozz létre egy új ágat <code>megoldas</code> néven, és ezen az ágon dolgozz.</p>
 </li>
@@ -1002,27 +999,27 @@
 <ol>
 <li>
 <p>Kapcsolódj Microsoft SQL Serverhez SQL Server Management Studio Segítségével. Indítsd el az alkalmazást, és az alábbi adatokkal kapcsolódj.</p>
-<ul>
-<li>Server name: <code>(localdb)\mssqllocaldb</code> vagy <code>.\sqlexpress</code> (ezzel egyenértékű: <code>localhost\sqlexpress</code>)</li>
-<li>Authentication: <code>Windows authentication</code></li>
-</ul>
+</li>
+<li>
+<p>Server name: <code>(localdb)\mssqllocaldb</code> vagy <code>.\sqlexpress</code> (ezzel egyenértékű: <code>localhost\sqlexpress</code>)</p>
+</li>
+<li>
+<p>Authentication: <code>Windows authentication</code></p>
 </li>
 <li>
 <p>Hozz létre egy új adatbázist (ha még nem létezik). Az adatbázis neve legyen a <strong>Neptun kódod</strong>: <em>Object Explorer</em>-ben Databases-en jobb kattintás, és <em>Create Database</em>.</p>
-<div class="admonition warning">
-<p class="admonition-title">FONTOS</p>
-<p>Az adatbázis neve egyezzen meg a <strong>Neptun kódoddal</strong>. A labor megoldásában kérünk képernyőképeket, amelyeken így kell szerepelnie az adatbázisnak!</p>
-</div>
-</li>
-<li>
-<p>Hozd létre a minta adatbázist a <a href="https://bmeviauac01.github.io/adatvezerelt/db/mssql.sql">generáló script</a> lefuttatásával. Nyiss egy új <em>Query</em> ablakot, másold be a script tartalmát, és futtasd le. Ügyelj az eszköztáron levő legördülő menüben a megfelelő adatbázis kiválasztására.</p>
-<p><img alt="Adatbázis kiválasztása" src="../images/sql-management-database-dropdown.png" /></p>
-</li>
-<li>
-<p>Ellenőrizd, hogy létrejöttek-e a táblák. Ha a <em>Tables</em> mappa ki volt már nyitva, akkor frissíteni kell.</p>
-<p><img alt="Adatbázis kiválasztása" src="../images/sql-managment-tablak.png" />.</p>
 </li>
 </ol>
+<p>!!! warning "FONTOS"
+   Az adatbázis neve egyezzen meg a <strong>Neptun kódoddal</strong>. A labor megoldásában kérünk képernyőképeket, amelyeken így kell szerepelnie az adatbázisnak!</p>
+<ol>
+<li>Hozd létre a minta adatbázist a <a href="https://bmeviauac01.github.io/adatvezerelt/db/mssql.sql">generáló script</a> lefuttatásával. Nyiss egy új <em>Query</em> ablakot, másold be a script tartalmát, és futtasd le. Ügyelj az eszköztáron levő legördülő menüben a megfelelő adatbázis kiválasztására.</li>
+</ol>
+<p><img alt="Adatbázis kiválasztása" src="../images/sql-management-database-dropdown.png" /></p>
+<ol>
+<li>Ellenőrizd, hogy létrejöttek-e a táblák. Ha a <em>Tables</em> mappa ki volt már nyitva, akkor frissíteni kell.</li>
+</ol>
+<p><img alt="Adatbázis kiválasztása" src="../images/sql-managment-tablak.png" />.</p>
                 
               
               
