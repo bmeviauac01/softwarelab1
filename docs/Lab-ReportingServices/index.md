@@ -50,7 +50,7 @@ A feladatok során az _Adventure Works_ minta adatbázissal dolgozunk. Az adatb�
         :setvar SqlSamplesSourceDataPath "C:\work\Adventure Works 2014 OLTP Script\"
         ```
 
-        Ha beleszerkesztesz az elérési útvonaba, ügyelj hogy a végén maradjon perjel!
+        Ha beleszerkesztesz az elérési útvonalba, ügyelj hogy a végén maradjon perjel!
 
 1. Kapcsolódj Microsoft SQL Serverhez SQL Server Management Studio segítségével. Az alábbi adatokkal kapcsolódj.
 
