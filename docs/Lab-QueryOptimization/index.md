@@ -8,9 +8,9 @@ Required tools to complete the tasks:
 
 - Windows, Linux, or macOS: All tools are platform-independent, or a platform-independent alternative is available.
 - Microsoft SQL Server
-    - The free Express version is sufficient, or you may also use _localdb_ installed with Visual Studio
-    - A [Linux version](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup) is also available.
-    - On macOS, you can use Docker.
+  - The free Express version is sufficient, or you may also use _localdb_ installed with Visual Studio
+  - A [Linux version](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup) is also available.
+  - On macOS, you can use Docker.
 - [Visual Studio Code](https://code.visualstudio.com/) or any other tool for writing markdown
 - [SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms), or you may also use the platform-independent [Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/download) is
 - Database initialization script: [mssql.sql](https://bmeviauac01.github.io/adatvezerelt/db/mssql.sql)
@@ -19,10 +19,10 @@ Required tools to complete the tasks:
 Materials for preparing for this laboratory:
 
 - Markdown [introduction](https://guides.github.com/features/mastering-markdown/) and [detailed documentation](https://help.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax)
-- Using Microsoft SQL Server: [description](https://bmeviauac01.github.io/datadriven-en/db/mssql/) and [video](https://www.youtube.com/watch?v=kK1i_HUujAc)
+- Using Microsoft SQL Server: [description](https://bmeviauac01.github.io/datadriven-en/db/mssql/) and [video](https://web.microsoftstream.com/video/98a6697d-daec-4a5f-82b6-8e96f06302e8)
 - The [schema](https://bmeviauac01.github.io/datadriven-en/db/) of the database
 - Microsoft SQL Server query optimization
-    - Check the materials of [Data-driven systems](https://www.aut.bme.hu/Course/enviauac01)
+  - Check the materials of [Data-driven systems](https://www.aut.bme.hu/Course/enviauac01)
 
 ## Initial steps
 
@@ -34,8 +34,8 @@ Keep in mind that you are expected to follow the [submission process](../GitHub.
 
 1. Wait for the repository creation to complete, then check out the repository.
 
-    !!! tip ""
-        If in university computer laboratories you are not asked for credentials to log in to GitHub when checking out the repository, the operation may fail. This is likely due to the machine using someone else's GitHub credentials. Delete these credentials first (see [here](../GitHub-credentials.md)), then retry the checkout.
+   !!! tip ""
+   If in university computer laboratories you are not asked for credentials to log in to GitHub when checking out the repository, the operation may fail. This is likely due to the machine using someone else's GitHub credentials. Delete these credentials first (see [here](../GitHub-credentials.md)), then retry the checkout.
 
 1. Create a new branch with the name `solution` and work on this branch.
 
@@ -51,33 +51,33 @@ Create the documentation in a markdown file. Open the checked out git repository
 
 1. In the folder structure on the left find `README.md` and double click to open.
 
-    - Edit this file.
-    - When you create a screenshot, put the file in this directory next to the other files. This will enable you to use the file name to include the image.
+   - Edit this file.
+   - When you create a screenshot, put the file in this directory next to the other files. This will enable you to use the file name to include the image.
 
-    !!! warning "Use simple file names"
-        You should avoid using special characters in the file names. Best of you use the English alphabet and no spaces either.
+   !!! warning "Use simple file names"
+   You should avoid using special characters in the file names. Best of you use the English alphabet and no spaces either.
 
 1. For convenient editing open the [preview](https://code.visualstudio.com/docs/languages/markdown#_markdown-preview) (_Ctrl-K + V_).
 
-    !!! note "Alternative editor"
-        If you do not like VS code, you can also use the [GitHub web interface](https://help.github.com/en/github/managing-files-in-a-repository/editing-files-in-your-repository) a to edit the markdown; you also have a preview here. [File upload](https://help.github.com/en/github/managing-files-in-a-repository/adding-a-file-to-a-repository) will be trickier.
+   !!! note "Alternative editor"
+   If you do not like VS code, you can also use the [GitHub web interface](https://help.github.com/en/github/managing-files-in-a-repository/editing-files-in-your-repository) a to edit the markdown; you also have a preview here. [File upload](https://help.github.com/en/github/managing-files-in-a-repository/adding-a-file-to-a-repository) will be trickier.
 
 ### Create the database
 
 1. Connect to Microsoft SQL Server using SQL Server Management Studio. Start Management Studio and use the following connection details:
 
-    - Server name: `(localdb)\mssqllocaldb` or `.\sqlexpress` (which is short for: `localhost\sqlexpress`)
-    - Authentication: `Windows authentication`
+   - Server name: `(localdb)\mssqllocaldb` or `.\sqlexpress` (which is short for: `localhost\sqlexpress`)
+   - Authentication: `Windows authentication`
 
 1. Create a new database (if it does not exist yet). The name should be your Neptun code: in _Object Explorer_ right-click _Databases_ and choose _Create Database_.
 
 1. Create the sample database by executing the [initializer script](https://bmeviauac01.github.io/adatvezerelt/db/mssql.sql) Open a new _Query_ window, paste the script into the window, then execute it. Make sure to select the right database in the toolbar dropdown.
 
-    ![Selecting the database](../images/sql-management-database-dropdown.png)
+   ![Selecting the database](../images/sql-management-database-dropdown.png)
 
 1. Verify that the tables are created. If the _Tables_ folder was open before, you need to refresh it.
 
-    ![Listing tables](../images/sql-managment-tablak.png).
+   ![Listing tables](../images/sql-managment-tablak.png).
 
 ### Getting the actual execution plan
 
