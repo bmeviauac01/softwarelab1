@@ -54,6 +54,7 @@ nav:
       - GitHub-Actions.md
       - FAQ.md
       - VisualStudio.md
+      - bme-cloud-vm.md
       - GitHub-credentials.md
   - "Reporting Services":
       - Lab-ReportingServices/index.md
