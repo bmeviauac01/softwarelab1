@@ -2,32 +2,16 @@
 
 A tárgykövetelményeket lásd a [hivatalos tantárgyi adatlapon](https://portal.vik.bme.hu/kepzes/targyak/VIAUAC09/).
 
-## Laborok időrendje
-
-- Első oktatási héten nincs labor.
-- 2-3. oktatási hetek (TBD): [Microsoft SQL Server Reporting Services](Lab-ReportingServices/index.md)
-    - laborban teljesített, részben vezetett feladat
-    - beadási határidő: TBD
-- 4-5. oktatási hetek (TBD): [Lekérdezés optimalizálás](Lab-QueryOptimization/index.md)
-    - laborban teljesített, részben vezetett feladat
-    - beadási határidő: TBD
-- 6-7. oktatási hetek (TBD): [Microsoft SQL Server programozása](Lab-MSSQL/index.md)
-    - otthoni feladat
-    - beadási határidő: TBD
-- 8-9. oktatási hetek (TDB): [MongoDB programozása](Lab-MongoDB/index.md)
-    - otthoni feladat
-    - beadási határidő: TBD
-- 10-11. oktatási hetek (TBD): [Entity Framework és REST API](Lab-EFREST/index.md)
-    - otthoni feladat
-    - beadási határidő: TBD
-- 12-13. oktatási héten ellenőrző mérés, csak szükség esetén (lásd tantárgyi adatlapon a követelményeket).
+A laborok sorrendjét és a beadások határidejét Moodle-ben találod.
 
 ## Laborok megoldásainak beadása
 
 Minden labor megoldását egy személyre szóló git repository-ban kell beadni. Ennek pontos [folyamatát lásd itt](GitHub.md). Kérünk, hogy alaposan olvasd végig a leírást!
 
-!!! important "FONTOS"
-    A beadás menetét az első laboron személyesen is megmutatjuk. A továbbiakban az itt leírtak szerint **kell** eljárnod minden labor megoldásával. A nem ilyen formában beadott megoldásokat nem értékeljük.
+!!! danger "FONTOS"
+    A laborok elkészítése és beadása során az itt leírtak szerint **kell** eljárnod. A nem ilyen formában beadott megoldásokat nem értékeljük.
+
+    A beadás során a munkafolyamati hibákért (pl. nem megfelelő emberhez hozzárendelése, hozzárendelés elfelejtése) pontot vonunk le.
 
 ## Képernyőképek
 
