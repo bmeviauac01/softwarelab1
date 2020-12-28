@@ -15,7 +15,7 @@ theme:
     text: Roboto
     code: Roboto Mono
   features:
-    - tabs
+    - navigation.tabs
 
 extra_css:
   - extra-material-theme.css
@@ -46,6 +46,7 @@ plugins:
       prebuild_index: true
 
 nav:
+  - "Software development laboratory 1":
   - index.md
   - GitHub.md
   - GitHub-Actions.md
