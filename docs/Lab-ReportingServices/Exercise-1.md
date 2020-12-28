@@ -1,6 +1,6 @@
 ﻿# Exercise 1: Table report
 
-This exercise is **solved together**.
+This exercise is **solved together** with the lab instructor.
 
 In the checked-out repository locate file `reportserver.sln` and open it with Visual Studio. This is an empty _Report Server_ project.
 
@@ -11,11 +11,20 @@ The Report Server project consists mainly of _Report Definition_ (.rdl) files, t
 
 ## Create the first Report Definition file
 
-1. In the _Solution Explorer_ right-click _Reports_ and chose _Add_ > _New Item_.
+1. In the _Solution Explorer_ right-click _Reports_ and choose _Add_ > _New Item_.
 
     ![Adding a new report](../images/reportingservices/rs-add-new-report.png)
 
-1. Chose the Report from among the listed templates. Call it _Sales Orders.rdl_, then click Add. The Report Designer will open, and the new .rdl file is displayed in the Design view.
+1. Choose the _Report_ type from among the listed templates. Call it _Sales Orders.rdl_, then click Add.
+
+    ??? fail "If adding the new report file fails"
+        In certain Visual Studio and Report Server project versions adding this new report file might fail. If this happens, follow these steps instead.
+
+        1. Download [this empty rdl file](empty.rdl).
+        1.Save the ile with the right name to the `reportserver` folder of your repository (this folder already exist).
+        1. In Visual Studio right click _Reports_ then choose _Add_ > _Existing Item_, and browse for this file.
+
+1. Open the report file to get the Report Designer view. Here, the new .rdl file is displayed in the Design view.
 
     ![Report Desinger](../images/reportingservices/rs-report-designer.png)
 
@@ -29,7 +38,7 @@ A data source defines where our data comes from. This will be the SQL Server dat
 
     ![Add datasource](../images/reportingservices/rs-add-datasource.png)
 
-1. Chose _Microsoft SQL Server_ as the connection type and click the button to the right of _connection string_ to configure the database access
+1. Choose _Microsoft SQL Server_ as the connection type and click the button to the right of _connection string_ to configure the database access
 
     - Server name: `(localdb)\mssqllocaldb`
     - Authentication: `Windows Authentication`
@@ -85,7 +94,7 @@ Now that we have our connection to the database and the query that will supply t
 
 1. Open the _Toolbox_ pane. You can do this from the _View_ menu.
 
-1. From the _Toolbox_ chose _Table_ and draw a table on the big, empty and white canvas on the Design tab:
+1. From the _Toolbox_ choose _Table_ and draw a table on the big, empty and white canvas on the Design tab:
 
     ![Adding a table](../images/reportingservices/rs-add-table.png)
 
