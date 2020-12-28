@@ -19,7 +19,7 @@ Készíts T-SQL programblokkot, amely kitölti az újonnan felvett oszlopot az a
 
 ## Oszlop karbantartása triggerrel
 
-Készíts triggert `InvoiceItemCountMaintenance` néven, amely a számla tartalmának változásával együtt karbantartja az előzőleg felvett tételszám mezőt. Ügyelj rá, hogy hatékony legyen a trigger! A teljes újraszámolás nem elfogadható megoldás.
+Készíts triggert `InvoiceItemCountMaintenance` néven, amely a számla tartalmának változásával együtt karbantartja az előzőleg felvett tételszám mezőt. Ügyelj rá, hogy hatékony legyen a trigger! A teljes újraszámolás nem elfogadható megoldás. Továbbá ügyelj arra is, hogy egyszerre több tétel is változhat, a triggernek ilyen esetben is jól kell működnie.
 
 !!! tip "Tipp"
     A triggert a `InvoiceItem` táblára kell készíteni, bár a frissítendő érték az `Invoice` táblában van.
@@ -33,4 +33,4 @@ Készíts triggert `InvoiceItemCountMaintenance` néven, amely a számla tartalm
 Próbáld ki, jól működik-e a trigger. A teszteléshez használt utasításokat nem kell beadnod a megoldásban, de fontos, hogy ellenőrizd a viselkedést. Ellenőrizd olyan utasítással is a trigger működését, amely egyszerre több rekordot érint (pl. `where` feltétel nélküli `update` a tábla teljes tartalmára)!
 
 !!! example "BEADANDÓ"
-    Készíts egy képernyőképet, amelyen látható a kitöltött `ItemCount` oszlop (az `Invoice` tábla tartalmával együtt). A képet a megoldásban `f3.png` néven add be. A képernyőképen látszódjon az _Object Explorer_-ben az **adatbázis neve (a Neptun kódod)** és az **`Invoice` tábla tartalma** is! A képernyőkép szükséges feltétele a pontok megszerzésének.
+    Készíts egy képernyőképet, amelyen látható a kitöltött `ItemCount` oszlop (az `Invoice` tábla tartalmával együtt). A képet a megoldásban `f3.png` néven add be. A képernyőképen látszódjon az _Object Explorer_-ben az **adatbázis neve (a Neptun kódod)** és az **`Invoice` tábla tartalma** is! A képernyőkép szükséges feltétele a részpontszám megszerzésének.

@@ -7,7 +7,7 @@
 Írj tárolt eljárást `CheckInvoice` néven, aminek bemeneti paramétere egy `int` típusú és `@invoiceid` nevű számlaazonosító.
 
 - Az eljárás ellenőrizze, hogy a paraméterben kapott számlához (`Invoice`) kapcsolódó számlatételeken (`InvoiceItem`) szereplő mennyiség (`Amount`) egyezik-e a kapcsolódó megrendeléstétel (`OrderItem`) mennyiségével. (Az `InvoiceItem` rekord hivatkozik a kapcsolódó `OrderItem`-re.)
-- Amennyiben eltérés található a kettőben, úgy mindkettő értékét, valamint a termék nevét írd ki a standard outputra az alábbi séma szerint: `Difference: Labda (invoice 5 order 6)`
+- Amennyiben eltérés található a kettőben, úgy mindkettő értékét, valamint a termék nevét írd ki a standard outputra az alábbi séma szerint: `Difference: Ball (invoice 5 order 6)`
 - Csak akkor írjon bármit a kimenetre a tárolt eljárás, ha problémát talált. Semmiképpen se hagyj teszteléshez használt kiírást az eljárásban!
 - Legyen az eljárás `int` típusú visszatérési értéke 0, ha nem kellett semmit kiírni a kimenetre, és 1, ha kellett.
 

@@ -13,7 +13,7 @@ A labor elvégzéséhez szükséges eszközök:
   - MacOS-en Docker-rel futtatható.
 - [Visual Studio Code](https://code.visualstudio.com/) vagy más, markdown kompatibilis szerkesztő
 - [SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms), vagy kipróbálható a platformfüggetlen [Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/download) is
-- Az adatbázist létrehozó script: [mssql.sql](https://bmeviauac01.github.io/adatvezerelt/db/mssql.sql)
+- Az adatbázist létrehozó script: [mssql.sql](https://raw.githubusercontent.com/bmeviauac01/adatvezerelt/master/docs/db/mssql.sql)
 - GitHub account és egy git kliens
 
 A labor elvégzéséhez használható segédanyagok és felkészülési anyagok:
@@ -71,7 +71,7 @@ A feladatok megoldása során a dokumentációt markdown formátumban készítsd
 
 1. Hozz létre egy új adatbázist (ha még nem létezik). Az adatbázis neve legyen a Neptun kódod: _Object Explorer_-ben Databases-en jobb kattintás, és _Create Database_.
 
-1. Hozd létre a minta adatbázist a [generáló script](https://bmeviauac01.github.io/adatvezerelt/db/mssql.sql) lefuttatásával. Nyiss egy új _Query_ ablakot, másold be a script tartalmát, és futtasd le. Ügyelj az eszköztáron levő legördülő menüben a megfelelő adatbázis kiválasztására.
+1. Hozd létre a minta adatbázist a [generáló script](https://raw.githubusercontent.com/bmeviauac01/adatvezerelt/master/docs/db/mssql.sql) lefuttatásával. Nyiss egy új _Query_ ablakot, másold be a script tartalmát, és futtasd le. Ügyelj az eszköztáron levő legördülő menüben a megfelelő adatbázis kiválasztására.
 
    ![Adatbázis kiválasztása](../images/sql-management-database-dropdown.png)
 
