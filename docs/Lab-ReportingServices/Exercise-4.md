@@ -11,7 +11,7 @@ Create a pie chart to compare the sales persons' performance according to the to
 
     Make sure that the legend shows the names. You might need to adjust the size of the diagram to have enough space.
 
-   ![Values to be used in the pie chart](../images/reportingservices/rs-sales-person-pie-char-valuest.png)
+    ![Values to be used in the pie chart](../images/reportingservices/rs-sales-person-pie-char-valuest.png)
 
 !!! example "SUBMISSION"
     Create a screenshot of the **report preview** page. Save the screenshot as `f4.png` and submit with the other files of the solution. The screenshot shall include Visual Studio and the report preview. Verify that your **Neptun code** is visible in the diagram title!

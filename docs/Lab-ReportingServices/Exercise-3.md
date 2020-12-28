@@ -50,7 +50,7 @@ We will use the converted and shared data source and data set in a new report.
 
     - Click the _Use shared data source reference_ option and select "AdventureWorks2014".
 
-         ![Shared data source](../images/reportingservices/rs-add-datasource-shared.png)
+        ![Shared data source](../images/reportingservices/rs-add-datasource-shared.png)
 
     - Right lick _Datasets_ > _Add Dataset_
 
