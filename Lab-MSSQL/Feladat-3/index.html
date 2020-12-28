@@ -1012,7 +1012,7 @@
 <p>Az oszlopot kitöltő kódot az <code>f3-fill.sql</code> fájlba írd. A fájlban csak egy T-SQL kódblokk legyen, ne használj tárolt eljárást vagy triggert, és ne legyen a kódban se <code>[use]</code> se <code>go</code> utasítás. A feladatrésszel 1 pont szerezhető.</p>
 </div>
 <h2 id="oszlop-karbantartasa-triggerrel">Oszlop karbantartása triggerrel<a class="headerlink" href="#oszlop-karbantartasa-triggerrel" title="Permanent link">&para;</a></h2>
-<p>Készíts triggert <code>InvoiceItemCountMaintenance</code> néven, amely a számla tartalmának változásával együtt karbantartja az előzőleg felvett tételszám mezőt. Ügyelj rá, hogy hatékony legyen a trigger! A teljes újraszámolás nem elfogadható megoldás.</p>
+<p>Készíts triggert <code>InvoiceItemCountMaintenance</code> néven, amely a számla tartalmának változásával együtt karbantartja az előzőleg felvett tételszám mezőt. Ügyelj rá, hogy hatékony legyen a trigger! A teljes újraszámolás nem elfogadható megoldás. Továbbá ügyelj arra is, hogy egyszerre több tétel is változhat, a triggernek ilyen esetben is jól kell működnie.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tipp</p>
 <p>A triggert a <code>InvoiceItem</code> táblára kell készíteni, bár a frissítendő érték az <code>Invoice</code> táblában van.</p>
@@ -1028,7 +1028,7 @@
 <p>Próbáld ki, jól működik-e a trigger. A teszteléshez használt utasításokat nem kell beadnod a megoldásban, de fontos, hogy ellenőrizd a viselkedést. Ellenőrizd olyan utasítással is a trigger működését, amely egyszerre több rekordot érint (pl. <code>where</code> feltétel nélküli <code>update</code> a tábla teljes tartalmára)!</p>
 <div class="admonition example">
 <p class="admonition-title">BEADANDÓ</p>
-<p>Készíts egy képernyőképet, amelyen látható a kitöltött <code>ItemCount</code> oszlop (az <code>Invoice</code> tábla tartalmával együtt). A képet a megoldásban <code>f3.png</code> néven add be. A képernyőképen látszódjon az <em>Object Explorer</em>-ben az <strong>adatbázis neve (a Neptun kódod)</strong> és az <strong><code>Invoice</code> tábla tartalma</strong> is! A képernyőkép szükséges feltétele a pontok megszerzésének.</p>
+<p>Készíts egy képernyőképet, amelyen látható a kitöltött <code>ItemCount</code> oszlop (az <code>Invoice</code> tábla tartalmával együtt). A képet a megoldásban <code>f3.png</code> néven add be. A képernyőképen látszódjon az <em>Object Explorer</em>-ben az <strong>adatbázis neve (a Neptun kódod)</strong> és az <strong><code>Invoice</code> tábla tartalma</strong> is! A képernyőkép szükséges feltétele a részpontszám megszerzésének.</p>
 </div>
                 
               
