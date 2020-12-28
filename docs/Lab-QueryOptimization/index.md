@@ -13,7 +13,7 @@ Required tools to complete the tasks:
   - On macOS, you can use Docker.
 - [Visual Studio Code](https://code.visualstudio.com/) or any other tool for writing markdown
 - [SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms), or you may also use the platform-independent [Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/download) is
-- Database initialization script: [mssql.sql](https://bmeviauac01.github.io/adatvezerelt/db/mssql.sql)
+- Database initialization script: [mssql.sql](https://raw.githubusercontent.com/bmeviauac01/adatvezerelt/master/docs/db/mssql.sql)
 - GitHub account and a git client
 
 Materials for preparing for this laboratory:
@@ -71,7 +71,7 @@ Create the documentation in a markdown file. Open the checked out git repository
 
 1. Create a new database (if it does not exist yet). The name should be your Neptun code: in _Object Explorer_ right-click _Databases_ and choose _Create Database_.
 
-1. Create the sample database by executing the [initializer script](https://bmeviauac01.github.io/adatvezerelt/db/mssql.sql) Open a new _Query_ window, paste the script into the window, then execute it. Make sure to select the right database in the toolbar dropdown.
+1. Create the sample database by executing the [initializer script](https://raw.githubusercontent.com/bmeviauac01/adatvezerelt/master/docs/db/mssql.sql) Open a new _Query_ window, paste the script into the window, then execute it. Make sure to select the right database in the toolbar dropdown.
 
    ![Selecting the database](../images/sql-management-database-dropdown.png)
 

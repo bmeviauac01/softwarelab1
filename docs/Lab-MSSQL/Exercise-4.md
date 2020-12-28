@@ -10,4 +10,4 @@ Write T-SQL code block that deletes every category that is not a top-level one (
     Submit the code in file `f4.sql`. The file shall contain the T-SQL code. It should not include any `use` or `go` commands. The solution should be a single T-SQL code block. Do not use stored procedures or triggers here. (There is no need to delete the `ParentCategoryId` column.)
 
 !!! example "SUBMISSION"
-    Create a screenshot that shows the `Category` table after executing the script. Save the screenshot as `f4.png` and submit with the other files of the solution. The screenshot shall display the database name in the _Object Explorer_ windows (which should be your **Neptun code**) and the **contents of the `Category` table**. The screenshot is required to earn the points.
+    Create a screenshot that shows the `Category` table after executing the script. Save the screenshot as `f4.png` and submit with the other files of the solution. The screenshot shall display the database name (which should be your **Neptun code**) in the _Object Explorer_ window and the **contents of the `Category` table**. The screenshot is required to earn the points.
