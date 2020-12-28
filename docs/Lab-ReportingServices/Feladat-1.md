@@ -1,6 +1,6 @@
 # Feladat 1: Táblázatos riport
 
-A feladat **közösen megoldott**.
+A feladat a laborvezetővel **közösen megoldott**.
 
 Nyisd meg a checkoutolt git repository-ban a `reportserver.sln` fájlt. Ez egy üres _Report Server_ típusú projekt, amelyet Visual Studio-ban fejlesztünk.
 
@@ -15,7 +15,16 @@ A Report Server projekt elsősorban úgynevezett _Report Definition_ (.rdl) fáj
 
     ![Új report hozzáadása](../images/reportingservices/rs-add-new-report.png)
 
-1. A sablonok közül válasszuk a Report lehetőséget. Nevezzük el _Sales Orders.rdl_-nek, majd nyomjunk rá az Add-re. Ekkor megnyílik a Report Designer, ahol az új .rdl fájlt láthatjuk Design nézetben.
+1. A sablonok közül válasszuk a _Report_ lehetőséget. Nevezzük el _Sales Orders.rdl_-nek, majd nyomjunk rá az Add-re.
+
+    ??? fail "Ha nem sikerül létrehozni az új riport fájlt"
+        Bizonyos Visual Studio és Report Server projekt verzió esetén az új riport fájl létrehozása nem sikerül. Ha hibaüzenetet kapsz, akkor kövesd az alábbi lépéseket.
+
+        1. Tölts le [ezt az üres rdl fájlt](empty.rdl).
+        1. Tedd a fájlt a repository-d alatt a `reportserver` mappába a megfelelő névvel (ez a mappa már létezik).
+        1. Visual Studio-ban a _Reports_ mappára jobb kattintás és _Add_ > _Existing Item_, majd keresd ki az előbbi fájlt.
+
+1. Nyisd meg a riport fájlt a Report Designer nézethez. Itt látható az új .rdl fájlt Design nézetben.
 
     ![Report Desinger](../images/reportingservices/rs-report-designer.png)
 
