@@ -2,30 +2,16 @@
 
 For the requirements, please visit the [official data sheet](https://portal.vik.bme.hu/kepzes/targyak/VIAUAC09/en/).
 
-## Schedule
-
-- TBD: [Microsoft SQL Server Reporting Services](Lab-ReportingServices/index.md)
-    - completed with the help of the instructor in university lab
-    - submission deadline: TBD
-- TBD: [Query optimization](Lab-QueryOptimization/index.md)
-    - completed with the help of the instructor in university lab
-    - submission deadline: TBD
-- TBD: [Microsoft SQL Server programming](Lab-MSSQL/index.md)
-    - homework
-    - submission deadline: TBD
-- TDB: [MongoDB](Lab-MongoDB/index.md)
-    - homework
-    - submission deadline: TBD
-- TBD: [Entity Framework and REST API](Lab-EFREST/index.md)
-    - homework
-    - submission deadline: TBD
+For the schedule of the course and the deadlines for submission please refer to the course site in Moodle.
 
 ## Submitting the solutions
 
 Each lab must be submitted in a personal git repository. Please refer to the detailed [guideline here](GitHub.md). You must carefully study these guidelines!
 
-!!! important "IMPORTANT"
-    You will be walked through the process during the first lab. The submissions of the lab exercises **must** follow these guidelines. Submissions not following these guidelines are not graded.
+!!! danger "IMPORTANT"
+    The submissions of the lab exercises **must** follow these guidelines. Submissions not following these guidelines are not graded.
+
+    Workflow errors, i.e., not following the guidelines (e.g., not assigning the right person, or not assigning at all) are penalized.
 
 ## Screenshots
 
@@ -46,7 +32,7 @@ Grading, based on the points, is as follows:
 - 14-16.5 point: good
 - 17-20+ points: very good
 
-The extra +3 points are optional; if you do them, it is added to the points. In the automated evaluation, this extra 3 points will appear as "imsc"; please ignore this (that is for the Hungarian students). 
+The extra +3 points are optional; if you do them, it is added to the points. In the automated evaluation, this extra 3 points will appear as "imsc"; please ignore this (that is for the Hungarian students).
 
 The final grade will be the mathematically correct average of the individual grades. If you do not attend a lab or do not submit it until the deadline, it will be counted as grade 1 in the average.
 
