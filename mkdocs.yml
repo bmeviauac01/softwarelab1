@@ -16,6 +16,8 @@ theme:
     code: Roboto Mono
   features:
     - navigation.tabs
+  logo: images/logo-bme-aut.png
+  favicon: images/favicon.ico
 
 extra_css:
   - extra-material-theme.css
@@ -47,12 +49,12 @@ plugins:
 
 nav:
   - "Szoftverfejlesztés laboratórium 1":
-  - index.md
-  - GitHub.md
-  - GitHub-Actions.md
-  - FAQ.md
-  - VisualStudio.md
-  - GitHub-credentials.md
+      - index.md
+      - GitHub.md
+      - GitHub-Actions.md
+      - FAQ.md
+      - VisualStudio.md
+      - GitHub-credentials.md
   - "Reporting Services":
       - Lab-ReportingServices/index.md
       - Lab-ReportingServices/Feladat-1.md
