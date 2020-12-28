@@ -12,9 +12,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Build docs
-        uses: docker://squidfunk/mkdocs-material:5.4.0
+        uses: docker://squidfunk/mkdocs-material:6.2.2
         with:
           args: build
 
