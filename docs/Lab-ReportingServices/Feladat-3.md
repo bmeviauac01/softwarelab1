@@ -49,7 +49,7 @@ Az előbb megosztottá konvertáltuk a data source-t és dataset-et. Ezeket fogj
 
     - Válasszuk a _Use shared data source reference_ opciót, és válasszuk ki az "AdventureWorks2014" nevűt.
 
-         ![Megosztott adatforrás](../images/reportingservices/rs-add-datasource-shared.png)
+        ![Megosztott adatforrás](../images/reportingservices/rs-add-datasource-shared.png)
 
     - Jobb klikk a _Datasets_-en > _Add Dataset_
 

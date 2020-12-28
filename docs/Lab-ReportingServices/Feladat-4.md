@@ -11,7 +11,7 @@ Készíts tortadiagramot az egyes értékesítők teljesítményének összehaso
 
     Ügyelj arra is, hogy a megfelelő nevek jelenjenek meg a jelmagyarázatban. A diagram magasságát valószínűleg növelni kell, hogy a teljes jelmagyarázat kiférjen.
 
-   ![Tortadiagramban használandó értékek](../images/reportingservices/rs-sales-person-pie-char-valuest.png)
+    ![Tortadiagramban használandó értékek](../images/reportingservices/rs-sales-person-pie-char-valuest.png)
 
 !!! example "BEADANDÓ"
     Készíts egy képernyőképet a **report előnézetéről** a preview fülön. A képet a megoldásban `f4.png` néven add be. A képernyőképen a Visual Studio ablaka, és azon belül a riport előnézete látszódjon. Ellenőrizd, hogy a **Neptun kódod** látható-e a diagram címében!
