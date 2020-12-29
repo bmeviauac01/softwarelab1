@@ -11,7 +11,7 @@ A `Models.Order` entitás adattagjai:
 - `PaymentMethod`: az adatbázis entitásban található `PaymentMethod` komplex objektum `Method` mezője
 - `Total`: a megrendelésben található tételek (`OrderItems`) `Amount` és `Price` szorzatainak összege
 
-Ennek a feladatnak a megoldásához a megrendeléssel kapcsolatos metódusok implementációja szükséges (`List`, `Find`, `Insert`, `Delete` és `Update`).
+Ennek a feladatnak a megoldásához a megrendeléssel kapcsolatos metódusok implementációja szükséges (`ListOrders`, `FindOrder`, `InsertOrder`, `DeleteOrder` és `UpdateOrder`).
 
 Az alábbi feladatok előtt ne felejtsd el felvenni és inicializálni a `orderCollection`-t a repository osztályba a korábban látottak mintájára!
 
@@ -56,4 +56,4 @@ A metódus visszatérési értéke akkor és csak akkor legyen `true`, ha létez
 A megírt függvényeket a weboldalon a `Orders` menüpont alatt tudod kipróbálni. Teszteld le a `Filter`, `Add new order`, `Edit`, `Details` és `Delete` opciókat is!
 
 !!! example "BEADANDÓ"
-    Készíts egy **képernyőképet** a megrendelés listázó weboldalról. A képet a megoldásban `f3.png` néven add be. A képernyőképen látszódjon a **megrendelések listája**. Ellenőrizd, hogy a **Neptun kódod** (az oldal aljáról) látható-e a képen! A képernyőkép szükséges feltétele a pontszám megszerzésének.
+    Készíts egy **képernyőképet** a megrendelés listázó weboldalról **miután felvettél legalább egy új megrendelést**. A képet a megoldásban `f3.png` néven add be. A képernyőképen látszódjon a **megrendelések listája**. Ellenőrizd, hogy a **Neptun kódod** (az oldal aljáról) látható-e a képen! A képernyőkép szükséges feltétele a pontszám megszerzésének.

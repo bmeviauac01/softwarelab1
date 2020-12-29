@@ -10,19 +10,22 @@ A labor elvégzéséhez szükséges eszközök:
 - MongoDB Community Server ([letöltés](https://www.mongodb.com/download-center/community))
 - Robo 3T ([letöltés](https://robomongo.org/download))
 - Minta adatbázis kódja ([mongo.js](https://bmeviauac01.github.io/adatvezerelt/db/mongo.js))
+- GitHub account és egy git kliens
 - Microsoft Visual Studio 2019 [az itt található beállításokkal](../VisualStudio.md)
     - Linux és MacOS esetén Visual Studio Code és a .NET Core SDK-val települő [dotnet CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/) használható.
-- [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)
-    - Visual Studio esetén települ, de ha mégse, akkor a fenti linkről kell telepíteni (az SDK-t és _nem_ a runtime-ot.)
-    - Linux és MacOS esetén telepíteni szükséges.
-- GitHub account és egy git kliens
+- [.NET Core **3.1** SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)
+
+    !!! warning ".NET Core 3.1"
+        A feladat megoldásához **3.1**-es .NET Core SDK telepítése szükséges.
+
+        Windows-on Visual Studio verzió függvényében lehet, hogy telepítve van (lásd [itt](../VisualStudio.md#net-core-sdk-ellenorzese-es-telepitese) az ellenőrzés módját); ha nem, akkor a fenti linkről kell telepíteni (az SDK-t és _nem_ a runtime-ot.) Linux és MacOS esetén telepíteni szükséges.
 
 A labor elvégzéséhez használható segédanyagok és felkészülési anyagok:
 
 - MongoDB adatbáziskezelő rendszer és a C# driver használata
     - Lásd az Adatvezérelt rendszerek c. tárgy [jegyzetei](https://www.aut.bme.hu/Course/adatvezerelt) és [gyakorlati anyagai](https://bmeviauac01.github.io/adatvezerelt/) között
 - Hivatalos Microsoft tutorial [Mongo-t használó Web API készítéséhez](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mongo-app?view=aspnetcore-3.1&tabs=visual-studio)
-    - A labor során nem WebAPI-t készítünk, de a Mongo használat azonos formában törénik.
+    - A labor során nem WebAPI-t készítünk, de a Mongo használat azonos formában történik.
 
 ## Előkészület
 

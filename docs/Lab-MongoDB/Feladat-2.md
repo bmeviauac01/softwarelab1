@@ -2,7 +2,7 @@
 
 **A feladat megoldásával 4 pont szerezhető.**
 
-Ebben a feladatban a kategóriákat fogjuk listázni — az adott kategóriába tartozó termékek számával együtt. Ehhez már aggregációs utasítást is használnuk kell majd. (Továbbra is a `MongoLabor.DAL.Repository` osztályba dolgozunk.)
+Ebben a feladatban a kategóriákat fogjuk listázni — az adott kategóriába tartozó termékek számával együtt. Ehhez már aggregációs utasítást is használnuk kell majd. Továbbra is a `MongoLabor.DAL.Repository` osztályba dolgozunk.
 
 A megvalósítandó függvény a `IList<Category> ListCategories()`. Ennek minden kategóriát vissza kell adnia. A `Models.Category` osztály 3 adattagot tartalmaz.
 

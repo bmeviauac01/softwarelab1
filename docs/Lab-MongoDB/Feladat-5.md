@@ -13,7 +13,7 @@ A megvalósítandó metódus az `OrderGroups GroupOrders(int groupsCount)`. Ez a
     - `n` darab intervallum esetén a `Thresholds` lista `n + 1` elemű
     - _Pl.: Ha a `Thresholds` lista elemei `a, b, c, d`, akkor az időintervallumok a következők: `[a, b[`, `[b, c[` és `[c, d[`._
 - `IList<OrderGroup> Groups`: A megrendelések csoportjai. A `OrderGroup` entitás adattagjai:
-    - `Date`: Az adott intervallum **kezdő** dátuma. Tehát `[a, b[` intervallum esetén `a`.
+    - `Date`: Az adott intervallum _kezdő_ dátuma. Tehát `[a, b[` intervallum esetén `a`.
     - `Pieces`: Az adott intervallumba eső megrendelések darabszáma.
     - `Total`: Az adott intervallumba tartozó összes megrendelés összértékének összege (lásd előző feladat).
 

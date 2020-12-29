@@ -2,7 +2,7 @@
 
 **A feladat megoldásával 7 pont szerezhető.**
 
-Ebben a feladatban a Termék entitáshoz tartozó CRUD (létrehozás, listázás/olvasás, módosítás és törlés) utasításokat fogjuk megvalósítani.
+Ebben a feladatban a `Product` entitáshoz tartozó CRUD (létrehozás, listázás/olvasás, módosítás és törlés) utasításokat fogjuk megvalósítani.
 
 ## Visual Studio solution megnyitása
 
@@ -18,7 +18,7 @@ Az adatbázis elérése a `mongolab.DAL.MongoConnectionConfig` osztályban van. 
 A projekt minden egyéb tartalma már elő van készítve a munkához, a fentieken kívül máshol **NE** módosítsd!
 
 !!! info ""
-    A webalkalmazás egy un. [_Razor Pages_](https://docs.microsoft.com/en-us/aspnet/core/razor-pages/) típusú ASP.NET Core projekt. Ezt egy szerver oldalon renderelt megjelenítési réteg, ahol tehát a weboldal html kódját C# kód és a Razor állítja elő. (A megjelenítési réteggel nem lesz feladatod, az mrá elő van készítve számodra.)
+    A webalkalmazás egy un. [_Razor Pages_](https://docs.microsoft.com/en-us/aspnet/core/razor-pages/) típusú ASP.NET Core projekt. Ezt egy szerver oldalon renderelt megjelenítési réteg, ahol tehát a weboldal html kódját C# kód és a Razor állítja elő. (A megjelenítési réteggel nem lesz feladatod, az már elő van készítve számodra.)
 
 ## Webalkalmazás elindítása
 
@@ -52,7 +52,7 @@ A forráskód melletti képernyőképeken szerepelnie kell a Neptun kódodnak.
     ![Neptun kód a láblécben](../images/mongo/mongo-neptun-footer.png)
 
 !!! warning "FONTOS"
-    A Neptun kódnak a fentiek szerint szerepelnie kell minden képernyőképen! (Lásd később.)
+    A Neptun kódnak a fentiek szerint szerepelnie kell minden képernyőképen!
 
 ## Listázás/olvasás
 
@@ -91,7 +91,9 @@ A forráskód melletti képernyőképeken szerepelnie kell a Neptun kódodnak.
         .ToList();
     ```
 
-1. A `FindProduct(string id)` függvény megvalósítása nagyon hasonlít az előzőhöz, csupán annyiban különbözik, hogy itt egyetlen terméket kérdezünk le, `ID` alapján. A konvertáló lépés ugyanúgy megmarad. Ebben az esetben oda kell figyelnünk azonban, hogy ha nem találjuk az adott terméket, akkor adjunk vissza `null` értéket, ne próbáljunk konvertálni.
+1. A `FindProduct(string id)` függvény megvalósítása nagyon hasonlít az előzőhöz, csupán annyiban különbözik, hogy itt egyetlen terméket kérdezünk le, `ID` alapján. Ügyeljünk rá, hogy az `ID`-t szövegként kapjuk, így `ObjectId`-vá kell alakítani.
+
+    A modellé konvertáló lépés ugyanúgy megmarad. Ebben az esetben oda kell figyelnünk azonban, hogy ha nem találjuk az adott terméket, akkor adjunk vissza `null` értéket, ne próbáljunk konvertálni.
 
     A lekérdező lépés a következőre módosul:
 
@@ -165,4 +167,4 @@ A forráskód melletti képernyőképeken szerepelnie kell a Neptun kódodnak.
 1. Ezt a metódust is ki tudod próbálni, ha a termékek táblázatában valamelyik sorban a `Buy` linkre kattintasz. Próbáld ki úgy is, ha túl nagy értéket írsz be!
 
 !!! example "BEADANDÓ"
-    Készíts egy **képernyőképet** a termék listázó weboldalról. A képet a megoldásban `f1.png` néven add be. A képernyőképen látszódjon a **termék lista**. Ellenőrizd, hogy a **Neptun kódod** (az oldal aljáról) látható-e a képen! A képernyőkép szükséges feltétele a pontszám megszerzésének.
+    Készíts egy **képernyőképet** a termék listázó weboldalról **miután felvettél legalább egy új terméket**. A képet a megoldásban `f1.png` néven add be. A képernyőképen látszódjon a **termék lista**. Ellenőrizd, hogy a **Neptun kódod** (az oldal aljáról) látható-e a képen! A képernyőkép szükséges feltétele a pontszám megszerzésének.
