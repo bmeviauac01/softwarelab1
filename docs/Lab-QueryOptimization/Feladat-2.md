@@ -12,13 +12,13 @@ Ismételd meg a `Product` kereséseket, de ezúttal ne a teljes sort, csak a `Pr
 Elemezd a következő két, `Product` táblából történő lekérdezés végrehajtási tervét:
 
 - k) olyan rekordok lekérdezése, ahol az elsődleges kulcs értéke két érték között van (használd a `BETWEEN` operátort)
-- l) olyan rekordok lekérdezése, ahol az elsődleges kulcs értéke két érték között van (itt is használd a `BETWEEN`-t) **vagy** megegyezik egy intervallumon kívüli értékkel
+- l) olyan rekordok lekérdezése, ahol az elsődleges kulcs értéke két érték között van (itt is használd a `BETWEEN`-t), **vagy** megegyezik egy intervallumon kívüli értékkel
 
 Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és adj magyarázatot rájuk!
 
 ## Feladat 8 (1p)
 
-A 6-os feladatban `WHERE Price=` feltétel egy egész és egy lebegőpontos szám egyenlőségét vizsgálja. Nézzük meg máshogy is a számkezelést:
+A 6-os feladatban `WHERE Price=` feltétel egy egész és egy lebegőpontos szám egyenlőségét vizsgálja. Nézzük meg máshogy is a számkezelést: kérdezd le a `Product` táblából az alábbi feltéteknek megfelelő rekordokat.
 
 - m) `where cast(Price as int) = egész szám`
 - n) `where Price BETWEEN egész szám-0.0001 AND egész szám+0.0001`
@@ -72,7 +72,9 @@ Hogyan javítható az előző feladat lekérdezéseinek teljesítménye? Add meg
 
 ## Feladat 14 (1p)
 
-Listázd a 2-es `CategoryId`-val rendelkező `Product` rekordokból a nevet (`Name`). Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és adj magyarázatot rájuk! Térj ki arra, hogy az előző feladatban felvett index segített-e, és miért?
+Listázd a 2-es `CategoryId`-val rendelkező `Product` rekordokból a nevet (`Name`). 
+
+Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és adj magyarázatot rájuk! Térj ki arra, hogy az előző feladatban felvett index segített-e, és miért?
 
 ## Feladat 15 (1p)
 
