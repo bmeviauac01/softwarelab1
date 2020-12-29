@@ -1165,7 +1165,7 @@
 <p>Fordítsd le és futtasd újból az alkalmazást, majd add ki ismét az előbbi GET kérést. Most már nem üres a válasz, meg kell kapd a két státuszt.</p>
 <div class="admonition important">
 <p class="admonition-title">Ha nem látod az új rekordokat</p>
-<p>Ha mégse jelenne meg a válaszban a két <em>seed</em> objektum, akkor lehet, hogy a DB nem frissült, és nem jutott érvényre a <code>HasData</code> művelet. Töröljük ki a <code>tasks.db</code> SQLite állományt, aminek hatására újból létrejön az adatbázisfájl az app indulásakor a tesztadatainkkal.</p>
+<p>Ha mégse jelenne meg a válaszban a két <em>seed</em> objektum, akkor lehet, hogy a DB nem frissült, és nem jutott érvényre a <code>HasData</code> művelet. Töröld ki a <code>tasks.db</code> SQLite állományt, aminek hatására újból létrejön az adatbázisfájl az app indulásakor a tesztadatainkkal.</p>
 <p>Az ilyen jellegű séma-, és adatmódosításokat éles környezetben <a href="https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/?tabs=dotnet-core-cli">migrációkkal</a> szokás megoldani. Az egyszerűség végett mi ezt kerülni fogjuk, és ha változik a séma, egyszerűen törölheted a <code>tasks.db</code> fájlt.</p>
 </div>
 </li>
