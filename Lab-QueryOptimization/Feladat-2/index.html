@@ -1118,11 +1118,11 @@
 <p>Elemezd a következő két, <code>Product</code> táblából történő lekérdezés végrehajtási tervét:</p>
 <ul>
 <li>k) olyan rekordok lekérdezése, ahol az elsődleges kulcs értéke két érték között van (használd a <code>BETWEEN</code> operátort)</li>
-<li>l) olyan rekordok lekérdezése, ahol az elsődleges kulcs értéke két érték között van (itt is használd a <code>BETWEEN</code>-t) <strong>vagy</strong> megegyezik egy intervallumon kívüli értékkel</li>
+<li>l) olyan rekordok lekérdezése, ahol az elsődleges kulcs értéke két érték között van (itt is használd a <code>BETWEEN</code>-t), <strong>vagy</strong> megegyezik egy intervallumon kívüli értékkel</li>
 </ul>
 <p>Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és adj magyarázatot rájuk!</p>
 <h2 id="feladat-8-1p">Feladat 8 (1p)<a class="headerlink" href="#feladat-8-1p" title="Permanent link">&para;</a></h2>
-<p>A 6-os feladatban <code>WHERE Price=</code> feltétel egy egész és egy lebegőpontos szám egyenlőségét vizsgálja. Nézzük meg máshogy is a számkezelést:</p>
+<p>A 6-os feladatban <code>WHERE Price=</code> feltétel egy egész és egy lebegőpontos szám egyenlőségét vizsgálja. Nézzük meg máshogy is a számkezelést: kérdezd le a <code>Product</code> táblából az alábbi feltéteknek megfelelő rekordokat.</p>
 <ul>
 <li>m) <code>where cast(Price as int) = egész szám</code></li>
 <li>n) <code>where Price BETWEEN egész szám-0.0001 AND egész szám+0.0001</code></li>
@@ -1164,7 +1164,8 @@
 <p>Fel kell venni egy új indexet. De vajon mire?</p>
 </div>
 <h2 id="feladat-14-1p">Feladat 14 (1p)<a class="headerlink" href="#feladat-14-1p" title="Permanent link">&para;</a></h2>
-<p>Listázd a 2-es <code>CategoryId</code>-val rendelkező <code>Product</code> rekordokból a nevet (<code>Name</code>). Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és adj magyarázatot rájuk! Térj ki arra, hogy az előző feladatban felvett index segített-e, és miért?</p>
+<p>Listázd a 2-es <code>CategoryId</code>-val rendelkező <code>Product</code> rekordokból a nevet (<code>Name</code>). </p>
+<p>Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és adj magyarázatot rájuk! Térj ki arra, hogy az előző feladatban felvett index segített-e, és miért?</p>
 <h2 id="feladat-15-1p">Feladat 15 (1p)<a class="headerlink" href="#feladat-15-1p" title="Permanent link">&para;</a></h2>
 <p>Javíts az előző feladat lekérdezésének teljesítményén. Az előbb felvett indexet bővítsük a névvel: indexen jobbklikk -&gt; <em>Properties</em> -&gt; a táblázatban az <em>Included Columns</em> fül alatt vegyük fel a <code>Name</code> oszlopot.</p>
 <p>Így ismételd meg az előző lekérdezést, és elemezd a tervet.</p>

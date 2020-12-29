@@ -1064,15 +1064,17 @@
                 
                 
                 <h1 id="lekerdezes-optimalizalas">Lekérdezés optimalizálás<a class="headerlink" href="#lekerdezes-optimalizalas" title="Permanent link">&para;</a></h1>
-<p>A labor során a lekérdezés optimalizálást vizsgáljuk Microsoft SQL Server platformon. Azért, hogy a feladatok során megfelelően megértsük a működést, és dokumentálni is tudjuk, az <strong>első 5 feladat laborvezetővel</strong> együtt megoldott, ahol a laborvezető a szükséges magyarázatokat is megadja. A <strong>továbbiak önálló feladatok</strong>, ahol a magyarázat kitalálása a feladat része. A közös feladatmegoldás és az önálló feladatmegoldás eredményét is dokumentálni kell és be kell adni.</p>
+<p>A labor során a lekérdezés optimalizálást vizsgáljuk Microsoft SQL Server platformon. Azért, hogy a feladatok során megfelelően megértsük a működést, és dokumentálni is tudjuk, az <strong>első 5 feladat</strong> során megadjuk a megoldást és a magyarázatot is. A <strong>továbbiak önálló feladatok</strong>, ahol a magyarázat kitalálása a feladat része. A közös feladatmegoldás és az önálló feladatmegoldás eredményét is dokumentálni kell és be kell adni.</p>
 <h2 id="elofeltetelek-felkeszules">Előfeltételek, felkészülés<a class="headerlink" href="#elofeltetelek-felkeszules" title="Permanent link">&para;</a></h2>
 <p>A labor elvégzéséhez szükséges eszközök:</p>
 <ul>
 <li>Windows, Linux vagy MacOS: Minden szükséges program platform független, vagy van platformfüggetlen alternatívája.</li>
-<li>Microsoft SQL Server</li>
+<li>Microsoft SQL Server<ul>
 <li>Express változat ingyenesen használható, avagy Visual Studio mellett feltelepülő <em>localdb</em> változat is megfelelő</li>
 <li>Van <a href="https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup">Linux változata</a> is.</li>
 <li>MacOS-en Docker-rel futtatható.</li>
+</ul>
+</li>
 <li><a href="https://code.visualstudio.com/">Visual Studio Code</a> vagy más, markdown kompatibilis szerkesztő</li>
 <li><a href="https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms">SQL Server Management Studio</a>, vagy kipróbálható a platformfüggetlen <a href="https://docs.microsoft.com/en-us/sql/azure-data-studio/download">Azure Data Studio</a> is</li>
 <li>Az adatbázist létrehozó script: <a href="https://raw.githubusercontent.com/bmeviauac01/adatvezerelt/master/docs/db/mssql.sql">mssql.sql</a></li>
@@ -1083,8 +1085,10 @@
 <li>Markdown formátum <a href="https://guides.github.com/features/mastering-markdown/">rövid ismertetője</a> és <a href="https://help.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax">részletes dokumentációja</a></li>
 <li>Microsoft SQL Server használata: <a href="https://bmeviauac01.github.io/adatvezerelt/db/mssql/">leírás</a> és <a href="https://web.microsoftstream.com/video/e3a83d16-b5c4-4fe9-b027-703347951621">videó</a></li>
 <li>Az adatbázis <a href="https://bmeviauac01.github.io/adatvezerelt/db/">sémájának leírása</a></li>
-<li>Microsoft SQL Server lekérdezés optimalizálása</li>
+<li>Microsoft SQL Server lekérdezés optimalizálása<ul>
 <li>Lásd az Adatvezérelt rendszerek c. tárgy <a href="https://www.aut.bme.hu/Course/adatvezerelt">jegyzetei</a> között</li>
+</ul>
+</li>
 </ul>
 <h2 id="elokeszulet">Előkészület<a class="headerlink" href="#elokeszulet" title="Permanent link">&para;</a></h2>
 <p>A feladatok megoldása során ne felejtsd el követni a <a href="../GitHub/">feladat beadás folyamatát</a>.</p>
@@ -1095,11 +1099,10 @@
 </li>
 <li>
 <p>Várd meg, míg elkészül a repository, majd checkout-old ki.</p>
+<div class="admonition tip">
+<p>Egyetemi laborokban, ha a checkout során nem kér a rendszer felhasználónevet és jelszót, és nem sikerül a checkout, akkor valószínűleg a gépen korábban megjegyzett felhasználónévvel próbálkozott a rendszer. Először töröld ki a mentett belépési adatokat (lásd <a href="../GitHub-credentials/">itt</a>), és próbáld újra.</p>
+</div>
 </li>
-</ol>
-<p>!!! tip ""
-   Egyetemi laborokban, ha a checkout során nem kér a rendszer felhasználónevet és jelszót, és nem sikerül a checkout, akkor valószínűleg a gépen korábban megjegyzett felhasználónévvel próbálkozott a rendszer. Először töröld ki a mentett belépési adatokat (lásd <a href="../GitHub-credentials/">itt</a>), és próbáld újra.</p>
-<ol>
 <li>
 <p>Hozz létre egy új ágat <code>megoldas</code> néven, és ezen az ágon dolgozz.</p>
 </li>
@@ -1122,38 +1125,42 @@
 <li>
 <p>Ezt a fájlt szerkeszd.</p>
 </li>
-<li>Ha képet készítesz, azt is tedd a repository alá a többi fájl mellé. Így relatív elérési úvonallal (fájlnév) fogod tudni hivatkozni.</li>
+<li>
+<p>Ha képet készítesz, azt is tedd a repository alá a többi fájl mellé. Így relatív elérési úvonallal (fájlnév) fogod tudni hivatkozni.</p>
+<div class="admonition warning">
+<p class="admonition-title">Ékezetes fájlnév kerülendő</p>
+<p>Legjobb, ha nem használsz ékezetes karaktereket és szóközöket a fájlnévben.</p>
+</div>
+</li>
+<li>
+<p>A kényelmes szerkesztéshez nyisd meg az <a href="https://code.visualstudio.com/docs/languages/markdown#_markdown-preview">előnézet funkciót</a> (<em>Ctrl-K + V</em>).</p>
+</li>
 </ol>
-<p>!!! warning "Ékezetes fájlnév kerülendő"
-   Legjobb, ha nem használsz ékezetes karaktereket és szóközöket a fájlnévben.</p>
-<ol>
-<li>A kényelmes szerkesztéshez nyisd meg az <a href="https://code.visualstudio.com/docs/languages/markdown#_markdown-preview">előnézet funkciót</a> (<em>Ctrl-K + V</em>).</li>
-</ol>
-<p>!!! note "Más szerkesztőeszköz"
-   Ha nem szimpatikus ez a szerkesztő, használhatod a <a href="https://help.github.com/en/github/managing-files-in-a-repository/editing-files-in-your-repository">GitHub webes felületét is</a> a dokumentáció szerkesztéséhez, itt is van előnézet. Ekkor a <a href="https://help.github.com/en/github/managing-files-in-a-repository/adding-a-file-to-a-repository">fájlok feltöltése</a> kicsit körülményesebb lesz.</p>
+<div class="admonition note">
+<p class="admonition-title">Más szerkesztőeszköz</p>
+<p>Ha nem szimpatikus ez a szerkesztő, használhatod a <a href="https://help.github.com/en/github/managing-files-in-a-repository/editing-files-in-your-repository">GitHub webes felületét is</a> a dokumentáció szerkesztéséhez, itt is van előnézet. Ekkor a <a href="https://help.github.com/en/github/managing-files-in-a-repository/adding-a-file-to-a-repository">fájlok feltöltése</a> kicsit körülményesebb lesz.</p>
+</div>
 <h3 id="adatbazis-letrehozasa">Adatbázis létrehozása<a class="headerlink" href="#adatbazis-letrehozasa" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p>Kapcsolódj Microsoft SQL Serverhez SQL Server Management Studio Segítségével. Indítsd el az alkalmazást, és az alábbi adatokkal kapcsolódj.</p>
-</li>
-<li>
-<p>Server name: <code>(localdb)\mssqllocaldb</code> vagy <code>.\sqlexpress</code> (ezzel egyenértékű: <code>localhost\sqlexpress</code>)</p>
-</li>
-<li>
-<p>Authentication: <code>Windows authentication</code></p>
+<ul>
+<li>Server name: <code>(localdb)\mssqllocaldb</code> vagy <code>.\sqlexpress</code> (ezzel egyenértékű: <code>localhost\sqlexpress</code>)</li>
+<li>Authentication: <code>Windows authentication</code></li>
+</ul>
 </li>
 <li>
 <p>Hozz létre egy új adatbázist (ha még nem létezik). Az adatbázis neve legyen a Neptun kódod: <em>Object Explorer</em>-ben Databases-en jobb kattintás, és <em>Create Database</em>.</p>
 </li>
 <li>
 <p>Hozd létre a minta adatbázist a <a href="https://raw.githubusercontent.com/bmeviauac01/adatvezerelt/master/docs/db/mssql.sql">generáló script</a> lefuttatásával. Nyiss egy új <em>Query</em> ablakot, másold be a script tartalmát, és futtasd le. Ügyelj az eszköztáron levő legördülő menüben a megfelelő adatbázis kiválasztására.</p>
+<p><img alt="Adatbázis kiválasztása" src="../images/sql-management-database-dropdown.png" /></p>
+</li>
+<li>
+<p>Ellenőrizd, hogy létrejöttek-e a táblák. Ha a <em>Tables</em> mappa ki volt már nyitva, akkor frissíteni kell.</p>
+<p><img alt="Adatbázis kiválasztása" src="../images/sql-managment-tablak.png" />.</p>
 </li>
 </ol>
-<p><img alt="Adatbázis kiválasztása" src="../images/sql-management-database-dropdown.png" /></p>
-<ol>
-<li>Ellenőrizd, hogy létrejöttek-e a táblák. Ha a <em>Tables</em> mappa ki volt már nyitva, akkor frissíteni kell.</li>
-</ol>
-<p><img alt="Adatbázis kiválasztása" src="../images/sql-managment-tablak.png" />.</p>
 <h3 id="lekerdezesi-terv-bekapcsolasa">Lekérdezési terv bekapcsolása<a class="headerlink" href="#lekerdezesi-terv-bekapcsolasa" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">Nem Windows platformon</p>

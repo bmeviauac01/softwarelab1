@@ -1047,9 +1047,8 @@
 <li>és a lekérdezési terv magyarázatát: <em>mit</em> látunk és <em>miért</em>.</li>
 </ul>
 </div>
-<div class="admonition tip">
+<p><strong>Annak ellenére, hogy a megoldások megtalálhatóak alább, az SQL utasítások kiadása, a lekérdezési terv képernyőkép elkészítése és a magyarázattal együtt való dokumentálás szükséges része a feladatnak.</strong></p>
 <p>Amennyiben egyes (rész)feladatok lekérdezési terve és/vagy a magyarázat azonos, vagy legalábbis nagyon hasonló, elég egyszer elkészíteni a lekérdezési tervről a képet, és a magyarázatot is elég egyszer megadni, csak jelezd, hogy ez mely feladatokra vonatkozik.</p>
-</div>
 <h2 id="feladat-1-2p">Feladat 1 (2p)<a class="headerlink" href="#feladat-1-2p" title="Permanent link">&para;</a></h2>
 <p>Dobd el a <code>CustomerSite</code> =&gt; <code>Customer</code> idegen kulcsot és a <code>Customer</code> elsődleges kulcs kényszerét. Legegyszerűbb, ha az <em>Object Explorer</em>-ben megkeresed ezeket, és törlöd (a <em>PK...</em> kezdetűek az elsődleges kulcsok, az <em>FK...</em>  kezdetűek a külső kulcsok - két külön táblában kell keresd a törlendőket!):</p>
 <p><img alt="Kulcs törlése" src="../../images/queryopt/queryopt-delete-key.png" /></p>
@@ -1062,6 +1061,23 @@
 <li>e) olyan rekordok lekérdezése, ahol az elsődleges kulcs értéke nagyobb, mint egy konstans érték, ID szerint csökkenő sorrendbe rendezve</li>
 </ul>
 <p>Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és adj magyarázatot rájuk!</p>
+<details class="success"><summary>Megoldás</summary><p>A kiadott <strong>parancsok</strong>:</p>
+<ul>
+<li>a) <code>select * from customer</code></li>
+<li>b) <code>select * from customer where id = 1</code></li>
+<li>c) <code>select * from customer where id &lt;&gt; 1</code></li>
+<li>d) <code>select * from customer where id &gt; 1</code></li>
+<li>e) <code>select * from customer where id &gt; 1 order by id desc</code></li>
+</ul>
+<p><strong>a)-d)</strong></p>
+<p>A <strong>lekérdezési terv</strong> mindegyikre nagyon hasonló, mindegyik <em>table scan</em>-t használt:</p>
+<p><img alt="" src="../../images/queryopt/f1-1.png" /></p>
+<p><strong>Magyarázat</strong>: az optimalizáló nem tud indexet használni, így minden lekérdezés <em>table scan</em> lesz.</p>
+<p><strong>e)</strong></p>
+<p>Egyedül ez különbözik, az order by miatt még egy sort is lesz benne.</p>
+<p><img alt="" src="../../images/queryopt/f1-2.png" /></p>
+<p><strong>Magyarázat</strong>: A <em>table scan</em> marad, és még rendezni is kell, amihez nincs index segítség, tehát külön lépés lesz.</p>
+</details>
 <h2 id="feladat-2-2p">Feladat 2 (2p)<a class="headerlink" href="#feladat-2-2p" title="Permanent link">&para;</a></h2>
 <p>Hozd létre újra az elsődleges kulcsot a <code>Customer</code> táblán:</p>
 <ul>
@@ -1069,6 +1085,21 @@
 <li>vagy az <code>ALTER TABLE [dbo].[Customer] ADD PRIMARY KEY CLUSTERED ([ID] ASC)</code> SQL utasítás lefuttatása.</li>
 </ul>
 <p>Futtasd újra az előbbi lekérdezéseket. Mit tapasztalsz?</p>
+<details class="success"><summary>Megoldás</summary><p>A kiadott parancsok megegyeznek az 1.-es feladattal.</p>
+<p><strong>a)</strong></p>
+<p><img alt="" src="../../images/queryopt/f2-1.png" /></p>
+<p>Clustered Index Scan végigmegy a clustered index mentén. Az elsődleges kulcs hatására létrejött egy Clustered Index, azaz innentől a tábla rekordjai ID szerinti sorrendben vannak tárolva. Ha végigmegyünk ezen a struktúrán meglesz az összes sor. Ha van clustered index, már nem fogunk Table Scan-nel találkozni, legrosszabb esetben teljes Clustered Index Scan lesz. Attól, hogy nem Table Scan a neve, a teljes Clustered Index Scan is valójában egy table scan, a teljes tábla adattartalmát felolvassuk. Általános esetben ez probléma, de itt épp ezt kértük a lekérdezésben.</p>
+<p><strong>b)</strong></p>
+<p><img alt="" src="../../images/queryopt/f2-2.png" /></p>
+<p>Ez egy Clustered Index Seek lesz. Mivel a rendezési kulcsra fogalmazunk meg egyezési feltételt, a rendezett tárolású rekordok közül nagyon gyorsan eljuthatunk a keresetthez. Ez egy jó terv, a Clustered Index egyik alapfeladata a rekord gyors megtalálása, erre van optimalizálva.</p>
+<p><strong>c)</strong></p>
+<p>Az előzőhöz nagyon hasonló a terv: ez is Clustered Index Seek lesz két intervallummal (<code>&lt; konstans</code>, <code>&gt; konstans</code>). Az optimalizáló két intervallumra bontja a &lt;&gt;-t. Mivel a feltétel a rendezési kulcsra vonatkozik, megint ki tudja használni a Clustered Indexet. Ez is egy jó terv, a rendezés miatt csak a szükséges rekordokat fogjuk felolvasni.</p>
+<p><strong>d)</strong></p>
+<p>Ez is Clustered Index Seek alapú range scan lesz egy intervallummal. Az előbbihez nagyon hasonló.</p>
+<p><strong>e)</strong></p>
+<p><img alt="" src="../../images/queryopt/f2-3.png" /></p>
+<p>Ismét Clustered Index Seek backward seek order-rel. Megnézhetjük a <em>Properties</em> ablakban a range-et és a Seek Order-t: kikeressük a határon lévő rekordot és onnan visszafelé indulunk el, így eleve rendezve lesz az eredményhalmaz. Ez egy jó terv, a rendezés miatt csak a szükséges rekordokat fogjuk felolvasni és pont a megfelelő sorrendben.</p>
+</details>
 <h2 id="feladat-3-2p">Feladat 3 (2p)<a class="headerlink" href="#feladat-3-2p" title="Permanent link">&para;</a></h2>
 <p>Futtasd az alábbi lekérdezéseket a <code>Product</code> táblán megfogalmazva.</p>
 <ul>
@@ -1079,6 +1110,21 @@
 <li>j) olyan rekordok lekérdezése, ahol a <code>Price</code> értéke nagyobb, mint egy konstans érték, <code>Price</code> szerint csökkenő sorrendbe rendezve</li>
 </ul>
 <p>Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és adj magyarázatot rájuk!</p>
+<details class="success"><summary>Megoldás</summary><p>A kiadott <strong>parancsok</strong>:</p>
+<ul>
+<li>f) <code>select * from product</code></li>
+<li>g) <code>select * from product where price = 800</code></li>
+<li>h) <code>select * from product where price &lt;&gt; 800</code></li>
+<li>i) <code>select * from product where price &gt; 800</code></li>
+<li>j) <code>select * from product where price &gt; 800 order by price desc</code></li>
+</ul>
+<p><strong>f)-i)</strong></p>
+<p><img alt="" src="../../images/queryopt/f3-1.png" /></p>
+<p>Clustered Index Scan végigmegy a clustered index mentén. Ez továbbra is a teljes tábla felolvasása, hiszen a szűrésre nincs index. Ha van szűrési feltétel, minden soron végig kell menni és ki kell értékelni a feltételt. Mivel van Clusterd Index, így amentén haladunk, de nem sokra megyünk ezzel, lényegében egy Table Scan. Ezek nem hatékony lekérdezések. Mivel nem a Clustered Index rendezési kulcsra fogalmaztuk meg a feltételt, így az index nem sokat segít nekünk (ezért lesz Scan és nem Seek).</p>
+<p><strong>j)</strong></p>
+<p><img alt="" src="../../images/queryopt/f3-2.png" /></p>
+<p>Ez is Clustered Index Scan lesz, de ami az érdekes, hogy a rendezés költsége jelentős (nagyobb mint a kikeresésé). Miután az elég költséges Index Scan-t megcsináltuk, még rendeznünk is kell, hiszen a kiolvasott rekordok ID szerint sorrendezettek nem <code>Price</code> szerint. Ez a lekérdezés nagyon költséges, az amúgy is drága scan után még rendezni is kell. A jó index nem csak a keresést segíti - de most nincs megfelelő indexünk.</p>
+</details>
 <h2 id="feladat-4-2p">Feladat 4 (2p)<a class="headerlink" href="#feladat-4-2p" title="Permanent link">&para;</a></h2>
 <p>Vegyél fel indexet a <code>Price</code> oszlopra. Hogyan változnak az előbbi lekérdezések végrehajtási tervei?</p>
 <p>Az index felvételéhez használd az <em>Object Explorer</em>-t, a fában a táblát kibontva az <em>Indexes</em>-en jobbklikk -&gt; <em>New index</em> &gt; <em>Non-Clustered Index...</em></p>
@@ -1086,6 +1132,17 @@
 <p>Adj az indexeknek értelmes, egységes konvenció szerinti nevet, pl. <code>IX_Tablanev_MezoNev</code>. Add a <em>Price</em> oszlopot az <em>Index key columns</em> listához.</p>
 <p><img alt="Index tulajdonságok" src="../../images/queryopt/queryopt-index-properties.png" /></p>
 <p>Ismételd meg az előbbi lekérdezéseket, és értelmezd a terveket!</p>
+<details class="success"><summary>Megoldás</summary><p>A parancsok megegyeznek az előző feladatéval.</p>
+<p><strong>f)</strong></p>
+<p>Hiába az új index, ez még mindíg Index Scan lesz - hiszen a teljes tábla tartalmát kértük.</p>
+<p><strong>g)-i)</strong></p>
+<p>Clustered Index Scan lesz, lényegében megegyezik a szűréshez elvileg használható index nélküli esettel.</p>
+<p>Miért nem használja az új indexünket? A nem túl nyilvánvaló ok a projekcióban rejlik, azaz, hogy teljes rekordokat kérünk vissza. Az NonClustered Index-ből csak egy halom rekordreferenciát kapnánk, amik alapján még utána fel kellene olvasni a szükséges rekordokat. Az optimalizáló – főleg kis táblák esetén- dönthet úgy, hogy ennek összköltsége nagyobb lenne, mint egy index scan-nek.</p>
+<p><strong>j)</strong></p>
+<p><img alt="" src="../../images/queryopt/f4-1.png" /></p>
+<p>A NonClustered Index Seek-ből kikeresett megfelelő kulcsoknak megfelelő rekordokat kikeressük a Clustered Index-ből. Lényegében egy join a két index között.</p>
+<p>A többi lekérdezésnél is valami ilyet vártunk volna. A Clustered Index-re szükség van, mert teljes rekordokat kérünk vissza, a NonClustered Index csak referenciákat ad. A referenciák sorrendben vannak, így ha ezekhez rendre kigyűjtjük a teljes rekordokat a Clustered Index-ből akkor megspóroljuk az utólagos rendezést. Ha csak a Clustered Index-et használnánk (teljes Clustered Index Scan), akkor kellene utólagos rendezés. Ez egy elfogadható terv, mert a NonClustered Index segítségével megúsztuk a külön rendezést.</p>
+</details>
 <h2 id="feladat-5-2p">Feladat 5 (2p)<a class="headerlink" href="#feladat-5-2p" title="Permanent link">&para;</a></h2>
 <p>Szaporítsd meg a <em>Product</em> tábla sorait az alábbi SQL szkripttel. Hogyan változnak az előbbi végrehajtási tervek?</p>
 <p>Az i) típusú lekérdezést próbáld ki úgy is, hogy a választott konstans miatt kicsi legyen az eredményhalmaz, és úgy is, hogy lényegében a teljes tábla benne legyen. Adj magyarázatot is a változásokra.</p>
@@ -1102,6 +1159,23 @@
 <span class="k">SELECT</span> <span class="s1">&#39;Apple&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">%</span><span class="mi">50000</span><span class="p">,</span> <span class="n">n</span><span class="o">%</span><span class="mi">100</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">13</span>
 <span class="k">FROM</span> <span class="n">Numbers</span>
 </code></pre></div>
+<details class="success"><summary>Megoldás</summary><p>A parancsok megegyeznek a korábbiakkal.</p>
+<p><strong>f)</strong></p>
+<p>Megegyezik az előző feladattal.</p>
+<p><strong>g)</strong></p>
+<p><img alt="" src="../../images/queryopt/f5-1.png" /></p>
+<p>A NonClustered Index Seek-ből kikeresett kulcsoknak megfelelő rekordokat kikeressük a Clustered Index-ből. Lényegében egy join a két index között.</p>
+<p>Vessük össze az előző, kis táblás változattal. Miért nem használja most a Clustered Index Scan-t? Nagy tábláknál megnő a <em>szelektivitás</em> szerepe és jelentős a NonClustered Index használatából fakadó előny. A Clustered Index Scan nagy méretnél nagyon drága, ha van esély rá, hogy az NonClustered Index használatával csökkenthető a felolvasható sorok száma, akkor szinte biztosan érdemes használni. A <code>Price</code> statisztikái alapján tudható, hogy az = operátor jól szűr. Fontos! Az <code>=</code> használatából még nem következik a jó szűrés, ha szinte minden sorban ugyanaz az érték van, akkor pl. nem fog jól szűrni - ezért kell a statisztika is!</p>
+<p>Ez a terv elfogadható. Ha a feltételünk jól szűr, akkor tényleg ez lehet a jó irány.</p>
+<p><strong>h)</strong></p>
+<p><img alt="" src="../../images/queryopt/f5-2.png" /></p>
+<p>Clustered Index Scan végigmegy a clustered index mentén, megegyezik a korábban látottakkal.</p>
+<p>Miért nem használjuk az előző módszert? Ha az <code>=</code> ezen tábla esetében jól szűrt, akkor a <code>&lt;&gt;</code> nem fog. Ha ezt tudja a statisztikák alapján az optimalizáló, akkor összességében nem éri meg trükközni, úgyis fel kell olvasni a teljes táblát.</p>
+<p><strong>i)</strong></p>
+<p>Attól függ, hogy milyen konstanst választunk. Ha nagyon jól szűr (pl. nagyon nagy szám a konstans), akkor a g)-nél, ha nem akkor a h)-nál látott módszert követi.</p>
+<p><strong>j)</strong></p>
+<p>Mint a g) esetében. Számít itt az <code>order by desc</code>? Az optimalizáló megpróbálja elkerülni a rendezést, azt pedig csak ezzel a módszerrel tudja. Ez egy elfogadható terv. Az NonClustered Index segítségével itt is megúsztuk a rendezést.</p>
+</details>
                 
               
               
