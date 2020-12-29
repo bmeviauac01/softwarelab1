@@ -150,7 +150,7 @@ Valósítsuk meg az első műveletet, amely minden státusz entitást listáz.
 1. Fordítsd le és futtasd újból az alkalmazást, majd add ki ismét az előbbi GET kérést. Most már nem üres a válasz, meg kell kapd a két státuszt.
 
     !!! important "Ha nem látod az új rekordokat"
-        Ha mégse jelenne meg a válaszban a két _seed_ objektum, akkor lehet, hogy a DB nem frissült, és nem jutott érvényre a `HasData` művelet. Töröljük ki a `tasks.db` SQLite állományt, aminek hatására újból létrejön az adatbázisfájl az app indulásakor a tesztadatainkkal.
+        Ha mégse jelenne meg a válaszban a két _seed_ objektum, akkor lehet, hogy a DB nem frissült, és nem jutott érvényre a `HasData` művelet. Töröld ki a `tasks.db` SQLite állományt, aminek hatására újból létrejön az adatbázisfájl az app indulásakor a tesztadatainkkal.
 
         Az ilyen jellegű séma-, és adatmódosításokat éles környezetben [migrációkkal](https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/?tabs=dotnet-core-cli) szokás megoldani. Az egyszerűség végett mi ezt kerülni fogjuk, és ha változik a séma, egyszerűen törölheted a `tasks.db` fájlt.
 
