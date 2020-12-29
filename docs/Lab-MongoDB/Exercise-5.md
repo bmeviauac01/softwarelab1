@@ -13,7 +13,7 @@ The method to implement is `OrderGroups GroupOrders(int groupsCount)`. This oper
     - When having `n` intervals, the `Thresholds` list has `n + 1` items
     - _E.g..: Let the `Thresholds` be `a, b, c, d`; the intervals shall then be: `[a, b[`, `[b, c[` and `[c, d[`._
 - `IList<OrderGroup> Groups`: The groups that fall into each date range. The properties of `OrderGroup` are:
-    - `Date`: The **start** date of the interval. E.g., for the interval `[a, b[` the value is`a`.
+    - `Date`: The _start_ date of the interval. E.g., for the interval `[a, b[` the value is`a`.
     - `Pieces`: The number of orders within the interval.
     - `Total`: The cumulative sum of the values of orders within this interval.
 

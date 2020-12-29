@@ -2,7 +2,7 @@
 
 **You can earn 7 points with the completion of this exercise.**
 
-This exercise will implement CRUD (create, retrieve, update, delete) operations for Product entities.
+This exercise will implement CRUD (create, retrieve, update, delete) operations for `Product` entities.
 
 ## Open the Visual Studio solution
 
@@ -26,7 +26,7 @@ Check if the web application starts.
 
 1. Compile the code and start in Visual Studio.
 
-1. Open URL <http://localhost:5000/api/ping> in a browser.
+1. Open URL <http://localhost:5000/> in a browser.
 
 !!! success ""
     If everything was successful, you should see a page with links where you will be able to test your code. (The links will not work as the data access layer is not implemented yet.)
@@ -91,7 +91,9 @@ You will need to create screenshots that display your Neptun code.
         .ToList();
     ```
 
-1. The implementation of `FindProduct(string id)` is similar, except for querying a single record by matching the `ID`. The transformation to the model remains identical. However, we should also handle when there is no matching record found and return a `null` value in this case (without converting anything to a model).
+1. The implementation of `FindProduct(string id)` is similar, except for querying a single record by matching the `ID`. Pay attention to that fact that the `ID` is received as string, but it needs converting to `ObjectId`.
+
+    The transformation to the model remains identical. However, we should also handle when there is no matching record found and return a `null` value in this case (without converting anything to a model).
 
     The query is as follows:
 
@@ -165,4 +167,4 @@ You will need to create screenshots that display your Neptun code.
 1. Test the functionality using the web application by clicking the `Buy` link next to a product. Verify the behavior when you enter a too large amount!
 
 !!! example "SUBMISSION"
-    Create a **screenshot** of the web page listing the products. Save the screenshot as `f1.png` and submit with the other files of the solution. The screenshot shall display the **list of products**. Verify that your **Neptun code** is visible on the image at the bottom of the page! The screenshot is required to earn the points.
+    Create a **screenshot** of the web page listing the products **after successfully adding at least one new product**. Save the screenshot as `f1.png` and submit with the other files of the solution. The screenshot shall display the **list of products**. Verify that your **Neptun code** is visible on the image at the bottom of the page! The screenshot is required to earn the points.

@@ -10,12 +10,15 @@ Required tools to complete the tasks:
 - MongoDB Community Server ([download](https://www.mongodb.com/download-center/community))
 - Robo 3T ([download](https://robomongo.org/download))
 - Sample database initialization script: ([mongo.js](https://bmeviauac01.github.io/adatvezerelt/db/mongo.js))
+- GitHub account and a git client
 - Microsoft Visual Studio 2019 [with the settings here](../VisualStudio.md)
     - When using Linux or macOS, you can use Visual Studio Code, the .NET Core SDK, and [dotnet CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/).
-- [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)
-    - Usually installed with Visual Studio; if not, use the link above to install (the SDK and _not_ the runtime).
-    - You need to install it manually when using Linux or macOS.
-- GitHub account and a git client
+- [.NET Core **3.1** SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)
+
+    !!! warning ".NET Core 3.1"
+        Mind the version! You need .NET Core SDK version **3.1** to solve these exercises.
+
+        On Windows it might already be installed along with with Visual Studio (see [here](../VisualStudio.md#check-and-install-net-core-sdk) how to check it); if not, use the link above to install (the SDK and _not_ the runtime). You need to install it manually when using Linux or macOS.
 
 Materials for preparing for this laboratory:
 

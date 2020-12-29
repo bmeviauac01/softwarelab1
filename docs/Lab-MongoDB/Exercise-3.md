@@ -11,7 +11,7 @@ The properties of `Model.Order` are:
 - `PaymentMethod`: taken from the `Method` field of the `PaymentMethod` complex entity
 - `Total`: the cumulative sum of the product of `Amount` and `Price` for all items associated with this order (`OrderItems`)
 
-You will need to implement the management methods related to orders: `List`, `Find`, `Insert`, `Delete` and `Update`.
+You will need to implement the management methods related to orders: `ListOrders`, `FindOrder`, `InsertOrder`, `DeleteOrder` and `UpdateOrder`.
 
 Before starting the tasks below, do not forget to add and initialize an `orderCollection` in the repository class similar to the other one.
 
@@ -29,7 +29,7 @@ Before starting the tasks below, do not forget to add and initialize an `orderCo
 
     - `CustomerID`, `SiteID`: find a chosen `Customer` in the database and copy the values from this record from fields `_id` and `mainSiteId`. Hard-wire these values in code.
     - `Date`, `Deadline`, `Status`: take these values from the value received as `order` parameter
-    - `PaymentMethod`: create a new instance of `PaymentMethod`. The `Method` should be `PaymentMethod` from the object received through the `order` parameter. `Deadline`: leave as `null`.
+    - `PaymentMethod`: create a new instance of `PaymentMethod`. The `Method` should be `PaymentMethod` from the object received through the `order` parameter. Leave `Deadline` as `null`.
     - `OrderItems`: create a single item here with the following data:
         - `ProductID` and `Price`: take the values from the parameter `product`
         - `Amount`: copy value from the method parameter `amount`
@@ -38,7 +38,7 @@ Before starting the tasks below, do not forget to add and initialize an `orderCo
 
 ## Delete
 
-`DeleteOrder` should delete the specified record.
+`DeleteOrder` should delete the record specified by the `ID`.
 
 ## Modification
 
@@ -56,4 +56,4 @@ The method should return `true` if there was a record with a matching `ID`.
 You can test the functionalities using the `Orders` link in the test web app. Verify the behavior of `Filter`, `Add new order`, `Edit`, `Details`, and `Delete` too!
 
 !!! example "SUBMISSION"
-    Create a **screenshot** of the web page listing the orders. Save the screenshot as `f3.png` and submit with the other files of the solution. The screenshot shall display the **list of orders**. Verify that your **Neptun code** is visible on the image at the bottom of the page! The screenshot is required to earn the points.
+    Create a **screenshot** of the web page listing the orders **after successfully adding at least one new order**. Save the screenshot as `f3.png` and submit with the other files of the solution. The screenshot shall display the **list of orders**. Verify that your **Neptun code** is visible on the image at the bottom of the page! The screenshot is required to earn the points.

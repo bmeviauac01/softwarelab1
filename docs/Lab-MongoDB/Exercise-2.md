@@ -2,7 +2,7 @@
 
 **You can earn 4 points with the completion of this exercise.**
 
-We will be listing available categories here with the number of products in each category. We will need an aggregation pipeline here. (Continue working in class `MongoLabor.DAL.Repository`.)
+We will be listing available categories here with the number of products in each category. We will need an aggregation pipeline here. Continue working in class `MongoLabor.DAL.Repository`.
 
 The method you should implement is `IList<Category> ListCategories()`. The method shall return all categories. Class `Models.Category` has 3 members.
 
