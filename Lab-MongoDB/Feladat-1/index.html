@@ -387,7 +387,7 @@
 
   <li class="md-nav__item">
     <a href="../../VisualStudio/" class="md-nav__link">
-      Visual Studio telepítése és beállítása
+      Visual Studio & .NET Core SDK telepítése
     </a>
   </li>
 
@@ -1067,7 +1067,7 @@
                 
                 <h1 id="feladat-1-termekek-lekerdezese-es-modositasa">Feladat 1: Termékek lekérdezése és módosítása<a class="headerlink" href="#feladat-1-termekek-lekerdezese-es-modositasa" title="Permanent link">&para;</a></h1>
 <p><strong>A feladat megoldásával 7 pont szerezhető.</strong></p>
-<p>Ebben a feladatban a Termék entitáshoz tartozó CRUD (létrehozás, listázás/olvasás, módosítás és törlés) utasításokat fogjuk megvalósítani.</p>
+<p>Ebben a feladatban a <code>Product</code> entitáshoz tartozó CRUD (létrehozás, listázás/olvasás, módosítás és törlés) utasításokat fogjuk megvalósítani.</p>
 <h2 id="visual-studio-solution-megnyitasa">Visual Studio solution megnyitása<a class="headerlink" href="#visual-studio-solution-megnyitasa" title="Permanent link">&para;</a></h2>
 <p>Nyisd meg a letöltött repository-ban a Visual Studio solution-t (<code>.sln</code> fájl). Ha a megnyitás során a Visual Studio azt jelezné, hogy a projekt típus nem támogatott, akkor telepítsd a Visual Studio hiányzó komponenseit (lásd <a href="../../VisualStudio/">itt</a>).</p>
 <div class="admonition warning">
@@ -1078,7 +1078,7 @@
 <p>Az adatbázis elérése a <code>mongolab.DAL.MongoConnectionConfig</code> osztályban van. Ha szükséges, az adatbázis nevét megváltoztathatod a forrásban jelölt helyen.</p>
 <p>A projekt minden egyéb tartalma már elő van készítve a munkához, a fentieken kívül máshol <strong>NE</strong> módosítsd!</p>
 <div class="admonition info">
-<p>A webalkalmazás egy un. <a href="https://docs.microsoft.com/en-us/aspnet/core/razor-pages/"><em>Razor Pages</em></a> típusú ASP.NET Core projekt. Ezt egy szerver oldalon renderelt megjelenítési réteg, ahol tehát a weboldal html kódját C# kód és a Razor állítja elő. (A megjelenítési réteggel nem lesz feladatod, az mrá elő van készítve számodra.)</p>
+<p>A webalkalmazás egy un. <a href="https://docs.microsoft.com/en-us/aspnet/core/razor-pages/"><em>Razor Pages</em></a> típusú ASP.NET Core projekt. Ezt egy szerver oldalon renderelt megjelenítési réteg, ahol tehát a weboldal html kódját C# kód és a Razor állítja elő. (A megjelenítési réteggel nem lesz feladatod, az már elő van készítve számodra.)</p>
 </div>
 <h2 id="webalkalmazas-elinditasa">Webalkalmazás elindítása<a class="headerlink" href="#webalkalmazas-elinditasa" title="Permanent link">&para;</a></h2>
 <p>Próbáld ki, hogy elindul-e a program.</p>
@@ -1114,7 +1114,7 @@
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">FONTOS</p>
-<p>A Neptun kódnak a fentiek szerint szerepelnie kell minden képernyőképen! (Lásd később.)</p>
+<p>A Neptun kódnak a fentiek szerint szerepelnie kell minden képernyőképen!</p>
 </div>
 <h2 id="listazasolvasas">Listázás/olvasás<a class="headerlink" href="#listazasolvasas" title="Permanent link">&para;</a></h2>
 <ol>
@@ -1148,7 +1148,8 @@
 </code></pre></div>
 </li>
 <li>
-<p>A <code>FindProduct(string id)</code> függvény megvalósítása nagyon hasonlít az előzőhöz, csupán annyiban különbözik, hogy itt egyetlen terméket kérdezünk le, <code>ID</code> alapján. A konvertáló lépés ugyanúgy megmarad. Ebben az esetben oda kell figyelnünk azonban, hogy ha nem találjuk az adott terméket, akkor adjunk vissza <code>null</code> értéket, ne próbáljunk konvertálni.</p>
+<p>A <code>FindProduct(string id)</code> függvény megvalósítása nagyon hasonlít az előzőhöz, csupán annyiban különbözik, hogy itt egyetlen terméket kérdezünk le, <code>ID</code> alapján. Ügyeljünk rá, hogy az <code>ID</code>-t szövegként kapjuk, így <code>ObjectId</code>-vá kell alakítani.</p>
+<p>A modellé konvertáló lépés ugyanúgy megmarad. Ebben az esetben oda kell figyelnünk azonban, hogy ha nem találjuk az adott terméket, akkor adjunk vissza <code>null</code> értéket, ne próbáljunk konvertálni.</p>
 <p>A lekérdező lépés a következőre módosul:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">var</span> <span class="n">dbProduct</span> <span class="p">=</span> <span class="n">productCollection</span>
     <span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">ID</span> <span class="p">==</span> <span class="n">ObjectId</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">id</span><span class="p">))</span>
@@ -1222,7 +1223,7 @@
 </ol>
 <div class="admonition example">
 <p class="admonition-title">BEADANDÓ</p>
-<p>Készíts egy <strong>képernyőképet</strong> a termék listázó weboldalról. A képet a megoldásban <code>f1.png</code> néven add be. A képernyőképen látszódjon a <strong>termék lista</strong>. Ellenőrizd, hogy a <strong>Neptun kódod</strong> (az oldal aljáról) látható-e a képen! A képernyőkép szükséges feltétele a pontszám megszerzésének.</p>
+<p>Készíts egy <strong>képernyőképet</strong> a termék listázó weboldalról <strong>miután felvettél legalább egy új terméket</strong>. A képet a megoldásban <code>f1.png</code> néven add be. A képernyőképen látszódjon a <strong>termék lista</strong>. Ellenőrizd, hogy a <strong>Neptun kódod</strong> (az oldal aljáról) látható-e a képen! A képernyőkép szükséges feltétele a pontszám megszerzésének.</p>
 </div>
                 
               

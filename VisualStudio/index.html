@@ -16,7 +16,7 @@
     
     
       
-        <title>Visual Studio telepítése és beállítása - BMEVIAUAC09 Szoftverfejlesztés laboratórium 1</title>
+        <title>Visual Studio & .NET Core SDK telepítése - BMEVIAUAC09 Szoftverfejlesztés laboratórium 1</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#visual-studio-telepitese-es-beallitasa" class="md-skip">
+        <a href="#visual-studio-net-core-sdk-telepitese" class="md-skip">
           Kihagyás
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header-nav__topic">
           <span class="md-ellipsis">
             
-              Visual Studio telepítése és beállítása
+              Visual Studio & .NET Core SDK telepítése
             
           </span>
         </div>
@@ -397,12 +397,12 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Visual Studio telepítése és beállítása
+        Visual Studio & .NET Core SDK telepítése
         <span class="md-nav__icon md-icon"></span>
       </label>
     
     <a href="./" class="md-nav__link md-nav__link--active">
-      Visual Studio telepítése és beállítása
+      Visual Studio & .NET Core SDK telepítése
     </a>
     
       
@@ -419,8 +419,15 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#workload-ok-telepitese" class="md-nav__link">
-    Workload-ok telepítése
+  <a href="#visual-studio-workload-ok-telepitese" class="md-nav__link">
+    Visual Studio Workload-ok telepítése
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#net-core-sdk-ellenorzese-es-telepitese" class="md-nav__link">
+    .NET Core SDK ellenőrzése és telepítése
   </a>
   
 </li>
@@ -958,8 +965,15 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#workload-ok-telepitese" class="md-nav__link">
-    Workload-ok telepítése
+  <a href="#visual-studio-workload-ok-telepitese" class="md-nav__link">
+    Visual Studio Workload-ok telepítése
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#net-core-sdk-ellenorzese-es-telepitese" class="md-nav__link">
+    .NET Core SDK ellenőrzése és telepítése
   </a>
   
 </li>
@@ -981,14 +995,15 @@
                   </a>
                 
                 
-                <h1 id="visual-studio-telepitese-es-beallitasa">Visual Studio telepítése és beállítása<a class="headerlink" href="#visual-studio-telepitese-es-beallitasa" title="Permanent link">&para;</a></h1>
+                <h1 id="visual-studio-net-core-sdk-telepitese">Visual Studio &amp; .NET Core SDK telepítése<a class="headerlink" href="#visual-studio-net-core-sdk-telepitese" title="Permanent link">&para;</a></h1>
 <p>Egyes laborokhoz a Microsoft Visual Studio <strong>2019 16.6 vagy újabb</strong> verziója szükséges. Az ingyenes, <a href="https://visualstudio.microsoft.com/vs/community/">Community változata</a> is elegendő a feladatok megoldásához.</p>
+<p>A verziót a <em>Visual Studio Installer</em> elindításával ellenőrizhetjük:</p>
 <p><img alt="Visual Studio verzió" src="../images/visual-studio/vs-verzio.png" /></p>
 <div class="admonition info">
 <p class="admonition-title">VS Code</p>
-<p>Egyes laborok Visual Studio nélkük, <strong>Visual Studio Code</strong>-dal is megoldhatóak. A kiadott kód váz azonban Visual Studio-hoz készült, annak konfigurációit tartalmazza. Ha VS Code-dal dolgozol, magadnak kell konfigurálni a környezetet.</p>
+<p>A laborok Visual Studio nélkül, <strong>Visual Studio Code</strong>-dal is megoldhatóak. A kiadott kód váz Visual Studio-hoz készült, annak konfigurációit tartalmazza. Ha VS Code-dal dolgozol, magadnak kell konfigurálni a környezetet.</p>
 </div>
-<h2 id="workload-ok-telepitese">Workload-ok telepítése<a class="headerlink" href="#workload-ok-telepitese" title="Permanent link">&para;</a></h2>
+<h2 id="visual-studio-workload-ok-telepitese">Visual Studio Workload-ok telepítése<a class="headerlink" href="#visual-studio-workload-ok-telepitese" title="Permanent link">&para;</a></h2>
 <p>A Visual Studio telepítésekor ki kell pipálni az alábbi <a href="https://docs.microsoft.com/en-us/visualstudio/install/install-visual-studio?view=vs-2019#step-4---choose-workloads">workload-okat</a>:</p>
 <ul>
 <li>ASP.NET and web development</li>
@@ -997,6 +1012,13 @@
 <p><img alt="Visual Studio workloadok" src="../images/visual-studio/vs-workload.png" /></p>
 <p>Meglevő telepítés a <em>Visual Studio Installer</em>-ben a <a href="https://docs.microsoft.com/en-us/visualstudio/install/modify-visual-studio?view=vs-2019"><em>Modify</em></a> gombbal módosítható, ill. ellenőrizhető.</p>
 <p><img alt="Visual Studio komponensek telepítése" src="../images/visual-studio/vs-installer-modify.png" /></p>
+<h2 id="net-core-sdk-ellenorzese-es-telepitese">.NET Core SDK ellenőrzése és telepítése<a class="headerlink" href="#net-core-sdk-ellenorzese-es-telepitese" title="Permanent link">&para;</a></h2>
+<p>Visual Studio mellett bizonyos .NET Core SDK-k telepítésre kerülnek. A megfelelő verzió ellenőrzéséhez legegyszerűbb a <code>dotnet</code> CLI-t használni: konzolban add ki a <code>dotnet --list-sdks</code> parancsot. Ez a parancs Linux és Mac esetén is működik. A kimenete hasonló lesz:</p>
+<div class="highlight"><pre><span></span><code>C:\&gt;dotnet --list-sdks
+<span class="hll">3.1.404 [C:\Program Files\dotnet\sdk]
+</span>5.0.101 [C:\Program Files\dotnet\sdk]
+</code></pre></div>
+<p>Ha ebben a listában látsz <strong>3.1</strong>-es verziót, akkor jó. Ha nem, akkor telepíteni kell az SDK-t <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1">innen</a>.</p>
                 
               
               
