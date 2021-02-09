@@ -59,11 +59,11 @@ A forráskód melletti képernyőképeken szerepelnie kell a Neptun kódodnak.
 1. Első lépésként szükség lesz az adatbázisban található `products` kollekció elérésére a kódból. Ehhez végy fel egy új mezőt a `Repository` osztályban, és inicializáld ezt a konstruktorban. Az ehhez szükséges `IMongoDatabase` objektumot _Dependency Injection_ segítségével, konstruktorparaméterként kaphatod meg.
 
     ```csharp
-    private readonly IMongoCollection<Enites.Product> productCollection;
+    private readonly IMongoCollection<Entities.Product> productCollection;
 
     public Repository(IMongoDatabase database)
     {
-        this.productCollection = database.GetCollection<Enites.Product>("products");
+        this.productCollection = database.GetCollection<Entities.Product>("products");
     }
     ```
 
@@ -120,7 +120,7 @@ A forráskód melletti képernyőképeken szerepelnie kell a Neptun kódodnak.
 1. Egy termék létrehozásához először létre kell hoznunk egy új adatbázisentitás objektumot. Jelen esetben ez egy `Entites.Product` objektum lesz. Az `ID` értéket nem kell megadnunk — ezt majd az adatbázis generálja. A `Name`, `Price` és `Stock` értékeket a felhasználó szolgáltatja. Két érték maradt ki: az `VAT` és a `CategoryID`. Az előbbinek adjunk tetszőleges értéket, az utóbbinak pedig keressünk egy szimpatikus kategóriát az adatbázisban _Robo3T_ segítségével, és annak az `_id` értékét drótozzuk be!
 
     ```csharp
-    var dbProduct = new Enites.Product
+    var dbProduct = new Entities.Product
     {
         Name = product.Name,
         Price = product.Price,
@@ -150,7 +150,7 @@ A forráskód melletti képernyőképeken szerepelnie kell a Neptun kódodnak.
     ```csharp
     var result = productCollection.UpdateOne(
         filter: t => t.ID == ObjectId.Parse(id) && t.Stock >= amount,
-        update: Builders<Enites.Product>.Update.Inc(t => t.Stock, -amount),
+        update: Builders<Entities.Product>.Update.Inc(t => t.Stock, -amount),
         options: new UpdateOptions { IsUpsert = false });
     ```
 
