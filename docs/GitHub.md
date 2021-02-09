@@ -23,7 +23,7 @@ The detailed description below shows the entire procedure. This summary is an ov
 
 1. Open the link in the exercise description to create your repository.
 
-1. If needed, authorize the _GitHub Classroom_ application to use your account data.
+1. If needed, authorize the _GitHub Classroom_ application to use your account data. (This page will be displayed the first time you click the link in the previous step.) 
 
     ![Authorize GitHub classroom](images/github/github-authorize-classroom.png)
 
