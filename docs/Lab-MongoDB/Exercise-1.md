@@ -59,11 +59,11 @@ You will need to create screenshots that display your Neptun code.
 1. First, you will need a way to access the `products` collection from C#. Create and initialize a new variable that represents the collection in class `Repository`. Use the injected `IMongoDatabase` variable to get the collection:
 
     ```csharp
-    private readonly IMongoCollection<Enites.Product> productCollection;
+    private readonly IMongoCollection<Entities.Product> productCollection;
 
     public Repository(IMongoDatabase database)
     {
-        this.productCollection = database.GetCollection<Enites.Product>("products");
+        this.productCollection = database.GetCollection<Entities.Product>("products");
     }
     ```
 
@@ -120,7 +120,7 @@ You will need to create screenshots that display your Neptun code.
 1. To create a new product, we will first create a new database entity (in memory first). This is an instance of class `Entities.Product`. There is no need to set the `ID` - the database will generate it. `Name`, `Price` and `Stock` are provided by the user. What is left is `VAT` and `CategoryID`. We should just hard-code values here: create a new VAT entity and find a random category using _Robo3T_ and copy the `_id` value.
 
     ```csharp
-    var dbProduct = new Enites.Product
+    var dbProduct = new Entities.Product
     {
         Name = product.Name,
         Price = product.Price,
@@ -150,7 +150,7 @@ You will need to create screenshots that display your Neptun code.
     ```csharp
     var result = productCollection.UpdateOne(
         filter: t => t.ID == ObjectId.Parse(id) && t.Stock >= amount,
-        update: Builders<Enites.Product>.Update.Inc(t => t.Stock, -amount),
+        update: Builders<Entities.Product>.Update.Inc(t => t.Stock, -amount),
         options: new UpdateOptions { IsUpsert = false });
     ```
 
