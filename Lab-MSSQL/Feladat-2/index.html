@@ -1003,7 +1003,7 @@
 <li>Az eljárás ellenőrizze, hogy a paraméterben kapott számlához (<code>Invoice</code>) kapcsolódó számlatételeken (<code>InvoiceItem</code>) szereplő mennyiség (<code>Amount</code>) egyezik-e a kapcsolódó megrendeléstétel (<code>OrderItem</code>) mennyiségével. (Az <code>InvoiceItem</code> rekord hivatkozik a kapcsolódó <code>OrderItem</code>-re.)</li>
 <li>Amennyiben eltérés található a kettőben, úgy mindkettő értékét, valamint a termék nevét írd ki a standard outputra az alábbi séma szerint: <code>Difference: Ball (invoice 5 order 6)</code></li>
 <li>Csak akkor írjon bármit a kimenetre a tárolt eljárás, ha problémát talált. Semmiképpen se hagyj teszteléshez használt kiírást az eljárásban!</li>
-<li>Legyen az eljárás <code>int</code> típusú visszatérési értéke 0, ha nem kellett semmit kiírni a kimenetre, és 1, ha kellett.</li>
+<li>Legyen az eljárás <code>int</code> típusú visszatérési értéke 0, ha nem kellett semmit kiírni a kimenetre, és 1, ha kellett. Ez az érték <code>return</code> kulcsszóval kerüljön visszaadásra (ne <code>output</code> paraméter legyen).</li>
 </ul>
 <p>A kiíráshoz használd a <code>print</code> parancsot: <code>PRINT 'Szoveg' + @valtozo + 'Szoveg'</code> Ügyelj rá, hogy a változónak char típusúnak kell lennie, egyéb típus, pl. szám konvertálása: <code>convert(varchar(5), @valtozo)</code>, pl. <code>PRINT 'Szoveg' + convert(varchar(5), @valtozo)</code></p>
 <div class="admonition example">
