@@ -9,7 +9,7 @@ Create a store procedure with the name `CheckInvoice` that expects an `int` inpu
 - The procedure shall check the invoice corresponding to the provided id: check each `InvoiceItem` whether the `Amount` equals the amount on the corresponding `OrderItem`. (`InvoiceItem` directly references the corresponding `OrderItem`.)
 - If there are any differences, print the amount values in both, and print the related product name as follows: `Difference: Ball (invoice 5 order 6)`
 - The procedure should print any message only if an error was found. Do not leave test output in the submitted code!
-- The procedure return value shall be an `int` equal to 0 when no discrepancies were found, and 1 in case one was identified.
+- The procedure return value shall be an `int` equal to 0 when no discrepancies were found, and 1 in case one was identified. This value should be `return`-ed at the end of the procedure (do not use an `output` parameter).
 
 Use the `print` command for output as follows: `PRINT 'Text' + @variable + 'Text'` Any variable you print must be of character type. To convert a number to characters use: `convert(varchar(5), @variable)`, e.g. `PRINT 'Text' + convert(varchar(5), @variable)`
 
