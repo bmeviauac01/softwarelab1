@@ -86,7 +86,7 @@ A forráskód melletti képernyőképeken szerepelnie kell a Neptun kódodnak.
             ID = t.ID.ToString(),
             Name = t.Name,
             Price = t.Price,
-            InStock = t.InStock
+            Stock = t.Stock
         })
         .ToList();
     ```
