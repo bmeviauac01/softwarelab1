@@ -20,7 +20,7 @@ A kiíráshoz használd a `print` parancsot: `PRINT 'Szoveg' + @valtozo + 'Szove
 
 Írj T-SQL kódblokkot, ami az előző feladatban megírt eljárást hívja meg egyenként az összes számlára. Érdemes ehhez egy kurzort használnod, ami a számlákon fut végig.
 
-A kód minden számla ellenőrzése előtt írja ki a standard outputra a számla azonosítóját (pl. `InvoiceID: 12`), és amennyiben nem volt eltérés, írja ki a kimenetre, hogy 'Invoice ok'. Ezt a kimenetet a query ablak alatti [_Output_ panelen](https://docs.microsoft.com/en-us/sql/ssms/scripting/transact-sql-debugger-output-window) fogod látni.
+A kód minden számla ellenőrzése előtt írja ki a standard outputra a számla azonosítóját (pl. `InvoiceID: 12`), és amennyiben nem volt eltérés, írja ki a kimenetre, hogy 'Invoice ok'. Ezt a kimenetet a query ablak alatti _Messages_ panelen fogod látni.
 
 !!! tip "Tárolt eljárás meghívása"
     Tárolt eljárás meghívása kódból az `exec` paranccsal lehetséges, pl.
