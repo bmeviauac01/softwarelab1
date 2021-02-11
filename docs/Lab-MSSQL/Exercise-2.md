@@ -20,7 +20,7 @@ Use the `print` command for output as follows: `PRINT 'Text' + @variable + 'Text
 
 Write T-SQL code that calls the procedure on all invoices. You should use a cursor to iterate all invoices.
 
-The code shall print the ID of the invoice (e.g., `InvoiceID: 12`) before checking an invoice. If an invoice contains no discrepancies, print 'Invoice ok' before moving on to the next one. Check the _Messages_ pane_ under the query window for the messages.
+The code shall print the ID of the invoice (e.g., `InvoiceID: 12`) before checking an invoice. If an invoice contains no discrepancies, print 'Invoice ok' before moving on to the next one. Check the _Messages_ pane under the query window for the messages.
 
 !!! tip "Invoking a stored procedure"
     Invoking a stored procedure is performed with the `exec` statement:
