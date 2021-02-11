@@ -86,7 +86,7 @@ You will need to create screenshots that display your Neptun code.
             ID = t.ID.ToString(),
             Name = t.Name,
             Price = t.Price,
-            InStock = t.InStock
+            Stock = t.Stock
         })
         .ToList();
     ```
