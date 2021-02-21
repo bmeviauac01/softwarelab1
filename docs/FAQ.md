@@ -14,7 +14,7 @@ Minden kommit után lefuttatunk pár egyszerű ellenőrzést. Ez az email arról
 
 Ha a GitHub Actions felületén ezt látod, az azt jelenti, hogy még nem kezdte el a kiértékelést a GitHub, de "tud a feladatról". Várj türelemmel.
 
-### Nem tudod, mi a hiba a megoldásod
+### Nem tudod, mi a hiba a megoldásodban
 
 Nem feltétlenül célunk a hiba pontos azonosítása számodra. A mérnöki munka része, hogy a feladataidat magad ellenőrzöd. A kiértékelés jó esetben mond valami féle irányt, de nem fogja megmondani a pontos problémát.
 
