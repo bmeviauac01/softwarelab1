@@ -62,7 +62,7 @@ Azért így teszünk, mert mérnökként a feladatod a problémák _megoldása_ 
 
 **Szóval Google és StackOverflow a megoldás?** Nem. Minden tudás, amire szükséged van, már előfordult egyetemi tanulmányaid során. A Google jó, a StackOverflow még jobb.... De! A választ is meg kell érteni. Lehet, hogy a megtalált válasz megoldás, csak épp nem a te problémádra.
 
-**Sok a határidő, meg az előírás.** Ez nézőpont kérdése. A mérnök nem csak programozni tud, hanem meghatározott keretek között dolgozni. Mert a világ bonyolult, és a bonyolultságot szabályokkal lehet kordában tartani. Ha időd engedi, érdemes megnézni, mint mond Robert C. Martin (Bob Martin, "Uncle Bob") arról, honnan származik a szoftverfejlesztői szakmai: <https://www.youtube.com/watch?v=ecIWPzGEbFc>
+**Sok a határidő, meg az előírás.** Ez nézőpont kérdése. A mérnök nem csak programozni tud, hanem meghatározott keretek között dolgozni. Mert a világ bonyolult, és a bonyolultságot szabályokkal lehet kordában tartani. Ha időd engedi, érdemes megnézni, mit mond Robert C. Martin (Bob Martin, "Uncle Bob") arról, honnan származik a szoftverfejlesztői szakmai: <https://www.youtube.com/watch?v=ecIWPzGEbFc>
 
 ---
 
