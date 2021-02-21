@@ -12,7 +12,7 @@ Módosítsd az `Invoice` táblát: vegyél fel egy új oszlopot `ItemCount` név
 Készíts T-SQL programblokkot, amely kitölti az újonnan felvett oszlopot az aktuális adatok alapján.
 
 !!! tip ""
-    Ha például egy **számlán** (`Invoice`) szerepel 2 darab piros pöttyös labda és 1 darab tollasütőt, akkor 3 tétel szerepel a számlán. Ügyelj rá, hogy számlához (és nem a megrendeléshez) tartozó tételeket kell nézni!
+    Ha például egy **számlán** (`Invoice`) szerepel 2 darab piros pöttyös labda és 1 darab tollasütő, akkor 3 tétel szerepel a számlán. Ügyelj rá, hogy számlához (és nem a megrendeléshez) tartozó tételeket kell nézni!
 
 !!! example "BEADANDÓ"
     Az oszlopot kitöltő kódot az `f3-fill.sql` fájlba írd. A fájlban csak egy T-SQL kódblokk legyen, ne használj tárolt eljárást vagy triggert, és ne legyen a kódban se `[use]` se `go` utasítás. A feladatrésszel 1 pont szerezhető.
