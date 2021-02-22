@@ -158,7 +158,7 @@ Alább részletesen bemutatjuk a beadás menetét. Itt egy rövid összefoglaló
     ![GitHub create pull request](images/github/github-create-pull-request-3.png)
 
     !!! error "Pull request nélkül"
-        Ha nincs pull request-et, vagy nincs a laborvezetőhöz rendelve, akkor úgy tekintjük, hogy még nem vagy készen, és nem adtad be a megoldást.
+        Ha nincs pull request-ed, vagy nincs a laborvezetőhöz rendelve, akkor úgy tekintjük, hogy még nem vagy készen, és nem adtad be a megoldást.
 
     !!! success "Végeztél"
         Miután a laborvezetőhöz rendelted a pull request-et, már **ne módosíts** semmin. A laborvezető értékelni fogja a munkádat, és a pull request lezárásával kommentben jelzi a végeredményt.
