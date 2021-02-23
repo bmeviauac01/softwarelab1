@@ -35,4 +35,4 @@ Ellenőrizd a kódblokk viselkedését. Ahhoz, hogy eltérést tapasztalj, ha sz
     Az összes számlát ellenőrző kódot az `f2-exec.sql` fájlba írd. A fájlban csak a lefuttatható kódblokk szerepeljen. Ne legyen benne a tárolt eljárás kódja, ne legyen benne se `[use]` se `go` utasítás. A feladatrésszel 2 pont szerezhető.
 
 !!! example "BEADANDÓ"
-    Készíts egy képernyőképet az kód futásának eredményéről, amikor valamilyen **eltérést megtalált**. A képet `f2.png` néven add be. A képernyőképen látszódjon az _Object Explorer_-ben az **adatbázis neve (a Neptun kódod)** és **a kiírt üzenet** is!
+    Készíts egy képernyőképet a kód futásának eredményéről, amikor valamilyen **eltérést megtalált**. A képet `f2.png` néven add be. A képernyőképen látszódjon az _Object Explorer_-ben az **adatbázis neve (a Neptun kódod)** és **a kiírt üzenet** is!
