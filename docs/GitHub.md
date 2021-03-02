@@ -3,7 +3,7 @@
 We are using GitHub to submit the solutions. Each laboratory is submitted in a GitHub repository that you will create through a provided link. The solution of the laboratory exercises are created within these repositories, then committed and pushed to GitHub. The submission is finished with a _pull request_ assigned to the laboratory instructor.
 
 !!! important "IMPORTANT"
-    The submission requirements detailed below and mandatory. Submissions not following these guidelines are not graded.
+    The submission requirements detailed below are mandatory. Submissions not following these guidelines are not graded.
 
 ## Short version, aka. TL;DR
 
