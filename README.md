@@ -10,7 +10,7 @@ The exercise documentation is build with MkDocs and published on GitHub Pages at
 
 1. Open a PowerShell console at the repository root
 
-1. `docker run -it --rm -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material:6.2.2`
+1. `docker run -it --rm -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material:7.0.3`
 
 1. Open <http://localhost:8000> in a browser
 
