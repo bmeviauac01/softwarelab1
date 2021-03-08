@@ -156,7 +156,7 @@ A forráskód melletti képernyőképeken szerepelnie kell a Neptun kódodnak.
 
     Fontos megfigyelni, hogy az `UpdateOptions` segítségével jeleztük az adatbázisnak, hogy **NE** upsertet hajtson végre — tehát ne tegyen semmit ha nem találja a filterben megadott terméket.
 
-    A módosító utasítást a `Builders`-ben található `Update` builder segítségével tudjuk összerakni. Esetünkben `amount`-gel akarjuk csökkenteni az értéket — ez `-amount`-gel történő _inkrementálást_ jelent.
+    A módosító utasítást a `Builders`-ben található `Update` builder segítségével tudjuk összerakni. Esetünkben `amount`-tal akarjuk csökkenteni az értéket — ez `-amount`-tal történő _inkrementálást_ jelent.
 
     A visszatérési értéket az update `result`-jából tudjuk meghatározni. Amennyiben talált olyan terméket, ami megfelelt a filternek, akkor sikeres volt a módosítás, tehát `true` értékkel térhetünk vissza. Egyébként a visszatérési érték `false`.
 
