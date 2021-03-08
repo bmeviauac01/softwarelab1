@@ -1189,7 +1189,7 @@
     <span class="n">options</span><span class="p">:</span> <span class="k">new</span> <span class="n">UpdateOptions</span> <span class="p">{</span> <span class="n">IsUpsert</span> <span class="p">=</span> <span class="k">false</span> <span class="p">});</span>
 </code></pre></div>
 <p>Fontos megfigyelni, hogy az <code>UpdateOptions</code> segítségével jeleztük az adatbázisnak, hogy <strong>NE</strong> upsertet hajtson végre — tehát ne tegyen semmit ha nem találja a filterben megadott terméket.</p>
-<p>A módosító utasítást a <code>Builders</code>-ben található <code>Update</code> builder segítségével tudjuk összerakni. Esetünkben <code>amount</code>-gel akarjuk csökkenteni az értéket — ez <code>-amount</code>-gel történő <em>inkrementálást</em> jelent.</p>
+<p>A módosító utasítást a <code>Builders</code>-ben található <code>Update</code> builder segítségével tudjuk összerakni. Esetünkben <code>amount</code>-tal akarjuk csökkenteni az értéket — ez <code>-amount</code>-tal történő <em>inkrementálást</em> jelent.</p>
 <p>A visszatérési értéket az update <code>result</code>-jából tudjuk meghatározni. Amennyiben talált olyan terméket, ami megfelelt a filternek, akkor sikeres volt a módosítás, tehát <code>true</code> értékkel térhetünk vissza. Egyébként a visszatérési érték <code>false</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="k">return</span> <span class="n">result</span><span class="p">.</span><span class="n">MatchedCount</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">;</span>
 </code></pre></div>
