@@ -29,7 +29,7 @@ Próbáld ki, hogy elindul-e a program.
 1. Nyisd meg böngészőben a <http://localhost:5000/> oldalt.
 
 !!! success ""
-    Ha minden rendben ment, akkor bejött el oldal, ahol az egyes feladatokat ki fogod tudni próbálni. (Az egyes feladatokra mutató linkek mögötti oldalak még nem működnek. Előbb még meg kell valósítani az adatelérési réteget.)
+    Ha minden rendben ment, akkor bejött egy oldal, ahol az egyes feladatokat ki fogod tudni próbálni. (Az egyes feladatokra mutató linkek mögötti oldalak még nem működnek. Előbb még meg kell valósítani az adatelérési réteget.)
 
 ## Neptun kód megjelenítése a weboldalon
 
