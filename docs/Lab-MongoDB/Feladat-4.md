@@ -18,7 +18,7 @@ A feladat megoldásához ajánlott lépések:
 
 1. A megrendelések kollekcióján aggregációs pipeline-t használva meg tudod állapítani az adott `CustomerID`-hez tartozó összmegrendelések értékét.
 
-1. Végezetül csak a meglevő információkat kell "összefésülnöd". Központi telephelye minden vevőnek van, viszont megrendelése nem garantált — figyelj oda, hogy ekkor az `TotalOrders` elvárt értéke `null`!
+1. Végezetül csak a meglevő információkat kell "összefésülnöd". Központi telephelye minden vevőnek van, viszont megrendelése nem garantált — figyelj oda, hogy ekkor a `TotalOrders` elvárt értéke `null`!
 
 1. A kód kipróbálásához a weboldal `Customers` menüpontjára kell navigálni. Itt táblázatos formában megjelenítve láthatod az összegyűjtött információkat. Teszteléshez alkalmazhatod az előző feladatban elkészített `Add new order` funkciót — itt új megrendelés felvétele esetén az előző feladatban bedrótozott vevő mellett növekednie kell a hozzá tartozó megrendelések összértékének.
 
