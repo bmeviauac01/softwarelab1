@@ -2,13 +2,13 @@
 
 **You can earn 4 points with the completion of this exercise.**
 
-We will list the customers in this exercise, along with the total amount of their orders. This will be similar to exercise 2: we will use aggregation and merging in C# code.
+We will list the customers in this exercise, along with the cumulative value of their orders. This will be similar to exercise 2: we will use aggregation and merging in C# code.
 
 The method to implement is `IList<Customer> ListCustomers()`. The method shall return every customer. The properties of `Model.Customer` are:
 
 - `Name`: the name of the customer
 - `ZipCode`, `City`, `Street`: the address fields of the main site of the customer
-- `TotalOrders`: the cumulative total of all orders of the customer. If a particular customer has no orders, this value shall be `null`.
+- `TotalOrders`: the cumulative total of all orders of the customer. You have to aggregate the price\*amount for all items of each order of a customer to get this total. If a particular customer has no orders, this value shall be `null`.
 
 Follow these steps to solve this exercise:
 
