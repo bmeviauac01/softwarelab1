@@ -51,11 +51,13 @@ Valósítsuk meg az első műveletet, amely minden státusz entitást listáz.
 
     Az `Id` lesz az adatbázisbeli kulcs, a `Name` pedig a státusz neve.
 
-1. Nyisd meg a `DAL.EfDbContext.TasksDbContext` osztályt. Ide fel kell vegyük a státuszokhoz tartozó DbSet-et, és az `OnModelCreating` függvényben konfigurálnunk kell a C# osztály - relációs adatbázis leképzést:
+1. Nyisd meg a `DAL.EfDbContext.TasksDbContext` osztályt. Ide fel kell vegyük a státuszokhoz tartozó `DbSet`-et, és az `OnModelCreating` függvényben konfigurálnunk kell a C# osztály - relációs adatbázis leképzést:
 
     ```csharp
     public class TasksDbContext : DbContext
     {
+        // ...
+        
         public DbSet<DbStatus> Statuses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -128,7 +130,7 @@ Valósítsuk meg az első műveletet, amely minden státusz entitást listáz.
     !!! success ""
         Akkor sikeres a hívás, ha a Postman szerint 200 a válaszkód, és üres a válasz. Ha valami hiba lenne, akkor a Visual Studio Output ablakát ill. a futó konzol alkalmazás logját érdemes nézni.
 
-1. Üres adatbázissal nehéz tesztelni. Állítsd le a futó alkalmazást, menj meg a `DAL.EfDbContext.TasksDbContext.OnModelCreating` függvényéhez, és illesszünk be egy kevés un. _seed_ adatot az adatbázisba:
+1. Üres adatbázissal nehéz tesztelni. Állítsd le a futó alkalmazást, navigálj a `DAL.EfDbContext.TasksDbContext.OnModelCreating` függvényhez, és illessz be egy  un. _seed_ adatot az adatbázisba:
 
     ```csharp
     public class TasksDbContext : DbContext
@@ -147,7 +149,7 @@ Valósítsuk meg az első műveletet, amely minden státusz entitást listáz.
     }
     ```
 
-1. Fordítsd le és futtasd újból az alkalmazást, majd add ki ismét az előbbi GET kérést. Most már nem üres a válasz, meg kell kapd a két státuszt.
+1. Fordítsd le és futtasd újból az alkalmazást, majd add ki ismét az előbbi GET kérést. Most már nem üres a válasz, meg kell kapnod a két státuszt.
 
     !!! important "Ha nem látod az új rekordokat"
         Ha mégse jelenne meg a válaszban a két _seed_ objektum, akkor lehet, hogy a DB nem frissült, és nem jutott érvényre a `HasData` művelet. Töröld ki a `tasks.db` SQLite állományt, aminek hatására újból létrejön az adatbázisfájl az app indulásakor a tesztadatainkkal.
@@ -164,7 +166,7 @@ Az összes státusz listázása mellett még vár ránk pár alapvető művelet:
 
 Rétegről rétegre haladva valósítsuk meg a funkciókat.
 
-1. Implementáljuk az első kettőt először a repository-ban. Ügyeljünk rá, hogy a név alapú keresésnél kisbetű-nagybetű függetlenül keressünk!
+1. Implementáljuk az első kettőt először a `DAL.StatusesRepository`-ban. Ügyeljünk rá, hogy a név alapú keresésnél kisbetű-nagybetű függetlenül keressünk!
 
     ```csharp
     public bool ExistsWithName(string statusName)
