@@ -1049,9 +1049,11 @@
 <p>Az <code>Id</code> lesz az adatbázisbeli kulcs, a <code>Name</code> pedig a státusz neve.</p>
 </li>
 <li>
-<p>Nyisd meg a <code>DAL.EfDbContext.TasksDbContext</code> osztályt. Ide fel kell vegyük a státuszokhoz tartozó DbSet-et, és az <code>OnModelCreating</code> függvényben konfigurálnunk kell a C# osztály - relációs adatbázis leképzést:</p>
+<p>Nyisd meg a <code>DAL.EfDbContext.TasksDbContext</code> osztályt. Ide fel kell vegyük a státuszokhoz tartozó <code>DbSet</code>-et, és az <code>OnModelCreating</code> függvényben konfigurálnunk kell a C# osztály - relációs adatbázis leképzést:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">class</span> <span class="nc">TasksDbContext</span> <span class="p">:</span> <span class="n">DbContext</span>
 <span class="p">{</span>
+    <span class="c1">// ...</span>
+
     <span class="k">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">DbStatus</span><span class="p">&gt;</span> <span class="n">Statuses</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
 
     <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnModelCreating</span><span class="p">(</span><span class="n">ModelBuilder</span> <span class="n">modelBuilder</span><span class="p">)</span>
@@ -1121,7 +1123,7 @@
 </div>
 </li>
 <li>
-<p>Üres adatbázissal nehéz tesztelni. Állítsd le a futó alkalmazást, menj meg a <code>DAL.EfDbContext.TasksDbContext.OnModelCreating</code> függvényéhez, és illesszünk be egy kevés un. <em>seed</em> adatot az adatbázisba:</p>
+<p>Üres adatbázissal nehéz tesztelni. Állítsd le a futó alkalmazást, navigálj a <code>DAL.EfDbContext.TasksDbContext.OnModelCreating</code> függvényhez, és illessz be egy  un. <em>seed</em> adatot az adatbázisba:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">class</span> <span class="nc">TasksDbContext</span> <span class="p">:</span> <span class="n">DbContext</span>
 <span class="p">{</span>
     <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnModelCreating</span><span class="p">(</span><span class="n">ModelBuilder</span> <span class="n">modelBuilder</span><span class="p">)</span>
@@ -1139,7 +1141,7 @@
 </code></pre></div>
 </li>
 <li>
-<p>Fordítsd le és futtasd újból az alkalmazást, majd add ki ismét az előbbi GET kérést. Most már nem üres a válasz, meg kell kapd a két státuszt.</p>
+<p>Fordítsd le és futtasd újból az alkalmazást, majd add ki ismét az előbbi GET kérést. Most már nem üres a válasz, meg kell kapnod a két státuszt.</p>
 <div class="admonition important">
 <p class="admonition-title">Ha nem látod az új rekordokat</p>
 <p>Ha mégse jelenne meg a válaszban a két <em>seed</em> objektum, akkor lehet, hogy a DB nem frissült, és nem jutott érvényre a <code>HasData</code> művelet. Töröld ki a <code>tasks.db</code> SQLite állományt, aminek hatására újból létrejön az adatbázisfájl az app indulásakor a tesztadatainkkal.</p>
@@ -1157,7 +1159,7 @@
 <p>Rétegről rétegre haladva valósítsuk meg a funkciókat.</p>
 <ol>
 <li>
-<p>Implementáljuk az első kettőt először a repository-ban. Ügyeljünk rá, hogy a név alapú keresésnél kisbetű-nagybetű függetlenül keressünk!</p>
+<p>Implementáljuk az első kettőt először a <code>DAL.StatusesRepository</code>-ban. Ügyeljünk rá, hogy a név alapú keresésnél kisbetű-nagybetű függetlenül keressünk!</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="kt">bool</span> <span class="nf">ExistsWithName</span><span class="p">(</span><span class="kt">string</span> <span class="n">statusName</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">return</span> <span class="n">db</span><span class="p">.</span><span class="n">Statuses</span><span class="p">.</span><span class="n">Any</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">EF</span><span class="p">.</span><span class="n">Functions</span><span class="p">.</span><span class="n">Like</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="n">statusName</span><span class="p">));</span>
