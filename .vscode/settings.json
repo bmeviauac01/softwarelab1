@@ -2,6 +2,7 @@
   "spellright.language": ["hu"],
   "spellright.documentTypes": ["markdown", "latex", "plaintext"],
   "prettier.disableLanguages": ["markdown"],
+  "prettier.requireConfig": true,
   "markdownlint.config": {
     "default": true,
     "MD007": { "indent": 4 }
