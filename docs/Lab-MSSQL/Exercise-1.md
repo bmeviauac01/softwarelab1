@@ -6,7 +6,7 @@
 
 Create a new `CategoryWithParent` view that lists the `Category` table's contents as follows. It should have two columns: the `Name` of the category and the name of the parent category (or null if it does not exist).
 
-Open a new _Query_ window. Make sure to select the right database. Create the view by executing the T-SQL command below.
+Open a new _Query_ window. Make sure to select the correct database. Create the view by executing the T-SQL command below.
 
 ```sql
 create view CategoryWithParent

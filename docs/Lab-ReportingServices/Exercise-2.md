@@ -59,4 +59,4 @@ There are a few changes to make.
     ![Preview](../images/reportingservices/rs-chart-preview-2.png)
 
 !!! example "SUBMISSION"
-    Create a screenshot of the **report preview** page. Save the screenshot as `f2.png` and submit with the other files of the solution. The screenshot shall include Visual Studio and the report preview. Verify that your **Neptun code** is visible in the diagram title!
+    Create a screenshot of the **report preview** page. Save the screenshot as `f2.png` and submit it with the other files of the solution. The screenshot shall include Visual Studio and the report preview. Verify that your **Neptun code** is visible in the diagram title!

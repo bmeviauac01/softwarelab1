@@ -25,12 +25,12 @@ Create a trigger with the name `InvoiceItemCountMaintenance` that ensures the va
     The trigger shall be on the `InvoiceItem` table despite the new column being in the `Invoice` table.
 
 !!! warning "Important"
-    Do not forget that triggers are executed **per statement** and not for each row, that is, your trigger will need to handle multiple changes in the implicit tables! The `inserted` and `deleted` implicit variables are **tables** must be treated as such.
+    Do not forget that triggers are executed **per statement** and not for each row; that is, your trigger will need to handle multiple changes in the implicit tables! The `inserted` and `deleted` implicit variables are **tables** must be treated as such.
 
 !!! example "SUBMISSION"
     Submit the code of the trigger in file `f3-trigger.sql`. The file shall contain a single `create trigger` statement and should not contain any `use` or `go` commands. The correct behavior earns you 4 points. Partially incorrect behavior earns you partial points.
 
-Verify the correct behavior of the trigger! The test code need not be submitted, but make sure to verify the behavior. Make sure to check the behavior when multiple records are modified with a single statement, e.g., execute an `update` without a `where` condition).
+Verify the correct behavior of the trigger! The test code need not be submitted, but make sure to verify the behavior. Make sure to check the case when multiple records are modified with a single statement, e.g., execute an `update` without a `where` condition).
 
 !!! example "SUBMISSION"
-    Create a screenshot displaying the contents of the table `Invoice` with the `ItemCount` column and its correctly filled values. Save the screenshot as `f3.png` and submit with the other files of the solution. The screenshot shall display the database name (which should be your **Neptun code**) in the _Object Explorer_ window and the **contents of the `Invoice` table**. The screenshot is required to earn the points of this part of the exercise.
+    Create a screenshot displaying the contents of the table `Invoice` with the `ItemCount` column and its correctly filled values. Save the screenshot as `f3.png` and submit it with the other files of the solution. The screenshot shall display the database name (which should be your **Neptun code**) in the _Object Explorer_ window and the **contents of the `Invoice` table**. The screenshot is required to earn the points of this part of the exercise.

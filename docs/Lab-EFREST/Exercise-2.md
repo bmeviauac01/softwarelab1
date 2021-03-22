@@ -6,7 +6,7 @@ In this exercise, we will implement the basic services for _tasks_.
 
 ## Preparation with Entity Framework
 
-The task entity is represented by class `Model.Task`. It has a unique `ID`, a text `Title`, a `Done` flag to signal completion, and a `Status` field referencing the status of this task (with 1-\* multiplicity).
+The task entity is represented by the class `Model.Task`. It has a unique `ID`, a text `Title`, a `Done` flag to signal completion, and a `Status` field referencing the status of this task (with 1-\* multiplicity).
 
 Define the Entity Framework model first:
 
@@ -20,12 +20,12 @@ Define the Entity Framework model first:
 
 ## Operations in the repository
 
-Create a new class `TasksRepository` in the `DAL` folder that implements the existing `ITasksRepository` interface. Implement the following operations:
+Create a new class, `TasksRepository`, in the `DAL` folder that implements the existing `ITasksRepository` interface. Implement the following operations:
 
 - `IReadOnlyCollection<Task> List()`: lists all available tasks
 - `Task FindById(int taskId)`: returns the single task with the specified ID if it exists; returns null otherwise
 - `Task Insert(CreateTask value)`: adds a new task to the database with the specified title and associates it with the specified status; if no status with the provided name exists, create a new status record; the return value is the new task entity as created in the database with its assigned ID
-- `Task Delete(int taskId)`: deletes the specified task; return value is the task (state before deletion), or null if the task is not found
+- `Task Delete(int taskId)`: deletes the specified task; return value is the task (state before deletion), or null if the task does not exist
 
 You don't need to implement the other operations yet; however, an implementation needs to be provided so that the code compiles. You may use `throw new NotImplementedException();` as a placeholder for now.
 
@@ -46,4 +46,4 @@ Implement the following operations using the previously implemented repository m
 - `DELETE /api/tasks/neptun/{id}`: deleted a task; response code is `204 No content` or `404 Not found`
 
 !!! example "SUBMISSION"
-    Create a **screenshot** in Postman (or an alternative tool you used) that shows an **arbitrary** request and response from the list above. Save the screenshot as `f2.png` and submit with the other files of the solution. The screenshot shall include both the **request and the response with all details** (URL, body, response code, response body). Verify that your **Neptun code** is visible in the URL! The screenshot is required to earn the points.
+    Create a **screenshot** in Postman (or an alternative tool you used) that shows an **arbitrary** request and response from the list above. Save the screenshot as `f2.png` and submit it with the other files of the solution. The screenshot shall include both the **request and the response with all details** (URL, body, response code, response body). Verify that your **Neptun code** is visible in the URL! The screenshot is required to earn the points.

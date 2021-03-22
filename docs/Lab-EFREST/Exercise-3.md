@@ -15,13 +15,13 @@ Response:
 - `404 Not found` if no such task exists.
 - `200 OK` if the operation was successful - returns the task in the body after the modification is done.
 
-### Move to new status
+### Move to a new status
 
-A task is associated with a status through `Task.StatusId` (or similar). Create a new http endpoint that uses the `ITasksRepository.MoveToStatus` method to change the status of the specified tasks to a new one. If the new status with the provided name does not exist, create one.
+A task is associated with status through `Task.StatusId` (or similar). Create a new http endpoint that uses the `ITasksRepository.MoveToStatus` method to change the status of the specified tasks to a new one. If the new status with the provided name does not exist, create one.
 
 Request: `PATCH /api/tasks/neptun/{id}/move?newStatusName=newname` with
 
-- `{id}` is the tasks ID,
+- `{id}` is the task's ID,
 - and the **name** of the new status is received in the `newStatusName` query parameter.
 
 Response:
@@ -30,4 +30,4 @@ Response:
 - `200 OK` if the operation was successful - returns the task in the body after the modification is done.
 
 !!! example "SUBMISSION"
-    Create a **screenshot** in Postman (or an alternative tool you used) that shows an **arbitrary** request and response from among the two above. Save the screenshot as `f3.png` and submit with the other files of the solution. The screenshot shall include both the **request and the response with all details** (URL, body, response code, response body). Verify that your **Neptun code** is visible in the URL! The screenshot is required to earn the points.
+    Create a **screenshot** in Postman (or an alternative tool you used) that shows an **arbitrary** request and response from the two above. Save the screenshot as `f3.png` and submit it with the other files of the solution. The screenshot shall include both the **request and the response with all details** (URL, body, response code, response body). Verify that your **Neptun code** is visible in the URL! The screenshot is required to earn the points.

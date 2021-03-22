@@ -6,7 +6,7 @@ In this exercise, we will implement the basic management of status entities.
 
 ## Open the Visual Studio solution
 
-Open the Visual Studio solution (the `.sln`) file in the checked out repository. If Visual Studio tells you that the project is not supported, you need to install a missing component (see [here](../VisualStudio.md)).
+Open the Visual Studio solution (the `.sln`) file in the checked-out repository. If Visual Studio tells you that the project is not supported, you need to install a missing component (see [here](../VisualStudio.md)).
 
 !!! warning "Do NOT upgrade any version"
     Do not upgrade the project, the .NET Core version, or any Nuget package! If you see such a question, always choose no!
@@ -82,7 +82,7 @@ Implement the first operation to list all available status entities.
     }
     ```
 
-    The `db` variable represents our database, the DbContext, injected via the framework.
+    The variable `db` represents our database, the DbContext, injected via the framework.
 
 1. We will use the helper method `ToModel` to translate the EF representation to the business layer representation. Let us implement this method (in the repository class).
 
@@ -93,7 +93,7 @@ Implement the first operation to list all available status entities.
     }
     ```
 
-1. Once the repository is ready, let us move to the controller. Open class `Controllers.StatusesController`. **Add your Neptun code into the controller's URL**: this controller shall respond to queries that arrive at URL  `/api/statuses/neptun` where the last 6 characters are your Neptun code all lowercase.
+1. Once the repository is ready, let us move to the controller. Open class `Controllers.StatusesController`. **Add your Neptun code into the controller's URL**: this controller shall respond to queries that arrive at URL  `/api/statuses/neptun` where the last 6 characters are your Neptun code, all lowercase.
 
     ```csharp hl_lines="1"
     [Route("api/statuses/neptun")]
@@ -104,7 +104,7 @@ Implement the first operation to list all available status entities.
     !!! warning "Neptun code is important"
         The Neptun code shall appear in screenshots later. You must add it as specified above!
 
-1. Let us implement an endpoint for handling the `GET /api/statuses/neptun` request: The dependency injection is configured already; thus the constructor accepts the repository interface (_not_ the implementation but its interface).
+1. Let us implement an endpoint for handling the `GET /api/statuses/neptun` request: The dependency injection is configured already; thus, the constructor accepts the repository interface (_not_ the implementation but its interface).
 
     ```csharp
     public class StatusesController : ControllerBase
@@ -150,9 +150,9 @@ Implement the first operation to list all available status entities.
 1. Compile the code again, then start the application and repeat the same GET query. The response shall include the two statuses.
 
     !!! important "If you do not see the status records"
-        If the _seed_ records do not appear in the response, it is possible that the database was not updated with the `HasData` method. Delete the `tasks.db` SQLite database file; this will re-create the database when the application starts again.
+        If the _seed_ records do not appear in the response, it is possible that the database was not updated with the `HasData` method. Delete the SQLite database file `tasks.db`; this will re-create the database when the application starts again.
 
-        Generally, schema and data modification in live environments are handled using [migrations](https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/?tabs=dotnet-core-cli). To simplify things, we will not use migrations. If the database schema is changed, just delete `tasks.db`.
+        Generally, schema and data modification in live environments are handled using [migrations](https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/?tabs=dotnet-core-cli). To simplify things, we will not use migrations. If the database schema is changed, delete `tasks.db`.
 
 ## Query and insert operations (4p)
 
@@ -164,7 +164,7 @@ There are a few other operations we need to implement:
 
 Let us implement these.
 
-1. Let us start with the implementation of the first two in the repository. When looking for an item based on a name, we will do a case-insensitive comparison.
+1. Let us start with the implementation of the first two in the repository. When looking for an item based on a name, we will perform a case-insensitive comparison.
 
     ```csharp
     public bool ExistsWithName(string statusName)
@@ -182,7 +182,7 @@ Let us implement these.
     }
     ```
 
-    `EF.Functions.Like` helps us to write a SQL "like" query in Entity Framework. This will translate into the proper `LIKE` operator when executed. This helps us to perform case insensitive comparison.
+    `EF.Functions.Like` helps us to write a SQL `like` query in Entity Framework. The command will translate into the proper `LIKE` operator when executed, allowing us to perform a case insensitive comparison.
 
 1. The controller endpoints for these operations are:
 
@@ -212,12 +212,12 @@ Let us implement these.
     }
     ```
 
-    Note the controller method attributes and return values! If the response contains data (in the http body) the return type is `ActionResult<T>`; if there is no body and only a status code is returned, the return type is `ActionResult`. Methods `Ok` and `NotFound` help us create the correct responses.
+    Note the controller method attributes and return values! If the response contains data (in the http body, the return type is `ActionResult<T>`; if there is no body and only a status code is returned, the return type is `ActionResult`. Methods `Ok` and `NotFound` help us create the correct responses.
 
     !!! note ""
         The URL is defined on two "levels." We defined `/api/statuses/neptun` on the controller; it applies to all endpoints. It is the "last part" of the URL that is defined on each endpoint separately.
 
-1. To implement the insertion, let us start with the repository again. Insert is triggered by receiving a `CreateStatus` model class with a name. We would like to ensure unique names. Thus, we need to verify it before insertion.
+1. To implement the insertion, let us start with the repository again. Insert is triggered by receiving a `CreateStatus` model class with a name. We want to ensure unique names. Thus, we need to verify it before insertion.
 
     ```csharp
     public Model.Status Insert(CreateStatus value)
@@ -266,4 +266,4 @@ Let us implement these.
 1. Compile and start the app. Test the queries! Produce both successful and erroneous responses too.
 
 !!! example "SUBMISSION"
-    Create a **screenshot** in Postman (or an alternative tool you used) that shows a **failed insert** request and response. The cause of failure should be that an item with the same name already exists. Save the screenshot as `f1.png` and submit with the other files of the solution. The screenshot shall include both the **request and the response with all details** (URL, body, response code, response body). Verify that your **Neptun code** is visible in the URL! The screenshot is required to earn the points.
+    Create a **screenshot** in Postman (or an alternative tool you used) that shows a **failed insert** request and response. The cause of failure should be that an item with the same name already exists. Save the screenshot as `f1.png` and submit it with the other files of the solution. The screenshot shall include both the **request and the response with all details** (URL, body, response code, response body). Verify that your **Neptun code** is visible in the URL! The screenshot is required to earn the points.

@@ -11,7 +11,7 @@ The method to implement is `OrderGroups GroupOrders(int groupsCount)`. This oper
 - `IList<DateTime> Thresholds`: The threshold dates of the date ranges.
     - The lower bound of the interval is inclusive, while the upper bound is exclusive.
     - When having `n` intervals, the `Thresholds` list has `n + 1` items
-    - _E.g..: Let the `Thresholds` be `a, b, c, d`; the intervals shall then be: `[a, b[`, `[b, c[` and `[c, d[`._
+    - _E.g.: Let the `Thresholds` be `a, b, c, d`; the intervals shall then be: `[a, b[`, `[b, c[` and `[c, d[`._
 - `IList<OrderGroup> Groups`: The groups that fall into each date range. The properties of `OrderGroup` are:
     - `Date`: The _start_ date of the interval. E.g., for the interval `[a, b[` the value is`a`.
     - `Pieces`: The number of orders within the interval.
@@ -20,7 +20,7 @@ The method to implement is `OrderGroups GroupOrders(int groupsCount)`. This oper
 Further requirements:
 
 1. There should be exactly `groupsCount` intervals.
-    - The number of items in `Thresholds` thus will be **exactly** `groupsCount + 1`.
+    - The number of items in `Thresholds` will be **exactly** `groupsCount + 1`.
     - The number of items in `Groups` is **at most** `groupsCount` — no need for an item for intervals with no orders
 1. The lower boundary should be the earliest date in the database
 1. The upper boundary should be the latest date in the database + 1 hour
@@ -32,7 +32,7 @@ Further requirements:
 You can assume the following:
 
 - All orders in the database have `Date` values even though the type is _nullable_ `DateTime?`.
-    - You can use `date.Value` to get the date without having to check `date.HasValue`.
+    - You can use `date.Value` to get the date without checking `date.HasValue`.
 - `groupsCount` is a positive integer **greater than or equal to 1**.
 
 ## Draft solution
@@ -52,11 +52,11 @@ You can assume the following:
     - `output` should calculate the count and total value
 
     !!! tip "Tip"
-        If you receive an error message `"Element '...' does not match any field or property of class..."` then in the `output` expression change every property to **lowercase** (e.g., `Pieces` -> `pieces`). It seems that the Mongo C# driver does not perform the required name transformations here.
+        If you receive an error message `"Element '...' does not match any field or property of class..."` then in the `output` expression, change every property to **lowercase** (e.g., `Pieces` -> `pieces`). It seems that the Mongo C# driver does not perform the required name transformations here.
 
 1. The `$bucket` aggregation will yield the intervals according to the specification. You will only need to transform the results into instances of `OrderGroup` and produce the return value.
 
 1. Use the `Group orders` link of the website to test your solution. A diagram will display the calculated information. Test your solution by changing the number of groups and adding orders in the past using the previously implemented `Add new order` functionality.
 
 !!! example "SUBMISSION"
-    Create a **screenshot** of the web page displaying the diagram. Save the screenshot as `f5.png` and submit with the other files of the solution. The screenshot shall show **both diagrams** (you may need to zoom out in the browser to fit them). Verify that your **Neptun code** is visible on the image at the bottom of the page! The screenshot is required to earn the points.
+    Create a **screenshot** of the web page displaying the diagram. Save the screenshot as `f5.png` and submit it with the other files of the solution. The screenshot shall show **both diagrams** (you may need to zoom out in the browser to fit them). Verify that your **Neptun code** is visible on the image at the bottom of the page! The screenshot is required to earn the points.

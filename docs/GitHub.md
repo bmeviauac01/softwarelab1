@@ -1,6 +1,6 @@
 ﻿# Submitting your work (GitHub)
 
-We are using GitHub to submit the solutions. Each laboratory is submitted in a GitHub repository that you will create through a provided link. The solution of the laboratory exercises are created within these repositories, then committed and pushed to GitHub. The submission is finished with a _pull request_ assigned to the laboratory instructor.
+We are using GitHub to submit the solutions. Each laboratory is submitted in a GitHub repository that you will create through a provided link. The solution of the laboratory exercises is created within these repositories, then committed and pushed to GitHub. The submission is finished with a _pull request_ assigned to the laboratory instructor.
 
 !!! important "IMPORTANT"
     The submission requirements detailed below are mandatory. Submissions not following these guidelines are not graded.
@@ -11,7 +11,7 @@ The detailed description below shows the entire procedure. This summary is an ov
 
 1. The lab exercises are solved in a dedicated GitHub repository created through a link in the exercise description.
 
-1. Your solution is submitted on a new branch, not on master. You can create any number of committed on this branch. You need to push these commits to GitHub.
+1. Your solution is submitted on a new branch, not on master. You can create any number of commits on this branch. You need to push these commits to GitHub.
 
 1. You submit your final solution through a pull request assigned to the laboratory instructor.
 
@@ -23,7 +23,7 @@ The detailed description below shows the entire procedure. This summary is an ov
 
 1. Open the link in the exercise description to create your repository.
 
-1. If needed, authorize the _GitHub Classroom_ application to use your account data. (This page will be displayed the first time you click the link in the previous step.) 
+1. If needed, authorize the _GitHub Classroom_ application to use your account data. (This page will be displayed the first time you click the link in the previous step.)
 
     ![Authorize GitHub classroom](images/github/github-authorize-classroom.png)
 
@@ -34,7 +34,7 @@ The detailed description below shows the entire procedure. This summary is an ov
 1. Wait for the repository creation to finish. You will get the repository URL here.
 
     !!! note "Note"
-        The repository will be private. No one but you and the instructor will see it.
+        The repository will be private. No one but you and the instructors will see it.
 
     ![Repository created](images/github/github-repository-create-success.png)
 
@@ -44,7 +44,7 @@ The detailed description below shows the entire procedure. This summary is an ov
 
 1. Clone your repository. You will need the repository git URL, which you can get from the repository webpage following the _Clone or download_ button.
 
-    You may use any git client. If you do not have a favorite yet, the simplest one is [GitHub Desktop](https://desktop.github.com/). You can list your repositories in this application directly from GitHub.
+    You may use any git client. The simplest one is [GitHub Desktop](https://desktop.github.com/) if you do not have a favorite yet. You can list your repositories in this application directly from GitHub.
 
     ![GitHub Desktop repository clone](images/github/github-desktop-clone.png)
 
@@ -76,13 +76,13 @@ The detailed description below shows the entire procedure. This summary is an ov
         ```
 
     !!! tip "At home"
-        When working from at home, you may want to set the name and email address globally using the `--global` switch in the commands above.
+        When working from home, you may want to set the name and email address globally using the `--global` switch in the commands above.
 
-    To commit using GitHub Desktop, first check if you are on the right branch. During the first push, the _solution_ branch needs to be published.
+    To commit using GitHub Desktop, first check if you are on the correct branch. During the first push, the _solution_ branch needs to be published.
 
     ![GitHub Desktop push branch](images/github/github-desktop-commit-to-branch.png)
 
-    When adding further commits, verify the branch. You can publish the commit using the _Push origin_ button. The little number on this button shows you how many commits need pushing.
+    When adding further commits, verify the branch. You can publish the commit using the _Push origin_ button. The tiny number on this button shows you how many commits need pushing.
 
     ![GitHub Desktop commit and push](images/github/github-desktop-push-commit.png)
 
@@ -101,7 +101,7 @@ The detailed description below shows the entire procedure. This summary is an ov
     # Push the new branch (first time)
     git push --set-upstream origin solution
 
-    # Push futher commits
+    # Push further commits
     git push
     ```
 
@@ -119,7 +119,7 @@ The detailed description below shows the entire procedure. This summary is an ov
     !!! important "Why the pull request?"
         This _pull request_ combines all changes you made and shows us the final result. This helps the laboratory instructor to evaluate your submission more easily. This _pull request_ means you submit your solution; hence this step **cannot be omitted**.
 
-    To open the _pull request_, you need to go to the repository's GitHub web frontend. If you pushed recently, GitHub will offer you to create the pull request.
+    To open the _pull request_, you need to go to the repository's GitHub web frontend. If you pushed recently, GitHub offers you to create the pull request.
 
     ![GitHub create pull request](images/github/github-create-pull-request-1.png)
 
@@ -151,7 +151,7 @@ The detailed description below shows the entire procedure. This summary is an ov
         ![GitHub create pull request](images/github/github-draft-pr-ready.png)
 
     !!! info "Maximum 5"
-        Evaluations that fail due to transient errors, such as network problems, are not counted into the 5 evaluations. But if you trigger more evaluation by mistake, or on purpose, it will be sanctioned. You are required to **test your solution locally** before submitting it.
+        Evaluations that fail due to transient errors, such as network problems, are not counted into the 5 evaluations. But if you trigger more evaluation by mistake or on purpose, it will be sanctioned. You are required to **test your solution locally** before submitting it.
 
 1. **FINALLY**, when you are ready, assign the _pull request_ to your laboratory instructor. This step is considered as the submission of your work.
 
@@ -165,7 +165,7 @@ The detailed description below shows the entire procedure. This summary is an ov
 
 ## Questions and complaints regarding the final result
 
-If you have questions on concerns regarding the automated evaluation, use the pull request for communication with the instructor by asking questions via comments. To let the instructor know you have questions, please use `@name` [mention](https://help.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax#mentioning-people-and-teams) in the PR comment. This will automatically send an email notification.
+If you have questions or concerns regarding the automated evaluation, use the pull request for communication with the instructor by asking questions via comments. To let the instructor know you have questions, please use `@name` [mention](https://help.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax#mentioning-people-and-teams) in the PR comment. This will automatically send an email notification.
 
 ![GitHub PR asking questions](images/github/github-question-in-pr.png)
 

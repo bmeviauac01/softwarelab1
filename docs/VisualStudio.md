@@ -24,7 +24,7 @@ An existing installation can be [_modified_](https://docs.microsoft.com/en-us/vi
 
 ## Check and install .NET Core SDK
 
-Visual Studio might install certain versions of the .NET Core SDK. To check if you have the right version, use the `dotnet` CLI: in a console execute the `dotnet --list-sdks` command. This works on Linux and Mac too. It will print something similar:
+Visual Studio might install certain versions of the .NET Core SDK. To check if you have the right version, use the `dotnet` CLI: in a console, execute the `dotnet --list-sdks` command. This command works on Linux and Mac too. It will print something similar:
 
 ```hl_lines="2"
 C:\>dotnet --list-sdks
@@ -32,4 +32,4 @@ C:\>dotnet --list-sdks
 5.0.101 [C:\Program Files\dotnet\sdk]
 ```
 
-If you see version **3.1** in this list, then you are good to go. Otherwise install the SDK [from here](https://dotnet.microsoft.com/download/dotnet-core/3.1).
+If you see version **3.1** in this list, then you are good to go. Otherwise, install the SDK [from here](https://dotnet.microsoft.com/download/dotnet-core/3.1).

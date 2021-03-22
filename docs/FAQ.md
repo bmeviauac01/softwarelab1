@@ -4,7 +4,7 @@ If you run into some problems, check the list below for guidance.
 
 ### Cannot find your repository
 
-Go to www.github.com, login, then you will see your repositories on the left.
+Go to www.github.com, login, and then you will see your repositories on the left.
 
 ### "Run failed" or "checks have failed"
 
@@ -12,13 +12,13 @@ After a commit, some checks are evaluated. This message notifies you that someth
 
 ### "Starting your workflow"
 
-If you see this in GitHub Actions, the evaluation has not started yet, but GitHub knows it has a job to do. Wait until the evaluation begins.
+If you see this in GitHub Actions, the evaluation has not started yet, but GitHub knows it has a job to do. Wait until the assessment begins.
 
 ### You don't know what the error is
 
 It is not the purpose of the automated evaluation to pinpoint the error precisely. It is part of the software developer's job to test your solution. The evaluation will tell you a general direction, but it will not identify the problem.
 
-The error messages may come from the actual execution of your code, so it might include the database server error or the C# compiler error. This is the same level of feedback you would get in your environment.
+The error messages may come from the actual execution of your code. It might include the database server error or the C# compiler error. This is the same level of feedback you would get in your environment.
 
 ### You don't know the GitHub name of your instructor
 

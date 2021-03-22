@@ -78,7 +78,7 @@ The requests-responses shows you the expected behavior:
 
 3. `GET /api/tasks/neptun/paged?from=999&count=999`
 
-    Returns and empty page.
+    Returns an empty page.
 
     Response:
 
@@ -92,4 +92,4 @@ The requests-responses shows you the expected behavior:
     ```
 
 !!! example "SUBMISSION"
-    Create a **screenshot** in Postman (or an alternative tool you used) that shows an **arbitrary** request and response of fetching a page. Save the screenshot as `f4.png` and submit with the other files of the solution. The screenshot shall include both the **request and the response with all details** (URL, body, response code, response body). Verify that your **Neptun code** is visible in the URL! The screenshot is required to earn the points.
+    Create a **screenshot** in Postman (or an alternative tool you used) that shows an **arbitrary** request and response of fetching a page. Save the screenshot as `f4.png` and submit it with the other files of the solution. The screenshot shall include both the **request and the response with all details** (URL, body, response code, response body). Verify that your **Neptun code** is visible in the URL! The screenshot is required to earn the points.

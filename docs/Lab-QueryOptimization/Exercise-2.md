@@ -18,7 +18,7 @@ Document the SQL commands you used and explain the actual query execution plan!
 
 ## Exercise 8 (1p)
 
-In Exercises 6 `WHERE Price=` compared an integer and a floating-point number. Let us experiment with other comparisons: query records from the `Product` table with the following filter criteria.
+In exercise 6, `WHERE Price=` compared an integer and a floating-point number. Let us experiment with other comparisons: query records from the `Product` table with the following filter criteria.
 
 - m) `where cast(Price as int) = integer number`
 - n) `where Price BETWEEN integer number-0.0001 AND integer number+0.0001`

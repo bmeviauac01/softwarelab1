@@ -6,7 +6,7 @@ This exercise will implement CRUD (create, retrieve, update, delete) operations 
 
 ## Open the Visual Studio solution
 
-Open the Visual Studio solution (the `.sln`) file in the checked out repository. If Visual Studio tells you that the project is not supported, you need to install a missing component (see [here](../VisualStudio.md)).
+Open the Visual Studio solution (the `.sln`) file in the checked-out repository. If Visual Studio tells you that the project is not supported, you need to install a missing component (see [here](../VisualStudio.md)).
 
 !!! warning "Do NOT upgrade any version"
     Do not upgrade the project, the .NET Core version, or any Nuget package! If you see such a question, always choose no!
@@ -18,7 +18,7 @@ The database access is configured in class  `mongolab.DAL.MongoConnectionConfig`
 Other parts of the application should **NOT** be modified!
 
 !!! info ""
-    The web application is a so-called [_Razor Pages_](https://docs.microsoft.com/en-us/aspnet/core/razor-pages/) ASP.NET Core project. This includes a presentation layer that is rendered on the server using C# code and the Razor engine. (You do not need to concern yourself with the UI.)
+    The web application is a so-called [_Razor Pages_](https://docs.microsoft.com/en-us/aspnet/core/razor-pages/) ASP.NET Core project. It includes a presentation layer rendered on the server using C# code and the Razor engine. (You do not need to concern yourself with the UI.)
 
 ## Start the web app
 
@@ -67,7 +67,7 @@ You will need to create screenshots that display your Neptun code.
     }
     ```
 
-1. You can use `productCollection` to access the product records of the database from now on. Let us start by implementing `ListProducts`. This will require two steps: first, to query the data from the database, then transform each record to an instance of `Models.Product`.
+1. You can use `productCollection` to access the database's product records from now on. Let us start by implementing `ListProducts`. This will require two steps: first, to query the data from the database, then transform each record to an instance of `Models.Product`.
 
     The query is as follows:
 
@@ -91,7 +91,7 @@ You will need to create screenshots that display your Neptun code.
         .ToList();
     ```
 
-1. The implementation of `FindProduct(string id)` is similar, except for querying a single record by matching the `ID`. Pay attention to that fact that the `ID` is received as string, but it needs converting to `ObjectId`.
+1. The implementation of `FindProduct(string id)` is similar, except for querying a single record by matching the `ID`. Pay attention to the fact that the `ID` is received as a string, but it needs converting to `ObjectId`.
 
     The transformation to the model remains identical. However, we should also handle when there is no matching record found and return a `null` value in this case (without converting anything to a model).
 
@@ -106,7 +106,7 @@ You will need to create screenshots that display your Neptun code.
 
     Note how the filter expression looks like! Also, note how the `ToList` is replaced with a `SingleOrDefault` call. This returns either the first (and single) element in the result set or `null` when there is none. This is a generic way of querying a single record from the database. You will need to write a similar code in further exercises.
 
-    The conversion/transformation code is already given; however, we should prepare to handle when `dbProduct` is `null`. Instead of conversion, we should just return `null` then.
+    The conversion/transformation code is already given; however, we should prepare to handle when `dbProduct` is `null`. Instead of conversion, we should return `null` then.
 
 1. Test the behavior of these queries! Start the web application and go to <http://localhost:5000> in a browser. Click `Products` to list the data from the database. If you click on `Details` it will show the details of the selected product.
 
@@ -117,7 +117,7 @@ You will need to create screenshots that display your Neptun code.
 
 1. Implement the method `InsertProduct(Product product)`. The input is an instance of `Models.Product` that collects the information specified on the UI.
 
-1. To create a new product, we will first create a new database entity (in memory first). This is an instance of class `Entities.Product`. There is no need to set the `ID` - the database will generate it. `Name`, `Price` and `Stock` are provided by the user. What is left is `VAT` and `CategoryID`. We should just hard-code values here: create a new VAT entity and find a random category using _Robo3T_ and copy the `_id` value.
+1. To create a new product, we will first create a new database entity (in memory first). This is an instance of class `Entities.Product`. There is no need to set the `ID` - the database will generate it. `Name`, `Price` and `Stock` are provided by the user. What is left is `VAT` and `CategoryID`. We should hard-code values here: create a new VAT entity and find a random category using _Robo3T_ and copy the `_id` value.
 
     ```csharp
     var dbProduct = new Entities.Product
@@ -131,9 +131,9 @@ You will need to create screenshots that display your Neptun code.
     // ... insertion
     ```
 
-    Once the database entity is ready use `InsertOne` to add it to the database.
+    Once the database entity is ready, use `InsertOne` to add it to the database.
 
-1. To test your code, start the application and click the `Add new product` link on the products page. You will need to fill the necessary data, and then the presentation layer will call your code.
+1. To test your code, start the application and click the `Add new product` link on the products page. You will need to fill in the necessary data, and then the presentation layer will call your code.
 
 ## Delete
 
@@ -156,7 +156,7 @@ You will need to create screenshots that display your Neptun code.
 
     Note that the `UpdateOptions` is used to signal that we do **NOT** want as upsert operation; instead, we want the operation to do nothing when the filter is not matched.
 
-    The modification is assembled using `Update` in `Builders`. Here we want to decrease the stock value with `amount` (which is effectively and increase with `-amount`).
+    The modification is assembled using `Update` in `Builders`. Here we want to decrease the stock value with `amount` (which is, effectively, an increase with `-amount`).
 
     We can determine what happened based on the `result` returned by the update operation. If the result indicates that the filter matched a record and the modification was performed, return `true`. Otherwise, return `false`.
 
@@ -167,4 +167,4 @@ You will need to create screenshots that display your Neptun code.
 1. Test the functionality using the web application by clicking the `Buy` link next to a product. Verify the behavior when you enter a too large amount!
 
 !!! example "SUBMISSION"
-    Create a **screenshot** of the web page listing the products **after successfully adding at least one new product**. Save the screenshot as `f1.png` and submit with the other files of the solution. The screenshot shall display the **list of products**. Verify that your **Neptun code** is visible on the image at the bottom of the page! The screenshot is required to earn the points.
+    Create a **screenshot** of the web page listing the products **after successfully adding at least one new product**. Save the screenshot as `f1.png` and submit it with the other files of the solution. The screenshot shall display the **list of products**. Verify that your **Neptun code** is visible on the image at the bottom of the page! The screenshot is required to earn the points.

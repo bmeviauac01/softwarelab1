@@ -28,16 +28,16 @@ Keep in mind that you are expected to follow the [submission process](../GitHub.
 
 ### Create and check out your Git repository
 
-1. Create your git repository at: <https://classroom.github.com/a/_MNDrIc3>
+1. Create your git repository at <https://classroom.github.com/a/_MNDrIc3>
 
 1. Wait for the repository creation to complete, then check out the repository.
 
     !!! tip ""
-        If in university computer laboratories you are not asked for credentials to log in to GitHub when checking out the repository, the operation may fail. This is likely due to the machine using someone else's GitHub credentials. Delete these credentials first (see [here](../GitHub-credentials.md)), then retry the checkout.
+        If you are not asked for credentials to log in to GitHub in university computer laboratories when checking out the repository, the operation may fail. This is likely due to the machine using someone else's GitHub credentials. Delete these credentials first (see [here](../GitHub-credentials.md)), then retry the checkout.
 
 1. Create a new branch with the name `solution` and work on this branch.
 
-1. Open the checked out folder and type your Neptun code into the `neptun.txt` file. There should be a single line with the 6 characters of your Neptun code and nothing else in this file.
+1. Open the checked-out folder and type your Neptun code into the `neptun.txt` file. There should be a single line with the 6 characters of your Neptun code and nothing else in this file.
 
 ### Create the database
 
@@ -51,7 +51,7 @@ Keep in mind that you are expected to follow the [submission process](../GitHub.
     !!! warning "IMPORTANT"
         The name of the database must be your **Neptun code**. You will need to submit screenshots that display the database name this way!
 
-1. Create the sample database by executing the [initializer script](https://raw.githubusercontent.com/bmeviauac01/adatvezerelt/master/docs/db/mssql.sql) Open a new _Query_ window, paste the script into the window, then execute it. Make sure to select the right database in the toolbar dropdown.
+1. Create the sample database by executing the [initializer script](https://raw.githubusercontent.com/bmeviauac01/adatvezerelt/master/docs/db/mssql.sql) Open a new _Query_ window, paste the script into the window, then execute it. Make sure to select the correct database in the toolbar dropdown.
 
     ![Selecting the database](../images/sql-management-database-dropdown.png)
 

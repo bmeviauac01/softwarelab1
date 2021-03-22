@@ -9,7 +9,7 @@
 
 **Even though the solutions are provided below, you are required to execute the queries, get the execution plan, think about it, and document it.**
 
-If the query plan or the explanation of subsequent exercises is the same, or at least very similar, it is enough to document everything once (one screenshot and one explanation); and list which (sub)exercises it is the solution for.
+If the query plan or the explanation of subsequent exercises is the same, or at least very similar, it is enough to document everything once (one screenshot and one reasoning); and list which (sub)exercises it is the solution for.
 
 ## Exercise 1 (2p)
 
@@ -42,7 +42,7 @@ Document the SQL commands you used and explain the actual query execution plan!
 
     ![](../images/queryopt/f1-1.png)
 
-    **Explanation**: the optimizer cannot use any index, as there is none, thus there is no other choice but to use a _table scan_.
+    **Explanation**: the optimizer cannot use any index, as there is none. Thus there is no other choice but to use a _table scan_.
 
     **e)**
 
@@ -50,7 +50,7 @@ Document the SQL commands you used and explain the actual query execution plan!
 
     ![](../images/queryopt/f1-2.png)
 
-    **Explanation**: The _table scan_ is the same, and after that, there is still a need for sorting - without any index it is a separate stage.
+    **Explanation**: The _table scan_ is the same, and after that, there is still a need for sorting - without any index, it is a separate stage.
 
 ## Exercise 2 (2p)
 
@@ -68,13 +68,13 @@ Re-run the same queries as in the previous exercise. What do you experience?
 
     ![](../images/queryopt/f2-1.png)
 
-    The Clustered Index Scan iterates the table. We have a Clustered Index automatically created for the primary key, which has the records sorted by ID. By iterating through this index, all records are visited. This is almost identical to a Table Scan though, not efficient. However, this is what we asked for here.
+    The Clustered Index Scan iterates the table. We have a Clustered Index automatically created for the primary key, which has the records sorted by ID. By iterating through this index, all records are visited. This is almost identical to a Table Scan, though, not efficient. However, this is what we asked for here.
 
     **b)**
     
     ![](../images/queryopt/f2-2.png)
 
-    A Clustered Index Seek is enough. Since the filter criteria is for the ID, for which there is an index available, the matching record can be found quickly. This is an efficient plan, the Clustered Index is used for the exact purpose we created it for.
+    A Clustered Index Seek is enough. Since the filter criteria is for the ID, for which there is an index available, the matching record can be found quickly. This is an efficient plan; the Clustered Index is used for the exact purpose we created it for.
 
     **c)**
 
@@ -88,7 +88,7 @@ Re-run the same queries as in the previous exercise. What do you experience?
     
     ![](../images/queryopt/f2-3.png)
 
-    Clustered Index Seek with a backward seek order. The _Properties_ window shows the Seek Order-t: find the last matching record, and walk the index backwards, which will yield a sorted result set.
+    Clustered Index Seek with a backward seek order. The _Properties_ window shows the Seek Order-t: find the last matching record, and walk the index backward, which will yield a sorted result set.
 
 ## Exercise 3 (2p)
 
@@ -115,19 +115,19 @@ Document the SQL commands you used and explain the actual query execution plan!
 
     ![](../images/queryopt/f3-1.png)
 
-    A Clustered Index Scan iterates through the contents of the index. This is still equal to reading the entire table, since there is no index to match the filter criteria. Although a Clusterd Index is used, it does not serve any purpose in filtering; all records are visited and the filter is evaluated for each. These are not efficient queries, as the existing index is of no use.
+    A Clustered Index Scan iterates through the contents of the index. This is still equal to reading the entire table since there is no index to match the filter criteria. Although a Clustered Index is used, it does not serve any purpose in filtering; all records are visited, and the filter is evaluated for each. These are not efficient queries, as the existing index is of no use.
 
     **j)**
     
     ![](../images/queryopt/f3-2.png)
     
-    Still a Clustered Index Scan, but what is interesting is that cost of the sorting stage is quite large. Even after executing a costly Index Scan, we still have a further sorting to do. A good index would help, but there is no index for the sorted column.
+    Still a Clustered Index Scan, but what is interesting is that cost of the sorting stage is quite large. Even after executing a costly Index Scan, we still have further sorting to do. A good index would help, but there is no index for the sorted column.
 
 ## Exercise 4 (2p)
 
 Add a new non-clustered index on column `Price`. How do the execution plans change?
 
-To add the index use _Object Explorer_, find the table, expand it and right-click _Indexes_ -> _New index_ > _Non-Clustered Index..._
+To add the index use _Object Explorer_, find the table, expand it, and right-click _Indexes_ -> _New index_ > _Non-Clustered Index..._
 
 ![Create index](../images/queryopt/queryopt-add-index.png)
 
@@ -138,17 +138,17 @@ Indices should have meaningful names, e.g., `IX_Tablename_Fieldname`. Add _Price
 Repeat the queries from the previous exercise and explain the plans!
 
 ??? success "Solution"
-    The SQL command are the same as in the previous exercise.
+    The SQL commands are the same as in the previous exercise.
 
     **f)**
 
-    Despite the new index it is still an Index Scan - since we asked for the contents of the entire table.
+    Despite the new index, it is still an Index Scan - since we asked for the contents of the entire table.
 
     **g)-i)**
     
     Clustered Index Scan iterating through the entire table, just as if there was no index available for the filtered column.
     
-    Why does it not use the new index? The reason is the projection, that is, we query the entire record. The NonClustered Index could yield a set of record identifiers, after which, the records themselves would still need to be queried. The optimizer decides that it is not worth doing so, an Index Scan is more efficient.
+    Why does it not use the new index? The reason is the projection; that is, we query the entire record. The NonClustered Index could yield a set of record identifiers, after which the records themselves would still need to be queried. The optimizer decides that it is not worth doing so; an Index Scan is more efficient.
 
     **j)**
     
@@ -156,7 +156,7 @@ Repeat the queries from the previous exercise and explain the plans!
     
     The NonClustered Index Seek yields keys, which are looked up in the Clustered Index, just like joining the two indices.
 
-    We would have expected something similar is the previous queries too. The Clustered Index is needed as entire records are fetched, the NonClustered Index only provides references. However, these references are in the right order, the NonClustered Index provides this; so after the lookup in the Clustered Index there is no further need to do the sorting. If only the Clustered Index was used (Clustered Index Scan), the sorting would have to be performed in a separate stage. This is an acceptable query, as the NonClustered Index helps in avoiding a costly sorting step.
+    We would have expected something similar in the previous queries too. The Clustered Index is needed as entire records are fetched as the NonClustered Index only provides references. However, these references are in the correct order (the NonClustered Index ensures it); so after the lookup in the Clustered Index, there is no further need to do the sorting. If only the Clustered Index were used (Clustered Index Scan), the sorting would have to be performed in a separate stage. This is an acceptable query, as the NonClustered Index helps in avoiding a costly sorting step.
 
 ## Exercise 5 (2p)
 
@@ -192,9 +192,9 @@ FROM Numbers
 
     References from the NonClustered Index Seek are looked up in the Clustered Index, just like joining the two indices.
 
-    Let us compare this plan to the one from before having a smaller table. Why is the Clustered Index Scan not used now? In case of larger tables the _selectivity_ (i.e., how many records match the filtering) is more important, hence the use of the NonClustered Index. The Clustered Index Scan would be too costly in a large table. The NonClustered Index can reduce the amount of records, hence its role here. Based on the statistics of the `Price` column, it can be derived that the `=` operator will match few records. Important! Just because it is an `=` comparison, it does not directly follow, that there are few matches; just imagine the column having the same value is all records. Hence the need for the statistics!
+    Let us compare this plan to the one from before having a smaller table. Why is the Clustered Index Scan not used now? In the case of larger tables, the _selectivity_ (i.e., how many records match the filtering) is more important, hence the use of the NonClustered Index. The Clustered Index Scan would be too costly in a large table. The NonClustered Index can reduce the number of records, hence its role here. Based on the statistics of the `Price` column, it can be derived that the `=` operator will match few records. Important! Just because it is an `=` comparison, it does not directly follow that there are few matches; imagine the column having the same value in all records. Hence the need for the statistics!
     
-    This is an acceptable query. Since the filtering reduces the amount of records, it is worth using the index.
+    This is an acceptable query. Since the filtering reduces the number of records, it is worth using the index.
 
     **h)**
     
@@ -202,7 +202,7 @@ FROM Numbers
 
     Clustered Index Scan as before.
     
-    Why the difference compared to the previous case? If the `=` operator yields few matches, then `<>` will yield many. This is derived from the statistics too. So no use in doing the same as in the previous case,; a Clustered Index Scan is probably more efficient.
+    Why the difference compared to the previous case? If the `=` operator yields few matches, then `<>` will yield many. This is derived from the statistics too. So no use in doing the same as in the previous case; a Clustered Index Scan is probably more efficient.
 
     **i)**
 

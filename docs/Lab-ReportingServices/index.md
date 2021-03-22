@@ -11,7 +11,7 @@ Required tools to complete the tasks:
 - [SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms)
 - Database initialization script: [adventure-works-2014-oltp-script.zip](adventure-works-2014-oltp-script.zip)
 - Microsoft Visual Studio 2019: The free Community edition is sufficient
-- Report Server Project support for Visual Studio: [Microsoft Reporting Services Projects extension](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftReportProjectsforVisualStudio) (It is recommended to [keep the extension up to date](https://docs.microsoft.com/en-us/visualstudio/extensibility/how-to-update-a-visual-studio-extension?view=vs-2019).)
+- Report Server Project support for Visual Studio: [Microsoft Reporting Services Projects extension](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftReportProjectsforVisualStudio) (Keep the extension [up to date](https://docs.microsoft.com/en-us/visualstudio/extensibility/how-to-update-a-visual-studio-extension?view=vs-2019).)
 - GitHub account and a git client
 
 Materials for preparing for this laboratory:
@@ -25,16 +25,16 @@ Keep in mind that you are expected to follow the [submission process](../GitHub.
 
 ### Create and check out your Git repository
 
-1. Create your git repository at: <https://classroom.github.com/a/gTzzXDJN>
+1. Create your git repository at <https://classroom.github.com/a/gTzzXDJN>
 
 1. Wait for the repository creation to complete, then check out the repository.
 
     !!! tip ""
-        If in university computer laboratories you are not asked for credentials to log in to GitHub when checking out the repository, the operation may fail. This is likely due to the machine using someone else's GitHub credentials. Delete these credentials first (see [here](../GitHub-credentials.md)), then retry the checkout.
+        If you are not asked for credentials to log in to GitHub in university computer laboratories when checking out the repository, the operation may fail. This is likely due to the machine using someone else's GitHub credentials. Delete these credentials first (see [here](../GitHub-credentials.md)), then retry the checkout.
 
 1. Create a new branch with the name `solution` and work on this branch.
 
-1. Open the checked out folder and type your Neptun code into the `neptun.txt` file. There should be a single line with the 6 characters of your Neptun code and nothing else in this file.
+1. Open the checked-out folder and type your Neptun code into the `neptun.txt` file. There should be a single line with the 6 characters of your Neptun code and nothing else in this file.
 
 ### Create the Adventure Works 2014 database
 

@@ -2,9 +2,9 @@
 
 This exercise is **solved together** with the lab instructor.
 
-In the checked-out repository locate file `reportserver.sln` and open it with Visual Studio. This is an empty _Report Server_ project.
+In the checked-out repository, locate file `reportserver.sln` and open it with Visual Studio. This is an empty _Report Server_ project.
 
-The Report Server project consists mainly of _Report Definition_ (.rdl) files, that define the data sources (queries) and a template, which, when rendered, produces the final result: a report.  These reports can be installed to a _Report Server_ and executed there, providing the users with up-to-date data.
+The Report Server project consists mainly of _Report Definition_ (.rdl) files, that define the data sources (queries) and a template, which, when rendered, produces the final result: a report. These reports can be installed to a _Report Server_ and executed there, providing the users with up-to-date data.
 
 !!! note ""
     In this lab, we will not use the Report Server. This is mainly because the configuration would require administrative privileges that we do not have in the labs. Therefore, we will preview the reports in Visual Studio.
@@ -21,8 +21,8 @@ The Report Server project consists mainly of _Report Definition_ (.rdl) files, t
         In certain Visual Studio and Report Server project versions adding this new report file might fail. If this happens, follow these steps instead.
 
         1. Download [this empty rdl file](empty.rdl).
-        1.Save the ile with the right name to the `reportserver` folder of your repository (this folder already exist).
-        1. In Visual Studio right click _Reports_ then choose _Add_ > _Existing Item_, and browse for this file.
+        1. Save the file with the correct name to the `reportserver` folder of your repository (this folder already exist).
+        1. In Visual Studio right-click _Reports_ then choose _Add_ > _Existing Item_, and browse for this file.
 
 1. Open the report file to get the Report Designer view. Here, the new .rdl file is displayed in the Design view.
 
@@ -103,7 +103,7 @@ Now that we have our connection to the database and the query that will supply t
     ![Dataset fields](../images/reportingservices/rs-dataset-fields.png)
 
     !!! info ""
-        If the node is empty or cannot be opened, you need to re-open the data set properties using right click, then clicking the _Refresh Fields_ button.
+        If the node is empty or cannot be opened, you need to re-open the data set properties using right-click, then clicking the _Refresh Fields_ button.
 
 1. Drag the _Date_ field to the first column of the table. It should look like this:
 
@@ -112,7 +112,7 @@ Now that we have our connection to the database and the query that will supply t
     !!! note ""
         The `[Date]` in the second row shows the expression to evaluate, while "Date" in the first row is the literal header label - we can change it too.
 
-1. Similarly, add _Order_ and _Product_ to the second and third columns. Add _Qty_ as well: drag it to the right side of the last column; the cursor icon will change to + sign, and a blue line at the end of the table will appear. This will add a new, fourth column. Add _LineTotal_ similarly into the fifth column.
+1. Similarly, add _Order_ and _Product_ to the second and third columns. Add _Qty_ as well: drag it to the right side of the last column; the cursor icon will change to + sign, and a blue line at the end of the table will appear. This will add a new fourth column. Add _LineTotal_ similarly into the fifth column.
 
     ![Additional columns](../images/reportingservices/rs-table-add-order-product-qty-col.png)
 
@@ -122,7 +122,7 @@ Now that we have our connection to the database and the query that will supply t
 
     We can print or export the report into various formats (e.g., Word, Excel, PDF). However, this report is not very pretty, e.g., the currency is not displayed, and the Qty and date columns are not formatted, etc. 
 
-1. Go back to _Design_ tab, right-click the `[Date]` expression and select Text Box Properties. Navigate to the _Number_ page, select the _Date category_, and choose a date format you like.
+1. Go back to _Design_ tab, right-click the `[Date]` expression, and select Text Box Properties. Navigate to the _Number_ page, select the _Date category_, and choose a date format you like.
 
     ![Date formatting](../images/reportingservices/rs-table-date-col-properties.png)
 
@@ -136,14 +136,14 @@ Now that we have our connection to the database and the query that will supply t
 
     ![Format the header row](../images/reportingservices/rs-table-bolt-header-row.png)
 
-    If you check preview, it should look like this:
+    If you check the preview, it should look like this:
 
     ![Riport preview](../images/reportingservices/rs-table-preview-2.png)
 
 !!! example "SUBMISSION"
     _If you are continuing with the next exercise, you may omit to create the screenshot here._
 
-    Create a screenshot of the **report preview** page. Save the screenshot as `f1.png` and submit with the other files of the solution. The screenshot shall include Visual Studio and the report preview. Verify that your **Neptun code** is visible!
+    Create a screenshot of the **report preview** page. Save the screenshot as `f1.png` and submit it with the other files of the solution. The screenshot shall include Visual Studio and the report preview. Verify that your **Neptun code** is visible!
 
 ## Grouping and total value (5p)
 
@@ -189,7 +189,7 @@ The report we created is very long, and it contains everything without structure
 
     - Go back to the _Design_ view.
     - Right-click on the `[Order]` cell and click _Add Total_ > _After_.
-    - A new cell (Total) appears below `[Order]`. Click in it and change the label to "Daily Total”.
+    - A new cell (Total) appears below `[Order]`. Click in it and change the label to "Daily Total".
     - Select the cell and the three right next to it (e.g., by using CTRL and clicking them) and change their background color (_Format_ > _Background color_).
 
 1. Since there are quite a few orders per day, you may need to scroll down 4-5 pages to check the result in the preview:
@@ -197,4 +197,4 @@ The report we created is very long, and it contains everything without structure
    ![Daily total](../images/reportingservices/rs-table-preview-5.png)
 
 !!! example "SUBMISSION"
-    Create a screenshot of the **report preview** page. Save the screenshot as `f1.png` and submit with the other files of the solution. The screenshot shall include Visual Studio and the report preview, including the **lines showing the totals** (a turn a few pages if needed to see one). Verify that your **Neptun code** is visible!
+    Create a screenshot of the **report preview** page. Save the screenshot as `f1.png` and submit it with the other files of the solution. The screenshot shall include Visual Studio and the report preview, including the **lines showing the totals** (a turn a few pages if needed to see one). Verify that your **Neptun code** is visible!

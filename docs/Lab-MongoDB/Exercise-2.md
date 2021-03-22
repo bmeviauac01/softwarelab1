@@ -43,12 +43,12 @@ The outline of the solution is as follows.
     .ToList();
     ```
 
-    As seen above, this is performed using LINQ. 
+    As seen above, this is performed using LINQ.
 
     !!! note ""
-        This is not the only solution to "join" collections in MongoDB. Although there is no `join` operation, there are ways to query data across collections. Instead of doing this in MongoDB, we do the merging in C# as above. This would not be good if the data set was large. Also, if there was filtering involved, the code above would be much more complicated.
+        This is not the only solution to "join" collections in MongoDB. Although there is no `join` operation, there are ways to query data across collections. Instead of doing this in MongoDB, we do the merging in C# as above. This would not be good if the data set were large. Also, if there were filtering involved, the code above would be much more complicated.
 
 1. Use the `Categories` link of the website to test your solution. This will list the data provided by your code in a tabular format. You can use the `Add new product` functionality from before to create new products. This must result in an increase in the number of products in one of the categories. (Remember that inserting the product hard-coded a category ID.)
 
 !!! example "SUBMISSION"
-    Create a **screenshot** of the web page listing the categories. Save the screenshot as `f2.png` and submit with the other files of the solution. The screenshot shall display the **list of categories**. Verify that your **Neptun code** is visible on the image at the bottom of the page! The screenshot is required to earn the points.
+    Create a **screenshot** of the web page listing the categories. Save the screenshot as `f2.png` and submit it with the other files of the solution. The screenshot shall display the **list of categories**. Verify that your **Neptun code** is visible on the image at the bottom of the page! The screenshot is required to earn the points.
