@@ -167,7 +167,7 @@ A riport jelenleg ömlesztve tartalmazza az adatokat. Ezek eladási adatok, adot
 
     ![Duplikált oszlopok](../images/reportingservices/rs-group-by-duplicated-columns.png)
 
-    Az új _Date_ oszlop formátuma ezzel visszaállt az eredeti formátumra, de a _Text Style Properties_ segítségével újra be tudjuk állítani.
+    Az új _Date_ oszlop formátuma ezzel visszaállt az eredeti formátumra, de a _Text Box Properties_ segítségével újra be tudjuk állítani.
 
     Ha most megnézzük a _Preview_ fület, láthatjuk, hogy az általunk megadott szempontok szerint (és az általunk megadott sorrendben) csoportosításra kerülnek a riport sorai.
 
