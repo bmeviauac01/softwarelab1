@@ -40,9 +40,9 @@ Document the SQL commands you used and explain the actual query execution plan!
 
 Create a new index for the `Name` column and analyze the following queries executed on the `Product` table:
 
-- s) query names and IDs where the name begins with Z - use function [`SUBSTRING`](https://docs.microsoft.com/en-us/sql/t-sql/functions/substring-transact-sql)
+- s) query names and IDs where the name begins with B - use function [`SUBSTRING`](https://docs.microsoft.com/en-us/sql/t-sql/functions/substring-transact-sql)
 - t) the same, but now using [`LIKE`](https://docs.microsoft.com/en-us/sql/t-sql/language-elements/like-transact-sql)
-- u) query names and IDs where the name contains a Z (LIKE)
+- u) query names and IDs where the name contains a B (LIKE)
 - v) query the ID of a product where the name equals (=) a string
 - w) the same, but now compare case-insensitively using [`UPPER`](https://docs.microsoft.com/en-us/sql/t-sql/functions/upper-transact-sql?view=sql-server-ver15)
 
