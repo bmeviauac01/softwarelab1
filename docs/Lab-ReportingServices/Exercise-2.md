@@ -60,3 +60,5 @@ There are a few changes to make.
 
 !!! example "SUBMISSION"
     Create a screenshot of the **report preview** page. Save the screenshot as `f2.png` and submit it with the other files of the solution. The screenshot shall include Visual Studio and the report preview. Verify that your **Neptun code** is visible in the diagram title!
+
+    Upload the changed Visual Studio project and its corresponding files too.

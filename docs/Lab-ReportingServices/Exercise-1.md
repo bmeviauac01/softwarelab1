@@ -145,6 +145,8 @@ Now that we have our connection to the database and the query that will supply t
 
     Create a screenshot of the **report preview** page. Save the screenshot as `f1.png` and submit it with the other files of the solution. The screenshot shall include Visual Studio and the report preview. Verify that your **Neptun code** is visible!
 
+    Upload the changed Visual Studio project and its corresponding files too.
+
 ## Grouping and total value (5p)
 
 The report we created is very long, and it contains everything without structure. These are retail sales information: the amount of products sold each day. Let us group the data.
@@ -198,3 +200,5 @@ The report we created is very long, and it contains everything without structure
 
 !!! example "SUBMISSION"
     Create a screenshot of the **report preview** page. Save the screenshot as `f1.png` and submit it with the other files of the solution. The screenshot shall include Visual Studio and the report preview, including the **lines showing the totals** (a turn a few pages if needed to see one). Verify that your **Neptun code** is visible!
+
+    Upload the changed Visual Studio project and its corresponding files too.

@@ -74,3 +74,5 @@ The final report should look like this:
 
 !!! example "SUBMISSION"
     Create a screenshot of the **report preview** page. Save the screenshot as `f3.png` and submit it with the other files of the solution. The screenshot shall include Visual Studio and the report preview. Verify that your **Neptun code** is visible in the table!
+
+    Upload the changed Visual Studio project and its corresponding files too.
