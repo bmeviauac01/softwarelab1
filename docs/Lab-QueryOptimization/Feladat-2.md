@@ -40,9 +40,9 @@ Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terve
 
 Rakj indexet a `Name` oszlopra, majd elemezd a következő, `Product` táblából történő lekérdezések végrehajtási tervét:
 
-- s) olyan név-azonosító párok lekérdezése, ahol a termék neve Z-vel kezdődik, [`SUBSTRING`](https://docs.microsoft.com/en-us/sql/t-sql/functions/substring-transact-sql)-et használva
+- s) olyan név-azonosító párok lekérdezése, ahol a termék neve B-vel kezdődik, [`SUBSTRING`](https://docs.microsoft.com/en-us/sql/t-sql/functions/substring-transact-sql)-et használva
 - t) mint az előző, de [`LIKE`](https://docs.microsoft.com/en-us/sql/t-sql/language-elements/like-transact-sql)-ot használva
-- u) olyan név-azonosító párok lekérdezése, ahol a termék neve Z-t tartalmaz (LIKE)
+- u) olyan név-azonosító párok lekérdezése, ahol a termék neve B-t tartalmaz (LIKE)
 - v) egy konkrét termék azonosítójának kikeresése pontos név egyezés (=) alapján
 - w) mint az előző, de kisbetű-nagybetű-érzéketlenül ([`UPPER`](https://docs.microsoft.com/en-us/sql/t-sql/functions/upper-transact-sql?view=sql-server-ver15) használatával)
 
