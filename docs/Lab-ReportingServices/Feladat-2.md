@@ -60,3 +60,5 @@ A megjelenés még nem az igazi, de ezen könnyen segíthetünk.
 
 !!! example "BEADANDÓ"
     Készíts egy képernyőképet a **report előnézetéről** a preview fülön. A képet a megoldásban `f2.png` néven add be. A képernyőképen a Visual Studio ablaka, és azon belül a riport előnézete látszódjon. Ellenőrizd, hogy a **Neptun kódod** látható-e a diagram címében!
+
+    A megváltozottott Visual Studio projektet (és annak fájljait) is töltsd fel.

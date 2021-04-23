@@ -145,6 +145,8 @@ Most, hogy megvan a kapcsolatunk az adatbázis felé, és a lekérdezést is meg
 
     Készíts egy képernyőképet a **report előnézetéről** a preview fülön. A képet a megoldásban `f1.png` néven add be. A képernyőképen a Visual Studio ablaka, és azon belül a riport előnézete látszódjon. Ismét ellenőrizd, hogy a **Neptun kódod** látható-e!
 
+    A megváltozottott Visual Studio projektet (és annak fájljait) is töltsd fel.
+
 ## Csoportosítás és összegzés (5p)
 
 A riport jelenleg ömlesztve tartalmazza az adatokat. Ezek eladási adatok, adott termékekből adott napon eladott mennyiség. Rendezzük csoportokba az adatokat.
@@ -198,3 +200,5 @@ A riport jelenleg ömlesztve tartalmazza az adatokat. Ezek eladási adatok, adot
 
 !!! example "BEADANDÓ"
     Készíts egy képernyőképet a **report előnézetéről** a preview fülön. A képet a megoldásban `f1.png` néven add be. A képernyőképen a Visual Studio ablaka, és azon belül a riport előnézete látszódjon **az összegző sorokkal együtt** (lapozz, ha szükséges!). Ismét ellenőrizd, hogy a **Neptun kódod** látható-e!
+
+    A megváltozottott Visual Studio projektet (és annak fájljait) is töltsd fel.
