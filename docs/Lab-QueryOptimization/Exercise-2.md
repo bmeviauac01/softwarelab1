@@ -3,6 +3,8 @@
 !!! example "SUBMISSION"
     Continue documenting the results the same way.
 
+    Keep in mind that the documentation should correctly display with the images in the web interface of GitHub! You need to verify this during the submission: open the repository in the browser and switch to your branch; GitHub will automatically render the `README.md` file with the images.
+
 ## Exercise 6 (1p)
 
 Repeat the queries on the `Product` table, but instead of fetching the entire record, only get the `ID` and the `Price` columns. How do the execution plans change? Explain the differences!

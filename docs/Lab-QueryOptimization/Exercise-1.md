@@ -7,7 +7,10 @@
     - a screenshot of the query plan (just the plan and _not_ the entire desktop!),
     - and an explanation: _what_ do you see on the query plan and _why_ the system chose this option.
 
-**Even though the solutions are provided below, you are required to execute the queries, get the execution plan, think about it, and document it.**
+    The documentation should correctly display with the images in the web interface of GitHub! You need to verify this during the submission: open the repository in the browser and switch to your branch; GitHub will automatically render the `README.md` file with the images.
+
+!!! warning "Submit your own work"
+    Even though the solutions are provided below, you are required to execute the queries, get the execution plan, think about it, and document it with your own words. Copying the explanations from below is not acceptable!
 
 If the query plan or the explanation of subsequent exercises is the same, or at least very similar, it is enough to document everything once (one screenshot and one reasoning); and list which (sub)exercises it is the solution for.
 

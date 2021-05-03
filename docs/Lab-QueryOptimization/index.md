@@ -54,8 +54,8 @@ Create the documentation in a markdown file. Open the checked-out git repository
    - Edit this file.
    - When you create a screenshot, put the file in this directory next to the other files. This will enable you to use the file name to include the image.
 
-    !!! warning "Use simple file names"
-        You should avoid using special characters in the file names. Best if you use the English alphabet and no spaces either.
+    !!! warning "File name: lowercase English alphabet only"
+        You should avoid using special characters in the file names. Best if you use the English alphabet and no spaces either. The various platforms and git handle filenames differently. GitHub's web interface will only render the documentation with the images correctly if you only use all lowercase filenames with the English alphabet and no spaces.
 
 1. For convenient editing open the [preview](https://code.visualstudio.com/docs/languages/markdown#_markdown-preview) (_Ctrl-K + V_).
 
