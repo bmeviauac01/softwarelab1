@@ -52,10 +52,10 @@ A feladatok megoldása során a dokumentációt markdown formátumban készítsd
 1. A bal oldali fában keresd meg a `README.md` fájlt és dupla kattintással nyisd meg.
 
    - Ezt a fájlt szerkeszd.
-   - Ha képet készítesz, azt is tedd a repository alá a többi fájl mellé. Így relatív elérési úvonallal (fájlnév) fogod tudni hivatkozni.
+   - Ha képet készítesz, azt is tedd a repository alá a többi fájl mellé. Így relatív elérési útvonallal (fájlnév) fogod tudni hivatkozni.
 
-    !!! warning "Ékezetes fájlnév kerülendő"
-        Legjobb, ha nem használsz ékezetes karaktereket és szóközöket a fájlnévben.
+    !!! warning "Fájlnév: csupa kisbetű ékezet nélkül"
+        A képek fájlnevében ne használj ékezetes karaktereket, szóközöket, se kis- és nagybetűket keverve. A különböző platformok és a git eltérően kezelik a fájlneveket. A GitHub webes felületén akkor fog minden rendben megjelenni, ha csak az angol ábécé kisbetűit használod a fájlnevekben.
 
 1. A kényelmes szerkesztéshez nyisd meg az [előnézet funkciót](https://code.visualstudio.com/docs/languages/markdown#_markdown-preview) (_Ctrl-K + V_).
 

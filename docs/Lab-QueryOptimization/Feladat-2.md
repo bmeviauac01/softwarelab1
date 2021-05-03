@@ -3,6 +3,8 @@
 !!! example "BEADANDÓ"
     A feladatok megoldása során a közös feladatoknak megfelelő dokumentálást kérjük.
 
+    Ne felejtsd, hogy a dokumentációnak a képekkel együtt helyesen kell megjelenniük a GitHub webes felületén is! Ezt ellenőrizd a beadás során: nyisd meg a repository-d webes felületét, váltsd át a megfelelő ágra, és a GitHub automatikusan renderelni fogja a `README.md` fájlt a képekkel együtt.
+
 ## Feladat 6 (1p)
 
 Ismételd meg a `Product` kereséseket, de ezúttal ne a teljes sort, csak a `Price` és az elsődleges kulcs értékét kérd vissza a lekérdezésben. Hogyan változnak a végrehajtási tervek? Adj magyarázatot is a változásokra.
