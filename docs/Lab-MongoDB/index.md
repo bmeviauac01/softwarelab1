@@ -33,7 +33,7 @@ A feladatok megoldása során ne felejtsd el követni a [feladat beadás folyama
 
 ### Git repository létrehozása és letöltése
 
-1. Az alábbi URL-en keresztül hozd létre a saját repository-dat: <https://classroom.github.com/a/LQu7BuEO>
+1. Moodle-ben keresd meg a laborhoz tartozó meghívó URL-jét és annak segítségével hozd létre a saját repository-dat.
 
 1. Várd meg, míg elkészül a repository, majd checkout-old ki.
 
