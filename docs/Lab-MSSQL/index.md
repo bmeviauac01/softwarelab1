@@ -28,7 +28,7 @@ Keep in mind that you are expected to follow the [submission process](../GitHub.
 
 ### Create and check out your Git repository
 
-1. Create your git repository at <https://classroom.github.com/a/_MNDrIc3>
+1. Create your git repository using the invitation link in Moodle. Each lab has a different URL; make sure to use the right one!
 
 1. Wait for the repository creation to complete, then check out the repository.
 

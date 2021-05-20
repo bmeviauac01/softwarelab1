@@ -9,7 +9,7 @@ We are using GitHub to submit the solutions. Each laboratory is submitted in a G
 
 The detailed description below shows the entire procedure. This summary is an overview of the whole process.
 
-1. The lab exercises are solved in a dedicated GitHub repository created through a link in the exercise description.
+1. The lab exercises are solved in a dedicated GitHub repository created using a GitHub Classroom invitation link published in Moodle.
 
 1. Your solution is submitted on a new branch, not on master. You can create any number of commits on this branch. You need to push these commits to GitHub.
 
@@ -21,7 +21,7 @@ The detailed description below shows the entire procedure. This summary is an ov
 
 1. [Register](https://github.com/join) a GitHub account if you don't have one yet.
 
-1. Open the link in the exercise description to create your repository.
+1. Open the course page in Moodle and find the invitation URL. This link is different for each lab; make sure to use the right one.
 
 1. If needed, authorize the _GitHub Classroom_ application to use your account data. (This page will be displayed the first time you click the link in the previous step.)
 
