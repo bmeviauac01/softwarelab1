@@ -22,9 +22,7 @@ Some of the exercises require you to create a screenshot. This screenshot is pro
 
 ## Grading
 
-You can earn 20+3 points for each lab. The +3 is an extra, optional task. You must submit each lab by the deadline. For successful completion, you must get at least 8 points.
-
-Grading, based on the points, is as follows:
+Each laboratory is graded on a 1-5 scale. You must submit each lab by the deadline. The laboratory grade is calculated based on the 20+3 points you can earn in each lab as follows:
 
 - 0-7.5 point: failed
 - 8-10.5 point: pass
@@ -34,7 +32,7 @@ Grading, based on the points, is as follows:
 
 The extra +3 points are optional; if you do them, it is added to the points. In the automated evaluation, these extra 3 points will appear as "imsc"; please ignore this (that is for the Hungarian students).
 
-The final grade will be the mathematically correct average of the individual grades. If you do not attend a lab or do not submit it until the deadline, it will be counted as grade 1 in the average.
+The final grade will be the mathematically correct average of the individual (1-5 scale) grades. If you do not attend a lab or do not submit it until the deadline, it will be counted as grade 1 in the average.
 
 Some of the exercises are evaluated **automatically**. Your code will be executed; therefore, you must follow the exercise descriptions precisely (e.g., use the provided code skeleton, change only the allowed parts of the code, etc.).
 
