@@ -22,9 +22,7 @@ A laborok kérik, hogy készíts képernyőképet a megoldás egy-egy részérő
 
 ## Értékelés
 
-Minden laboron 20 pont szerezhető. A teljesítés feltétele a határidőig történő beadás. A labor sikeres teljesítéséhez minimum 8 pont szükséges.
-
-A labor eredményének osztályzása:
+Minden labort külön jeggyel értékelünk. A teljesítés feltétele a határidőig történő beadás. A jegy (1-5 skálán) a labor feladatokon megszerezhető 20 pont alapján az alábbiak szerint alakul:
 
 - 0-7.5 pont: elégtelen
 - 8-10.5 pont: elégséges
@@ -34,7 +32,7 @@ A labor eredményének osztályzása:
 
 Az iMsc feladat megoldása opcionális, a többi feladat értékelésébe nem számít bele. Egy iMsc feladat sikeres megoldásával 3 iMsc pont szerezhető. A pont csak jeles eredmény esetén kapható meg.
 
-A félév végi jegy a laborokra kapott osztályzatok matematikailag kerekített számtani átlaga. Hiányzás, nem pótolt labor, határidőig nem leadott megoldás elégtelennel számítódik az átlagba.
+A félév végi jegy a laborokra kapott (1-5 skálájú) osztályzatok matematikailag kerekített számtani átlaga. Hiányzás, nem pótolt labor, határidőig nem leadott megoldás elégtelennel számítódik az átlagba.
 
 A feladatok kiértékelése egyes laborok esetén részben **automatikusan** történik. A futtatható kódokat valóban le fogjuk futtatni, ezért minden esetben fontos a feladatleírások pontos követése (kiinduló kód váz használata, csak a megengedett fájlok változtatása, stb.)!
 
