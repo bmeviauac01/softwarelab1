@@ -6,11 +6,20 @@ repo_url: https://github.com/bmeviauac01/laborok
 
 theme:
   name: material
-  custom_dir: theme-overrides
   language: hu
   palette:
-    primary: red
-    accent: red
+    - media: "(prefers-color-scheme: light)"
+      primary: red
+      accent: red
+      toggle:
+        icon: material/lightbulb-outline
+        name: Váltás sötét témára
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: red
+      toggle:
+        icon: material/lightbulb
+        name: Váltás világos témára
   font:
     text: Roboto
     code: Roboto Mono
@@ -18,11 +27,15 @@ theme:
     - navigation.tabs
     - navigation.instant
     - navigation.top
+    - search.suggest
   logo: images/logo-bme-aut.png
   favicon: images/favicon.ico
 
 extra_css:
   - extra-material-theme.css
+
+extra:
+  generator: false
 
 markdown_extensions:
   - admonition
