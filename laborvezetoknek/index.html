@@ -12,7 +12,7 @@
       
       
       <link rel="icon" href="../images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.5">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
     
     
       
@@ -20,14 +20,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.bde7dde4.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.a57b2b03.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ef6f36e2.min.css">
-        
-          
-          
-          <meta name="theme-color" content="#ef5552">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
         
       
     
@@ -46,12 +42,16 @@
     
     
       
+
+
     
     
   </head>
   
   
     
+    
+      
     
     
     
@@ -60,6 +60,8 @@
   
     
     <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -76,7 +78,9 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
+      
+
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Élőfej">
     <a href=".." title="BMEVIAUAC09 Szoftverfejlesztés laboratórium 1" class="md-header__button md-logo" aria-label="BMEVIAUAC09 Szoftverfejlesztés laboratórium 1" data-md-component="logo">
       
@@ -103,6 +107,28 @@
       </div>
     </div>
     
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="red"  aria-label="Váltás sötét témára"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Váltás sötét témára" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent=""  aria-label="Váltás világos témára"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Váltás világos témára" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1z"/></svg>
+            </label>
+          
+        
+      </form>
+    
     
     
       <label class="md-header__button md-icon" for="__search">
@@ -113,14 +139,20 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Keresés" placeholder="Keresés" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Keresés" placeholder="Keresés" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
       </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="Törlés" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-      </button>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Törlés" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
@@ -150,6 +182,7 @@
       </div>
     
   </nav>
+  
 </header>
     
     <div class="md-container" data-md-component="container">
@@ -157,6 +190,7 @@
       
         
           
+            
 <nav class="md-tabs" aria-label="Lapok" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
@@ -260,6 +294,7 @@
     </ul>
   </div>
 </nav>
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -313,10 +348,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
       
-      <label class="md-nav__link" for="__nav_1">
-        Szoftverfejlesztés laboratórium 1
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          Szoftverfejlesztés laboratórium 1
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Szoftverfejlesztés laboratórium 1" data-md-level="1">
         <label class="md-nav__title" for="__nav_1">
           <span class="md-nav__icon md-icon"></span>
@@ -325,6 +364,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -335,8 +375,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -347,8 +389,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -359,8 +403,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -371,8 +417,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -383,8 +431,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -395,8 +445,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -407,6 +459,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -427,10 +480,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
       
-      <label class="md-nav__link" for="__nav_2">
-        Reporting Services
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Reporting Services
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Reporting Services" data-md-level="1">
         <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
@@ -439,6 +496,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -449,8 +507,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -461,8 +521,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -473,8 +535,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -485,8 +549,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -497,6 +563,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -517,10 +584,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
-      <label class="md-nav__link" for="__nav_3">
-        Lekérdezés optimalizálás
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Lekérdezés optimalizálás
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Lekérdezés optimalizálás" data-md-level="1">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
@@ -529,6 +600,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -539,8 +611,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -551,8 +625,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -563,8 +639,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -575,6 +653,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -595,10 +674,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
       
-      <label class="md-nav__link" for="__nav_4">
-        MSSQL
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          MSSQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="MSSQL" data-md-level="1">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
@@ -607,6 +690,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -617,8 +701,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -629,8 +715,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -641,8 +729,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -653,8 +743,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -665,6 +757,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -685,10 +778,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
       
-      <label class="md-nav__link" for="__nav_5">
-        MongoDB
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          MongoDB
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="MongoDB" data-md-level="1">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
@@ -697,6 +794,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -707,8 +805,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -719,8 +819,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -731,8 +833,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -743,8 +847,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -755,8 +861,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -767,6 +875,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -787,10 +896,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
       
-      <label class="md-nav__link" for="__nav_6">
-        Entity Framework & REST
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Entity Framework & REST
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Entity Framework & REST" data-md-level="1">
         <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
@@ -799,6 +912,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -809,8 +923,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -821,8 +937,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -833,8 +951,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -845,8 +965,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -857,6 +979,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -876,6 +999,8 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
+
+
 <nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
   
   
@@ -985,13 +1110,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#eredmeny-rogzitese-moodle-ben" class="md-nav__link">
-    Eredmény rögzítése Moodle-ben
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1025,7 +1143,7 @@
 <p><strong>Otthon teljesített laborok során segítségnyújtás.</strong> A nem személyes laborok, avagy a kényszerűen távolról tartott laborokat a hallgatók otthon, önállóan teljesítik egy-egy kéthetes időablakon belül. Ennek során, ha szükséges, a laborvezető segítséget nyújt a hallgatóknak kérdés és probléma esetén.</p>
 <p><strong>Labor feladatok értékelése.</strong> A félév során csoportonként összesen 5 labor van, mindegyiket jeggyel értékeljük - azt is, amit személyesen egyetemi laborban készít a hallgató, és az otthon teljesítetteket is. A laborok beadása GitHub pull request-ek formájában történik. A laborok kiértékelése részben automatikusan történik: egy szoftver lefuttatja és ellenőrzi a beadott munkát, ahol ez lehetséges. A laborvezető feladata a beadott házi feladat formai ellenőrzése: kért képernyőképek megfelelnek-e az előírásoknak és konzisztensek-e a beadott forráskóddal.</p>
 <h2 id="demonstratorsag">Demonstrátorság<a class="headerlink" href="#demonstratorsag" title="Permanent link">&para;</a></h2>
-<p>Hallgató vagy de szeretnél bekapcsolódni az oktatásba? Szeretnéd kipróbálni magad oktatóként? Szeretsz magyarázni? Elvégezted ezt a tárgyat ötössel? Várunk demonstrátorként!</p>
+<p>Hallgató vagy de szeretnél bekapcsolódni az oktatásba? Szeretnéd kipróbálni magad laborvezetőként? Szeretsz magyarázni? Elvégezted ezt a tárgyat ötössel? Várunk demonstrátorként!</p>
 <p>A TVSZ pár követelményt szab demonstrátoroknak: (lásd <a href="https://www.kth.bme.hu/document/2376/original/BME_TVSZ_2016%20elfogadott_mod_20200131-T.pdf">aktuális TVSZ</a> 165.§):</p>
 <div class="admonition quote">
 <p>(5) A demonstrátori pályázat benyújtásának feltétele, hogy a pályázó</p>
@@ -1076,18 +1194,22 @@
 </ul>
 <p>A feladatok minta megoldása itt érhető el: <a href="https://github.com/bmeviauac01?q=labor-megoldas">https://github.com/bmeviauac01?q=labor-megoldas</a>. Ezek csak lehetséges megoldások, a hallgató megoldása nem kell ezzel egyezzen.</p>
 <p>Az értékelés végeztével:</p>
-<ol>
-<li>Rögzíteni kell a pontszámot Moodle-ben. Ha van iMsc pontszám, azt külön számonkérésben kell rögzíteni.</li>
-<li>
-<p>Opcionális, de javasolt: mergelni a PR-t. (Szoftverfejlesztés során ez a logikus lezárása a PR-nek.)</p>
-<p><img alt="" src="images/hazi-github-merge-pr.png" /></p>
-<p>Ha nem mergeled a PR-t, akkor lezárni a PR-t.</p>
-<p><img alt="" src="images/hazi-github-close-comment-pr.png" /></p>
-</li>
-<li>
-<p>Ha gond volt a megoldással, változott a pontszám, vagy valamit hozzáfűznél, akkor azt is kommentbe beírni a PR-be.</p>
-</li>
-</ol>
+<ul>
+<li>Ha az automata értékelés helyénvaló volt, akkor le kell zárni a PR-t a <code>/ahk ok</code> parancs beírásával egy kommentbe. Ennek hatására a PR jóváhagyásra kerül és merge-elve lesz.</li>
+<li>Ha az automata értékelést felülbírálod pontszámban, akkor az <code>/ahk ok 4 5 3 6</code> parancsot kell kiadni, ahol is a számok a feladatokra kapott pontszámok sorrendben, az utolsó szám pedig az iMsc pontszám. Minden pontot ki kell írni, kivéve az utolsó iMsc pontot - ha az nincs, akkor az elhagyható.</li>
+<li>Ha a beadott megoldás nem fogadható el (határidőn túl érkezett, a képek nem támasztják alá a megoldást, a forráskód elfogadhatatlan, stb.), akkor ki <strong>kell</strong> adni a <code>/ahk ok 0 0 ...</code> parancsot. Ezzel fogjuk rögzíteni, hogy az automata értékelő által adott pontszámokat felülírjuk.</li>
+</ul>
+<p>A fenti parancs egy kommentben tetszőleges helyen szerepelhet, amennyiben egy sorban csak ez a parancs szerepel. Írhatunk tehát a hallgatónak megjegyzést, majd utolsó sorba írjuk ezt a parancsot. Érdemes a hallgatónak legalább egy mondatot írni, hogy lássa, elfogadtuk a megoldást. Ha még sincs megjegyzésünk a hallgató felé, akkor csak egysoros komment kell ezzel a paranccsal.</p>
+<p><img alt="" src="images/hazi-github-pr-ahkcommand.png" /></p>
+<p>A parancs többször is kiadható, tehát elrontott pontszámot lehet javítani az újbóli kiadással.</p>
+<p>A parancs hatását látjuk is utána PR-ben:</p>
+<ul>
+<li>a kommentre a parancs felismerésének megerősítésére érkezik egy reakció,</li>
+<li>a PR változtatásai jóváhagyásra kerülnek (ez szükséges a mergeléshez a protected branch miatt),</li>
+<li>a a PR mergelésre kerül - ezzel lezárt állapotba kerül a PR és így eltűnik a teendők listájáról,</li>
+<li>és végül elmentésre kerül az eredmény a háttérben - ezt már közvetlenül nem látjuk.</li>
+</ul>
+<p><img alt="" src="images/hazi-github-pr-ahkmerge.png" /></p>
 <h3 id="problemak-es-megoldasuk">Problémák és megoldásuk<a class="headerlink" href="#problemak-es-megoldasuk" title="Permanent link">&para;</a></h3>
 <p><strong>Nem futott le az automata értékelés.</strong></p>
 <ul>
@@ -1096,21 +1218,6 @@
 </ul>
 <p><strong>Több, mint 5-ször futott a kiértékelés.</strong> Ezt pontlevonással szankcionáljuk. Első alkalommal eltekinthetünk tőle, de mindenképpen tájékoztassuk a hallgatót.</p>
 <p><strong>Hiba van a kiértékelő alkalmazásban.</strong> Előfordulhat. Keresd a tárgyfelelőst, vagy javítsd a hibát (a kiértékelő programok itt vannak: <a href="https://github.com/bmeviauac01/laborok-ahk/">https://github.com/bmeviauac01/laborok-ahk/</a>).</p>
-<h2 id="eredmeny-rogzitese-moodle-ben">Eredmény rögzítése Moodle-ben<a class="headerlink" href="#eredmeny-rogzitese-moodle-ben" title="Permanent link">&para;</a></h2>
-<p>A labor csoportok Moodle-ban vannak. Neptunból automatikusan kerülnek át. Az eredményeket (személyes laborokon jelenlét és minden labor esetén a pontszám) itt könyveljük. Minden labor alkalom külön számonkérés (valamint az iMsc pontok is külön számonkérésben vannak). A jelenlét vagy pontszám rögzítésének menete:</p>
-<ol>
-<li>
-<p>Be kell jelentkezni Moodle-re és meg kell keresni a tárgyat.</p>
-</li>
-<li>
-<p>A tárgy kezdőoldalán meg kell keresni a számonkérést.</p>
-<p><img alt="" src="images/moodle-szamonkeres-fooldalon.png" /></p>
-</li>
-<li>
-<p>Erre kattintva lehet szűrni a csoportra. A <em>Grade</em> gombbal egyesével jönnek a hallgatók, a <em>View all</em> táblázatosan mutatja őket.</p>
-<p><img alt="" src="images/moodle-szamonkeres-ertekeles.png" /></p>
-</li>
-</ol>
                 
               
               
@@ -1122,56 +1229,27 @@
           </div>
         </div>
         
-          <a href="#" class="md-top md-icon" title="Back to top" data-md-component="top" data-md-state="hidden">
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
           </a>
         
       </main>
       
-        <!--
-  Copyright (c) 2016-2021 Martin Donath <martin.donath@squidfunk.com>
-
-  Permission is hereby granted, free of charge, to any person obtaining a copy
-  of this software and associated documentation files (the "Software"), to
-  deal in the Software without restriction, including without limitation the
-  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
-  sell copies of the Software, and to permit persons to whom the Software is
-  furnished to do so, subject to the following conditions:
-
-  The above copyright notice and this permission notice shall be included in
-  all copies or substantial portions of the Software.
-
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-  IN THE SOFTWARE.
--->
-
-
-
-<!-- Footer -->
+        
 <footer class="md-footer">
-
-  <!-- Link to previous and/or next page -->
   
-
-  <!-- Further information -->
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
-
-      <!-- Copyright and theme information -->
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
             Copyright &copy; BME VIK AUT
           </div>
         
+        
+        
       </div>
-
-      <!-- Social links -->
       
     </div>
   </div>
@@ -1181,10 +1259,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.instant", "navigation.top"], "translations": {"clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "search.config.lang": "hu", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Keres\u00e9s", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.term.missing": "\u00dcres"}, "search": "../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest"], "translations": {"clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "search.config.lang": "hu", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Keres\u00e9s", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.term.missing": "\u00dcres", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.a1609d9a.min.js"></script>
+      <script src="../assets/javascripts/bundle.b1047164.min.js"></script>
       
     
   </body>
