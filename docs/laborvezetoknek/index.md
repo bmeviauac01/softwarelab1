@@ -23,7 +23,7 @@ Ha az egyetem jelenléti oktatással indulna, avagy a félév során valamikor a
 
 ## Demonstrátorság
 
-Hallgató vagy de szeretnél bekapcsolódni az oktatásba? Szeretnéd kipróbálni magad oktatóként? Szeretsz magyarázni? Elvégezted ezt a tárgyat ötössel? Várunk demonstrátorként!
+Hallgató vagy de szeretnél bekapcsolódni az oktatásba? Szeretnéd kipróbálni magad laborvezetőként? Szeretsz magyarázni? Elvégezted ezt a tárgyat ötössel? Várunk demonstrátorként!
 
 A TVSZ pár követelményt szab demonstrátoroknak: (lásd [aktuális TVSZ](https://www.kth.bme.hu/document/2376/original/BME_TVSZ_2016%20elfogadott_mod_20200131-T.pdf) 165.§):
 
@@ -103,16 +103,24 @@ A feladatok minta megoldása itt érhető el: <https://github.com/bmeviauac01?q=
 
 Az értékelés végeztével:
 
-1. Rögzíteni kell a pontszámot Moodle-ben. Ha van iMsc pontszám, azt külön számonkérésben kell rögzíteni.
-1. Opcionális, de javasolt: mergelni a PR-t. (Szoftverfejlesztés során ez a logikus lezárása a PR-nek.)
+- Ha az automata értékelés helyénvaló volt, akkor le kell zárni a PR-t a `/ahk ok` parancs beírásával egy kommentbe. Ennek hatására a PR jóváhagyásra kerül és merge-elve lesz.
+- Ha az automata értékelést felülbírálod pontszámban, akkor az `/ahk ok 4 5 3 6` parancsot kell kiadni, ahol is a számok a feladatokra kapott pontszámok sorrendben, az utolsó szám pedig az iMsc pontszám. Minden pontot ki kell írni, kivéve az utolsó iMsc pontot - ha az nincs, akkor az elhagyható.
+- Ha a beadott megoldás nem fogadható el (határidőn túl érkezett, a képek nem támasztják alá a megoldást, a forráskód elfogadhatatlan, stb.), akkor ki **kell** adni a `/ahk ok 0 0 ...` parancsot. Ezzel fogjuk rögzíteni, hogy az automata értékelő által adott pontszámokat felülírjuk.
 
-    ![](images/hazi-github-merge-pr.png)
+A fenti parancs egy kommentben tetszőleges helyen szerepelhet, amennyiben egy sorban csak ez a parancs szerepel. Írhatunk tehát a hallgatónak megjegyzést, majd utolsó sorba írjuk ezt a parancsot. Érdemes a hallgatónak legalább egy mondatot írni, hogy lássa, elfogadtuk a megoldást. Ha még sincs megjegyzésünk a hallgató felé, akkor csak egysoros komment kell ezzel a paranccsal.
 
-    Ha nem mergeled a PR-t, akkor lezárni a PR-t.
+![](images/hazi-github-pr-ahkcommand.png)
 
-    ![](images/hazi-github-close-comment-pr.png)
+A parancs többször is kiadható, tehát elrontott pontszámot lehet javítani az újbóli kiadással.
 
-1. Ha gond volt a megoldással, változott a pontszám, vagy valamit hozzáfűznél, akkor azt is kommentbe beírni a PR-be.
+A parancs hatását látjuk is utána PR-ben:
+
+- a kommentre a parancs felismerésének megerősítésére érkezik egy reakció,
+- a PR változtatásai jóváhagyásra kerülnek (ez szükséges a mergeléshez a protected branch miatt),
+- a a PR mergelésre kerül - ezzel lezárt állapotba kerül a PR és így eltűnik a teendők listájáról,
+- és végül elmentésre kerül az eredmény a háttérben - ezt már közvetlenül nem látjuk.
+
+![](images/hazi-github-pr-ahkmerge.png)
 
 ### Problémák és megoldásuk
 
@@ -124,17 +132,3 @@ Az értékelés végeztével:
 **Több, mint 5-ször futott a kiértékelés.** Ezt pontlevonással szankcionáljuk. Első alkalommal eltekinthetünk tőle, de mindenképpen tájékoztassuk a hallgatót.
 
 **Hiba van a kiértékelő alkalmazásban.** Előfordulhat. Keresd a tárgyfelelőst, vagy javítsd a hibát (a kiértékelő programok itt vannak: <https://github.com/bmeviauac01/laborok-ahk/>).
-
-## Eredmény rögzítése Moodle-ben
-
-A labor csoportok Moodle-ban vannak. Neptunból automatikusan kerülnek át. Az eredményeket (személyes laborokon jelenlét és minden labor esetén a pontszám) itt könyveljük. Minden labor alkalom külön számonkérés (valamint az iMsc pontok is külön számonkérésben vannak). A jelenlét vagy pontszám rögzítésének menete:
-
-1. Be kell jelentkezni Moodle-re és meg kell keresni a tárgyat.
-
-1. A tárgy kezdőoldalán meg kell keresni a számonkérést.
-
-    ![](images/moodle-szamonkeres-fooldalon.png)
-
-1. Erre kattintva lehet szűrni a csoportra. A _Grade_ gombbal egyesével jönnek a hallgatók, a _View all_ táblázatosan mutatja őket.
-
-    ![](images/moodle-szamonkeres-ertekeles.png)
