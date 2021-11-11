@@ -104,8 +104,9 @@ A feladatok minta megoldása itt érhető el: <https://github.com/bmeviauac01?q=
 Az értékelés végeztével:
 
 - Ha az automata értékelés helyénvaló volt, akkor le kell zárni a PR-t a `/ahk ok` parancs beírásával egy kommentbe. Ennek hatására a PR jóváhagyásra kerül és merge-elve lesz.
-- Ha az automata értékelést felülbírálod pontszámban, akkor az `/ahk ok 4 5 3 6` parancsot kell kiadni, ahol is a számok a feladatokra kapott pontszámok sorrendben, az utolsó szám pedig az iMsc pontszám. Minden pontot ki kell írni, kivéve az utolsó iMsc pontot - ha az nincs, akkor az elhagyható.
-- Ha a beadott megoldás nem fogadható el (határidőn túl érkezett, a képek nem támasztják alá a megoldást, a forráskód elfogadhatatlan, stb.), akkor ki **kell** adni a `/ahk ok 0 0 ...` parancsot. Ezzel fogjuk rögzíteni, hogy az automata értékelő által adott pontszámokat felülírjuk.
+- Ha az automata értékelést felülbírálod pontszámban, akkor a `/ahk ok 20 3` parancsot kell kiadni, ahol is az első szám az összes nem iMSc feladatra kapott pontszám **összege**, a második szám pedig az iMsc feladatra kapott pontszám. Az utóbbi szám elhagyható, ha nincs megoldva az iMsc feladat.
+- Ha nincs automata értékelés, akkor az előbbi szintaktika szerint ki kell adni a `/ahk ok 20 3` parancsot a megfelelő pontszámokkal.
+- Ha a beadott megoldás nem fogadható el (határidőn túl érkezett, a képek nem támasztják alá a megoldást, a forráskód elfogadhatatlan, stb.), akkor ki **kell** adni a `/ahk ok 0 0` parancsot. Ezzel fogjuk rögzíteni, hogy az automata értékelő által adott pontszámokat felülírjuk.
 
 A fenti parancs egy kommentben tetszőleges helyen szerepelhet, amennyiben egy sorban csak ez a parancs szerepel. Írhatunk tehát a hallgatónak megjegyzést, majd utolsó sorba írjuk ezt a parancsot. Érdemes a hallgatónak legalább egy mondatot írni, hogy lássa, elfogadtuk a megoldást. Ha még sincs megjegyzésünk a hallgató felé, akkor csak egysoros komment kell ezzel a paranccsal.
 
