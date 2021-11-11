@@ -1196,8 +1196,9 @@
 <p>Az értékelés végeztével:</p>
 <ul>
 <li>Ha az automata értékelés helyénvaló volt, akkor le kell zárni a PR-t a <code>/ahk ok</code> parancs beírásával egy kommentbe. Ennek hatására a PR jóváhagyásra kerül és merge-elve lesz.</li>
-<li>Ha az automata értékelést felülbírálod pontszámban, akkor az <code>/ahk ok 4 5 3 6</code> parancsot kell kiadni, ahol is a számok a feladatokra kapott pontszámok sorrendben, az utolsó szám pedig az iMsc pontszám. Minden pontot ki kell írni, kivéve az utolsó iMsc pontot - ha az nincs, akkor az elhagyható.</li>
-<li>Ha a beadott megoldás nem fogadható el (határidőn túl érkezett, a képek nem támasztják alá a megoldást, a forráskód elfogadhatatlan, stb.), akkor ki <strong>kell</strong> adni a <code>/ahk ok 0 0 ...</code> parancsot. Ezzel fogjuk rögzíteni, hogy az automata értékelő által adott pontszámokat felülírjuk.</li>
+<li>Ha az automata értékelést felülbírálod pontszámban, akkor a <code>/ahk ok 20 3</code> parancsot kell kiadni, ahol is az első szám az összes nem iMSc feladatra kapott pontszám <strong>összege</strong>, a második szám pedig az iMsc feladatra kapott pontszám. Az utóbbi szám elhagyható, ha nincs megoldva az iMsc feladat.</li>
+<li>Ha nincs automata értékelés, akkor az előbbi szintaktika szerint ki kell adni a <code>/ahk ok 20 3</code> parancsot a megfelelő pontszámokkal.</li>
+<li>Ha a beadott megoldás nem fogadható el (határidőn túl érkezett, a képek nem támasztják alá a megoldást, a forráskód elfogadhatatlan, stb.), akkor ki <strong>kell</strong> adni a <code>/ahk ok 0 0</code> parancsot. Ezzel fogjuk rögzíteni, hogy az automata értékelő által adott pontszámokat felülírjuk.</li>
 </ul>
 <p>A fenti parancs egy kommentben tetszőleges helyen szerepelhet, amennyiben egy sorban csak ez a parancs szerepel. Írhatunk tehát a hallgatónak megjegyzést, majd utolsó sorba írjuk ezt a parancsot. Érdemes a hallgatónak legalább egy mondatot írni, hogy lássa, elfogadtuk a megoldást. Ha még sincs megjegyzésünk a hallgató felé, akkor csak egysoros komment kell ezzel a paranccsal.</p>
 <p><img alt="" src="images/hazi-github-pr-ahkcommand.png" /></p>
