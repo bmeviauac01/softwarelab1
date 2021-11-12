@@ -11,7 +11,7 @@ A labor elvégzéséhez szükséges eszközök:
 - Robo 3T ([letöltés](https://robomongo.org/download))
 - Minta adatbázis kódja ([mongo.js](https://bmeviauac01.github.io/adatvezerelt/db/mongo.js))
 - GitHub account és egy git kliens
-- Microsoft Visual Studio 2019 [az itt található beállításokkal](../VisualStudio.md)
+- Microsoft Visual Studio 2019/2022 [az itt található beállításokkal](../VisualStudio.md)
     - Linux és MacOS esetén Visual Studio Code és a .NET Core SDK-val települő [dotnet CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/) használható.
 - [.NET Core **3.1** SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 

@@ -10,7 +10,7 @@ A labor elvégzéséhez szükséges eszközök:
 - [Postman](https://www.getpostman.com/)
 - [DB Browser for SQLite](https://sqlitebrowser.org/), ha az adatbázisba szeretnél belezézni (nem feltétlenül szükséges)
 - GitHub account és egy git kliens
-- Microsoft Visual Studio 2019 [az itt található beállításokkal](../VisualStudio.md)
+- Microsoft Visual Studio 2019/2022 [az itt található beállításokkal](../VisualStudio.md)
     - Linux és MacOS esetén Visual Studio Code és a .NET Core SDK-val települő [dotnet CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/) használható.
 - [.NET Core **3.1** SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 
