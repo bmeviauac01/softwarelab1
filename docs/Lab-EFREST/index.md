@@ -10,7 +10,7 @@ Required tools to complete the tasks:
 - [Postman](https://www.getpostman.com/)
 - [DB Browser for SQLite](https://sqlitebrowser.org/) - if you would like to check the database (not necessary)
 - GitHub account and a git client
-- Microsoft Visual Studio 2019 [with the settings here](../VisualStudio.md)
+- Microsoft Visual Studio 2019/2022 [with the settings here](../VisualStudio.md)
     - When using Linux or macOS, you can use Visual Studio Code, the .NET Core SDK, and [dotnet CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/).
 - [.NET Core **3.1** SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 

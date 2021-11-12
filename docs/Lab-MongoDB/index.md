@@ -11,7 +11,7 @@ Required tools to complete the tasks:
 - Robo 3T ([download](https://robomongo.org/download))
 - Sample database initialization script: ([mongo.js](https://bmeviauac01.github.io/adatvezerelt/db/mongo.js))
 - GitHub account and a git client
-- Microsoft Visual Studio 2019 [with the settings here](../VisualStudio.md)
+- Microsoft Visual Studio 2019/2022 [with the settings here](../VisualStudio.md)
     - When using Linux or macOS, you can use Visual Studio Code, the .NET Core SDK, and [dotnet CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/).
 - [.NET Core **3.1** SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 

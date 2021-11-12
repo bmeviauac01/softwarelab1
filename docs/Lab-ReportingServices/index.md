@@ -10,7 +10,7 @@ Required tools to complete the tasks:
 - Microsoft SQL Server: The free Express version is sufficient, or you may also use _localdb_ installed with Visual Studio
 - [SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms)
 - Database initialization script: [adventure-works-2014-oltp-script.zip](adventure-works-2014-oltp-script.zip)
-- Microsoft Visual Studio 2019: The free Community edition is sufficient
+- Microsoft Visual Studio 2019 (2022 does **not** work here): The free Community edition is sufficient
 - Report Server Project support for Visual Studio: [Microsoft Reporting Services Projects extension](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftReportProjectsforVisualStudio) (Keep the extension [up to date](https://docs.microsoft.com/en-us/visualstudio/extensibility/how-to-update-a-visual-studio-extension?view=vs-2019).)
 - GitHub account and a git client
 
