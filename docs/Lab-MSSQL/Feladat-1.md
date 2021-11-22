@@ -73,4 +73,4 @@ end
         Érdemes olyan teszt adatokat választani, amiben nincs ékezet! Különben problémákat okozhat az sql fájl kódolásának helytelen beállítása. Hogy ezt elkerüljük, használható például a _LEGO_, mint létező szülő kategória név.
 
     !!! example "BEADANDÓ"
-        A teszt utasításokat az `f1-ok.sql` és `f1-error.sql` fájlokba írd. Mindkét fájlban csak egyetlen `insert` utasítás legyen! Semmiképpen ne legyen `[use]`, se `go` utasítás bennük! Mindkét utasítás 2-2 pontot ér.
+        A teszt utasításokat az `f1-test-ok.sql` és `f1-test-error.sql` fájlokba írd. Mindkét fájlban csak egyetlen `insert` utasítás legyen! Semmiképpen ne legyen `[use]`, se `go` utasítás bennük! Mindkét utasítás 2-2 pontot ér.
