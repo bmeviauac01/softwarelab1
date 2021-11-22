@@ -22,7 +22,7 @@ Required tools to complete the tasks:
 Materials for preparing for this laboratory:
 
 - Entity Framework, REST API, Web API, and using Postman
-    - Check the materials of [Data-driven systems](https://www.aut.bme.hu/Course/enviauac01) including the [seminars](https://bmeviauac01.github.io/datadriven-en/)
+    - Check the materials of _Data-driven systems_ including the [seminars](https://bmeviauac01.github.io/datadriven-en/)
 - Official Microsoft tutorial for [Web API](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-3.1&tabs=visual-studio)
 
 ## Exercise overview

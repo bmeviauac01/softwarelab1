@@ -23,7 +23,7 @@ Required tools to complete the tasks:
 Materials for preparing for this laboratory:
 
 - MongoDB database system and the C# driver
-    - Check the materials of [Data-driven systems](https://www.aut.bme.hu/Course/enviauac01) including the [seminars](https://bmeviauac01.github.io/datadriven-en/)
+    - Check the materials of _Data-driven systems_ including the [seminars](https://bmeviauac01.github.io/datadriven-en/)
 - Official Microsoft tutorial for [WebApi using MongoDB](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mongo-app?view=aspnetcore-3.1&tabs=visual-studio)
     - We will not be creating a WebApi in this lab, but the Mongo part is the same.
 

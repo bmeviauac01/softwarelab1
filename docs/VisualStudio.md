@@ -1,6 +1,6 @@
 ﻿# Install Visual Studio & .NET Core SDK
 
-In some of the exercises require Microsoft Visual Studio **version 2019 16.6 or newer**. The free [Community edition](https://visualstudio.microsoft.com/vs/community/) is sufficient for solving these exercises.
+In some of the exercises require Microsoft Visual Studio **version 2019 16.6 or newer** (version 2022 is fine too). The free [Community edition](https://visualstudio.microsoft.com/vs/community/) is sufficient for solving these exercises.
 
 You can check the version by starting the _Visual Studio Installer_:
 

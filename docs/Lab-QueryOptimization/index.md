@@ -22,7 +22,7 @@ Materials for preparing for this laboratory:
 - Using Microsoft SQL Server: [description](https://bmeviauac01.github.io/datadriven-en/db/mssql/) and [video](https://web.microsoftstream.com/video/98a6697d-daec-4a5f-82b6-8e96f06302e8)
 - The [schema](https://bmeviauac01.github.io/datadriven-en/db/) of the database
 - Microsoft SQL Server query optimization
-    - Check the materials of [Data-driven systems](https://www.aut.bme.hu/Course/enviauac01)
+    - Check the materials of _Data-driven systems_
 
 ## Initial steps
 

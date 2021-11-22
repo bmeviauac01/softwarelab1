@@ -1,6 +1,6 @@
 # Using BME Cloud
 
-If you do not have access to a computer where you can install the required software, you can use BME Cloud to get a temporary virtual machine.
+If you do not have access to a computer where you can install the required software, you can use BME Cloud to get a temporary virtual machine. We generally recommend that you work on your own machine, as it is faster and more convenient. However, if that is not feasible, you may use the BME Cloud.
 
 Go to <https://cloud.bme.hu> and log in with your EduID. A prepared VM template is available in the "Smallville" data center with the name "Data-driven systems." You can use this template to create a VM that has all the necessary software installed.
 
