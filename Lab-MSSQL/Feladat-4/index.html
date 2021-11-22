@@ -413,20 +413,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../FAQ/" class="md-nav__link">
-        Tipikus problémák
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../VisualStudio/" class="md-nav__link">
         Visual Studio & .NET Core SDK telepítése
       </a>
@@ -1039,15 +1025,65 @@
                 
                 <h1 id="feladat-4-opcionalis-feladat">Feladat 4: Opcionális feladat<a class="headerlink" href="#feladat-4-opcionalis-feladat" title="Permanent link">&para;</a></h1>
 <p><strong>A feladat megoldása 3 iMsc pontot ér.</strong></p>
-<p>A termék kategória rendszerünk (<code>Category</code> tábla) többszintű, de szeretnénk egyszerűsíteni, egy szintűvé tenni.</p>
-<p>Írj T-SQL kódblokkot, amely minden kategóriát, amely nem legfelső szintű (amelynek van <code>ParentCategoryId</code> értéke), töröl, de előbb az ezen kategóriához tartozó termékeket átsorolja a szülő kategóriába. Mivel a kategória rendszer hierarchikus, ezt többször is meg kell ismételni, amíg még van alkategória. Ügyelj rá, hogy a kategória hierarchia aljáról kell indulni, azaz minden iterációban azon kategóriákat kell megszüntetni, amelynek van szülője, de amely maga nem szülő.</p>
-<div class="admonition example">
-<p class="admonition-title">BEADANDÓ</p>
-<p>A kódblokkot az <code>f4.sql</code> fájlba írd. A fájlban csak a lefuttatható kódblokk szerepeljen. Ne legyen benne se <code>[use]</code> se <code>go</code> utasítás. A megoldásod egyetlen T-SQL kódblokk legyen. Ne használj tárolt eljárást vagy triggert. (A feleslegessé vált <code>ParentCategoryId</code> oszlopot <strong>nem</strong> kell törölni.)</p>
+<p>Kérdezd le a kategóriákat (<code>Category</code> tábla) úgy, hogy az alábbi eredményt kapjuk:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Count</th>
+<th>Rank</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Building items</td>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Months 0-6</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>DUPLO</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>LEGO</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Months 18-24</td>
+<td>1</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Months 6-18</td>
+<td>1</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Play house</td>
+<td>1</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+<p>Az első oszlop a kategória neve, a második a kategóriában található termékek száma, a harmadik oszlop pedig a sorrend, ahol is a kategóriák a termék darabszámok szerint csökkenő sorrendben kell megjelenjenek, és ha egyezik a termék darabszám, akkor a kategória név alapján növekvő sorrendben. A sorrendezés folyamatos kell legyen, és a végeredmény a számított sorrend szerint növekvően kell érkezzen. A lekérdezést egyetlen utasítással kell megoldani. A lekérdezés eredményében az oszlop nevek egyezzenek meg a fenti példában látható nevekkel.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tipp</p>
+<p>A harmadik oszlop neve nem véletlen "rank".</p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">BEADANDÓ</p>
-<p>Készíts egy képernyőképet a a lefutás eredményeképpen előálló <code>Category</code> tábla tartalmáról. A képet a megoldásban <code>f4.png</code> néven add be. A képernyőképen látszódjon az <em>Object Explorer</em>-ben az <strong>adatbázis neve (a Neptun kódod)</strong> és a <strong><code>Category</code> tábla tartalma</strong> is! A képernyőkép szükséges feltétele a pontok megszerzésének.</p>
+<p>A lekérdezést az <code>f4.sql</code> fájlba írd. A fájlban egyetlen <code>select</code> utasítás szerepeljen, és semmiképpen ne legyen benne se <code>[use]</code> se <code>go</code> utasítás.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">BEADANDÓ</p>
+<p>Készíts egy képernyőképet a lekérdezés eredményéről. A képet a megoldásban <code>f4.png</code> néven add be. A képernyőképen látszódjon az <em>Object Explorer</em>-ben az <strong>adatbázis neve (a Neptun kódod)</strong> és a <strong>lekérdezés eredménye</strong> is! A képernyőkép szükséges feltétele a pontok megszerzésének.</p>
 </div>
                 
               

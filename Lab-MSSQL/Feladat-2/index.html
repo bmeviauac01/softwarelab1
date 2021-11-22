@@ -413,20 +413,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../FAQ/" class="md-nav__link">
-        Tipikus problémák
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../VisualStudio/" class="md-nav__link">
         Visual Studio & .NET Core SDK telepítése
       </a>
@@ -1104,14 +1090,14 @@
 <p>Írj tárolt eljárást <code>CheckInvoice</code> néven, aminek bemeneti paramétere egy <code>int</code> típusú és <code>@invoiceid</code> nevű számlaazonosító.</p>
 <ul>
 <li>Az eljárás ellenőrizze, hogy a paraméterben kapott számlához (<code>Invoice</code>) kapcsolódó számlatételeken (<code>InvoiceItem</code>) szereplő mennyiség (<code>Amount</code>) egyezik-e a kapcsolódó megrendeléstétel (<code>OrderItem</code>) mennyiségével. (Az <code>InvoiceItem</code> rekord hivatkozik a kapcsolódó <code>OrderItem</code>-re.)</li>
-<li>Amennyiben eltérés található a kettőben, úgy mindkettő értékét, valamint a termék nevét írd ki a standard outputra az alábbi séma szerint: <code>Difference: Ball (invoice 5 order 6)</code></li>
+<li>Amennyiben eltérés található a kettőben, úgy mindkettő értékét, valamint a termék nevét írd ki a standard outputra az alábbi séma szerint: <code>Error: Ball (invoice 5 order 6)</code></li>
 <li>Csak akkor írjon bármit a kimenetre a tárolt eljárás, ha problémát talált. Semmiképpen se hagyj teszteléshez használt kiírást az eljárásban!</li>
 <li>Legyen az eljárás <code>int</code> típusú visszatérési értéke 0, ha nem kellett semmit kiírni a kimenetre, és 1, ha kellett. Ez az érték <code>return</code> kulcsszóval kerüljön visszaadásra (ne <code>output</code> paraméter legyen).</li>
 </ul>
 <p>A kiíráshoz használd a <code>print</code> parancsot: <code>PRINT 'Szoveg' + @valtozo + 'Szoveg'</code> Ügyelj rá, hogy a változónak char típusúnak kell lennie, egyéb típus, pl. szám konvertálása: <code>convert(varchar(5), @valtozo)</code>, pl. <code>PRINT 'Szoveg' + convert(varchar(5), @valtozo)</code></p>
 <div class="admonition example">
 <p class="admonition-title">BEADANDÓ</p>
-<p>Az eljárás kódját az <code>f2-proc.sql</code> fájlba írd. A fájlban csak ez az egyetlen <code>create proc</code> utasítás legyen! A feladat helyes megoldása 4 pontot ér. Helyesség függvényében részpontszám is kapható.</p>
+<p>Az eljárás kódját az <code>f2-procedure.sql</code> fájlba írd. A fájlban csak ez az egyetlen <code>create proc</code> utasítás legyen! A feladat helyes megoldása 4 pontot ér. Helyesség függvényében részpontszám is kapható.</p>
 </div>
 <h2 id="minden-szamla-ellenorzese">Minden számla ellenőrzése<a class="headerlink" href="#minden-szamla-ellenorzese" title="Permanent link">&para;</a></h2>
 <p>Írj T-SQL kódblokkot, ami az előző feladatban megírt eljárást hívja meg egyenként az összes számlára. Érdemes ehhez egy kurzort használnod, ami a számlákon fut végig.</p>
@@ -1126,7 +1112,7 @@
 <p>Ellenőrizd a kódblokk viselkedését. Ahhoz, hogy eltérést tapasztalj, ha szükséges, változtass meg egy megrendelés tételt vagy számla tételt az adatbázisban. (Az ellenőrzéshez tartozó kódot nem kell beadni.)</p>
 <div class="admonition example">
 <p class="admonition-title">BEADANDÓ</p>
-<p>Az összes számlát ellenőrző kódot az <code>f2-exec.sql</code> fájlba írd. A fájlban csak a lefuttatható kódblokk szerepeljen. Ne legyen benne a tárolt eljárás kódja, ne legyen benne se <code>[use]</code> se <code>go</code> utasítás. A feladatrésszel 2 pont szerezhető.</p>
+<p>Az összes számlát ellenőrző kódot az <code>f2-check-all.sql</code> fájlba írd. A fájlban csak a lefuttatható kódblokk szerepeljen. Ne legyen benne a tárolt eljárás kódja, ne legyen benne se <code>[use]</code> se <code>go</code> utasítás. A feladatrésszel 2 pont szerezhető.</p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">BEADANDÓ</p>
