@@ -73,4 +73,4 @@ end
         It is recommended to use names (i.e., category names) that contain no special characters. Incorrect encoding of the SQL file might result in incorrect behavior otherwise. E.g., you may use the _LEGO_ category as a known existing category.
 
     !!! example "SUBMISSION"
-        Write the test insert statements into files `f1-ok.sql` and `f1-error.sql`. Each file shall contain a single `insert` statement! They should not include any `use` or `go` commands. Each file can earn you 2 points.
+        Write the test insert statements into files `f1-test-ok.sql` and `f1-test-error.sql`. Each file shall contain a single `insert` statement! They should not include any `use` or `go` commands. Each file can earn you 2 points.
