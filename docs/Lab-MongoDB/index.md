@@ -23,7 +23,7 @@ A labor elvégzéséhez szükséges eszközök:
 A labor elvégzéséhez használható segédanyagok és felkészülési anyagok:
 
 - MongoDB adatbáziskezelő rendszer és a C# driver használata
-    - Lásd az Adatvezérelt rendszerek c. tárgy [jegyzetei](https://www.aut.bme.hu/Course/adatvezerelt) és [gyakorlati anyagai](https://bmeviauac01.github.io/adatvezerelt/) között
+    - Lásd az Adatvezérelt rendszerek c. tárgy jegyzetei és [gyakorlati anyagai](https://bmeviauac01.github.io/adatvezerelt/) között
 - Hivatalos Microsoft tutorial [Mongo-t használó Web API készítéséhez](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mongo-app?view=aspnetcore-3.1&tabs=visual-studio)
     - A labor során nem WebAPI-t készítünk, de a Mongo használat azonos formában történik.
 

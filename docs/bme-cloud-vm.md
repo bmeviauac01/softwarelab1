@@ -1,6 +1,6 @@
 # BME Cloud használata
 
-A feladatok megoldásához a szükséges szoftverek feltelepítése mellett lehetőség van a BME Cloud igénybevételére is.
+A feladatok megoldásához a szükséges szoftverek feltelepítése mellett lehetőség van a BME Cloud igénybevételére is. Alapvetően javasoljuk, hogy a saját gépeden dolgozz, mert az általában kényelmesebb és gyorsabb. Ha ez nem oldható meg, akkor használhatod a BME Cloud-ot.
 
 Nyisd meg a <https://cloud.bme.hu> oldalt és jelentkezz be EduID-val. A "Smallville" nevű adatközpontban keresd meg a "Data-driven systems" nevű template-et. Ezt a template-et példányosítva elindul egy virtuális gép, amin minden szükséges szoftver telepítve van.
 

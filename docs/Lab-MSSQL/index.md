@@ -20,7 +20,7 @@ A labor elvégzéséhez használható segédanyagok és felkészülési anyagok:
 - Microsoft SQL Server használata: [leírás](https://bmeviauac01.github.io/adatvezerelt/db/mssql/) és [videó](https://web.microsoftstream.com/video/e3a83d16-b5c4-4fe9-b027-703347951621)
 - Az adatbázis [sémájának leírása](https://bmeviauac01.github.io/adatvezerelt/db/)
 - Microsoft SQL Server programozási lehetőségei és az SQL nyelv
-    - Lásd az Adatvezérelt rendszerek c. tárgy [jegyzetei](https://www.aut.bme.hu/Course/adatvezerelt) és [gyakorlati anyagai](https://bmeviauac01.github.io/adatvezerelt/) között
+    - Lásd az Adatvezérelt rendszerek c. tárgy jegyzetei és [gyakorlati anyagai](https://bmeviauac01.github.io/adatvezerelt/) között
 
 ## Előkészület
 
