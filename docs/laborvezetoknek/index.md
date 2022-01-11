@@ -4,20 +4,18 @@ Laborvezető/demonstrátor lennél? Az alábbiakat érdemes tudnod.
 
 ## Laborvezető feladatai
 
-A laborvezető a tárgy oktatásában segít a laborok megtartása és a számonkérések során. A feladat **2021 tavasszal** az alábbiakból áll.
+A laborvezető a tárgy oktatásában segít a laborok megtartása és a számonkérések során. A feladat **2022 tavasszal** az alábbiakból áll.
 
-**Félév során összesen 15 labor megtartása.** Ez a szám 3 labor csoportot jelent, akiknek 5-5 labor alkalma lesz. 2021 tavasszal várhatóan online oktatással kezdünk, így a "labor megtartása" az otthon teljesített laborok során való segítségnyújtást és az értékelést jelenti (lásd alább).
+**Félév során összesen 4-6 darab labor személyes megtartása.** Ez a szám 2 vagy 3 labor csoportot jelent heti váltásban. Ez a személyes labor fix órarendi időben van, 4*45 perces, és számítógép laborban tartjuk. A személyes laborok részben vezetettek kiadott segédlet alapján, részben pedig hallgatói önálló munkából állnak. A laborvezető feladata a laborra való felkészülés, a labor megtartása, ennek során a szükséges háttérismeretek rövid átismétlése, és a hallgatók segítése a labor során.
 
-Ha az egyetem jelenléti oktatással indulna, avagy a félév során valamikor arra áll át, akkor 2 labor alkalmat személyesen tartunk meg (vagyis 3 csoport esetén ez összesen 6 kontaktórát jelent). Ez a személyes labor fix órarendi időben van, 4*45 perces, és számítógép laborban tartjuk. A személyes laborok részben vezetettek kiadott segédlet alapján, részben pedig hallgatói önálló munkából állnak. A laborvezető feladata a laborra való felkészülés, a labor megtartása, ennek során a szükséges háttérismeretek rövid átismétlése, és a hallgatók segítése a labor során.
-
-2021 tavaszi félév során a laborok órarendi időpontjai:
+2022 tavaszi félév során a laborok órarendi időpontjai:
 
 - hétfő 14:15-18:00
+- szerda 08:15-12:00
 - szerda 14:15-18:00
-- csütörtök 08:15-12:00
-- péntek 10:15-14:00
+- csütörtök 14:15-18:00
 
-**Otthon teljesített laborok során segítségnyújtás.** A nem személyes laborok, avagy a kényszerűen távolról tartott laborokat a hallgatók otthon, önállóan teljesítik egy-egy kéthetes időablakon belül. Ennek során, ha szükséges, a laborvezető segítséget nyújt a hallgatóknak kérdés és probléma esetén.
+**Otthon teljesített laborok során segítségnyújtás.** A személyes laborok mellett csoportonként van 3 darab otthon elvégzett labor, amit a hallgatók házi feladatként önállóan teljesítenek egy-egy kéthetes időablakon belül. Ennek során, ha szükséges, a laborvezető segítséget nyújt a hallgatóknak kérdés és probléma esetén.
 
 **Labor feladatok értékelése.** A félév során csoportonként összesen 5 labor van, mindegyiket jeggyel értékeljük - azt is, amit személyesen egyetemi laborban készít a hallgató, és az otthon teljesítetteket is. A laborok beadása GitHub pull request-ek formájában történik. A laborok kiértékelése részben automatikusan történik: egy szoftver lefuttatja és ellenőrzi a beadott munkát, ahol ez lehetséges. A laborvezető feladata a beadott házi feladat formai ellenőrzése: kért képernyőképek megfelelnek-e az előírásoknak és konzisztensek-e a beadott forráskóddal.
 
@@ -89,7 +87,7 @@ A PR-eket egyesével kell megnyitni, és meg kell nézni a PR komment felületé
 
 ![](images/hazi-github-pr-conversation-changes.png)
 
-Automatikus értékelés esetén (ami nem minden labornál van) a forráskódot nem szükséges betűről betűre megnézni - a részletes ellenőrzést elvégzi az automata. A laborvezető feladata a képernyőképek ellenőrzése, valamint annak eldöntése, hogy a forráskód konzisztens-e a kapott eredménnyel. Amely labornál nincs automata értékelés, ott több munka hárul a laborvezetőre, alaposabban meg kell nézni a megoldást.
+Automatikus értékelés esetén (ami nem minden labornál van) a forráskódot nem szükséges betűről betűre megnézni - a részletes ellenőrzést elvégzi az automata. A laborvezető feladata a képernyőképek ellenőrzése, valamint annak eldöntése, hogy a forráskód konzisztens-e a kapott eredménnyel, és nincs-e benne olyan kódrészlet, amely ugyan működik, de kifezetetten rosszul oldja meg a problémát. Amely labornál nincs automata értékelés, ott több munka hárul a laborvezetőre, alaposabban meg kell nézni a megoldást.
 
 A konkrét laborok és értékelésük:
 
