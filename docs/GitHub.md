@@ -1,6 +1,6 @@
 ﻿# Submitting your work (GitHub)
 
-We are using GitHub to submit the solutions. Each laboratory is submitted in a GitHub repository that you will create through a provided link. The solution of the laboratory exercises is created within these repositories, then committed and pushed to GitHub. The submission is finished with a _pull request_ assigned to the laboratory instructor.
+We are using GitHub to submit the solutions. Each laboratory is submitted in a GitHub repository that you will create through a provided link. The solution of the laboratory exercises is created within these repositories, then committed and pushed to GitHub. The submission is finished with a _pull request_ assigned to the laboratory instructor with GitHub name `mradazzouz`.
 
 !!! important "IMPORTANT"
     The submission requirements detailed below are mandatory. Submissions not following these guidelines are not graded.
@@ -165,7 +165,7 @@ The detailed description below shows the entire procedure. This summary is an ov
 
 ## Questions and complaints regarding the final result
 
-If you have questions or concerns regarding the automated evaluation, use the pull request for communication with the instructor by asking questions via comments. To let the instructor know you have questions, please use `@name` [mention](https://help.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax#mentioning-people-and-teams) in the PR comment. This will automatically send an email notification.
+If you have questions or concerns regarding the automated evaluation, use the pull request for communication with the instructor by asking questions via comments. To let the instructor know you have questions, please use `@mradazzouz` [mention](https://help.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax#mentioning-people-and-teams) in the PR comment. This will automatically send an email notification.
 
 ![GitHub PR asking questions](images/github/github-question-in-pr.png)
 
