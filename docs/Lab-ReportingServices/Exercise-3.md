@@ -41,7 +41,7 @@ The dataset we created in the Report Data panel has to be extended with further 
 
 We will use the converted and shared data source and data set in a new report.
 
-1. In the _Solution Explorer_ right-click _Reports_ and choose _Add_ > _New Item_ > _Report_. The name of this new report should be "Sales People."
+1. In the _Solution Explorer_ right-click _Reports_ and choose _Add_ > _New Item_ > _Report_. The name of this new report should be "Sales People".
 
 1. Open the new report. There are no data sources associated with the report. Use the _Report Data_ pane to add the existing one:
 

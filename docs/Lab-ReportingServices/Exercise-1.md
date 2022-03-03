@@ -34,7 +34,7 @@ The Report Server project consists mainly of _Report Definition_ (.rdl) files, t
 
 A data source defines where our data comes from. This will be the SQL Server database created before.
 
-1. Using the _Report Data_ pane, click _New_ > _Data Source_. The name shall be "AdventureWorks2014."
+1. Using the _Report Data_ pane, click _New_ > _Data Source_. The name shall be "AdventureWorks2014".
 
     ![Add datasource](../images/reportingservices/rs-add-datasource.png)
 
@@ -52,7 +52,7 @@ A data source defines where our data comes from. This will be the SQL Server dat
 
 The next step is the configuration of a dataset. Practically, this means executing a query in the database.
 
-1. Using the _Report Data_ pane, click _New_ > _Data Set_. Call the dataset "AdventureWorksDataset." Select the data source created before from the dropdown, then apply the following settings:
+1. Using the _Report Data_ pane, click _New_ > _Data Set_. Call the dataset "AdventureWorksDataset". Select the data source created before from the dropdown, then apply the following settings:
 
     ![Data set properties](../images/reportingservices/rs-data-set-properties.png)
 
@@ -175,7 +175,7 @@ The report we created is very long, and it contains everything without structure
 
     ![Table with grouping](../images/reportingservices/rs-table-preview-3.png)
 
-1. Go back to the _Design_ view. Right-click the `[LineTotal]` cell and click _Add Total_. This will add a total for each _Order_ (which we used for grouping). There will be no label added to this line. Add one by left-clicking the cell and typing: "Order Total."
+1. Go back to the _Design_ view. Right-click the `[LineTotal]` cell and click _Add Total_. This will add a total for each _Order_ (which we used for grouping). There will be no label added to this line. Add one by left-clicking the cell and typing: "Order Total".
 
     ![Order total](../images/reportingservices/rs-add-total-order.png)
 
