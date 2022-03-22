@@ -14,7 +14,7 @@ Repeat the queries on the `Product` table, but instead of fetching the entire re
 Analyze the following queries executed on the `Product` table:
 
 - k) query records where the primary key is between two values (use the `BETWEEN` operator)
-- k) query records where the primary key is between two values (use the `BETWEEN` operator), **or** it is equal to a value that falls outside of this range
+- l) query records where the primary key is between two values (use the `BETWEEN` operator), **or** it is equal to a value that falls outside of this range
 
 Document the SQL commands you used and explain the actual query execution plan!
 
