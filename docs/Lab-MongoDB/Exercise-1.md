@@ -11,7 +11,7 @@ Open the Visual Studio solution (the `.sln`) file in the checked-out repository.
 !!! warning "Do NOT upgrade any version"
     Do not upgrade the project, the .NET Core version, or any Nuget package! If you see such a question, always choose no!
 
-You will need to work in class `monolab.DAL.Repository`! You can make changes to this class as long as the source code complies, the repository implements interface `mongolab.DAL.IRepository`, and the constructor accepts a single `IMongoDatabase` parameter.
+You will need to work in class `mongolab.DAL.Repository`! You can make changes to this class as long as the source code complies, the repository implements interface `mongolab.DAL.IRepository`, and the constructor accepts a single `IMongoDatabase` parameter.
 
 The database access is configured in class  `mongolab.DAL.MongoConnectionConfig`. If needed, you can change the database name in this file.
 
