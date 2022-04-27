@@ -241,7 +241,7 @@ Rétegről rétegre haladva valósítsuk meg a funkciókat.
     ```
 
     !!! important ""
-        Figyeljünk a tranzakcióra! Először ellenőriznünk kell, van-e már hasonló név. Ha igen, akkor a hibát kivétellel jelezzük. Ha beszúrhatú a rekord, akkor a beszúrás után a tranzakciót is kommitálnunk kell. És mivel az ID-t az adatbázis generálja, a repository függvény visszaadja a létrehozott entitást, benne az új ID-val.
+        Figyeljünk a tranzakcióra! Először ellenőriznünk kell, van-e már hasonló név. Ha igen, akkor a hibát kivétellel jelezzük. Ha beszúrható a rekord, akkor a beszúrás után a tranzakciót is kommitálnunk kell. És mivel az ID-t az adatbázis generálja, a repository függvény visszaadja a létrehozott entitást, benne az új ID-val.
 
 1. A POST http kérést az alábbi controller metódus fogja kiszolgálni:
 
