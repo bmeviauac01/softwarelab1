@@ -6,7 +6,7 @@ In this lab, we will work with _Microsoft SQL Server Reporting Services_, a tool
 
 Required tools to complete the tasks:
 
-- A PC with Windows. You can also use a VM at <https://cloud.bme.hu>, see details [here](../bme-cloud-vm.md).
+- A PC with Windows.
 - Microsoft SQL Server: The free Express version is sufficient, or you may also use _localdb_ installed with Visual Studio
 - [SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms)
 - Database initialization script: [adventure-works-2014-oltp-script.zip](adventure-works-2014-oltp-script.zip)
