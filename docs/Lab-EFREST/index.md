@@ -160,20 +160,20 @@ Valósítsuk meg az első műveletet, amely minden státuszt listáz.
     }
     ```
 
-6. A BLL réteg után következik a controller. Nyisd meg a `Controllers.StatusController` osztályt. **Fűzd bele a Neptun kódod a controller URL-jének végére**, tehát a controller a `/api/statuses/neptun` címre érkező kérésekkel foglalkozik, ahol az utolsó 6 kisbetűs karakter a saját Neptun kódod.
+6. A BLL réteg után következik a controller. Nyisd meg a `Controllers.StatusController` osztályt. **Fűzd bele a Neptun kódod a controller URL-jének végére**, tehát a controller a `/api/status/neptun` címre érkező kérésekkel foglalkozik, ahol az utolsó 6 kisbetűs karakter a saját Neptun kódod.
 
     ```csharp hl_lines="1"
     [Route("api/[controller]/neptun")]
     [ApiController]
-    public class StatusesController : ControllerBase
+    public class StatusController : ControllerBase
     ```
 
     !!! warning "Neptun kód fontos"
         A Neptun kód a későbbiekben a kért képernyőképen fog megjelenni. Fontos, hogy ne hagyd ki!
 
-7. Írjuk meg a `GET /api/statuses/neptun` kérésre válaszoló végpontot: A dependency injection már konfigurálva van, így a konstruktor átveszi a service interfészét (_nem_ a service osztályt, amit írtunk!).
+7. Írjuk meg a `GET /api/status/neptun` kérésre válaszoló végpontot: A dependency injection már konfigurálva van, így a konstruktor átveszi a service interfészét (_nem_ a service osztályt, amit írtunk!).
 
-    ```csharp title="StatusesController.cs"
+    ```csharp title="StatusController.cs"
     [HttpGet]
     public IEnumerable<Status> List()
     {
@@ -183,7 +183,7 @@ Valósítsuk meg az első műveletet, amely minden státuszt listáz.
 
 8. Fordítsd le és indítsd el az alkalmazást.
 
-9. Nyisd meg a Postman-t és küldj a <http://localhost:5000/api/statuses/neptun> címre egy GET kérést (a saját Neptun kódodat kell itt is az URL végére írni).
+9. Nyisd meg a Postman-t és küldj a <http://localhost:5000/api/status/neptun> címre egy GET kérést (a saját Neptun kódodat kell itt is az URL végére írni).
 
     ![Státuszok lekérdezése Postman-nel](../images/efrest/rest-postman-get-statuses.png)
 
@@ -217,9 +217,9 @@ Valósítsuk meg az első műveletet, amely minden státuszt listáz.
 
 Az összes státusz listázása mellett még vár ránk pár alapvető művelet:
 
-- név alapján létezés ellenőrzése (`HEAD /api/statuses/neptun/{nev}`),
-- ID alapján keresés (`GET /api/statuses/neptun/{id}`),
-- és új létrehozása (`POST /api/statuses/neptun`).
+- név alapján létezés ellenőrzése (`HEAD /api/status/neptun/{nev}`),
+- ID alapján keresés (`GET /api/status/neptun/{id}`),
+- és új létrehozása (`POST /api/status/neptun`).
 
 Rétegről rétegre haladva valósítsuk meg a funkciókat.
 
@@ -376,7 +376,7 @@ Implementálj két új http végpontot a task-ot kezelő controllerben, amellyel
 
 A `Task.IsDone` flag jelzi a task kész voltát. Készíts egy új http végpontot az alábbiak szerint, amely az `ITaskService.MarkDone` műveleten keresztül beállítja a flaget a megadott task példányon.
 
-Kérés: `PATCH /api/tasks/neptun/{id}/done`, ahol `{id}` a task azonosítója.
+Kérés: `PATCH /api/task/neptun/{id}/done`, ahol `{id}` a task azonosítója.
 
 Válasz:
 
@@ -387,7 +387,7 @@ Válasz:
 
 Egy task egy státuszhoz tartozik (`Task.StatusId`). Készíts egy új http végpontot az alábbiak szerint, amely az `ITaskService.MoveToStatus` műveleten keresztül áthelyezi a megadott task-ot egy másik státuszba. Ha az új státusz nem létezik, akkor hozzon létre újat a művelet.
 
-Kérés: `PATCH /api/tasks/neptun/{id}/move`, ahol
+Kérés: `PATCH /api/task/neptun/{id}/move`, ahol
 
 - `{id}` a task azonosítója,
 - az új státusz **neve** pedig a bodyban érkezik egy `status` property-ben.
@@ -405,26 +405,27 @@ Válasz:
 Amennyiben sok task van, nem célszerű egyszerre mindet visszaadni listázáskor. Implementálj lapozást erre a funkcióra az alábbi követelményekkel.
 
 - Determinisztikusan az ID alapján sorrendben adja vissza az elemeket.
-- A kérésben `count` nevű query paraméterben megadott darabszámú elemet ad vissza minden lapon.
-- A következő lapot egy `from` érték bemondásával lehessen lekérni. Ezen `from` a lapozásban a soron következő elem azonosítója.
-- A http kérés két paramétere `from` és `count` query paraméterben érkezzen.
-- A lapozás a meglévő `GET /api/tasks/neptun` címen legyen elérhető és legyenek az új paraméterek opcionálisak.
+- A kérésben egy opcionális `count` nevű query paraméterben megadott darabszámú elemet ad vissza minden lapon. alapértelmezetten legyen 5 az értéke, ha a kliens nem küldi.
+- A következő lapot egy opcionális `fromId` érték bemondásával lehessen lekérni. Ezen `fromId` a lapozásban a soron következő elem **azonosítója**.
+- A http kérés két paramétere `fromId` és `count` opcionális query paraméterben érkezzen.
+- A lapozás a meglévő `GET /api/task/neptun/paged` címen legyen elérhető.
+- A lapozás során a válaszhoz csak azok az entitások legyenek lekérdezve, amelyekre tényleg szükség is van (tehát ne rántsuk be feleslegesen a teljes táblát memóriába).
 - A lapozás válasza a `Dto.PagedTaskList` osztály példánya legyen. Ebben szerepel:
     - a lapon található elemek tömbje (`Items`),
     - a lapon található elemek száma (`Count`)
-    - a következő lap lekéréséhez szükséges `from` érték (`NextId`),
+    - a következő lap lekéréséhez szükséges `fromId` érték (`NextId`),
     - és segítségként az URL, amivel a következő lap lekérhető (`NextUrl`), vagy `null`, ha nincs több lap.
 
         !!! tip ""
-            Az Url előállításához használd a controller osztályon elérhető `Url.Action` segédfüggvényt. Ne égesd be a kódba se a `localhost:5000`, se a `/api/tasks/paged` URL részleteket! Az URL előállításához _nem_ string műveletekre lesz szükséged!
+            Az Url előállításához használd a controller osztályon elérhető `Url.Action` segédfüggvényt. Ne égesd be a kódba se a `localhost:5000`, se a `/api/task/neptun/paged` URL részleteket! Az URL előállításához _nem_ string műveletekre lesz szükséged!
 
-            Az `Url.Action` akkor fog abszolút URL-t visszaadni, ha minden paraméterét (`action`, `controller`, `values`, `protocol` és `host`) kitöltöd; utóbbiakhoz a `this.HttpContext.Request` tud adatokat nyújtani.
+            Az `Url.Action` akkor fog abszolút URL-t visszaadni, ha minden paraméterét (`action`, `controller`, `values`, `protocol` és `host`) kitöltöd; utóbbiakhoz a `HttpContext.Request` tud adatokat nyújtani.
 
 - A kérés mindig 200 OK válasszal tér vissza, csak legfeljebb üres a visszaadott válaszban az elemek tömbje.
 
 ??? info "Az alábbi kérés-válasz sorozat mutatja a működést"
 
-    1. `GET /api/tasks/neptun?count=2`
+    1. `GET /api/task/neptun/paged?count=2`
 
         Ez az első kérés. Itt nincs `from` paraméter, ez a legelső elemtől indul.
 
@@ -448,11 +449,11 @@ Amennyiben sok task van, nem célszerű egyszerre mindet visszaadni listázásko
           ],
           "count": 2,
           "nextId": 3,
-          "nextUrl": "http://localhost:5000/api/tasks/neptun?from=3&count=2"
+          "nextUrl": "http://localhost:5000/api/task/neptun/paged?fromId=3&count=2"
         }
         ```
 
-    2. `GET /api/tasks/neptun?from=3&count=2`
+    2. `GET /api/task/neptun/paged?fromId=3&count=2`
 
         Ez a második lap tartalmának lekérése.
 
@@ -476,7 +477,7 @@ Amennyiben sok task van, nem célszerű egyszerre mindet visszaadni listázásko
 
         A válasz mutatja, hogy nincs további lap, mind a `nextId`, mind a `nextUrl` null.
 
-    3. `GET /api/tasks/neptun?from=999&count=999`
+    3. `GET /api/task/neptun?fromId=999&count=999`
 
         Ez egy üres lap.
 
