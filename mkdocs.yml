@@ -69,33 +69,29 @@ nav:
       - GitHub-Actions.md
       - VisualStudio.md
       - GitHub-credentials.md
-  - "Reporting Services":
-      - Lab-ReportingServices/index.md
-      - Lab-ReportingServices/Feladat-1.md
-      - Lab-ReportingServices/Feladat-2.md
-      - Lab-ReportingServices/Feladat-3.md
-      - Lab-ReportingServices/Feladat-4.md
-  - "Lekérdezés optimalizálás":
-      - Lab-QueryOptimization/index.md
-      - Lab-QueryOptimization/Feladat-1.md
-      - Lab-QueryOptimization/Feladat-2.md
-      - Lab-QueryOptimization/Feladat-3.md
-  - "MSSQL":
-      - Lab-MSSQL/index.md
-      - Lab-MSSQL/Feladat-1.md
-      - Lab-MSSQL/Feladat-2.md
-      - Lab-MSSQL/Feladat-3.md
-      - Lab-MSSQL/Feladat-4.md
-  - "MongoDB":
-      - Lab-MongoDB/index.md
-      - Lab-MongoDB/Feladat-1.md
-      - Lab-MongoDB/Feladat-2.md
-      - Lab-MongoDB/Feladat-3.md
-      - Lab-MongoDB/Feladat-4.md
-      - Lab-MongoDB/Feladat-5.md
-  - "Entity Framework & REST":
-      - Lab-EFREST/index.md
-      - Lab-EFREST/Feladat-1.md
-      - Lab-EFREST/Feladat-2.md
-      - Lab-EFREST/Feladat-3.md
-      - Lab-EFREST/Feladat-4.md
+  - "Laborok":
+    - "Reporting Services":
+        - Lab-ReportingServices/index.md
+        - Lab-ReportingServices/Feladat-1.md
+        - Lab-ReportingServices/Feladat-2.md
+        - Lab-ReportingServices/Feladat-3.md
+        - Lab-ReportingServices/Feladat-4.md
+    - "Lekérdezés optimalizálás":
+        - Lab-QueryOptimization/index.md
+        - Lab-QueryOptimization/Feladat-1.md
+        - Lab-QueryOptimization/Feladat-2.md
+        - Lab-QueryOptimization/Feladat-3.md
+    - "MSSQL":
+        - Lab-MSSQL/index.md
+        - Lab-MSSQL/Feladat-1.md
+        - Lab-MSSQL/Feladat-2.md
+        - Lab-MSSQL/Feladat-3.md
+        - Lab-MSSQL/Feladat-4.md
+    - "MongoDB":
+        - Lab-MongoDB/index.md
+        - Lab-MongoDB/Feladat-1.md
+        - Lab-MongoDB/Feladat-2.md
+        - Lab-MongoDB/Feladat-3.md
+        - Lab-MongoDB/Feladat-4.md
+        - Lab-MongoDB/Feladat-5.md
+    - "Entity Framework & REST": Lab-EFREST/index.md
