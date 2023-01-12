@@ -58,3 +58,183 @@ A feladatok megoldása során ne felejtsd el követni a [feladat beadás folyama
 1. Ellenőrizd, hogy létrejöttek-e a táblák. Ha a _Tables_ mappa ki volt már nyitva, akkor frissíteni kell.
 
     ![Adatbázis kiválasztása](../images/sql-managment-tablak.png).
+
+## Feladat 1: Kategória nézet és adatbeszúrás
+
+**A feladat megoldásával 8 pont szerezhető.**
+
+### Nézet létrehozása
+
+Hozz létre egy nézetet `CategoryWithParent` néven a `Category` tábla kényelmesebb használatához. A nézetben két oszlop legyen: a kategória megnevezése (`Name`), és a szülőkategória (`ParentCategoryId`) megnevezése - amennyiben létezik, vagy null.
+
+Nyiss egy új _Query_ ablakot. Ügyelj rá, hogy a jó adatbázis legyen kiválasztva. Hozd létre a nézetet az alábbi utasítás lefuttatásával.
+
+```sql
+create view CategoryWithParent
+as
+select c.Name CategoryName, p.Name ParentCategoryName
+from Category c
+left outer join Category p on c.ParentCategoryId = p.ID
+```
+
+Próbáld ki a nézetet: kérdezd le a nézet tartalmát!
+
+![Nézet tartalmának listázása](../images/sql-management-query-view.png)
+
+### Beszúrás a nézeten keresztül
+
+Készíts triggert `InsertCategoryWithParent` néven, ami lehetővé teszi új kategória beszúrását az előbb létrehozott nézeten keresztül (tehát a kategória nevét és opcionálisan a szülőkategória nevét megadva). A szülő kategória megadása nem kötelező, de amennyiben meg van adva a neve és ilyen névvel nem létezik rekord, dobj hibát, és ne vedd fel az adatot a táblába.
+
+A megoldásban egy _instead of_ típusú triggerre lesz szükségünk, mert ez ad lehetőséget a nézeten keresztül történő adatbeszúrásra. A trigger vázát láthatod alább.
+
+```sql
+create trigger InsertCategoryWithParent -- name of the trigger
+on CategoryWithParent -- name of the view
+instead of insert    -- trigger code executed insted of insert
+as
+begin
+  declare @newname nvarchar(255) -- variables used below
+  declare @parentname nvarchar(255)
+
+  -- using a cursor to navigate the inserted table
+  declare ic cursor for select * from inserted
+  open ic
+  -- standard way of managing a cursor
+  fetch next from ic into @newname, @parentname
+  while @@FETCH_STATUS = 0
+  begin
+    -- check the received values available in the variables
+    -- find the id of the parent, if specified
+    -- throw error if anything is not right
+    -- or insert the record into the Category table
+    fetch next from ic into @newname, @parentname
+  end
+
+  close ic -- finish cursor usage
+  deallocate ic
+end
+```
+
+1. Egészítsd ki a trigger vázat a ciklusban.
+
+    - Ha érkezik szülő kategória név, ellenőrizd, hogy létezik-e kategória olyan névvel, mint ami a `@parentname` változóban van.
+
+    - Ha nincs ilyen, akkor dobj hibát, amivel leáll a trigger futása.
+
+    - Ha minden rendben van, akkor szúrd be az új adatokat a `Category` táblába (ne a nézetbe, hiszen a nézet nem írható, pont ezért készül a trigger).
+
+    !!! example "BEADANDÓ"
+        A trigger kódját az `f1-trigger.sql` fájlba írd. A fájlban csak ez az egyetlen `create trigger` utasítás legyen! Semmiképpen se legyen `[use]`, se `go` utasítás a fájlban! A helyes megoldás 4 pontot ér.
+
+1. Próbáld ki, jól működik-e a trigger! Írj egy olyan beszúró utasítást, amely sikeresen felvesz egy új elemet, és egy olyan teszt utasítást, amely során nem sikerül a beszúrás.
+
+    A helyes és helytelen viselkedéshez feltételezheted, hogy az adatbázis a kiinduló állapotban van: olyan kategória rekordok léteznek csupán, amelyeket a létrehozó script beszúrt. A két teszt _ne_ épüljön egymásra! Mindkettő az elvárt eredményt adja attól függetlenül, hogy a másik lefutott-e már!
+
+    !!! warning "Ékezet kerülendő"
+        Érdemes olyan teszt adatokat választani, amiben nincs ékezet! Különben problémákat okozhat az sql fájl kódolásának helytelen beállítása. Hogy ezt elkerüljük, használható például a _LEGO_, mint létező szülő kategória név.
+
+    !!! example "BEADANDÓ"
+        A teszt utasításokat az `f1-test-ok.sql` és `f1-test-error.sql` fájlokba írd. Mindkét fájlban csak egyetlen `insert` utasítás legyen! Semmiképpen ne legyen `[use]`, se `go` utasítás bennük! Mindkét utasítás 2-2 pontot ér.
+
+## Feladat 2: Számla ellenőrzése
+
+**A feladat megoldása 6 pontot ér.**
+
+### Tárolt eljárás
+
+Írj tárolt eljárást `CheckInvoice` néven, aminek bemeneti paramétere egy `int` típusú és `@invoiceid` nevű számlaazonosító.
+
+- Az eljárás ellenőrizze, hogy a paraméterben kapott számlához (`Invoice`) kapcsolódó számlatételeken (`InvoiceItem`) szereplő mennyiség (`Amount`) egyezik-e a kapcsolódó megrendeléstétel (`OrderItem`) mennyiségével. (Az `InvoiceItem` rekord hivatkozik a kapcsolódó `OrderItem`-re.)
+- Amennyiben eltérés található a kettőben, úgy mindkettő értékét, valamint a termék nevét írd ki a standard outputra az alábbi séma szerint: `Error: Ball (invoice 5 order 6)`
+- Csak akkor írjon bármit a kimenetre a tárolt eljárás, ha problémát talált. Semmiképpen se hagyj teszteléshez használt kiírást az eljárásban!
+- Legyen az eljárás `int` típusú visszatérési értéke 0, ha nem kellett semmit kiírni a kimenetre, és 1, ha kellett. Ez az érték `return` kulcsszóval kerüljön visszaadásra (ne `output` paraméter legyen).
+
+A kiíráshoz használd a `print` parancsot: `PRINT 'Szoveg' + @valtozo + 'Szoveg'` Ügyelj rá, hogy a változónak char típusúnak kell lennie, egyéb típus, pl. szám konvertálása: `convert(varchar(5), @valtozo)`, pl. `PRINT 'Szoveg' + convert(varchar(5), @valtozo)`
+
+!!! example "BEADANDÓ"
+    Az eljárás kódját az `f2-procedure.sql` fájlba írd. A fájlban csak ez az egyetlen `create proc` utasítás legyen! A feladat helyes megoldása 4 pontot ér. Helyesség függvényében részpontszám is kapható.
+
+### Minden számla ellenőrzése
+
+Írj T-SQL kódblokkot, ami az előző feladatban megírt eljárást hívja meg egyenként az összes számlára. Érdemes ehhez egy kurzort használnod, ami a számlákon fut végig.
+
+A kód minden számla ellenőrzése előtt írja ki a standard outputra a számla azonosítóját (pl. `InvoiceID: 12`), és amennyiben nem volt eltérés, írja ki a kimenetre, hogy 'Invoice ok'. Ezt a kimenetet a query ablak alatti _Messages_ panelen fogod látni.
+
+!!! tip "Tárolt eljárás meghívása"
+    Tárolt eljárás meghívása kódból az `exec` paranccsal lehetséges, pl.
+
+    ```sql
+    declare @checkresult int
+    exec @checkresult = CheckInvoice 123
+    ```
+Ellenőrizd a kódblokk viselkedését. Ahhoz, hogy eltérést tapasztalj, ha szükséges, változtass meg egy megrendelés tételt vagy számla tételt az adatbázisban. (Az ellenőrzéshez tartozó kódot nem kell beadni.)
+
+!!! example "BEADANDÓ"
+    Az összes számlát ellenőrző kódot az `f2-check-all.sql` fájlba írd. A fájlban csak a lefuttatható kódblokk szerepeljen. Ne legyen benne a tárolt eljárás kódja, ne legyen benne se `[use]` se `go` utasítás. A feladatrésszel 2 pont szerezhető.
+
+!!! example "BEADANDÓ"
+    Készíts egy képernyőképet a kód futásának eredményéről, amikor valamilyen **eltérést megtalált**. A képet `f2.png` néven add be. A képernyőképen látszódjon az _Object Explorer_-ben az **adatbázis neve (a Neptun kódod)** és **a kiírt üzenet** is!
+
+## Feladat 3: Számla tábla denormalizálása
+
+**A feladat megoldása 6 pontot ér.**
+
+### Új oszlop
+
+Módosítsd az `Invoice` táblát: vegyél fel egy új oszlopot `ItemCount` néven a számlához tartozó összes tétel (`InvoiceItem`) darabszámának tárolásához.
+
+!!! example "BEADANDÓ"
+    Az oszlopot hozzáadó kódot az `f3-column.sql` fájlba írd bele. A fájlban csak egyetlen `alter table` utasítás szerepeljen, ne legyen benne se `[use]` se `go` utasítás. A feladatrésszel 1 pont szerezhető. Ez a feladat előkövetelménye a következőnek.
+
+Készíts T-SQL programblokkot, amely kitölti az újonnan felvett oszlopot az aktuális adatok alapján.
+
+!!! tip ""
+    Ha például egy **számlán** (`Invoice`) szerepel 2 darab piros pöttyös labda és 1 darab tollasütő, akkor 3 tétel szerepel a számlán. Ügyelj rá, hogy számlához (és nem a megrendeléshez) tartozó tételeket kell nézni!
+
+!!! example "BEADANDÓ"
+    Az oszlopot kitöltő kódot az `f3-fill.sql` fájlba írd. A fájlban csak egy T-SQL kódblokk legyen, ne használj tárolt eljárást vagy triggert, és ne legyen a kódban se `[use]` se `go` utasítás. A feladatrésszel 1 pont szerezhető.
+
+### Oszlop karbantartása triggerrel
+
+Készíts triggert `InvoiceItemCountMaintenance` néven, amely a számla tartalmának változásával együtt karbantartja az előzőleg felvett tételszám mezőt. Ügyelj rá, hogy hatékony legyen a trigger! A teljes újraszámolás nem elfogadható megoldás. Továbbá ügyelj arra is, hogy egyszerre több tétel is változhat, a triggernek ilyen esetben is jól kell működnie.
+
+!!! tip "Tipp"
+    A triggert a `InvoiceItem` táblára kell készíteni, bár a frissítendő érték az `Invoice` táblában van.
+
+!!! warning "Fontos"
+    Ne felejtsd, hogy a trigger **utasítás szintű**, azaz nem soronként fut le, így pontenciálisan több változás is lehet az implicit táblákban! Az `inserted` és `deleted` **tábla**, és mindenképpen ennek megfelelően kell őket kezelni.
+
+!!! example "BEADANDÓ"
+    A kódot az `f3-trigger.sql` fájlba írd. A fájlban csak egyetlen `create trigger` utasítás legyen, és ne legyen a kódban se `[use]` se `go` utasítás. A feladatrész 4 pontot ér. Helyesség függvényében részpontszám is kapható.
+
+Próbáld ki, jól működik-e a trigger. A teszteléshez használt utasításokat nem kell beadnod a megoldásban, de fontos, hogy ellenőrizd a viselkedést. Ellenőrizd olyan utasítással is a trigger működését, amely egyszerre több rekordot érint (pl. `where` feltétel nélküli `update` a tábla teljes tartalmára)!
+
+!!! example "BEADANDÓ"
+    Készíts egy képernyőképet, amelyen látható a kitöltött `ItemCount` oszlop (az `Invoice` tábla tartalmával együtt). A képet a megoldásban `f3.png` néven add be. A képernyőképen látszódjon az _Object Explorer_-ben az **adatbázis neve (a Neptun kódod)** és az **`Invoice` tábla tartalma** is! A képernyőkép szükséges feltétele a részpontszám megszerzésének.
+
+## Feladat 4: Opcionális feladat
+
+**A feladat megoldása 3 iMsc pontot ér.**
+
+Kérdezd le a kategóriákat (`Category` tábla) úgy, hogy az alábbi eredményt kapjuk:
+
+| Name           | Count | Rank |
+| -------------- | ----- | ---- |
+| Building items |     3 |    1 |
+| Months 0-6     |     2 |    2 |
+| DUPLO          |     1 |    3 |
+| LEGO           |     1 |    4 |
+| Months 18-24   |     1 |    5 |
+| Months 6-18    |     1 |    6 |
+| Play house     |     1 |    7 |
+
+Az első oszlop a kategória neve, a második a kategóriában található termékek száma, a harmadik oszlop pedig a sorrend, ahol is a kategóriák a termék darabszámok szerint csökkenő sorrendben kell megjelenjenek, és ha egyezik a termék darabszám, akkor a kategória név alapján növekvő sorrendben. A sorrendezés folyamatos kell legyen, és a végeredmény a számított sorrend szerint növekvően kell érkezzen. A lekérdezést egyetlen utasítással kell megoldani. A lekérdezés eredményében az oszlop nevek egyezzenek meg a fenti példában látható nevekkel.
+
+!!! tip "Tipp"
+    A harmadik oszlop neve nem véletlen "rank".
+
+!!! example "BEADANDÓ"
+    A lekérdezést az `f4.sql` fájlba írd. A fájlban egyetlen `select` utasítás szerepeljen, és semmiképpen ne legyen benne se `[use]` se `go` utasítás.
+
+!!! example "BEADANDÓ"
+    Készíts egy képernyőképet a lekérdezés eredményéről. A képet a megoldásban `f4.png` néven add be. A képernyőképen látszódjon az _Object Explorer_-ben az **adatbázis neve (a Neptun kódod)** és a **lekérdezés eredménye** is! A képernyőkép szükséges feltétele a pontok megszerzésének.
