@@ -13,10 +13,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          fetch-depth: 1
+          fetch-depth: 0
 
       - name: Build docs
-        uses: docker://squidfunk/mkdocs-material:7.3.6
+        uses: ./
         with:
           args: build
 

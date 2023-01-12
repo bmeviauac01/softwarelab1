@@ -1,25 +1,29 @@
 site_name: BMEVIAUAC09 Szoftverfejlesztés laboratórium 1
-site_author: Dudás Ákos
-copyright: Copyright &copy; BME VIK AUT
+site_author: Albert István, Tóth Tibor
+copyright: Copyright &copy; BME-VIK-AUT
 repo_name: bmeviauac01/laborok
 repo_url: https://github.com/bmeviauac01/laborok
 
 theme:
   name: material
+  custom_dir: overrides
   language: hu
+  icon:
+    repo: fontawesome/brands/github
   palette:
     - media: "(prefers-color-scheme: light)"
-      primary: red
+      scheme: aut
+      primary: aut
       accent: red
       toggle:
         icon: material/lightbulb-outline
-        name: Váltás sötét témára
+        name: Switch to Dark Mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: red
       toggle:
         icon: material/lightbulb
-        name: Váltás világos témára
+        name: Switch to Light Mode
   font:
     text: Roboto
     code: Roboto Mono
@@ -28,8 +32,8 @@ theme:
     - navigation.instant
     - navigation.top
     - search.suggest
-  logo: images/logo-bme-aut.png
-  favicon: images/favicon.ico
+  logo: logo-bme-aut.png
+  favicon: favicon.ico
 
 extra_css:
   - extra-material-theme.css
@@ -57,10 +61,20 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tabbed
   - pymdownx.tilde
+  - md_in_html
+  - pymdownx.keys
 
 plugins:
   - search:
       prebuild_index: true
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
+      timezone: Europe/Budapest
+      locale: hu
+  - git-committers:
+      repository: bmeviauac01/laborok
+      branch: master
 
 nav:
   - "Szoftverfejlesztés laboratórium 1":
