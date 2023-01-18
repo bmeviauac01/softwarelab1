@@ -19,6 +19,8 @@ A labor elvégzéséhez szükséges eszközök:
 
         Windows-on Visual Studio verzió függvényében lehet, hogy telepítve van (lásd [itt](../VisualStudio.md#net-core-sdk-ellenorzese-es-telepitese) az ellenőrzés módját); ha nem, akkor a fenti linkről kell telepíteni (az SDK-t és _nem_ a runtime-ot.) Linux és MacOS esetén telepíteni szükséges.
 
+        Az Entity Framework Core viszont **7.0**-ás verzióval szerepel a kiinduló projektben, mivel az nem az SDK része, hanem NuGet csomag, illetve teljes mértékben kompatibilis a .NET 6.0 LTS verzióval.
+
 A labor elvégzéséhez használható segédanyagok és felkészülési anyagok:
 
 - Entity Framework Core, REST API, Web API elméleti háttere és mintapéldái, valamint a Postman használata
@@ -409,7 +411,7 @@ Amennyiben sok task van, nem célszerű egyszerre mindet visszaadni listázásko
 - A következő lapot egy opcionális `fromId` érték bemondásával lehessen lekérni. Ezen `fromId` a lapozásban a soron következő elem **azonosítója**.
 - A http kérés két paramétere `fromId` és `count` opcionális query paraméterben érkezzen.
 - A lapozás a meglévő `GET /api/task/neptun/paged` címen legyen elérhető.
-- A lapozás során a válaszhoz csak azok az entitások legyenek lekérdezve, amelyekre tényleg szükség is van (tehát ne rántsuk be feleslegesen a teljes táblát memóriába).
+- A lapozás során a válaszhoz csak azok az entitások legyenek lekérdezve, amelyekre tényleg szükség is van (tehát ne rántsd be feleslegesen a teljes táblát memóriába).
 - A lapozás válasza a `Dto.PagedTaskList` osztály példánya legyen. Ebben szerepel:
     - a lapon található elemek tömbje (`Items`),
     - a lapon található elemek száma (`Count`)
