@@ -9,14 +9,20 @@ Required tools to complete the tasks:
 - Windows, Linux, or macOS: All tools are platform-independent, or a platform-independent alternative is available.
 - MongoDB Community Server ([download](https://www.mongodb.com/download-center/community))
 - Robo 3T ([download](https://robomongo.org/download))
+    - Without installing you can run the server with the following command using Docker:
+    
+          ```cmd
+        docker run --name swlab1-mongo -p 27017:27017 -d mongo
+        ```
+        
 - Sample database initialization script: ([mongo.js](https://bmeviauac01.github.io/adatvezerelt/db/mongo.js))
 - GitHub account and a git client
-- Microsoft Visual Studio 2019/2022 [with the settings here](../VisualStudio.md)
-    - When using Linux or macOS, you can use Visual Studio Code, the .NET Core SDK, and [dotnet CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/).
-- [.NET Core **3.1** SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)
+- Microsoft Visual Studio 2022 [with the settings here](../VisualStudio.md)
+    - When using Linux or macOS, you can use Visual Studio Code, the .NET SDK, and [dotnet CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/).
+- [.NET Core **6.0** SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 
-    !!! warning ".NET Core 3.1"
-        Mind the version! You need .NET Core SDK version **3.1** to solve these exercises.
+    !!! warning ".NET 6.0"
+        Mind the version! You need .NET SDK version **6.0** to solve these exercises.
 
         On Windows it might already be installed along with Visual Studio (see [here](../VisualStudio.md#check-and-install-net-core-sdk) how to check it); if not, use the link above to install (the SDK and _not_ the runtime). You need to install it manually when using Linux or macOS.
 
@@ -24,7 +30,7 @@ Materials for preparing for this laboratory:
 
 - MongoDB database system and the C# driver
     - Check the materials of _Data-driven systems_ including the [seminars](https://bmeviauac01.github.io/datadriven-en/)
-- Official Microsoft tutorial for [WebApi using MongoDB](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mongo-app?view=aspnetcore-3.1&tabs=visual-studio)
+- Official Microsoft tutorial for [WebApi using MongoDB](https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-mongo-app?view=aspnetcore-6.0&tabs=visual-studio)
     - We will not be creating a WebApi in this lab, but the Mongo part is the same.
 
 ## Initial steps
@@ -37,7 +43,7 @@ Keep in mind that you are expected to follow the [submission process](../GitHub.
 
 1. Wait for the repository creation to complete, then check out the repository.
 
-    !!! tip ""
+    !!! warning "Password in the labs"
         If you are not asked for credentials to log in to GitHub in university computer laboratories when checking out the repository, the operation may fail. This is likely due to the machine using someone else's GitHub credentials. Delete these credentials first (see [here](../GitHub-credentials.md)), then retry the checkout.
 
 1. Create a new branch with the name `solution` and work on this branch.
