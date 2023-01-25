@@ -117,7 +117,7 @@ A forráskód melletti képernyőképeken szerepelnie kell a Neptun kódodnak.
 
     public Repository(IMongoDatabase database)
     {
-        this.productCollection = database.GetCollection<Entities.Product>("products");
+        this._productCollection = database.GetCollection<Entities.Product>("products");
     }
     ```
 
