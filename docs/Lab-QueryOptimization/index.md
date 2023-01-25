@@ -34,7 +34,7 @@ A feladatok megoldása során ne felejtsd el követni a [feladat beadás folyama
 
 1. Várd meg, míg elkészül a repository, majd checkout-old ki.
 
-    !!! tip ""
+    !!! warning "Jelszó a laborokban"
         Egyetemi laborokban, ha a checkout során nem kér a rendszer felhasználónevet és jelszót, és nem sikerül a checkout, akkor valószínűleg a gépen korábban megjegyzett felhasználónévvel próbálkozott a rendszer. Először töröld ki a mentett belépési adatokat (lásd [itt](../GitHub-credentials.md)), és próbáld újra.
 
 1. Hozz létre egy új ágat `megoldas` néven, és ezen az ágon dolgozz.
@@ -110,13 +110,13 @@ A lekérdezési terv diagramot adatfolyamként kell olvasnunk, az adat folyásá
 
 Amennyiben egyes (rész)feladatok lekérdezési terve és/vagy a magyarázat azonos, vagy legalábbis nagyon hasonló, elég egyszer elkészíteni a lekérdezési tervről a képet, és a magyarázatot is elég egyszer megadni, csak jelezd, hogy ez mely feladatokra vonatkozik.
 
-### Feladat 1 (2p)
+### 1. Feladat (2p)
 
 Dobd el a `CustomerSite` => `Customer` idegen kulcsot és a `Customer` elsődleges kulcs kényszerét. Legegyszerűbb, ha az _Object Explorer_-ben megkeresed ezeket, és törlöd (a _PK..._ kezdetűek az elsődleges kulcsok, az _FK..._  kezdetűek a külső kulcsok - két külön táblában kell keresd a törlendőket!):
 
 ![Kulcs törlése](../images/queryopt/queryopt-delete-key.png)
 
-Vizsgáld meg a következő lekérdezések végrehajtási tervét a `Customer` táblán – mindig teljes rekordot kérjünk vissza (`select *`):
+Vizsgáld meg a következő lekérdezések végrehajtási tervét a `Customer` táblán – mindig teljes rekordot kérjünk vissza (`SELECT *`):
 
 - a) teljes tábla lekérdezése
 - b) egy rekord lekérdezése elsődleges kulcs alapján
@@ -129,11 +129,11 @@ Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terve
 ??? success "Megoldás"
     A kiadott **parancsok**:
 
-    - a) `select * from customer`
-    - b) `select * from customer where id = 1`
-    - c) `select * from customer where id <> 1`
-    - d) `select * from customer where id > 1`
-    - e) `select * from customer where id > 1 order by id desc`
+    - a) `SELECT * FROM customer`
+    - b) `SELECT * FROM customer WHERE id = 1`
+    - c) `SELECT * FROM customer WHERE id <> 1`
+    - d) `SELECT * FROM customer WHERE id > 1`
+    - e) `SELECT * FROM customer WHERE id > 1 ORDER BY id DESC`
 
     **a)-d)**
 
@@ -151,7 +151,7 @@ Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terve
 
     **Magyarázat**: A _table scan_ marad, és még rendezni is kell, amihez nincs index segítség, tehát külön lépés lesz.
 
-### Feladat 2 (2p)
+### 2. Feladat (2p)
 
 Hozd létre újra az elsődleges kulcsot a `Customer` táblán:
 
@@ -189,7 +189,7 @@ Futtasd újra az előbbi lekérdezéseket. Mit tapasztalsz?
 
     Ismét Clustered Index Seek backward seek order-rel. Megnézhetjük a _Properties_ ablakban a range-et és a Seek Order-t: kikeressük a határon lévő rekordot és onnan visszafelé indulunk el, így eleve rendezve lesz az eredményhalmaz. Ez egy jó terv, a rendezés miatt csak a szükséges rekordokat fogjuk felolvasni és pont a megfelelő sorrendben.
 
-### Feladat 3 (2p)
+### 3. Feladat (2p)
 
 Futtasd az alábbi lekérdezéseket a `Product` táblán megfogalmazva.
 
@@ -204,11 +204,11 @@ Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terve
 ??? success "Megoldás"
     A kiadott **parancsok**:
 
-    - f) `select * from product`
-    - g) `select * from product where price = 800`
-    - h) `select * from product where price <> 800`
-    - i) `select * from product where price > 800`
-    - j) `select * from product where price > 800 order by price desc`
+    - f) `SELECT * FROM product`
+    - g) `SELECT * FROM product WHERE price = 800`
+    - h) `SELECT * FROM product WHERE price <> 800`
+    - i) `SELECT * FROM product WHERE price > 800`
+    - j) `SELECT * FROM product WHERE price > 800 ORDER BY price DESC`
 
     **f)-i)**
 
@@ -222,7 +222,7 @@ Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terve
     
     Ez is Clustered Index Scan lesz, de ami az érdekes, hogy a rendezés költsége jelentős (nagyobb mint a kikeresésé). Miután az elég költséges Index Scan-t megcsináltuk, még rendeznünk is kell, hiszen a kiolvasott rekordok ID szerint sorrendezettek nem `Price` szerint. Ez a lekérdezés nagyon költséges, az amúgy is drága scan után még rendezni is kell. A jó index nem csak a keresést segíti - de most nincs megfelelő indexünk.
 
-### Feladat 4 (2p)
+### 4. Feladat (2p)
 
 Vegyél fel indexet a `Price` oszlopra. Hogyan változnak az előbbi lekérdezések végrehajtási tervei?
 
@@ -257,7 +257,7 @@ Ismételd meg az előbbi lekérdezéseket, és értelmezd a terveket!
     
     A többi lekérdezésnél is valami ilyet vártunk volna. A Clustered Index-re szükség van, mert teljes rekordokat kérünk vissza, a NonClustered Index csak referenciákat ad. A referenciák sorrendben vannak, így ha ezekhez rendre kigyűjtjük a teljes rekordokat a Clustered Index-ből akkor megspóroljuk az utólagos rendezést. Ha csak a Clustered Index-et használnánk (teljes Clustered Index Scan), akkor kellene utólagos rendezés. Ez egy elfogadható terv, mert a NonClustered Index segítségével megúsztuk a külön rendezést.
 
-### Feladat 5 (2p)
+### 5. Feladat (2p)
 
 Szaporítsd meg a _Product_ tábla sorait az alábbi SQL szkripttel. Hogyan változnak az előbbi végrehajtási tervek?
 
@@ -269,9 +269,7 @@ INTO dbo.Numbers
 FROM sys.all_objects AS s1 CROSS JOIN sys.all_objects AS s2
 OPTION (MAXDOP 1);
 
-CREATE CLUSTERED INDEX n ON dbo.Numbers(n)
-;
-
+CREATE CLUSTERED INDEX n ON dbo.Numbers(n);
 
 INSERT INTO Product(Name, Price, Stock, VATID, CategoryID)
 SELECT 'Apple', n%50000, n%100, 3, 13
@@ -318,11 +316,11 @@ FROM Numbers
 
     Ne felejtsd, hogy a dokumentációnak a képekkel együtt helyesen kell megjelenniük a GitHub webes felületén is! Ezt ellenőrizd a beadás során: nyisd meg a repository-d webes felületét, váltsd át a megfelelő ágra, és a GitHub automatikusan renderelni fogja a `README.md` fájlt a képekkel együtt.
 
-### Feladat 6 (1p)
+### 6. Feladat (1p)
 
 Ismételd meg a `Product` kereséseket, de ezúttal ne a teljes sort, csak a `Price` és az elsődleges kulcs értékét kérd vissza a lekérdezésben. Hogyan változnak a végrehajtási tervek? Adj magyarázatot is a változásokra.
 
-### Feladat 7 (1p)
+### 7. Feladat (1p)
 
 Elemezd a következő két, `Product` táblából történő lekérdezés végrehajtási tervét:
 
@@ -331,16 +329,16 @@ Elemezd a következő két, `Product` táblából történő lekérdezés végre
 
 Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és adj magyarázatot rájuk!
 
-### Feladat 8 (1p)
+### 8. Feladat (1p)
 
-A 6-os feladatban `WHERE Price=` feltétel egy egész és egy lebegőpontos szám egyenlőségét vizsgálja. Nézzük meg máshogy is a számkezelést: kérdezd le a `Product` táblából az alábbi feltéteknek megfelelő rekordokat.
+A 6-os feladatban `WHERE Price =` feltétel egy egész és egy lebegőpontos szám egyenlőségét vizsgálja. Nézzük meg máshogy is a számkezelést: kérdezd le a `Product` táblából az alábbi feltéteknek megfelelő rekordokat.
 
-- m) `where cast(Price as int) = egész szám`
-- n) `where Price BETWEEN egész szám-0.0001 AND egész szám+0.0001`
+- m) `WHERE CAST(Price AS INT) = egész szám`
+- n) `WHERE Price BETWEEN egész szám - 0.0001 AND egész szám + 0.0001`
 
 Válassz egy tetszőleges egész számot a lekérdezésekhez, és így kérd le **csak az elsődleges kulcs értéket**. Elemezd a végrehajtási terveket.
 
-### Feladat 9 (1p)
+### 9. Feladat (1p)
 
 Elemezd a következő, `Product` táblából történő lekérdezések végrehajtási tervét:
 
@@ -351,7 +349,7 @@ Elemezd a következő, `Product` táblából történő lekérdezések végrehaj
 
 Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és adj magyarázatot rájuk!
 
-### Feladat 10 (1p)
+### 10. Feladat (1p)
 
 Rakj indexet a `Name` oszlopra, majd elemezd a következő, `Product` táblából történő lekérdezések végrehajtási tervét:
 
@@ -363,7 +361,7 @@ Rakj indexet a `Name` oszlopra, majd elemezd a következő, `Product` táblábó
 
 Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és adj magyarázatot rájuk!
 
-### Feladat 11 (1p)
+### 11. Feladat (1p)
 
 Elemezd a következő, `Product` táblából történő lekérdezések végrehajtási tervét:
 
@@ -372,26 +370,26 @@ Elemezd a következő, `Product` táblából történő lekérdezések végrehaj
 
 Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és adj magyarázatot rájuk!
 
-### Feladat 12 (1p)
+### 12. Feladat (1p)
 
 Kérd le termék kategóriánként (`CategoryId`) a kategóriához tartozó termékek (`Product`) számát.
 
 Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és adj magyarázatot rájuk!
 
-### Feladat 13 (1p)
+### 13. Feladat (1p)
 
 Hogyan javítható az előző feladat lekérdezéseinek teljesítménye? Add meg a megoldást, és utána elemezd újra az előző lekérdezés tervét.
 
 !!! tip "Tipp"
     Fel kell venni egy új indexet. De vajon mire?
 
-### Feladat 14 (1p)
+### 14. Feladat (1p)
 
 Listázd a 2-es `CategoryId`-val rendelkező `Product` rekordokból a nevet (`Name`). 
 
 Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és adj magyarázatot rájuk! Térj ki arra, hogy az előző feladatban felvett index segített-e, és miért?
 
-### Feladat 15 (1p)
+### 15. Feladat (1p)
 
 Javíts az előző feladat lekérdezésének teljesítményén. Az előbb felvett indexet bővítsük a névvel: indexen jobbklikk -> _Properties_ -> a táblázatban az _Included Columns_ fül alatt vegyük fel a `Name` oszlopot.
 
@@ -399,9 +397,7 @@ Javíts az előző feladat lekérdezésének teljesítményén. Az előbb felvet
 
 ## Opcionális feladatok
 
-**A feladat megoldásával 1+2 iMsc pont szerezhető.**
-
-### Feladat 16
+### 16. Feladat (1 iMSc pont)
 
 Elemezd a következő `Invoice`-`InvoiceItem` táblákból történő lekérdezés végrehajtási tervét: minden számlatétel névhez kérdezzük le a megrendelő nevét.
 
@@ -412,7 +408,7 @@ FROM Invoice JOIN InvoiceItem ON Invoice.ID = InvoiceItem.InvoiceID
 
 Mutasd meg, milyen _join_ stratégiát választott a rendszer. Adj magyarázatot, miért választhatta ezt!
 
-### Feladat 17
+### 17. Feladat (2 iMSc pont)
 
 Hasonlítsd össze a különböző JOIN stratégiák költségét a következő lekérdezés esetében: összetartozó `Product`-`Category` rekordpárok lekérdezése.
 
