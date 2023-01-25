@@ -56,8 +56,6 @@ Follow the steps in the [seminar material](https://bmeviauac01.github.io/datadri
 
 ## Exercise 1: Listing and modifying products
 
-**You can earn 7 points with the completion of this exercise.**
-
 This exercise will implement CRUD (create, retrieve, update, delete) operations for `Product` entities.
 
 ### Open the Visual Studio solution
@@ -65,16 +63,16 @@ This exercise will implement CRUD (create, retrieve, update, delete) operations 
 Open the Visual Studio solution (the `.sln`) file in the checked-out repository. If Visual Studio tells you that the project is not supported, you need to install a missing component (see [here](../VisualStudio.md)).
 
 !!! warning "Do NOT upgrade any version"
-    Do not upgrade the project, the .NET Core version, or any Nuget package! If you see such a question, always choose no!
+    Do not upgrade the project, the .NET version, or any NuGet package! If you see such a question, always choose no!
 
-You will need to work in class `mongolab.DAL.Repository`! You can make changes to this class as long as the source code complies, the repository implements interface `mongolab.DAL.IRepository`, and the constructor accepts a single `IMongoDatabase` parameter.
+You will need to work in class `Dal.Repository`! You can make changes to this class as long as the source code complies, the repository implements interface `mongolab.DAL.IRepository`, and the constructor accepts a single `IMongoDatabase` parameter.
 
-The database access is configured in class  `mongolab.DAL.MongoConnectionConfig`. If needed, you can change the database name in this file.
+The database access is configured in class `Dal.MongoConnectionConfig`. If needed, you can change the database name in this file.
 
 Other parts of the application should **NOT** be modified!
 
-!!! info ""
-    The web application is a so-called [_Razor Pages_](https://docs.microsoft.com/en-us/aspnet/core/razor-pages/) ASP.NET Core project. It includes a presentation layer rendered on the server using C# code and the Razor engine. (You do not need to concern yourself with the UI.)
+!!! info "Razor Pages"
+    The web application is a so-called [_Razor Pages_](https://docs.microsoft.com/en-us/aspnet/core/razor-pages/) ASP.NET Core project. It includes a presentation layer rendered on the server using C# code and the Razor template. (You do not need to concern yourself with the UI.)
 
 ### Start the web app
 
@@ -115,20 +113,20 @@ You will need to create screenshots that display your Neptun code.
 1. First, you will need a way to access the `products` collection from C#. Create and initialize a new variable that represents the collection in class `Repository`. Use the injected `IMongoDatabase` variable to get the collection:
 
     ```csharp
-    private readonly IMongoCollection<Entities.Product> productCollection;
+    private readonly IMongoCollection<Entities.Product> _productCollection;
 
     public Repository(IMongoDatabase database)
     {
-        this.productCollection = database.GetCollection<Entities.Product>("products");
+        this._productCollection = database.GetCollection<Entities.Product>("products");
     }
     ```
 
-1. You can use `productCollection` to access the database's product records from now on. Let us start by implementing `ListProducts`. This will require two steps: first, to query the data from the database, then transform each record to an instance of `Models.Product`.
+1. You can use `_productCollection` to access the database's product records from now on. Let us start by implementing `ListProducts`. This will require two steps: first, to query the data from the database, then transform each record to an instance of `Models.Product`.
 
     The query is as follows:
 
     ```csharp
-    var dbProducts = productCollection
+    var dbProducts = _productCollection
         .Find(_ => true) // listing all products hence an empty filter
         .ToList();
     ```
@@ -139,7 +137,7 @@ You will need to create screenshots that display your Neptun code.
     return dbProducts
         .Select(t => new Product
         {
-            ID = t.ID.ToString(),
+            Id = t.Id.ToString(),
             Name = t.Name,
             Price = t.Price,
             Stock = t.Stock
@@ -147,15 +145,15 @@ You will need to create screenshots that display your Neptun code.
         .ToList();
     ```
 
-1. The implementation of `FindProduct(string id)` is similar, except for querying a single record by matching the `ID`. Pay attention to the fact that the `ID` is received as a string, but it needs converting to `ObjectId`.
+1. The implementation of `FindProduct(string id)` is similar, except for querying a single record by matching the `Id`. Pay attention to the fact that the `Id` is received as a string, but it needs converting to `ObjectId`.
 
     The transformation to the model remains identical. However, we should also handle when there is no matching record found and return a `null` value in this case (without converting anything to a model).
 
     The query is as follows:
 
     ```csharp
-    var dbProduct = productCollection
-        .Find(t => t.ID == ObjectId.Parse(id))
+    var dbProduct = _productCollection
+        .Find(t => t.Id == ObjectId.Parse(id))
         .SingleOrDefault();
     // ... model conversion
     ```
@@ -166,14 +164,14 @@ You will need to create screenshots that display your Neptun code.
 
 1. Test the behavior of these queries! Start the web application and go to <http://localhost:5000> in a browser. Click `Products` to list the data from the database. If you click on `Details` it will show the details of the selected product.
 
-!!! error "If you do not see any product"
+!!! failure "If you do not see any product"
     If you see no items on this page, but there is no error, it is most likely due to a misconfigured database access. MongoDB will not return an error if the specified database does not exist. See the instructions for changing the connection details above.
 
 ### Creation
 
 1. Implement the method `InsertProduct(Product product)`. The input is an instance of `Models.Product` that collects the information specified on the UI.
 
-1. To create a new product, we will first create a new database entity (in memory first). This is an instance of class `Entities.Product`. There is no need to set the `ID` - the database will generate it. `Name`, `Price` and `Stock` are provided by the user. What is left is `VAT` and `CategoryID`. We should hard-code values here: create a new VAT entity and find a random category using _Robo3T_ and copy the `_id` value.
+1. To create a new product, we will first create a new database entity (in memory first). This is an instance of class `Entities.Product`. There is no need to set the `Id` - the database will generate it. `Name`, `Price` and `Stock` are provided by the user. What is left is `Vat` and `CategoryId`. We should hard-code values here: create a new VAT entity and find a random category using _Studio 3T_ and copy the `_id` value.
 
     ```csharp
     var dbProduct = new Entities.Product
@@ -181,15 +179,19 @@ You will need to create screenshots that display your Neptun code.
         Name = product.Name,
         Price = product.Price,
         Stock = product.Stock,
-        VAT = new Entities.VAT { Name = "General", Percentage = 20 },
-        CategoryID = ObjectId.Parse("5d7e4370cffa8e1030fd2d99"),
+        Vat = new Entities.Vat
+        {
+            Name = "General",
+            Percentage = 20
+        },
+        CategoryId = ObjectId.Parse("5d7e4370cffa8e1030fd2d99"),
     };
-    // ... insertion
+    _productCollection.InsertOne(dbProduct);
     ```
 
     Once the database entity is ready, use `InsertOne` to add it to the database.
 
-1. To test your code, start the application and click the `Add new product` link on the products page. You will need to fill in the necessary data, and then the presentation layer will call your code.
+3. To test your code, start the application and click the `Add new product` link on the products page. You will need to fill in the necessary data, and then the presentation layer will call your code.
 
 ### Delete
 
@@ -204,8 +206,8 @@ You will need to create screenshots that display your Neptun code.
 1. Using the atomicity guarantees of MongoDB, we will perform the changes in a single step. A filter will be used to find both the `id` and check if there are enough items in stock. A modification will decrease the stock only if the filter is matched.
 
     ```csharp
-    var result = productCollection.UpdateOne(
-        filter: t => t.ID == ObjectId.Parse(id) && t.Stock >= amount,
+    var result = _productCollection.UpdateOne(
+        filter: t => t.Id == ObjectId.Parse(id) && t.Stock >= amount,
         update: Builders<Entities.Product>.Update.Inc(t => t.Stock, -amount),
         options: new UpdateOptions { IsUpsert = false });
     ```
@@ -227,9 +229,7 @@ You will need to create screenshots that display your Neptun code.
 
 ## Exercise 2: Listing categories
 
-**You can earn 4 points with the completion of this exercise.**
-
-We will be listing available categories here with the number of products in each category. We will need an aggregation pipeline here. Continue working in class `MongoLabor.DAL.Repository`.
+We will be listing available categories here with the number of products in each category. We will need an aggregation pipeline here. Continue working in class `Dal.Repository`.
 
 The method you should implement is `IList<Category> ListCategories()`. The method shall return all categories. Class `Models.Category` has 3 members.
 
@@ -239,14 +239,14 @@ The method you should implement is `IList<Category> ListCategories()`. The metho
 
 The outline of the solution is as follows.
 
-1. Create and initialize a new `productCollection` similar to how `categoryCollection` is initialized. The name of the collection is `categories` - you can verify this using _Robo3T_.
+1. Create and initialize a new `_productCollection` similar to how `_categoryCollection` is initialized. The name of the collection is `categories` - you can verify this using _Studio 3T_.
 
 1. `ListCategories()` should first query all categories. Perform this similarly to how it was done in the previous exercise. Store the result set in variable `dbCategories`.
 
-1. Query the number of products associated with each category (`Product.CategoryID`). Use an aggregation pipeline and a [`$group`](https://docs.mongodb.com/manual/reference/operator/aggregation/group/) step as follows.
+1. Query the number of products associated with each category (`Product.CategoryId`). Use an aggregation pipeline and a [`$group`](https://docs.mongodb.com/manual/reference/operator/aggregation/group/) step as follows.
 
     ```csharp
-    var productCounts = productCollection
+    var productCounts = _productCollection
         .Aggregate()
         .Group(t => t.CategoryID, g => new { CategoryID = g.Key, NumberOfProducts = g.Count() })
         .ToList();
@@ -258,21 +258,20 @@ The outline of the solution is as follows.
 
     ```csharp
     return dbCategories
-    .Select(c =>
-    {
-        string parentCategoryName = null;
-        if (c.ParentCategoryID.HasValue)
-            parentCategoryName = dbCategories.Single(p => p.ID == c.ParentCategoryID.Value).Name;
-
-        var numProd = productCounts.SingleOrDefault(pc => pc.CategoryID == c.ID)?.NumberOfProducts ?? 0;
-        return new Category { Name = c.Name, ParentCategoryName = parentCategoryName, NumberOfProducts = numProd };
-    })
-    .ToList();
+    .Select(k => new Category
+       {
+           Name = k.Name,
+           ParentCategoryName = k.ParentCategoryId.HasValue
+               ? dbCategories.Single(p => p.Id == k.ParentCategoryId.Value).Name
+               : null,
+           NumberOfProducts = productCounts.SingleOrDefault(pc => pc.CategoryID == k.Id)?.NumberOfProducts ?? 0
+       })
+       .ToList();
     ```
 
     As seen above, this is performed using LINQ.
 
-    !!! note ""
+    !!! tip "Join with MongoDB"
         This is not the only solution to "join" collections in MongoDB. Although there is no `join` operation, there are ways to query data across collections. Instead of doing this in MongoDB, we do the merging in C# as above. This would not be good if the data set were large. Also, if there were filtering involved, the code above would be much more complicated.
 
 1. Use the `Categories` link of the website to test your solution. This will list the data provided by your code in a tabular format. You can use the `Add new product` functionality from before to create new products. This must result in an increase in the number of products in one of the categories. (Remember that inserting the product hard-coded a category ID.)
@@ -282,20 +281,18 @@ The outline of the solution is as follows.
 
 ## Exercise 3: Querying and modifying orders
 
-**You can earn 5 points with the completion of this exercise.**
-
 In this exercise, we will implement CRUD (create, retrieve, update, delete) operations for `Order` entities. This exercise is similar to the previous one; feel free to look back to the solutions of that exercise.
 
 The properties of `Model.Order` are:
 
-- `ID`: the `ID` of the database serialized using `ToString`
+- `Id`: the `Id` of the database serialized using `ToString`
 - `Date`, `Deadline`, `Status`: taken from the database directly
 - `PaymentMethod`: taken from the `Method` field of the `PaymentMethod` complex entity
 - `Total`: the cumulative sum of the product of `Amount` and `Price` for all items associated with this order (`OrderItems`)
 
 You will need to implement the management methods related to orders: `ListOrders`, `FindOrder`, `InsertOrder`, `DeleteOrder`, and `UpdateOrder`.
 
-Before starting the tasks below, do not forget to add and initialize an `orderCollection` in the repository class similar to the other one.
+Before starting the tasks below, do not forget to add and initialize an `_orderCollection` in the repository class similar to the other one.
 
 ### Listing
 
@@ -309,25 +306,25 @@ Before starting the tasks below, do not forget to add and initialize an `orderCo
 
 1. You need the set the following information in the database entity:
 
-    - `CustomerID`, `SiteID`: find a chosen `Customer` in the database and copy the values from this record from fields `_id` and `mainSiteId`. Hard-wire these values in code.
+    - `CustomerId`, `SiteId`: find a chosen `Customer` in the database and copy the values from this record from fields `_id` and `mainSiteId`. Hard-wire these values in code.
     - `Date`, `Deadline`, `Status`: take these values from the value received as `order` parameter
     - `PaymentMethod`: create a new instance of `PaymentMethod`. The `Method` should be `PaymentMethod` from the object received through the `order` parameter. Leave `Deadline` as `null`.
     - `OrderItems`: create a single item here with the following data:
-        - `ProductID` and `Price`: take the values from the parameter `product`
+        - `ProductId` and `Price`: take the values from the parameter `product`
         - `Amount`: copy value from the method parameter `amount`
         - `Status`: equals to the `Status` field of parameter `order`
     - other fields (related to invoicing) should be left as `null`!
 
 ### Delete
 
-`DeleteOrder` should delete the record specified by the `ID`.
+`DeleteOrder` should delete the record specified by the `Id`.
 
 ### Modification
 
 When updating the record in `UpdateOrder`, only update the information present in `Models.Order`: `Date`, `Deadline`, `Status`, and `PaymentMethod`. Ignore the value `Total`; it does not need to be considered in this context.
 
-!!! tip ""
-    You can combine multiple updates using `Builders<Entities.Order>.Update.Combine`.
+!!! tip "Hint"
+You can combine multiple updates using `Builders<Entities.Order>.Update.Combine`.
 
 Keep in mind that the `IsUpsert` property should be set to `false` in the update!
 
@@ -342,8 +339,6 @@ You can test the functionalities using the `Orders` link in the test web app. Ve
 
 ## Exercise 4: Listing customers
 
-**You can earn 4 points with the completion of this exercise.**
-
 We will list the customers in this exercise, along with the cumulative value of their orders. This will be similar to exercise 2: we will use aggregation and merging in C# code.
 
 The method to implement is `IList<Customer> ListCustomers()`. The method shall return every customer. The properties of `Model.Customer` are:
@@ -354,11 +349,11 @@ The method to implement is `IList<Customer> ListCustomers()`. The method shall r
 
 Follow these steps to solve this exercise:
 
-1. Create and initialize the `customerCollection`.
+1. Create and initialize the `_customerCollection`.
 
-1. List all customers. The customer entity has the list of `Sites`; the main site is the item `MainSiteID` points to. Use this value to find the main in among the list.
+1. List all customers. The customer entity has the list of `Sites`; the main site is the item `MainSiteId` points to. Use this value to find the main in among the list.
 
-1. In the collection of the orders, use an aggregation pipeline to calculate the total of all orders for each `CustomerID`.
+1. In the collection of the orders, use an aggregation pipeline to calculate the total of all orders for each `CustomerId`.
 
 1. Finally, you need the "merge" the two result sets. Every customer has a main site; however, not all of them have orders (in which case `TotalOrders` shall be `null`).
 
@@ -369,7 +364,7 @@ Follow these steps to solve this exercise:
 
 ## Exercise 5: Optional exercise
 
-**You can earn an additional +3 points with the completion of this exercise.** (In the evaluation, you will see the text "imsc" in the exercise title; this is meant for the Hungarian students. Please ignore that.)
+(In the evaluation, you will see the text "imsc" in the exercise title; this is meant for the Hungarian students. Please ignore that.)
 
 We will group the orders in this exercise by date. We would like to see how our company performs by comparing the sales across time. We will use a [`$bucket`](https://docs.mongodb.com/manual/reference/operator/aggregation/bucket/) aggregation.
 
@@ -396,11 +391,11 @@ Further requirements:
     - This is needed because the upper boundary is exclusive. It ensures that every item in the database falls into one of the intervals.
     - _Tip: add one hour to a date: `date.AddHours(1)`._
 1. The intervals should be of equal size
-    - _Tip: C# has built-in support for date arithmetic using dates and the `TimeSpan` classes._
+    - _Tip: C# has built-in support for date arithmetic using dates (`DateTime`) and duration (`TimeSpan`) classes._
 
 You can assume the following:
 
-- All orders in the database have `Date` values even though the type is _nullable_ `DateTime?`.
+- All orders in the database have `Date` values even though the type is _nullable_ (`DateTime?`).
     - You can use `date.Value` to get the date without checking `date.HasValue`.
 - `groupsCount` is a positive integer **greater than or equal to 1**.
 
