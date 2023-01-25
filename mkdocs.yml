@@ -1,25 +1,29 @@
 site_name: BMEVIAUAC09 Software development laboratory 1
-site_author: Dudás Ákos
+site_author: István Albert, ibor Tóth
 copyright: Copyright &copy; BME VIK AUT
 repo_name: bmeviauac01/laboratories-en
 repo_url: https://github.com/bmeviauac01/laboratories-en
 
 theme:
   name: material
+  custom_dir: overrides
   language: en
+  icon:
+    repo: fontawesome/brands/github
   palette:
     - media: "(prefers-color-scheme: light)"
-      primary: red
+      scheme: aut
+      primary: aut
       accent: red
       toggle:
         icon: material/lightbulb-outline
-        name: Switch to dark theme
+        name: Switch to Dark Mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: red
       toggle:
         icon: material/lightbulb
-        name: Switch to light theme
+        name: Switch to Light Mode
   font:
     text: Roboto
     code: Roboto Mono
@@ -28,8 +32,8 @@ theme:
     - navigation.instant
     - navigation.top
     - search.suggest
-  logo: images/logo-bme-aut.png
-  favicon: images/favicon.ico
+  logo: logo-bme-aut.png
+  favicon: favicon.ico
 
 extra_css:
   - extra-material-theme.css
@@ -57,10 +61,20 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tabbed
   - pymdownx.tilde
+  - md_in_html
+  - pymdownx.keys
 
 plugins:
   - search:
       prebuild_index: true
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
+      timezone: Europe/Budapest
+      locale: en
+  - git-committers:
+      repository: bmeviauac01/laboratories-en
+      branch: master
 
 nav:
   - "Software development laboratory 1":
@@ -69,33 +83,9 @@ nav:
       - GitHub-Actions.md
       - VisualStudio.md
       - GitHub-credentials.md
-  - "Reporting Services":
-      - Lab-ReportingServices/index.md
-      - Lab-ReportingServices/Exercise-1.md
-      - Lab-ReportingServices/Exercise-2.md
-      - Lab-ReportingServices/Exercise-3.md
-      - Lab-ReportingServices/Exercise-4.md
-  - "Query optimization":
-      - Lab-QueryOptimization/index.md
-      - Lab-QueryOptimization/Exercise-1.md
-      - Lab-QueryOptimization/Exercise-2.md
-      - Lab-QueryOptimization/Exercise-3.md
-  - "MSSQL":
-      - Lab-MSSQL/index.md
-      - Lab-MSSQL/Exercise-1.md
-      - Lab-MSSQL/Exercise-2.md
-      - Lab-MSSQL/Exercise-3.md
-      - Lab-MSSQL/Exercise-4.md
-  - "MongoDB":
-      - Lab-MongoDB/index.md
-      - Lab-MongoDB/Exercise-1.md
-      - Lab-MongoDB/Exercise-2.md
-      - Lab-MongoDB/Exercise-3.md
-      - Lab-MongoDB/Exercise-4.md
-      - Lab-MongoDB/Exercise-5.md
-  - "Entity Framework & REST":
-      - Lab-EFREST/index.md
-      - Lab-EFREST/Exercise-1.md
-      - Lab-EFREST/Exercise-2.md
-      - Lab-EFREST/Exercise-3.md
-      - Lab-EFREST/Exercise-4.md
+  - "Laboratories":
+      - "Reporting Services": Lab-ReportingServices/index.md
+      - "Query optimization": Lab-QueryOptimization/index.md
+      - "MSSQL": Lab-MSSQL/index.md
+      - "MongoDB": Lab-MongoDB/index.md
+      - "Entity Framework & REST": Lab-EFREST/index.md
