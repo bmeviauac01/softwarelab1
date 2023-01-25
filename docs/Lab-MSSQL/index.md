@@ -32,7 +32,7 @@ A feladatok megoldása során ne felejtsd el követni a [feladat beadás folyama
 
 1. Várd meg, míg elkészül a repository, majd checkout-old ki.
 
-    !!! tip ""
+    !!! warning "Jelszó a laborokban"
         Egyetemi laborokban, ha a checkout során nem kér a rendszer felhasználónevet és jelszót, és nem sikerül a checkout, akkor valószínűleg a gépen korábban megjegyzett felhasználónévvel próbálkozott a rendszer. Először töröld ki a mentett belépési adatokat (lásd [itt](../GitHub-credentials.md)), és próbáld újra.
 
 1. Hozz létre egy új ágat `megoldas` néven, és ezen az ágon dolgozz.
@@ -59,9 +59,7 @@ A feladatok megoldása során ne felejtsd el követni a [feladat beadás folyama
 
     ![Adatbázis kiválasztása](../images/sql-managment-tablak.png).
 
-## Feladat 1: Kategória nézet és adatbeszúrás
-
-**A feladat megoldásával 8 pont szerezhető.**
+## 1. Feladat: Kategória nézet és adatbeszúrás (8 pont)
 
 ### Nézet létrehozása
 
@@ -70,11 +68,11 @@ Hozz létre egy nézetet `CategoryWithParent` néven a `Category` tábla kényel
 Nyiss egy új _Query_ ablakot. Ügyelj rá, hogy a jó adatbázis legyen kiválasztva. Hozd létre a nézetet az alábbi utasítás lefuttatásával.
 
 ```sql
-create view CategoryWithParent
-as
-select c.Name CategoryName, p.Name ParentCategoryName
-from Category c
-left outer join Category p on c.ParentCategoryId = p.ID
+CREATE VIEW CategoryWithParent
+AS
+SELECT c.Name CategoryName, p.Name ParentCategoryName
+FROM Category c
+LEFT OUTER JOIN Category p ON c.ParentCategoryId = p.ID
 ```
 
 Próbáld ki a nézetet: kérdezd le a nézet tartalmát!
@@ -85,34 +83,34 @@ Próbáld ki a nézetet: kérdezd le a nézet tartalmát!
 
 Készíts triggert `InsertCategoryWithParent` néven, ami lehetővé teszi új kategória beszúrását az előbb létrehozott nézeten keresztül (tehát a kategória nevét és opcionálisan a szülőkategória nevét megadva). A szülő kategória megadása nem kötelező, de amennyiben meg van adva a neve és ilyen névvel nem létezik rekord, dobj hibát, és ne vedd fel az adatot a táblába.
 
-A megoldásban egy _instead of_ típusú triggerre lesz szükségünk, mert ez ad lehetőséget a nézeten keresztül történő adatbeszúrásra. A trigger vázát láthatod alább.
+A megoldásban egy `instead of` típusú triggerre lesz szükségünk, mert ez ad lehetőséget a nézeten keresztül történő adatbeszúrásra. A trigger vázát láthatod alább.
 
 ```sql
-create trigger InsertCategoryWithParent -- name of the trigger
-on CategoryWithParent -- name of the view
-instead of insert    -- trigger code executed insted of insert
-as
-begin
-  declare @newname nvarchar(255) -- variables used below
-  declare @parentname nvarchar(255)
+CREATE TRIGGER InsertCategoryWithParent -- name of the trigger
+ON CategoryWithParent -- name of the view
+INSTEAD of INSERT    -- trigger code executed insted of insert
+AS
+BEGIN
+  DECLARE @newname NVARCHAR(255) -- variables used below
+  DECLARE @parentname NVARCHAR(255)
 
   -- using a cursor to navigate the inserted table
-  declare ic cursor for select * from inserted
-  open ic
+  DECLARE ic CURSOR for SELECT * FROM inserted
+  OPEN ic
   -- standard way of managing a cursor
-  fetch next from ic into @newname, @parentname
-  while @@FETCH_STATUS = 0
-  begin
+  FETCH NEXT FROM ic INTO @newname, @parentname
+  WHILE @@FETCH_STATUS = 0
+  BEGIN
     -- check the received values available in the variables
     -- find the id of the parent, if specified
     -- throw error if anything is not right
     -- or insert the record into the Category table
-    fetch next from ic into @newname, @parentname
-  end
+    FETCH NEXT FROM ic INTO @newname, @parentname
+  END
 
-  close ic -- finish cursor usage
-  deallocate ic
-end
+  CLOSE ic -- finish cursor usage
+  DEALLOCATE ic
+END
 ```
 
 1. Egészítsd ki a trigger vázat a ciklusban.
@@ -136,9 +134,7 @@ end
     !!! example "BEADANDÓ"
         A teszt utasításokat az `f1-test-ok.sql` és `f1-test-error.sql` fájlokba írd. Mindkét fájlban csak egyetlen `insert` utasítás legyen! Semmiképpen ne legyen `[use]`, se `go` utasítás bennük! Mindkét utasítás 2-2 pontot ér.
 
-## Feladat 2: Számla ellenőrzése
-
-**A feladat megoldása 6 pontot ér.**
+## 2. Feladat: Számla ellenőrzése (6 pont)
 
 ### Tárolt eljárás
 
@@ -164,9 +160,10 @@ A kód minden számla ellenőrzése előtt írja ki a standard outputra a száml
     Tárolt eljárás meghívása kódból az `exec` paranccsal lehetséges, pl.
 
     ```sql
-    declare @checkresult int
-    exec @checkresult = CheckInvoice 123
+    DECLARE @checkresult INT
+    EXEC @checkresult = CheckInvoice 123
     ```
+
 Ellenőrizd a kódblokk viselkedését. Ahhoz, hogy eltérést tapasztalj, ha szükséges, változtass meg egy megrendelés tételt vagy számla tételt az adatbázisban. (Az ellenőrzéshez tartozó kódot nem kell beadni.)
 
 !!! example "BEADANDÓ"
@@ -175,9 +172,7 @@ Ellenőrizd a kódblokk viselkedését. Ahhoz, hogy eltérést tapasztalj, ha sz
 !!! example "BEADANDÓ"
     Készíts egy képernyőképet a kód futásának eredményéről, amikor valamilyen **eltérést megtalált**. A képet `f2.png` néven add be. A képernyőképen látszódjon az _Object Explorer_-ben az **adatbázis neve (a Neptun kódod)** és **a kiírt üzenet** is!
 
-## Feladat 3: Számla tábla denormalizálása
-
-**A feladat megoldása 6 pontot ér.**
+## 3. Feladat 3: Számla tábla denormalizálása (6 pont)
 
 ### Új oszlop
 
@@ -212,9 +207,7 @@ Próbáld ki, jól működik-e a trigger. A teszteléshez használt utasítások
 !!! example "BEADANDÓ"
     Készíts egy képernyőképet, amelyen látható a kitöltött `ItemCount` oszlop (az `Invoice` tábla tartalmával együtt). A képet a megoldásban `f3.png` néven add be. A képernyőképen látszódjon az _Object Explorer_-ben az **adatbázis neve (a Neptun kódod)** és az **`Invoice` tábla tartalma** is! A képernyőkép szükséges feltétele a részpontszám megszerzésének.
 
-## Feladat 4: Opcionális feladat
-
-**A feladat megoldása 3 iMsc pontot ér.**
+## 4. Feladat 4: Opcionális feladat (3 iMSc pont)
 
 Kérdezd le a kategóriákat (`Category` tábla) úgy, hogy az alábbi eredményt kapjuk:
 
