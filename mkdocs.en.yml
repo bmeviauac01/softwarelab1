@@ -1,3 +1,5 @@
+INHERIT: mkdocs.common.yml
+
 site_name: BMEVIAUAC09 Software development laboratory 1
 site_author: István Albert, Tibor Tóth
 site_url: https://bmeviauac01.github.io/softwarelab1/en/

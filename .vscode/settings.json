@@ -1,17 +1,10 @@
 {
-  "spellright.language": ["hu"],
+  "spellright.language": ["hu", "en"],
   "spellright.documentTypes": ["markdown", "latex", "plaintext"],
   "prettier.disableLanguages": ["markdown"],
   "prettier.requireConfig": true,
   "markdownlint.config": {
     "default": true,
     "MD007": { "indent": 4 }
-  },
-  "grammarly.autoActivate": true,
-  "grammarly.audience": "knowledgeable",
-  "grammarly.dialect": "american",
-  "grammarly.domain": "general",
-  "grammarly.severity": {
-    "Passive voice": 4
   }
 }
