@@ -1,0 +1,1089 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="István Albert, Tibor Tóth" name="author"/>
+<link href="https://bmeviauac01.github.io/softwarelab1/en/Lab-MongoDB/" rel="canonical"/>
+<link href="../Lab-MSSQL/" rel="prev"/>
+<link href="../Lab-EFREST/" rel="next"/>
+<link href="../img/favicon.ico" rel="icon"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-9.0.9" name="generator"/>
+<title>MongoDB - BMEVIAUAC09 Software development laboratory 1</title>
+<link href="../assets/stylesheets/main.0d440cfe.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../css/timeago.css" rel="stylesheet"/>
+<link href="../extra-material-theme.css" rel="stylesheet"/>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+                </style><script src="../assets/javascripts/glightbox.min.js"></script></head>
+<body data-md-color-accent="red" data-md-color-primary="aut" data-md-color-scheme="aut" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#mongodb">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="BMEVIAUAC09 Software development laboratory 1" class="md-header__button md-logo" data-md-component="logo" href=".." title="BMEVIAUAC09 Software development laboratory 1">
+<img alt="logo" src="../img/logo-bme-aut.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            BMEVIAUAC09 Software development laboratory 1
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              MongoDB
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to Dark Mode" class="md-option" data-md-color-accent="red" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="aut" data-md-color-scheme="aut" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to Dark Mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"></path></svg>
+</label>
+<input aria-label="Switch to Light Mode" class="md-option" data-md-color-accent="" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="red" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to Light Mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"></path></svg>
+</label>
+</form>
+<div class="md-header__option">
+<div class="md-select">
+<button aria-label="Select language" class="md-header__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"></path></svg>
+</button>
+<div class="md-select__inner">
+<ul class="md-select__list">
+<li class="md-select__item">
+<a class="md-select__link" href="https://bmeviauac01.github.io/softwarelab1/en/" hreflang="en">
+                    English
+                  </a>
+</li>
+<li class="md-select__item">
+<a class="md-select__link" href="https://bmeviauac01.github.io/softwarelab1/hu/" hreflang="hu">
+                    Magyar
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/bmeviauac01/softwarelab1" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    bmeviauac01/softwarelab1
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="..">
+        Software development laboratory 1
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../Lab-ReportingServices/">
+        Laboratories
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="BMEVIAUAC09 Software development laboratory 1" class="md-nav__button md-logo" data-md-component="logo" href=".." title="BMEVIAUAC09 Software development laboratory 1">
+<img alt="logo" src="../img/logo-bme-aut.png"/>
+</a>
+    BMEVIAUAC09 Software development laboratory 1
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/bmeviauac01/softwarelab1" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    bmeviauac01/softwarelab1
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+          Software development laboratory 1
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_1_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+          Software development laboratory 1
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+        Course overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../GitHub/">
+        Submitting your work (GitHub)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../GitHub-Actions/">
+        Using GitHub Actions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../VisualStudio/">
+        Install Visual Studio &amp; .NET Core SDK
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../GitHub-credentials/">
+        In university laboratories: GitHub access
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Laboratories
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          Laboratories
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Lab-ReportingServices/">
+        Reporting Services
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Lab-QueryOptimization/">
+        Query optimization
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Lab-MSSQL/">
+        MSSQL
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          MongoDB
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        MongoDB
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pre-requisites-and-preparation">
+    Pre-requisites and preparation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#initial-steps">
+    Initial steps
+  </a>
+<nav aria-label="Initial steps" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-and-check-out-your-git-repository">
+    Create and check out your Git repository
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-the-database">
+    Create the database
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#exercise-1-listing-and-modifying-products">
+    Exercise 1: Listing and modifying products
+  </a>
+<nav aria-label="Exercise 1: Listing and modifying products" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#open-the-visual-studio-solution">
+    Open the Visual Studio solution
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#start-the-web-app">
+    Start the web app
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#display-the-neptun-code-on-the-web-page">
+    Display the Neptun code on the web page
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#listing">
+    Listing
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#creation">
+    Creation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#delete">
+    Delete
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#modification">
+    Modification
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#exercise-2-listing-categories">
+    Exercise 2: Listing categories
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#exercise-3-querying-and-modifying-orders">
+    Exercise 3: Querying and modifying orders
+  </a>
+<nav aria-label="Exercise 3: Querying and modifying orders" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#listing_1">
+    Listing
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#creation_1">
+    Creation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#delete_1">
+    Delete
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#modification_1">
+    Modification
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#testing">
+    Testing
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#exercise-4-listing-customers">
+    Exercise 4: Listing customers
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#exercise-5-optional-exercise">
+    Exercise 5: Optional exercise
+  </a>
+<nav aria-label="Exercise 5: Optional exercise" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#requirements">
+    Requirements
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#draft-solution">
+    Draft solution
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Lab-EFREST/">
+        Entity Framework &amp; REST
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pre-requisites-and-preparation">
+    Pre-requisites and preparation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#initial-steps">
+    Initial steps
+  </a>
+<nav aria-label="Initial steps" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-and-check-out-your-git-repository">
+    Create and check out your Git repository
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-the-database">
+    Create the database
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#exercise-1-listing-and-modifying-products">
+    Exercise 1: Listing and modifying products
+  </a>
+<nav aria-label="Exercise 1: Listing and modifying products" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#open-the-visual-studio-solution">
+    Open the Visual Studio solution
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#start-the-web-app">
+    Start the web app
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#display-the-neptun-code-on-the-web-page">
+    Display the Neptun code on the web page
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#listing">
+    Listing
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#creation">
+    Creation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#delete">
+    Delete
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#modification">
+    Modification
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#exercise-2-listing-categories">
+    Exercise 2: Listing categories
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#exercise-3-querying-and-modifying-orders">
+    Exercise 3: Querying and modifying orders
+  </a>
+<nav aria-label="Exercise 3: Querying and modifying orders" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#listing_1">
+    Listing
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#creation_1">
+    Creation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#delete_1">
+    Delete
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#modification_1">
+    Modification
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#testing">
+    Testing
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#exercise-4-listing-customers">
+    Exercise 4: Listing customers
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#exercise-5-optional-exercise">
+    Exercise 5: Optional exercise
+  </a>
+<nav aria-label="Exercise 5: Optional exercise" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#requirements">
+    Requirements
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#draft-solution">
+    Draft solution
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/bmeviauac01/softwarelab1/edit/master/docs/Lab-MongoDB/index.md" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"></path></svg>
+</a>
+<h1 id="mongodb">MongoDB<a class="headerlink" href="#mongodb" title="Permanent link">¶</a></h1>
+<p>In this lab, we will work with the MongoDB NoSQL database and the Mongo C# driver.</p>
+<h2 id="pre-requisites-and-preparation">Pre-requisites and preparation<a class="headerlink" href="#pre-requisites-and-preparation" title="Permanent link">¶</a></h2>
+<p>Required tools to complete the tasks:</p>
+<ul>
+<li>Windows, Linux, or macOS: All tools are platform-independent, or a platform-independent alternative is available.</li>
+<li>MongoDB Community Server (<a href="https://www.mongodb.com/download-center/community">download</a>)</li>
+<li>
+<p>Robo 3T (<a href="https://robomongo.org/download">download</a>)</p>
+<ul>
+<li>
+<p>Without installing you can run the server with the following command using Docker:</p>
+<p><code>cmd
+docker run --name swlab1-mongo -p 27017:27017 -d mongo</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Sample database initialization script: (<a href="https://bmeviauac01.github.io/adatvezerelt/db/mongo.js">mongo.js</a>)</p>
+</li>
+<li>GitHub account and a git client</li>
+<li>Microsoft Visual Studio 2022 <a href="../VisualStudio/">with the settings here</a><ul>
+<li>When using Linux or macOS, you can use Visual Studio Code, the .NET SDK, and <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/">dotnet CLI</a>.</li>
+</ul>
+</li>
+<li>
+<p><a href="https://dotnet.microsoft.com/en-us/download/dotnet/6.0">.NET Core <strong>6.0</strong> SDK</a></p>
+<div class="admonition warning">
+<p class="admonition-title">.NET 6.0</p>
+<p>Mind the version! You need .NET SDK version <strong>6.0</strong> to solve these exercises.</p>
+<p>On Windows it might already be installed along with Visual Studio (see <a href="../VisualStudio/#check-and-install-net-core-sdk">here</a> how to check it); if not, use the link above to install (the SDK and <em>not</em> the runtime). You need to install it manually when using Linux or macOS.</p>
+</div>
+</li>
+</ul>
+<p>Materials for preparing for this laboratory:</p>
+<ul>
+<li>MongoDB database system and the C# driver<ul>
+<li>Check the materials of <em>Data-driven systems</em> including the <a href="https://bmeviauac01.github.io/datadriven-en/">seminars</a></li>
+</ul>
+</li>
+<li>Official Microsoft tutorial for <a href="https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-mongo-app?view=aspnetcore-6.0&amp;tabs=visual-studio">WebApi using MongoDB</a><ul>
+<li>We will not be creating a WebApi in this lab, but the Mongo part is the same.</li>
+</ul>
+</li>
+</ul>
+<h2 id="initial-steps">Initial steps<a class="headerlink" href="#initial-steps" title="Permanent link">¶</a></h2>
+<p>Keep in mind that you are expected to follow the <a href="../GitHub/">submission process</a>.</p>
+<h3 id="create-and-check-out-your-git-repository">Create and check out your Git repository<a class="headerlink" href="#create-and-check-out-your-git-repository" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p>Create your git repository using the invitation link in Moodle. Each lab has a different URL; make sure to use the right one!</p>
+</li>
+<li>
+<p>Wait for the repository creation to complete, then check out the repository.</p>
+<div class="admonition warning">
+<p class="admonition-title">Password in the labs</p>
+<p>If you are not asked for credentials to log in to GitHub in university computer laboratories when checking out the repository, the operation may fail. This is likely due to the machine using someone else's GitHub credentials. Delete these credentials first (see <a href="../GitHub-credentials/">here</a>), then retry the checkout.</p>
+</div>
+</li>
+<li>
+<p>Create a new branch with the name <code>solution</code> and work on this branch.</p>
+</li>
+<li>
+<p>Open the checked-out folder and type your Neptun code into the <code>neptun.txt</code> file. There should be a single line with the 6 characters of your Neptun code and nothing else in this file.</p>
+</li>
+</ol>
+<h3 id="create-the-database">Create the database<a class="headerlink" href="#create-the-database" title="Permanent link">¶</a></h3>
+<p>Follow the steps in the <a href="https://bmeviauac01.github.io/datadriven-en/seminar/mongodb/#exercise-0-create-database-open-starter-code">seminar material</a> to start the database server and initialize the database.</p>
+<h2 id="exercise-1-listing-and-modifying-products">Exercise 1: Listing and modifying products<a class="headerlink" href="#exercise-1-listing-and-modifying-products" title="Permanent link">¶</a></h2>
+<p>This exercise will implement CRUD (create, retrieve, update, delete) operations for <code>Product</code> entities.</p>
+<h3 id="open-the-visual-studio-solution">Open the Visual Studio solution<a class="headerlink" href="#open-the-visual-studio-solution" title="Permanent link">¶</a></h3>
+<p>Open the Visual Studio solution (the <code>.sln</code>) file in the checked-out repository. If Visual Studio tells you that the project is not supported, you need to install a missing component (see <a href="../VisualStudio/">here</a>).</p>
+<div class="admonition warning">
+<p class="admonition-title">Do NOT upgrade any version</p>
+<p>Do not upgrade the project, the .NET version, or any NuGet package! If you see such a question, always choose no!</p>
+</div>
+<p>You will need to work in class <code>Dal.Repository</code>! You can make changes to this class as long as the source code complies, the repository implements interface <code>mongolab.DAL.IRepository</code>, and the constructor accepts a single <code>IMongoDatabase</code> parameter.</p>
+<p>The database access is configured in class <code>Dal.MongoConnectionConfig</code>. If needed, you can change the database name in this file.</p>
+<p>Other parts of the application should <strong>NOT</strong> be modified!</p>
+<div class="admonition info">
+<p class="admonition-title">Razor Pages</p>
+<p>The web application is a so-called <a href="https://docs.microsoft.com/en-us/aspnet/core/razor-pages/"><em>Razor Pages</em></a> ASP.NET Core project. It includes a presentation layer rendered on the server using C# code and the Razor template. (You do not need to concern yourself with the UI.)</p>
+</div>
+<h3 id="start-the-web-app">Start the web app<a class="headerlink" href="#start-the-web-app" title="Permanent link">¶</a></h3>
+<p>Check if the web application starts.</p>
+<ol>
+<li>
+<p>Compile the code and start in Visual Studio.</p>
+</li>
+<li>
+<p>Open URL <a href="http://localhost:5000/">http://localhost:5000/</a> in a browser.</p>
+</li>
+</ol>
+<div class="admonition success">
+<p>If everything was successful, you should see a page with links where you will be able to test your code. (The links will not work as the data access layer is not implemented yet.)</p>
+</div>
+<h3 id="display-the-neptun-code-on-the-web-page">Display the Neptun code on the web page<a class="headerlink" href="#display-the-neptun-code-on-the-web-page" title="Permanent link">¶</a></h3>
+<p>You will need to create screenshots that display your Neptun code.</p>
+<ol>
+<li>
+<p>Open file <code>Pages\Shared\_Layout.cshtml</code>. In the middle of the file, find the following section, and edit your Neptun code.</p>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="n">div</span><span class="w"> </span><span class="n">class</span><span class="o">=</span><span class="s">"container body-content"</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="n">@RenderBody</span><span class="p">()</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="n">hr</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="n">footer</span><span class="o">&gt;</span>
+<span class="hll"><span class="w">        </span><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">@ViewData</span><span class="p">[</span><span class="s">"Title"</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">NEPTUN</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class="w">    </span><span class="o">&lt;/</span><span class="n">footer</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Compile the code and start the app again, then check the starting page. You should see the Neptune code at the bottom of the page.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/mongo/mongo-neptun-footer.png"><img alt="Neptun code in the footer" src="../images/mongo/mongo-neptun-footer.png"/></a></p>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">IMPORTANT</p>
+<p>The Neptun code is a mandatory requirement in the footer!</p>
+</div>
+<h3 id="listing">Listing<a class="headerlink" href="#listing" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p>First, you will need a way to access the <code>products</code> collection from C#. Create and initialize a new variable that represents the collection in class <code>Repository</code>. Use the injected <code>IMongoDatabase</code> variable to get the collection:</p>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IMongoCollection</span><span class="o">&lt;</span><span class="n">Entities</span><span class="p">.</span><span class="n">Product</span><span class="o">&gt;</span><span class="w"> </span><span class="n">_productCollection</span><span class="p">;</span>
+
+<span class="k">public</span><span class="w"> </span><span class="nf">Repository</span><span class="p">(</span><span class="n">IMongoDatabase</span><span class="w"> </span><span class="n">database</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">_productCollection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">database</span><span class="p">.</span><span class="n">GetCollection</span><span class="o">&lt;</span><span class="n">Entities</span><span class="p">.</span><span class="n">Product</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"products"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>You can use <code>_productCollection</code> to access the database's product records from now on. Let us start by implementing <code>ListProducts</code>. This will require two steps: first, to query the data from the database, then transform each record to an instance of <code>Models.Product</code>.</p>
+<p>The query is as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">dbProducts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_productCollection</span>
+<span class="w">    </span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">true</span><span class="p">)</span><span class="w"> </span><span class="c1">// listing all products hence an empty filter</span>
+<span class="w">    </span><span class="p">.</span><span class="n">ToList</span><span class="p">();</span>
+</code></pre></div>
+<p>All items are then transformed.</p>
+<div class="highlight"><pre><span></span><code><span class="k">return</span><span class="w"> </span><span class="n">dbProducts</span>
+<span class="w">    </span><span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Product</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">Id</span><span class="p">.</span><span class="n">ToString</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">Price</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Stock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">Stock</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="n">ToList</span><span class="p">();</span>
+</code></pre></div>
+</li>
+<li>
+<p>The implementation of <code>FindProduct(string id)</code> is similar, except for querying a single record by matching the <code>Id</code>. Pay attention to the fact that the <code>Id</code> is received as a string, but it needs converting to <code>ObjectId</code>.</p>
+<p>The transformation to the model remains identical. However, we should also handle when there is no matching record found and return a <code>null</code> value in this case (without converting anything to a model).</p>
+<p>The query is as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">dbProduct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_productCollection</span>
+<span class="w">    </span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">Id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ObjectId</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">id</span><span class="p">))</span>
+<span class="w">    </span><span class="p">.</span><span class="n">SingleOrDefault</span><span class="p">();</span>
+<span class="c1">// ... model conversion</span>
+</code></pre></div>
+<p>Note how the filter expression looks like! Also, note how the <code>ToList</code> is replaced with a <code>SingleOrDefault</code> call. This returns either the first (and single) element in the result set or <code>null</code> when there is none. This is a generic way of querying a single record from the database. You will need to write a similar code in further exercises.</p>
+<p>The conversion/transformation code is already given; however, we should prepare to handle when <code>dbProduct</code> is <code>null</code>. Instead of conversion, we should return <code>null</code> then.</p>
+</li>
+<li>
+<p>Test the behavior of these queries! Start the web application and go to <a href="http://localhost:5000">http://localhost:5000</a> in a browser. Click <code>Products</code> to list the data from the database. If you click on <code>Details</code> it will show the details of the selected product.</p>
+</li>
+</ol>
+<div class="admonition failure">
+<p class="admonition-title">If you do not see any product</p>
+<p>If you see no items on this page, but there is no error, it is most likely due to a misconfigured database access. MongoDB will not return an error if the specified database does not exist. See the instructions for changing the connection details above.</p>
+</div>
+<h3 id="creation">Creation<a class="headerlink" href="#creation" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p>Implement the method <code>InsertProduct(Product product)</code>. The input is an instance of <code>Models.Product</code> that collects the information specified on the UI.</p>
+</li>
+<li>
+<p>To create a new product, we will first create a new database entity (in memory first). This is an instance of class <code>Entities.Product</code>. There is no need to set the <code>Id</code> - the database will generate it. <code>Name</code>, <code>Price</code> and <code>Stock</code> are provided by the user. What is left is <code>Vat</code> and <code>CategoryId</code>. We should hard-code values here: create a new VAT entity and find a random category using <em>Studio 3T</em> and copy the <code>_id</code> value.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">dbProduct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Entities</span><span class="p">.</span><span class="n">Product</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">product</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">product</span><span class="p">.</span><span class="n">Price</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Stock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">product</span><span class="p">.</span><span class="n">Stock</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Vat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Entities</span><span class="p">.</span><span class="n">Vat</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"General"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Percentage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="n">CategoryId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ObjectId</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="s">"5d7e4370cffa8e1030fd2d99"</span><span class="p">),</span>
+<span class="p">};</span>
+<span class="n">_productCollection</span><span class="p">.</span><span class="n">InsertOne</span><span class="p">(</span><span class="n">dbProduct</span><span class="p">);</span>
+</code></pre></div>
+<p>Once the database entity is ready, use <code>InsertOne</code> to add it to the database.</p>
+</li>
+<li>
+<p>To test your code, start the application and click the <code>Add new product</code> link on the products page. You will need to fill in the necessary data, and then the presentation layer will call your code.</p>
+</li>
+</ol>
+<h3 id="delete">Delete<a class="headerlink" href="#delete" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p>Implement method <code>DeleteProduct(string id)</code>. Use <code>DeleteOne</code> on the collection to delete the record. You will need a filter expression here to find the matching record similarly to how it was done in <code>FindProduct(string id)</code>.</p>
+</li>
+<li>
+<p>Test the functionality using the web application by clicking the <code>Delete</code> link next to a product.</p>
+</li>
+</ol>
+<h3 id="modification">Modification<a class="headerlink" href="#modification" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p>We will implement the method <code>bool SellProduct(string id, int amount)</code> as a modification operation. The method shall return <code>true</code> if a record with a matching <code>id</code> is found, and there are at least <code>amount</code> pieces in stock. If the product is not found or there is not enough in stock return <code>false</code>.</p>
+</li>
+<li>
+<p>Using the atomicity guarantees of MongoDB, we will perform the changes in a single step. A filter will be used to find both the <code>id</code> and check if there are enough items in stock. A modification will decrease the stock only if the filter is matched.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_productCollection</span><span class="p">.</span><span class="n">UpdateOne</span><span class="p">(</span>
+<span class="w">    </span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">Id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ObjectId</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">Stock</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">amount</span><span class="p">,</span>
+<span class="w">    </span><span class="n">update</span><span class="p">:</span><span class="w"> </span><span class="n">Builders</span><span class="o">&lt;</span><span class="n">Entities</span><span class="p">.</span><span class="n">Product</span><span class="o">&gt;</span><span class="p">.</span><span class="n">Update</span><span class="p">.</span><span class="n">Inc</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">Stock</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">amount</span><span class="p">),</span>
+<span class="w">    </span><span class="n">options</span><span class="p">:</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">UpdateOptions</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">IsUpsert</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+<p>Note that the <code>UpdateOptions</code> is used to signal that we do <strong>NOT</strong> want as upsert operation; instead, we want the operation to do nothing when the filter is not matched.</p>
+<p>The modification is assembled using <code>Update</code> in <code>Builders</code>. Here we want to decrease the stock value with <code>amount</code> (which is, effectively, an increase with <code>-amount</code>).</p>
+<p>We can determine what happened based on the <code>result</code> returned by the update operation. If the result indicates that the filter matched a record and the modification was performed, return <code>true</code>. Otherwise, return <code>false</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">MatchedCount</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="p">;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Test the functionality using the web application by clicking the <code>Buy</code> link next to a product. Verify the behavior when you enter a too large amount!</p>
+</li>
+</ol>
+<div class="admonition example">
+<p class="admonition-title">SUBMISSION</p>
+<p>Create a <strong>screenshot</strong> of the web page listing the products <strong>after successfully adding at least one new product</strong>. Save the screenshot as <code>f1.png</code> and submit it with the other files of the solution. The screenshot shall display the <strong>list of products</strong>. Verify that your <strong>Neptun code</strong> is visible on the image at the bottom of the page! The screenshot is required to earn the points.</p>
+</div>
+<h2 id="exercise-2-listing-categories">Exercise 2: Listing categories<a class="headerlink" href="#exercise-2-listing-categories" title="Permanent link">¶</a></h2>
+<p>We will be listing available categories here with the number of products in each category. We will need an aggregation pipeline here. Continue working in class <code>Dal.Repository</code>.</p>
+<p>The method you should implement is <code>IList&lt;Category&gt; ListCategories()</code>. The method shall return all categories. Class <code>Models.Category</code> has 3 members.</p>
+<ul>
+<li><code>Name</code>: the name of the category</li>
+<li><code>ParentCategoryName</code>: the name of the parent category. If there is no parent, the value should be <code>null</code>.</li>
+<li><code>NumberOfProducts</code>: number of products in this category. If there are no products, the value should be <strong>0</strong>.</li>
+</ul>
+<p>The outline of the solution is as follows.</p>
+<ol>
+<li>
+<p>Create and initialize a new <code>_productCollection</code> similar to how <code>_categoryCollection</code> is initialized. The name of the collection is <code>categories</code> - you can verify this using <em>Studio 3T</em>.</p>
+</li>
+<li>
+<p><code>ListCategories()</code> should first query all categories. Perform this similarly to how it was done in the previous exercise. Store the result set in variable <code>dbCategories</code>.</p>
+</li>
+<li>
+<p>Query the number of products associated with each category (<code>Product.CategoryId</code>). Use an aggregation pipeline and a <a href="https://docs.mongodb.com/manual/reference/operator/aggregation/group/"><code>$group</code></a> step as follows.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">productCounts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_productCollection</span>
+<span class="w">    </span><span class="p">.</span><span class="n">Aggregate</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">Group</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">CategoryID</span><span class="p">,</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">CategoryID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g</span><span class="p">.</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">NumberOfProducts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g</span><span class="p">.</span><span class="n">Count</span><span class="p">()</span><span class="w"> </span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="n">ToList</span><span class="p">();</span>
+</code></pre></div>
+<p>This query yields a list where each item has a <code>CategoryID</code> and the number of associated products.</p>
+</li>
+<li>
+<p>We have all information we need: all categories (including the parents) and the number of products for each. The final step is to "merge" the results in C# code.</p>
+<div class="highlight"><pre><span></span><code><span class="k">return</span><span class="w"> </span><span class="n">dbCategories</span>
+<span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Category</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">       </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">k</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span>
+<span class="w">       </span><span class="n">ParentCategoryName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">k</span><span class="p">.</span><span class="n">ParentCategoryId</span><span class="p">.</span><span class="n">HasValue</span>
+<span class="w">           </span><span class="o">?</span><span class="w"> </span><span class="n">dbCategories</span><span class="p">.</span><span class="n">Single</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">Id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">k</span><span class="p">.</span><span class="n">ParentCategoryId</span><span class="p">.</span><span class="n">Value</span><span class="p">).</span><span class="n">Name</span>
+<span class="w">           </span><span class="p">:</span><span class="w"> </span><span class="k">null</span><span class="p">,</span>
+<span class="w">       </span><span class="n">NumberOfProducts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">productCounts</span><span class="p">.</span><span class="n">SingleOrDefault</span><span class="p">(</span><span class="n">pc</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">pc</span><span class="p">.</span><span class="n">CategoryID</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">k</span><span class="p">.</span><span class="n">Id</span><span class="p">)</span><span class="o">?.</span><span class="n">NumberOfProducts</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="m">0</span>
+<span class="w">   </span><span class="p">})</span>
+<span class="w">   </span><span class="p">.</span><span class="n">ToList</span><span class="p">();</span>
+</code></pre></div>
+<p>As seen above, this is performed using LINQ.</p>
+<div class="admonition tip">
+<p class="admonition-title">Join with MongoDB</p>
+<p>This is not the only solution to "join" collections in MongoDB. Although there is no <code>join</code> operation, there are ways to query data across collections. Instead of doing this in MongoDB, we do the merging in C# as above. This would not be good if the data set were large. Also, if there were filtering involved, the code above would be much more complicated.</p>
+</div>
+</li>
+<li>
+<p>Use the <code>Categories</code> link of the website to test your solution. This will list the data provided by your code in a tabular format. You can use the <code>Add new product</code> functionality from before to create new products. This must result in an increase in the number of products in one of the categories. (Remember that inserting the product hard-coded a category ID.)</p>
+</li>
+</ol>
+<div class="admonition example">
+<p class="admonition-title">SUBMISSION</p>
+<p>Create a <strong>screenshot</strong> of the web page listing the categories. Save the screenshot as <code>f2.png</code> and submit it with the other files of the solution. The screenshot shall display the <strong>list of categories</strong>. Verify that your <strong>Neptun code</strong> is visible on the image at the bottom of the page! The screenshot is required to earn the points.</p>
+</div>
+<h2 id="exercise-3-querying-and-modifying-orders">Exercise 3: Querying and modifying orders<a class="headerlink" href="#exercise-3-querying-and-modifying-orders" title="Permanent link">¶</a></h2>
+<p>In this exercise, we will implement CRUD (create, retrieve, update, delete) operations for <code>Order</code> entities. This exercise is similar to the previous one; feel free to look back to the solutions of that exercise.</p>
+<p>The properties of <code>Model.Order</code> are:</p>
+<ul>
+<li><code>Id</code>: the <code>Id</code> of the database serialized using <code>ToString</code></li>
+<li><code>Date</code>, <code>Deadline</code>, <code>Status</code>: taken from the database directly</li>
+<li><code>PaymentMethod</code>: taken from the <code>Method</code> field of the <code>PaymentMethod</code> complex entity</li>
+<li><code>Total</code>: the cumulative sum of the product of <code>Amount</code> and <code>Price</code> for all items associated with this order (<code>OrderItems</code>)</li>
+</ul>
+<p>You will need to implement the management methods related to orders: <code>ListOrders</code>, <code>FindOrder</code>, <code>InsertOrder</code>, <code>DeleteOrder</code>, and <code>UpdateOrder</code>.</p>
+<p>Before starting the tasks below, do not forget to add and initialize an <code>_orderCollection</code> in the repository class similar to the other one.</p>
+<h3 id="listing_1">Listing<a class="headerlink" href="#listing_1" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p>Method <code>ListOrders</code> receives a <code>string status</code> parameter. If this value is empty or <code>null</code> (see: <code>string.IsNullOrEmpty</code>) list all orders. Otherwise, list orders where the <code>Status</code> field is identical to the <code>status</code> received as a parameter.</p>
+</li>
+<li>
+<p>Method <code>FindOrder</code> returns the data of a single order identified by <code>string id</code>. If no record with the same <code>ID</code> exists, this method shall return <code>null</code>.</p>
+</li>
+</ol>
+<h3 id="creation_1">Creation<a class="headerlink" href="#creation_1" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p>Implement the method <code>InsertOrder</code>. The following information is provided to create the new order: <code>Order order</code>, <code>Product product</code>, and <code>int amount</code>.</p>
+</li>
+<li>
+<p>You need the set the following information in the database entity:</p>
+<ul>
+<li><code>CustomerId</code>, <code>SiteId</code>: find a chosen <code>Customer</code> in the database and copy the values from this record from fields <code>_id</code> and <code>mainSiteId</code>. Hard-wire these values in code.</li>
+<li><code>Date</code>, <code>Deadline</code>, <code>Status</code>: take these values from the value received as <code>order</code> parameter</li>
+<li><code>PaymentMethod</code>: create a new instance of <code>PaymentMethod</code>. The <code>Method</code> should be <code>PaymentMethod</code> from the object received through the <code>order</code> parameter. Leave <code>Deadline</code> as <code>null</code>.</li>
+<li><code>OrderItems</code>: create a single item here with the following data:<ul>
+<li><code>ProductId</code> and <code>Price</code>: take the values from the parameter <code>product</code></li>
+<li><code>Amount</code>: copy value from the method parameter <code>amount</code></li>
+<li><code>Status</code>: equals to the <code>Status</code> field of parameter <code>order</code></li>
+</ul>
+</li>
+<li>other fields (related to invoicing) should be left as <code>null</code>!</li>
+</ul>
+</li>
+</ol>
+<h3 id="delete_1">Delete<a class="headerlink" href="#delete_1" title="Permanent link">¶</a></h3>
+<p><code>DeleteOrder</code> should delete the record specified by the <code>Id</code>.</p>
+<h3 id="modification_1">Modification<a class="headerlink" href="#modification_1" title="Permanent link">¶</a></h3>
+<p>When updating the record in <code>UpdateOrder</code>, only update the information present in <code>Models.Order</code>: <code>Date</code>, <code>Deadline</code>, <code>Status</code>, and <code>PaymentMethod</code>. Ignore the value <code>Total</code>; it does not need to be considered in this context.</p>
+<div class="admonition tip">
+<p class="admonition-title">Hint</p>
+</div>
+<p>You can combine multiple updates using <code>Builders&lt;Entities.Order&gt;.Update.Combine</code>.</p>
+<p>Keep in mind that the <code>IsUpsert</code> property should be set to <code>false</code> in the update!</p>
+<p>The method should return <code>true</code> if there were a record with a matching <code>ID</code>.</p>
+<h3 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">¶</a></h3>
+<p>You can test the functionalities using the <code>Orders</code> link in the test web app. Verify the behavior of <code>Filter</code>, <code>Add new order</code>, <code>Edit</code>, <code>Details</code>, and <code>Delete</code> too!</p>
+<div class="admonition example">
+<p class="admonition-title">SUBMISSION</p>
+<p>Create a <strong>screenshot</strong> of the web page listing the orders <strong>after successfully adding at least one new order</strong>. Save the screenshot as <code>f3.png</code> and submit it with the other files of the solution. The screenshot shall display the <strong>list of orders</strong>. Verify that your <strong>Neptun code</strong> is visible on the image at the bottom of the page! The screenshot is required to earn the points.</p>
+</div>
+<h2 id="exercise-4-listing-customers">Exercise 4: Listing customers<a class="headerlink" href="#exercise-4-listing-customers" title="Permanent link">¶</a></h2>
+<p>We will list the customers in this exercise, along with the cumulative value of their orders. This will be similar to exercise 2: we will use aggregation and merging in C# code.</p>
+<p>The method to implement is <code>IList&lt;Customer&gt; ListCustomers()</code>. The method shall return every customer. The properties of <code>Model.Customer</code> are:</p>
+<ul>
+<li><code>Name</code>: the name of the customer</li>
+<li><code>ZipCode</code>, <code>City</code>, <code>Street</code>: the address fields of the main site of the customer</li>
+<li><code>TotalOrders</code>: the cumulative total of all orders of the customer. You have to aggregate the price*amount for each order of a customer to get this total. If a particular customer has no orders, this value shall be <code>null</code>.</li>
+</ul>
+<p>Follow these steps to solve this exercise:</p>
+<ol>
+<li>
+<p>Create and initialize the <code>_customerCollection</code>.</p>
+</li>
+<li>
+<p>List all customers. The customer entity has the list of <code>Sites</code>; the main site is the item <code>MainSiteId</code> points to. Use this value to find the main in among the list.</p>
+</li>
+<li>
+<p>In the collection of the orders, use an aggregation pipeline to calculate the total of all orders for each <code>CustomerId</code>.</p>
+</li>
+<li>
+<p>Finally, you need the "merge" the two result sets. Every customer has a main site; however, not all of them have orders (in which case <code>TotalOrders</code> shall be <code>null</code>).</p>
+</li>
+<li>
+<p>Use the <code>Customers</code> link of the website to test your solution. This will list the data provided by your code in a tabular format. You can use the <code>Add new order</code> functionality from before to create new orders. This must result in an increase in the total for one of the customers.</p>
+</li>
+</ol>
+<div class="admonition example">
+<p class="admonition-title">SUBMISSION</p>
+<p>Create a <strong>screenshot</strong> of the web page listing the customers. Save the screenshot as <code>f4.png</code> and submit it with the other files of the solution. The screenshot shall display the <strong>list of customers</strong>. Verify that your <strong>Neptun code</strong> is visible on the image at the bottom of the page! The screenshot is required to earn the points.</p>
+</div>
+<h2 id="exercise-5-optional-exercise">Exercise 5: Optional exercise<a class="headerlink" href="#exercise-5-optional-exercise" title="Permanent link">¶</a></h2>
+<p>(In the evaluation, you will see the text "imsc" in the exercise title; this is meant for the Hungarian students. Please ignore that.)</p>
+<p>We will group the orders in this exercise by date. We would like to see how our company performs by comparing the sales across time. We will use a <a href="https://docs.mongodb.com/manual/reference/operator/aggregation/bucket/"><code>$bucket</code></a> aggregation.</p>
+<h3 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">¶</a></h3>
+<p>The method to implement is <code>OrderGroups GroupOrders(int groupsCount)</code>. This operation shall group the orders into <code>groupsCount</code> equal date ranges. The return value contains two values:</p>
+<ul>
+<li><code>IList&lt;DateTime&gt; Thresholds</code>: The threshold dates of the date ranges.<ul>
+<li>The lower bound of the interval is inclusive, while the upper bound is exclusive.</li>
+<li>When having <code>n</code> intervals, the <code>Thresholds</code> list has <code>n + 1</code> items</li>
+<li><em>E.g.: Let the <code>Thresholds</code> be <code>a, b, c, d</code>; the intervals shall then be: <code>[a, b[</code>, <code>[b, c[</code> and <code>[c, d[</code>.</em></li>
+</ul>
+</li>
+<li><code>IList&lt;OrderGroup&gt; Groups</code>: The groups that fall into each date range. The properties of <code>OrderGroup</code> are:<ul>
+<li><code>Date</code>: The <em>start</em> date of the interval. E.g., for the interval <code>[a, b[</code> the value is<code>a</code>.</li>
+<li><code>Pieces</code>: The number of orders within the interval.</li>
+<li><code>Total</code>: The cumulative sum of the values of orders within this interval.</li>
+</ul>
+</li>
+</ul>
+<p>Further requirements:</p>
+<ol>
+<li>There should be exactly <code>groupsCount</code> intervals.<ul>
+<li>The number of items in <code>Thresholds</code> will be <strong>exactly</strong> <code>groupsCount + 1</code>.</li>
+<li>The number of items in <code>Groups</code> is <strong>at most</strong> <code>groupsCount</code> — no need for an item for intervals with no orders</li>
+</ul>
+</li>
+<li>The lower boundary should be the earliest date in the database</li>
+<li>The upper boundary should be the latest date in the database + 1 hour<ul>
+<li>This is needed because the upper boundary is exclusive. It ensures that every item in the database falls into one of the intervals.</li>
+<li><em>Tip: add one hour to a date: <code>date.AddHours(1)</code>.</em></li>
+</ul>
+</li>
+<li>The intervals should be of equal size<ul>
+<li><em>Tip: C# has built-in support for date arithmetic using dates (<code>DateTime</code>) and duration (<code>TimeSpan</code>) classes.</em></li>
+</ul>
+</li>
+</ol>
+<p>You can assume the following:</p>
+<ul>
+<li>All orders in the database have <code>Date</code> values even though the type is <em>nullable</em> (<code>DateTime?</code>).<ul>
+<li>You can use <code>date.Value</code> to get the date without checking <code>date.HasValue</code>.</li>
+</ul>
+</li>
+<li><code>groupsCount</code> is a positive integer <strong>greater than or equal to 1</strong>.</li>
+</ul>
+<h3 id="draft-solution">Draft solution<a class="headerlink" href="#draft-solution" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p>Get the earliest and latest order dates from the database.</p>
+<ul>
+<li><em>Tip: You can execute two queries to get the values or a single aggregation.</em></li>
+</ul>
+</li>
+<li>
+<p>Calculate the interval boundaries according to the requirements.</p>
+<ul>
+<li>This will yield the <code>Thresholds</code> list for the return value.</li>
+</ul>
+</li>
+<li>
+<p>Execute a <code>$bucket</code> aggregation on the orders collection. See the documentation <a href="https://docs.mongodb.com/manual/reference/operator/aggregation/bucket/">here</a>.</p>
+<ul>
+<li>the <code>groupBy</code> expression will be the date of the order</li>
+<li><code>boundaries</code> expects the values as stated in the requirements; the list assembled in the previous step will work just fine</li>
+<li><code>output</code> should calculate the count and total value</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you receive an error message <code>"Element '...' does not match any field or property of class..."</code> then in the <code>output</code> expression, change every property to <strong>lowercase</strong> (e.g., <code>Pieces</code> -&gt; <code>pieces</code>). It seems that the Mongo C# driver does not perform the required name transformations here.</p>
+</div>
+</li>
+<li>
+<p>The <code>$bucket</code> aggregation will yield the intervals according to the specification. You will only need to transform the results into instances of <code>OrderGroup</code> and produce the return value.</p>
+</li>
+<li>
+<p>Use the <code>Group orders</code> link of the website to test your solution. A diagram will display the calculated information. Test your solution by changing the number of groups and adding orders in the past using the previously implemented <code>Add new order</code> functionality.</p>
+</li>
+</ol>
+<div class="admonition example">
+<p class="admonition-title">SUBMISSION</p>
+<p>Create a <strong>screenshot</strong> of the web page displaying the diagram. Save the screenshot as <code>f5.png</code> and submit it with the other files of the solution. The screenshot shall show <strong>both diagrams</strong> (you may need to zoom out in the browser to fit them). Verify that your <strong>Neptun code</strong> is visible on the image at the bottom of the page! The screenshot is required to earn the points.</p>
+</div>
+<hr/>
+<div class="md-source-file">
+<span class="md-source-file__fact"> <span class="md-icon" title="Last update"> <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z">
+</path>
+</svg>
+</span>
+<span title="February 7, 2023 16:35:42">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-02-07T16:35:42+01:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-02-07</span>
+</span>
+</span>
+<span class="md-source-file__fact">
+<span class="md-icon" title="Created"> <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z">
+</path>
+</svg>
+</span>
+<span title="July 6, 2020 08:06:03">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2020-07-06T08:06:03+02:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2020-07-06</span>
+</span>
+</span>
+<span class="md-source-file__fact">
+<span class="md-icon" title="Szerzők">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z">
+</path>
+</svg>
+</span>
+<span>Szerzők</span>
+<nav><a class="md-author" href="https://github.com/akosdudas" rel="noopener noreferrer" target="_blank" title="@akosdudas">
+<img alt="@akosdudas" src="https://avatars.githubusercontent.com/u/11335181?size=72"/>
+</a><a class="md-author" href="https://github.com/ialbert-AUT" rel="noopener noreferrer" target="_blank" title="@ialbert-AUT">
+<img alt="@ialbert-AUT" src="https://avatars.githubusercontent.com/u/61751571?size=72"/>
+</a><a class="md-author" href="https://github.com/tibitoth" rel="noopener noreferrer" target="_blank" title="@tibitoth">
+<img alt="@tibitoth" src="https://avatars.githubusercontent.com/u/8333960?size=72"/>
+</a></nav>
+</span>
+</div>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+            Back to top
+          </a>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © BME-VIK-AUT
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit"], "search": "../assets/javascripts/workers/search.db81ec45.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../assets/javascripts/bundle.a00a7c5e.min.js"></script>
+<script src="../js/timeago.min.js"></script>
+<script src="../js/timeago_mkdocs_material.js"></script>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
