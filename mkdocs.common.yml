@@ -1,13 +1,10 @@
-site_name: BMEVIAUAC09 Szoftverfejlesztés laboratórium 1
-site_author: Albert István, Tóth Tibor
 copyright: Copyright &copy; BME-VIK-AUT
-repo_name: bmeviauac01/laborok
-repo_url: https://github.com/bmeviauac01/laborok
+repo_name: bmeviauac01/softwarelab1
+repo_url: https://github.com/bmeviauac01/softwarelab1
 
 theme:
   name: material
   custom_dir: overrides
-  language: hu
   icon:
     repo: fontawesome/brands/github
   palette:
@@ -33,14 +30,20 @@ theme:
     - navigation.top
     - search.suggest
     - content.action.edit
-  logo: logo-bme-aut.png
-  favicon: favicon.ico
+  logo: img/logo-bme-aut.png
+  favicon: img/favicon.ico
 
 extra_css:
   - extra-material-theme.css
 
 extra:
-  generator: false
+  alternate:
+    - name: English
+      link: https://bmeviauac01.github.io/softwarelab1/en/
+      lang: en
+    - name: Magyar
+      link: https://bmeviauac01.github.io/softwarelab1/hu/
+      lang: hu
 
 markdown_extensions:
   - admonition
@@ -66,27 +69,12 @@ markdown_extensions:
   - pymdownx.keys
 
 plugins:
-  - search:
-      prebuild_index: true
-  - git-revision-date-localized:
-      enable_creation_date: true
-      type: timeago
-      timezone: Europe/Budapest
-      locale: hu
-  - git-committers:
-      repository: bmeviauac01/laborok
-      branch: master
-
-nav:
-  - "Szoftverfejlesztés laboratórium 1":
-      - index.md
-      - GitHub.md
-      - GitHub-Actions.md
-      - VisualStudio.md
-      - GitHub-credentials.md
-  - "Laborok":
-      - "Reporting Services": Lab-ReportingServices/index.md
-      - "Lekérdezés optimalizálás": Lab-QueryOptimization/index.md
-      - "MSSQL": Lab-MSSQL/index.md
-      - "MongoDB": Lab-MongoDB/index.md
-      - "Entity Framework & REST": Lab-EFREST/index.md
+  search: { } # https://squidfunk.github.io/mkdocs-material/insiders/getting-started/#built-in-plugins key-value syntax
+  glightbox: { } # https://squidfunk.github.io/mkdocs-material/insiders/getting-started/#built-in-plugins key-value syntax
+  git-revision-date-localized:
+    enable_creation_date: true
+    type: timeago
+    timezone: Europe/Budapest
+  git-committers:
+    repository: bmeviauac01/softwarelab1
+    branch: master
