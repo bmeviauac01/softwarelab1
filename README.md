@@ -1,10 +1,10 @@
-# Szoftverfejlesztés laboratórium 1 feladatok
+# BMEVIAUAC01 Adatvezérelt rendszerek
 
-![Build docs](https://github.com/bmeviauac01/laborok/workflows/Build%20docs/badge.svg?branch=master)
+![Build docs](https://github.com/bmeviauac01/softwarelab1/workflows/Build%20docs/badge.svg?branch=master)
 
-[BMEVIAUAC09 Szoftverfejlesztés laboratórium 1](https://www.aut.bme.hu/Course/VIAUAC09/) tárgy laborfeladatai.
+[BMEVIAUAC09 Szoftverfejlesztés laboratórium 1](https://www.aut.bme.hu/Course/szoftverlabor1) tárgy labor feladatai.
 
-Az MKDocs használatához [a hovatalos dokumentáció](https://squidfunk.github.io/mkdocs-material/creating-your-site/) segítségedre lehet.
+A jegyzetek MkDocs segítségével készülnek és GitHub Pages-en kerülnek publikálásra: <https://bmeviauac01.github.io/softwarelab1/hu/>
 
 ## MKDocs tesztelése (Docker-rel)
 
@@ -32,3 +32,29 @@ A repository tartalmaz egy Dockerfile-t, ami at MKDocs keretrendszer és függő
 
 3. <http://localhost:8000> vagy a codespace átirányított címének megnyitása böngészőből.
 4. Markdown szerkesztése és mentése után automatikusan frissül a weboldal.
+
+
+# BMEVIAUAC01 Data-driven systems
+
+![Build docs](https://github.com/bmeviauac01/softwarelab1/workflows/Build%20docs/badge.svg?branch=master)
+
+[ENVIAUAC09 Software Development Laboratory 1](https://www.aut.bme.hu/Course/ENVIAUAC03/) course laboratory exercises.
+
+The content in built using MkDocs and is published to GitHub Pages at: <https://bmeviauac01.github.io/softwarelab1/en/>
+
+## Render website (with Docker)
+
+You need Docker in order to build and run the documentation. On a local machine with Windows [Docker Desktop](https://www.docker.com/products/docker-desktop/) could be the right tooling or you could use any cloud based development environment like GitHub Codespaces.
+
+This repository contains a Dockerfile which need to be built and run.
+
+1. Open a terminal on the repository's root.
+2. Run the following commands on Windows (PowerShell), Linux or MacOS:
+
+   ```cmd
+   docker build -t mkdocs .
+   docker run -it --rm -p 8000:8000 -v ${PWD}:/docs mkdocs --config-file=mkdocs.en.yml
+   ```
+
+3. Open <http://localhost:8000> or codespace's port forwarded address in a browser.
+4. Edit Markdown files. After saving any file the webpage should refresh automatically.

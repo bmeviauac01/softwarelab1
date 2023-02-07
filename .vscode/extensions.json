@@ -1,6 +1,7 @@
 {
     "recommendations": [
         "davidanson.vscode-markdownlint",
+        "znck.grammarly"
         "ban.spellright"
     ]
 }

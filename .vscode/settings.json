@@ -1,5 +1,5 @@
 {
-  "spellright.language": ["hu"],
+  "spellright.language": ["hu", "en"],
   "spellright.documentTypes": ["markdown", "latex", "plaintext"],
   "prettier.disableLanguages": ["markdown"],
   "prettier.requireConfig": true,

@@ -1,0 +1,32 @@
+INHERIT: mkdocs.common.yml
+
+site_name: BMEVIAUAC09 Software development laboratory 1
+site_author: István Albert, Tibor Tóth
+site_url: https://bmeviauac01.github.io/softwarelab1/en/
+docs_dir: 'docs/en'
+site_dir: 'site/en'
+
+theme:
+  language: en
+
+plugins:
+  search:
+    lang: en
+  git-revision-date-localized:
+    locale: en
+  git-committers:
+    docs_path: docs/en/
+
+nav:
+  - "Software development laboratory 1":
+      - index.md
+      - GitHub.md
+      - GitHub-Actions.md
+      - VisualStudio.md
+      - GitHub-credentials.md
+  - "Laboratories":
+      - "Reporting Services": Lab-ReportingServices/index.md
+      - "Query optimization": Lab-QueryOptimization/index.md
+      - "MSSQL": Lab-MSSQL/index.md
+      - "MongoDB": Lab-MongoDB/index.md
+      - "Entity Framework & REST": Lab-EFREST/index.md
