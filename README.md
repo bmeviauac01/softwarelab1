@@ -1,4 +1,4 @@
-# BMEVIAUAC01 Adatvezérelt rendszerek
+# BMEVIAUAC09 Szoftverfejlesztés laboratórium 1
 
 ![Build docs](https://github.com/bmeviauac01/softwarelab1/workflows/Build%20docs/badge.svg?branch=master)
 
@@ -34,7 +34,7 @@ A repository tartalmaz egy Dockerfile-t, ami at MKDocs keretrendszer és függő
 4. Markdown szerkesztése és mentése után automatikusan frissül a weboldal.
 
 
-# BMEVIAUAC01 Data-driven systems
+# ENVIAUAC09 Software Development Laboratory 1
 
 ![Build docs](https://github.com/bmeviauac01/softwarelab1/workflows/Build%20docs/badge.svg?branch=master)
 
