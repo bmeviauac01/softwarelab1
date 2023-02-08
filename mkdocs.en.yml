@@ -5,6 +5,7 @@ site_author: István Albert, Tibor Tóth
 site_url: https://bmeviauac01.github.io/softwarelab1/en/
 docs_dir: 'docs/en'
 site_dir: 'site/en'
+edit_uri: 'blob/master/docs/en'
 
 theme:
   language: en
