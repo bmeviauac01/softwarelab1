@@ -27,6 +27,7 @@ nav:
       - GitHub-credentials.md
   - "Laborok":
       - "Reporting Services": Lab-ReportingServices/index.md
+      - "Reporting": Lab-PowerBI/index.md
       - "Lekérdezés optimalizálás": Lab-QueryOptimization/index.md
       - "MSSQL": Lab-MSSQL/index.md
       - "MongoDB": Lab-MongoDB/index.md
