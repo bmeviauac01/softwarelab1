@@ -163,3 +163,128 @@ A Power BI-ban feldolgozandó adatokat az egyszerűség kedvéért relációs ad
 
     ![Munkaterület választás](../images/powerbi/pb-1streport-online.png)
 
+
+!!! example "BEADANDÓ"
+    Készíts egy képernyőképet a **report előnézetéről** a preview fülön. A képet a megoldásban `f1.png` néven add be. A képernyőképen a Visual Studio ablaka, és azon belül a riport előnézete látszódjon **az összegző sorokkal együtt** (lapozz, ha szükséges!). Ismét ellenőrizd, hogy a **Neptun kódod** látható-e!
+
+    A megváltozottott Visual Studio projektet (és annak fájljait) is töltsd fel.
+
+## Feladat 2: Vizualizáció
+
+**A feladat önálló munka, és 5 pontot ér.**
+
+### Diagram létrehozása
+
+A táblázatos megjelenítés részletesen mutatja az eladási adatokat. Egy diagram azonban gyorsabban áttekinthető. Készítsünk egy diagramot, ami az egyes termékkategóriák eladási darabszámait mutatja.
+
+1. A diagramhoz hozzunk létre egy új oldalt a jelentésben.
+
+    ![Oldal hozzáadása](../images/powerbi/pb-diagram-addpage.png)
+
+1. Ragadjuk meg az alkalmaz, hogy az oldalaknak beszédesebb neveket adjunk. Az oldalak elnevezésére duplán kattintva átírhatjuk azokat. Legyen az első oldal neve 'Táblázat', az új oldalé 'Diagram'
+
+1. Adjunk hozzá egy csoportosított oszlop diagrammot (_clustered column chart_) az új oldalhoz.
+
+    ![Oszlopdiagram](../images/powerbi/pb-diagram-statechart.png)
+
+1. A diagramon termékkategóriánként szeretnénk összegezni az eladási darabszámokat. Ezt a következőképpen tudjuk elérni:
+    
+    1. Jelöljük ki a diagramot.
+
+    1. A _Visualizations_ eszköztár _Build visual_ oldalán tudjuk a paramétereket megadni. Húzzuk rá az _X axis_ mezőre a _Product_/_Category_ oszlopot, illetve az _Y axis_ mezőre a _Sales_/_Order quantity_ oszlopot.
+
+    ![Oszlopdiagram adatokkal](../images/powerbi/pb-diagram-quantities.png)
+
+### Éves bontás
+
+Következő lépésként szeretnénk az előbbi adatokat éves bontásban is megnézni. Mivel az eladáshoz háromféle dátum is (OrderDate, DueDate, ShipDate) is tartozik el kell döntenünk melyiket használjuk. Számunkra most a megrendelés dátuma lesz a releváns, ezért azt kell elérnünk, hogy ha a _Date_ tábla szerint szűrünk, vagy csoportosítunk, akkor ezt vegye figyelembe a rendszer.
+
+1. Nyissuk meg a modellezőt (_Mode view_)! Figyeljük meg, hogy a _Sales_ és a _Date_ tábla között három kapcsolat is van, ezek közül azonban csak egy van folytonos vonallal kiemelve, a másik kettő esetében szaggatott a vonal. A folytonos vonal jelenti az aktív kapcsolatot és ez lesz a későbbi csoportosítás és szűrés alapja. Az egyes kapcsolatok fölé mozgatva az egérkurzort azt is láthatjuk, hogy azok mely oszlopokat kötik össze. Két tábla között legfeljebb egy aktív kapcsolat lehet.
+
+    ![Dátumok kapcsolata](../images/powerbi/pb-diagram-orderdate.png)
+
+1. Amennyiben **nem** az _OrderDateKey_-_DateKey_ kapcsolat az aktív, akkor először is meg kell szüntetnünk a meglévő aktív kapcsolatot. Ehhez jelöljük ki azt, majd jobb oldalt a _Make this relationship active_ opciót kapcsoljuk ki, majd kattintsunk az _Apply changes_ parancsra.
+
+    ![Aktív kapcsolat](../images/powerbi/pb-diagram-relationship.png)
+
+1. Az előző lépéssor analógiájára válasszuk ki most az _OrderDateKey_-_DateKey_ kapcsolathoz tartozó vonalat és tegyük azt aktívvá. A végén ne maradjon el az _Apply changes_ lépés sem.
+
+!!! tip "Tipp"
+    Előfordulhatna olyan szituáció, ahol egyszerre kétféle dátum alapján is szeretnénk mondjuk kategorizálni. Ebben az esetben a _Date_ tábla duplikálásával tudjuk megkerülni az egy reláció-egy aktív kapcsolat korlátot.
+
+1. Visszatérve a jelentés nézetre, a diagram _Legend_ tulajdonságához húzzuk be a _Date_/_Fiscal Year_ oszlopot.
+
+    ![Éves csoportosítás](../images/powerbi/pb-diagram-year.png)
+
+!!! tip "Tipp"
+    Lehetőségünk lenne arra is, hogy többszintű kategóriák szerint csoportosítsuk az oszlopainkat. Ilyen esetekben lehetőség van az egyes mezőkre több oszlopot is ráhúzni.
+
+### Térkép
+
+A Power BI számos látványos és intelligens diagrammodellel rendelkezik. A következőkben megjelenítjük egy világtérképen az egyes országok eladási darabszámait kategóriánkénti bontásban.
+
+1. Vegyünk fel egy új lapot _Térkép_ néven és töltsük ki a tulajdonságait a következők szerint
+
+1. _Location_ mező értéke legyen _SalesTerritory_/_Country_
+
+1. _Bubble size_ mező értéke legyen _Sales_/_Order quantity_
+
+1. Méretezzük át a térképet, hogy szebben kitöltse a lapot
+
+Ezen a ponton láthatjuk már az országos eladási adatokkal arányos buborékokat a térképen. Az utolsó lépésben még a kategóriánkénti bontást kell megvalósítanunk, melyet az oszlopdiagramhoz hasonlóan a _Legend_ mező kitöltésével tudunk megtenni. 
+
+1. _Legend_ mező értéke legyen _Product_/_Category_
+
+    ![Térkép](../images/powerbi/pb-diagram-map.png)
+
+## Feladat 3: Értékesítői riport
+
+**A feladat önálló munka, és 5 pontot ér.**
+
+Ebben a feladatban megismerkedünk az összetett szűrőkkel, a vonaldiagrammal és a komplex adatokkal
+
+### Riport tartalma
+
+Készíts táblázatos riportot arról, hogy az egyes értékesítők mikor, mit adtak el. Csoportosíts termék kategória és értékesítő szerint. Készíts összegző sort, ami az egyes értékesítők mindenkori eladásait összegzi! Ügyelj a számértékek formázására!
+
+A megoldás kulcsa az alábbi táblázat és csoportosítás összeállítása. A kategóriát a _Subcat_ mező tartalmazza.
+
+![Javasolt csoportok](../images/powerbi/pb-slicer.png)
+
+Az alábbihoz hasonló legyen a végső riport:
+
+![Összegzés kinézete](../images/reportingservices/rs-sales-person-total.png)
+
+!!! tip "Tipp"
+    Ugyanúgy az _Add Total_ > _After_ funkciót kell használni, mint a közös feladatoknál. Amit itt el lehet rontani, hogy az _Add Total_ > _After_-t **nem** a `[SalesPersonName]`-en jobb klikkelve kell kiválasztani, hanem a `[Subcat]`-en jobbklikkelve – hiszen őket akarjuk összegezni, nem a Sales Person sorokat. (Ha a SalesPersonName-re kattintva csináljuk, abból "teljes összeg" lesz, hiszen minden értékesítőt összegzünk.)
+
+!!! example "BEADANDÓ"
+    Készíts egy képernyőképet a **report előnézetéről** a preview fülön. A képet a megoldásban `f3.png` néven add be. A képernyőképen a Visual Studio ablaka, és azon belül a riport előnézete látszódjon. Ellenőrizd, hogy a **Neptun kódod** látható-e táblázatban!
+
+    A megváltozottott Visual Studio projektet (és annak fájljait) is töltsd fel.
+
+## Feladat 4: Opcionális feladat
+
+**A feladat megoldásával 3 IMSc pont szerezhető.**
+
+Készíts tortadiagramot az egyes termékkategóriákban létrejövő tranzakciók számáról! **A diagram címébe írd bele a Neptun kódod!**.
+
+- A kategóriák színei a lentiek szerint piros, sárga, zöld és kék legyenek
+
+- Feliratok a tortadiagramon belül legyenek
+
+- A kész jelentést töltsd fel az online Power BI szolgáltatásba is!
+
+- A cél az alábbi, vagy legalábbis ehhez hasonlító grafikon elkészítése.
+
+- A diagram címe középre igazítva, vastag betűkkel a Neptun kódod legyen!
+
+![Elvárt tortadiagram](../images/powerbi/pb-diagram-pie.png)
+
+!!! tip "Tipp"
+    A tortadiagram használata nagyon hasonló az oszlopdiagraméhoz. 
+
+!!! example "BEADANDÓ"
+    Készíts egy képernyőképet a **publikált jelentésről**. A képet a megoldásban `f4.png` néven add be. A képernyőképen a Visual Studio ablaka, és azon belül a riport előnézete látszódjon. Ellenőrizd, hogy a **Neptun kódod** látható-e a diagram címében!
+
+    A megváltozottott Power BI jelentés fájlt is töltsd fel.
