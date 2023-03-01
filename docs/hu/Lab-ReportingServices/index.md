@@ -110,7 +110,7 @@ A Report Server projekt elsősorban úgynevezett _Report Definition_ (.rdl) fáj
 
 ### Adatforrás (data source) beállítása
 
-Az adatforrás definálja, a riport adatai honnan származnak. A mi esetünkben ez a korábban lérehozott SQL Server adatbázis lesz.
+Az adatforrás definiálja, a riport adatai honnan származnak. A mi esetünkben ez a korábban létrehozott SQL Server adatbázis lesz.
 
 1. A _Report Data_ panelen _New_ > _Data Source_. A neve legyen "AdventureWorks2014".
 
@@ -130,7 +130,7 @@ Az adatforrás definálja, a riport adatai honnan származnak. A mi esetünkben 
 
 Ahhoz, hogy riportokat készíthessük, az adatforráshoz adathalmazokat (dataset) is meg kell adnunk. Ez gyakorlatilag egy lekérdezést fog jelenteni az adatforrás felé.
 
-1. A _Report Data_ panelen válasszuk a _New_ > _Dataset_ opciót. Nevezzük el a datasetet "AdventureWorksDataset"-nek. Data source-ot a legördülő menüből tudunk választani, használjuk az előzőleg elészítettet, és alkalmazzuk az alábbi beállításokat:
+1. A _Report Data_ panelen válasszuk a _New_ > _Dataset_ opciót. Nevezzük el a datasetet "AdventureWorksDataset"-nek. Data source-ot a legördülő menüből tudunk választani, használjuk az előzőleg elkészítettet, és alkalmazzuk az alábbi beállításokat:
 
     ![Data set tulajdonságok](../images/reportingservices/rs-data-set-properties.png)
 
@@ -198,7 +198,7 @@ Most, hogy megvan a kapcsolatunk az adatbázis felé, és a lekérdezést is meg
 
     ![Riport előnézete](../images/reportingservices/rs-table-preview-1.png)
 
-    Az elkészült riportot például kinyomtathatjuk, vagy exportálhatjuk több féle formátumba (Word, Excel, PowerPoint, PDF). Jelen állapotában azért van rajta még mit csiszolni, pl. a végösszeg mezőnél nincs jelölve a valuta, és az értéket is bőven elég lenne 2 tizedesjelre kerekítve megmutatni. A dátum formázása és az oszlopok szélessége sem az igazi.
+    Az elkészült riportot például kinyomtathatjuk, vagy exportálhatjuk többféle formátumba (Word, Excel, PowerPoint, PDF). Jelen állapotában azért van rajta még mit csiszolni, pl. a végösszeg mezőnél nincs jelölve a valuta, és az értéket is bőven elég lenne 2 tizedesjelre kerekítve megmutatni. A dátum formázása és az oszlopok szélessége sem az igazi.
 
 1. Menjünk vissza a _Design_ fülre, és a táblázatunkban kattintsunk jobb egérgombbal a `[Date]` kifejezésen, majd válasszuk a _Text Box Properties_ opciót. Itt a _Number_ fülön válasszuk a _Date_ kategóriát, és válasszunk ki egy szimpatikus dátumformátumot.
 
@@ -223,7 +223,7 @@ Most, hogy megvan a kapcsolatunk az adatbázis felé, és a lekérdezést is meg
 
     Készíts egy képernyőképet a **report előnézetéről** a preview fülön. A képet a megoldásban `f1.png` néven add be. A képernyőképen a Visual Studio ablaka, és azon belül a riport előnézete látszódjon. Ismét ellenőrizd, hogy a **Neptun kódod** látható-e!
 
-    A megváltozottott Visual Studio projektet (és annak fájljait) is töltsd fel.
+    A megváltozott Visual Studio projektet (és annak fájljait) is töltsd fel.
 
 ### Csoportosítás és összegzés (5p)
 
@@ -270,7 +270,7 @@ A riport jelenleg ömlesztve tartalmazza az adatokat. Ezek eladási adatok, adot
     - Váltsunk vissza _Design_ nézetre
     - Jobb klikk az `[Order]` cellán, válasszuk az _Add Total_ > _After_ lehetőséget.
     - Az `[Order]` cella alatt megjelenik egy "Total" feliratú cella. Kattintsunk bele, és írjuk át "Daily Total"-ra.
-    - Válasszuk ki ezt a cellát, és mellette a másik hármat (pl. a CTRL nyomvatartása mellett végigkattintgatva őket), majd adjunk nekik valamilyen háttérszínt (_Format_ > _Background color_).
+    - Válasszuk ki ezt a cellát, és mellette a másik hármat (pl. a CTRL nyomva tartása mellett végigkattintgatva őket), majd adjunk nekik valamilyen háttérszínt (_Format_ > _Background color_).
 
 1. Mivel az adatbázisban egy naphoz nagyon sok megrendelés is tartozhat, a _Preview_ fülön akár 4-5 oldalt is le kell görgetni, mire megpillantjuk munkánk gyümölcsét:
 
@@ -279,7 +279,7 @@ A riport jelenleg ömlesztve tartalmazza az adatokat. Ezek eladási adatok, adot
 !!! example "BEADANDÓ"
     Készíts egy képernyőképet a **report előnézetéről** a preview fülön. A képet a megoldásban `f1.png` néven add be. A képernyőképen a Visual Studio ablaka, és azon belül a riport előnézete látszódjon **az összegző sorokkal együtt** (lapozz, ha szükséges!). Ismét ellenőrizd, hogy a **Neptun kódod** látható-e!
 
-    A megváltozottott Visual Studio projektet (és annak fájljait) is töltsd fel.
+    A megváltozott Visual Studio projektet (és annak fájljait) is töltsd fel.
 
 ## Feladat 2: Vizualizáció
 
@@ -344,7 +344,7 @@ A megjelenés még nem az igazi, de ezen könnyen segíthetünk.
 !!! example "BEADANDÓ"
     Készíts egy képernyőképet a **report előnézetéről** a preview fülön. A képet a megoldásban `f2.png` néven add be. A képernyőképen a Visual Studio ablaka, és azon belül a riport előnézete látszódjon. Ellenőrizd, hogy a **Neptun kódod** látható-e a diagram címében!
 
-    A megváltozottott Visual Studio projektet (és annak fájljait) is töltsd fel.
+    A megváltozott Visual Studio projektet (és annak fájljait) is töltsd fel.
 
 ## Feladat 3: Értékesítői riport
 
@@ -423,7 +423,7 @@ Az alábbihoz hasonló legyen a végső riport:
 !!! example "BEADANDÓ"
     Készíts egy képernyőképet a **report előnézetéről** a preview fülön. A képet a megoldásban `f3.png` néven add be. A képernyőképen a Visual Studio ablaka, és azon belül a riport előnézete látszódjon. Ellenőrizd, hogy a **Neptun kódod** látható-e táblázatban!
 
-    A megváltozottott Visual Studio projektet (és annak fájljait) is töltsd fel.
+    A megváltozott Visual Studio projektet (és annak fájljait) is töltsd fel.
 
 ## Feladat 4: Opcionális feladat
 
@@ -443,4 +443,4 @@ Készíts tortadiagramot az egyes értékesítők teljesítményének összehaso
 !!! example "BEADANDÓ"
     Készíts egy képernyőképet a **report előnézetéről** a preview fülön. A képet a megoldásban `f4.png` néven add be. A képernyőképen a Visual Studio ablaka, és azon belül a riport előnézete látszódjon. Ellenőrizd, hogy a **Neptun kódod** látható-e a diagram címében!
 
-    A megváltozottott Visual Studio projektet (és annak fájljait) is töltsd fel.
+    A megváltozott Visual Studio projektet (és annak fájljait) is töltsd fel.
