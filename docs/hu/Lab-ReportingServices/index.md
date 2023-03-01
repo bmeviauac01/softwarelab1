@@ -1,5 +1,10 @@
 # Reporting Services
 
+!!! danger "A LABOR ÁTDOLGOZÁS ALATT ÁLL!"
+    **A LABOR ÁTDOLGOZÁS ALATT ÁLL!**
+    **A LABOR ÁTDOLGOZÁS ALATT ÁLL!**
+    **A LABOR ÁTDOLGOZÁS ALATT ÁLL!**
+
 A labor során egy új eszközzel, a _Microsoft SQL Server Reporting Services_-zel ismerkedünk meg, így a labor részben vezetett. Az első feladat laborvezetővel együtt megoldott, a továbbiak önálló feladatok. A közös feladatmegoldás és az önálló feladatmegoldás eredményét is be kell adni.
 
 ## Előfeltételek, felkészülés
