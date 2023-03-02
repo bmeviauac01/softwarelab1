@@ -25,7 +25,7 @@ A feladatok megoldása során ne felejtsd el követni a [feladat beadás folyama
 
 1. Várd meg, míg elkészül a repository, majd checkout-old ki.
 
-    !!! tip ""
+    !!! warning "Jelszó az egyetemi laborokban"
         Egyetemi laborokban, ha a checkout során nem kér a rendszer felhasználónevet és jelszót, és nem sikerül a checkout, akkor valószínűleg a gépen korábban megjegyzett felhasználónévvel próbálkozott a rendszer. Először töröld ki a mentett belépési adatokat (lásd [itt](../GitHub-credentials.md)), és próbáld újra.
 
 1. Hozz létre egy új ágat `megoldas` néven, és ezen az ágon dolgozz.
@@ -74,13 +74,13 @@ A Power BI-ban mintegy 150 féle adatforrásból tudunk adatokat importálni, ak
 
     ![Belépés](../images/powerbi/pb-install-signin.png)
 
-!!! tip "Tipp"
-    A Power BI Desktop bejelentkezés nélkül is használható, a publikáláshoz azonban szükség lesz a bejelentkezett fiókra. Amennyiben megosztott (labor) gépen dolgozol, ne felejts el a labor végén kilépni!
+    !!! warning "Kijelentkezés"
+        A Power BI Desktop bejelentkezés nélkül is használható, a publikáláshoz azonban szükség lesz a bejelentkezett fiókra. Amennyiben megosztott (labor) gépen dolgozol, ne felejts el a labor végén kilépni!
 
-1. Zárd be a felugró dialógusablakokat, majd mentsd el a projektet (File/Save) tetszőleges könyvtárba. **A projekt neve a Neptun kódod legyen**!
+1. Zárd be a felugró dialógusablakokat, majd mentsd el a projektet (_File/Save_) a leklónozott saját repódba. **A projekt neve a Neptun kódod legyen**!
 
-!!! tip "Tipp"
-    Minden, amit Power BI Desktopban csinálunk, ebbe a projekt fájlba (NEPTUN.pbix) fog kerülni. A projektfájlt a megoldásról készült képernyőképekkel együtt szintén be kell adni.
+    !!! tip "Tipp"
+        Minden, amit Power BI Desktopban csinálunk, ebbe a projekt fájlba (`NEPTUN.pbix`) fog kerülni. A projektfájlt a megoldásról készült képernyőképekkel együtt szintén be kell adni.
 
 1. Töltsd be a korábban letöltött _AdventureWorksSales.xlsx_ fájlt! (_Get data_ / _Excel workbook_)
 
@@ -156,7 +156,7 @@ Az alábbiakban egyedi szűrőket definiálunk a jelentéshez, majd publikáljuk
 
 1. Állítsuk a _Filter **cards**_/_Background_ tulajdonságot az előzővel azonos színre. A végeredmény pl. ilyesmi lehet:
 
-![Formázott szűrők](../images/powerbi/pb-1streport-formattedfilters.png)
+    ![Formázott szűrők](../images/powerbi/pb-1streport-formattedfilters.png)
 
 1. Mentsük el a változtatásokat, majd publikáljuk az elkészült jelentést az online szolgáltatásba a _Home_ lap _Publish_ gombjával!
 
@@ -211,25 +211,25 @@ Következő lépésként szeretnénk az előbbi adatokat éves bontásban is meg
 
 1. Nyissuk meg a modellezőt (_Model view_)! Figyeljük meg, hogy a _Sales_ és a _Date_ tábla között három kapcsolat is van, ezek közül azonban csak egy van folytonos vonallal kiemelve, a másik kettő esetében szaggatott a vonal. A folytonos vonal jelenti az aktív kapcsolatot és ez lesz a későbbi csoportosítás és szűrés alapja. Az egyes kapcsolatok fölé mozgatva az egérkurzort azt is láthatjuk, hogy azok mely oszlopokat kötik össze. Két tábla között legfeljebb egy aktív kapcsolat lehet.
 
-![Dátumok kapcsolata](../images/powerbi/pb-diagram-orderdate.png)
+    ![Dátumok kapcsolata](../images/powerbi/pb-diagram-orderdate.png)
 
 1. Amennyiben **nem** az _OrderDateKey_-_DateKey_ kapcsolat az aktív, akkor először is meg kell szüntetnünk a meglévő aktív kapcsolatot. Ehhez jelöljük ki azt, majd jobb oldalt a _Make this relationship active_ opciót kapcsoljuk ki, majd kattintsunk az _Apply changes_ parancsra.
 
-![Aktív kapcsolat](../images/powerbi/pb-diagram-relationship.png)
+    ![Aktív kapcsolat](../images/powerbi/pb-diagram-relationship.png)
 
 1. Az előző lépéssor analógiájára válasszuk ki most az _OrderDateKey_-_DateKey_ kapcsolathoz tartozó vonalat és tegyük azt aktívvá. A végén ne maradjon el az _Apply changes_ lépés sem.
 
-!!! tip "Tipp"
-    Előfordulhatna olyan szituáció, ahol egyszerre kétféle dátum alapján is szeretnénk mondjuk kategorizálni. Ebben az esetben a _Date_ tábla duplikálásával tudjuk megkerülni az egy reláció-egy aktív kapcsolat korlátot.
+    !!! tip "Tipp"
+        Előfordulhatna olyan szituáció, ahol egyszerre kétféle dátum alapján is szeretnénk mondjuk kategorizálni. Ebben az esetben a _Date_ tábla duplikálásával tudjuk megkerülni az egy reláció-egy aktív kapcsolat korlátot.
 
 1. Visszatérve a jelentés nézetre, a diagram _Legend_ tulajdonságához húzzuk be a _Date_/_Fiscal Year_ oszlopot.
 
-![Éves csoportosítás](../images/powerbi/pb-diagram-year.png)
+    ![Éves csoportosítás](../images/powerbi/pb-diagram-year.png)
 
 1. Az előző feladathoz hasonló módon publikáld a jelentést. A publikálás során látni fogjuk, hogy ezen a néven korábbi jelentésünk már fenn van a felhőben. Bátran válasszuk a **Replace** opciót, amennyiben ennek felülírására rákérdez a rendszer.
 
-!!! tip "Tipp"
-    Lehetőségünk lenne arra is, hogy többszintű kategóriák szerint csoportosítsuk az oszlopainkat. Ilyen esetekben az egyes mezőkre több oszlopot is ráhúzhatunk.
+    !!! tip "Tipp"
+        Lehetőségünk lenne arra is, hogy többszintű kategóriák szerint csoportosítsuk az oszlopainkat. Ilyen esetekben az egyes mezőkre több oszlopot is ráhúzhatunk.
 
 !!! example "BEADANDÓ"
     Készíts egy képernyőképet a **publikált jelentésről**. A képet a megoldásban `f2.png` néven add be. A képen a teljes képernyő (böngésző ablak, tálca stb. látszódjon). Ismét ellenőrizd, hogy a **Neptun kódod** látszódik (a felső szürke sorban)!
@@ -250,7 +250,7 @@ A Power BI számos látványos és intelligens diagrammodellel rendelkezik. A k�
 
 1. Méretezzük át a térképet, hogy szebben kitöltse a lapot
 
-Ezen a ponton láthatjuk már az országos eladási adatokkal arányos buborékokat a térképen. Az utolsó lépésben még a kategóriánkénti bontást kell megvalósítanunk, melyet az oszlopdiagramhoz hasonlóan a _Legend_ mező kitöltésével tudunk megtenni.
+    Ezen a ponton láthatjuk már az országos eladási adatokkal arányos buborékokat a térképen. Az utolsó lépésben még a kategóriánkénti bontást kell megvalósítanunk, melyet az oszlopdiagramhoz hasonlóan a _Legend_ mező kitöltésével tudunk megtenni.
 
 1. _Legend_ mező értéke legyen _Product_/_Category_
 
@@ -287,7 +287,7 @@ A megoldás lépéseit az alábbiakban ismertetjük:
 
 1. A _Slicer_ _Field_ tulajdonságára húzd rá a _Product_/_Category_, majd alá a _Product_/_Subcategory_ oszlopokat. (A sorrend számít!). Próbáld ki, hogy viselkedik a vezérlő!
 
-![Slicer konfigurálása](../images/powerbi/pb-categories-slicer.png)
+    ![Slicer konfigurálása](../images/powerbi/pb-categories-slicer.png)
 
 ### Táblázat
 
@@ -299,7 +299,7 @@ A megoldás lépéseit az alábbiakban ismertetjük:
 
 1. Próbáljuk ki, hogyan hat a _Slicer_-ben egyes kategóriák kiválasztása a mindenkori adatainkra.
 
-![Táblázat konfigurálása](../images/powerbi/pb-categories-table.png)
+    ![Táblázat konfigurálása](../images/powerbi/pb-categories-table.png)
 
 ### Grafikon
 
@@ -311,11 +311,11 @@ A megoldás lépéseit az alábbiakban ismertetjük:
 
 1. Az évenkénti kategorizáláshoz itt is a _Legend_ mezőt használjuk, húzzuk rá a _Date_/_Date_/_Year_ oszlopot.
 
-![Grafikon konfigurálása](../images/powerbi/pb-categories-linechart.png)
+    ![Grafikon konfigurálása](../images/powerbi/pb-categories-linechart.png)
 
 1. Végezetül állítsuk be a grafikon címét. Ezt a _Visualizations_ eszköztáron a _Format your visual_ blokkban a _General_ fülön tudjuk megtenni. Állítsuk be a _Title_ mező értékét a Neptun kódunkra, továbbá ugyanebben a blokkban növeljük meg a betűméretet, állítsuk pirosra a _Text color_ mezőt és igazítsuk középre a szöveget (_Horizontal alignment_:_Center_)
 
-![Grafikon címe](../images/powerbi/pb-categories-charttitle.png)
+    ![Grafikon címe](../images/powerbi/pb-categories-charttitle.png)
 
 !!! example "BEADANDÓ"
     Készíts egy képernyőképet a **publikált jelentésről**. A képet a megoldásban `f4.png` néven add be. A képen a teljes képernyő (böngésző ablak, tálca stb. látszódjon). Ismét ellenőrizd, hogy a **Neptun kódod** látszódik (a felső szürke sorban)!
