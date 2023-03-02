@@ -336,4 +336,3 @@ Create a pie chart about the number of transactions in each product category. **
 
 !!! example "SUBMISSION"
 Take a screenshot of the published report. Save the image as f5.png and submit it with the other files of the solution. The image should show the entire screen (browser window, system tray, etc.). Check again that your Neptun code is visible (in the upper gray line)!
-
