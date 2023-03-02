@@ -1,0 +1,971 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="István Albert, Tibor Tóth" name="author"/>
+<link href="https://bmeviauac01.github.io/softwarelab1/en/Lab-PowerBI/" rel="canonical"/>
+<link href="../GitHub-credentials/" rel="prev"/>
+<link href="../Lab-QueryOptimization/" rel="next"/>
+<link href="../img/favicon.ico" rel="icon"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-9.0.9" name="generator"/>
+<title>Reporting - BMEVIAUAC09 Software development laboratory 1</title>
+<link href="../assets/stylesheets/main.0d440cfe.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../css/timeago.css" rel="stylesheet"/>
+<link href="../extra-material-theme.css" rel="stylesheet"/>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+                </style><script src="../assets/javascripts/glightbox.min.js"></script></head>
+<body data-md-color-accent="red" data-md-color-primary="aut" data-md-color-scheme="aut" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#power-bi">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="BMEVIAUAC09 Software development laboratory 1" class="md-header__button md-logo" data-md-component="logo" href=".." title="BMEVIAUAC09 Software development laboratory 1">
+<img alt="logo" src="../img/logo-bme-aut.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            BMEVIAUAC09 Software development laboratory 1
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Reporting
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to Dark Mode" class="md-option" data-md-color-accent="red" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="aut" data-md-color-scheme="aut" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to Dark Mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"></path></svg>
+</label>
+<input aria-label="Switch to Light Mode" class="md-option" data-md-color-accent="" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="red" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to Light Mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"></path></svg>
+</label>
+</form>
+<div class="md-header__option">
+<div class="md-select">
+<button aria-label="Select language" class="md-header__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"></path></svg>
+</button>
+<div class="md-select__inner">
+<ul class="md-select__list">
+<li class="md-select__item">
+<a class="md-select__link" href="https://bmeviauac01.github.io/softwarelab1/en/" hreflang="en">
+                    English
+                  </a>
+</li>
+<li class="md-select__item">
+<a class="md-select__link" href="https://bmeviauac01.github.io/softwarelab1/hu/" hreflang="hu">
+                    Magyar
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/bmeviauac01/softwarelab1" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    bmeviauac01/softwarelab1
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="..">
+        Software development laboratory 1
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="./">
+        Laboratories
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="BMEVIAUAC09 Software development laboratory 1" class="md-nav__button md-logo" data-md-component="logo" href=".." title="BMEVIAUAC09 Software development laboratory 1">
+<img alt="logo" src="../img/logo-bme-aut.png"/>
+</a>
+    BMEVIAUAC09 Software development laboratory 1
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/bmeviauac01/softwarelab1" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    bmeviauac01/softwarelab1
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+          Software development laboratory 1
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_1_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+          Software development laboratory 1
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+        Course overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../GitHub/">
+        Submitting your work (GitHub)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../GitHub-Actions/">
+        Using GitHub Actions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../VisualStudio/">
+        Install Visual Studio &amp; .NET Core SDK
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../GitHub-credentials/">
+        In university laboratories: GitHub access
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Laboratories
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          Laboratories
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Reporting
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Reporting
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prerequisites-preparation">
+    Prerequisites, preparation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preparation">
+    Preparation
+  </a>
+<nav aria-label="Preparation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-and-download-git-repository">
+    Create and Download Git Repository
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#free-power-bi-registration">
+    Free Power BI registration
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#install-powerbi-desktop">
+    Install PowerBI Desktop
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-task-spreadsheet-report-5p">
+    1. Task: Spreadsheet Report (5p)
+  </a>
+<nav aria-label="1. Task: Spreadsheet Report (5p)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-the-first-dataset">
+    Create the first dataset
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#lets-create-the-first-report">
+    Let's create the first report
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#creating-and-publishing-filters">
+    Creating and publishing filters
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-task-chart-5p">
+    2. Task: Chart (5p)
+  </a>
+<nav aria-label="2. Task: Chart (5p)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-chart">
+    Create chart
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#annual-breakdown">
+    Annual breakdown
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-task-map-5p">
+    3. Task: Map (5p)
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-task-sales-reports-5p">
+    4. Task: Sales Reports (5p)
+  </a>
+<nav aria-label="4. Task: Sales Reports (5p)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#content-of-the-report">
+    Content of the report
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#slicer">
+    Slicer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#table">
+    Table
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#line-chart">
+    Line chart
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-task-optional-task">
+    5. Task: Optional task
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Lab-QueryOptimization/">
+        Query optimization
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Lab-MSSQL/">
+        MSSQL
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Lab-MongoDB/">
+        MongoDB
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Lab-EFREST/">
+        Entity Framework &amp; REST
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prerequisites-preparation">
+    Prerequisites, preparation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preparation">
+    Preparation
+  </a>
+<nav aria-label="Preparation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-and-download-git-repository">
+    Create and Download Git Repository
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#free-power-bi-registration">
+    Free Power BI registration
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#install-powerbi-desktop">
+    Install PowerBI Desktop
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-task-spreadsheet-report-5p">
+    1. Task: Spreadsheet Report (5p)
+  </a>
+<nav aria-label="1. Task: Spreadsheet Report (5p)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-the-first-dataset">
+    Create the first dataset
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#lets-create-the-first-report">
+    Let's create the first report
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#creating-and-publishing-filters">
+    Creating and publishing filters
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-task-chart-5p">
+    2. Task: Chart (5p)
+  </a>
+<nav aria-label="2. Task: Chart (5p)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-chart">
+    Create chart
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#annual-breakdown">
+    Annual breakdown
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-task-map-5p">
+    3. Task: Map (5p)
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-task-sales-reports-5p">
+    4. Task: Sales Reports (5p)
+  </a>
+<nav aria-label="4. Task: Sales Reports (5p)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#content-of-the-report">
+    Content of the report
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#slicer">
+    Slicer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#table">
+    Table
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#line-chart">
+    Line chart
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-task-optional-task">
+    5. Task: Optional task
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/bmeviauac01/softwarelab1/blob/master/docs/en/Lab-PowerBI/index.md" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"></path></svg>
+</a>
+<h1 id="power-bi">Power BI<a class="headerlink" href="#power-bi" title="Permanent link">¶</a></h1>
+<p>During the lab, we get acquainted with a new tool called <em>Microsoft Power BI</em>. We will start working together, then some of the exercises will be individual work. You shall submit the solution to all exercises.</p>
+<h2 id="prerequisites-preparation">Prerequisites, preparation<a class="headerlink" href="#prerequisites-preparation" title="Permanent link">¶</a></h2>
+<p>Tools needed to perform the lab:</p>
+<ul>
+<li>Windows</li>
+<li>Power BI Desktop</li>
+<li>GitHub account and a git client</li>
+<li>Microsoft365 account (***@edu.bme.hu)</li>
+</ul>
+<p>Auxiliary materials and preparation materials that can be used to perform the laboratory:</p>
+<ul>
+<li>Power BI platform: <a href="https://learn.microsoft.com/en-us/power-bi/">documentation</a></li>
+</ul>
+<h2 id="preparation">Preparation<a class="headerlink" href="#preparation" title="Permanent link">¶</a></h2>
+<p>When solving tasks, do not forget to follow the<a href="../GitHub/">task submission process</a>.</p>
+<h3 id="create-and-download-git-repository">Create and Download Git Repository<a class="headerlink" href="#create-and-download-git-repository" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p>In Moodle, find the URL of the invitation to the lab and use it to create your own repository.</p>
+</li>
+<li>
+<p>Wait until the repository is ready, and then checkout-old out.</p>
+<div class="admonition tip"></div>
+<p>In university labs, if the system does not ask for a username and password during the checkout, and the checkout fails, then the system probably tried using a previously memorized username on the machine. First, delete the saved login data <a href="../GitHub-credentials/">see here</a> and try again.</p>
+</li>
+<li>
+<p>Create a new branch called <code>solution</code> and work on it.</p>
+</li>
+<li>
+<p>Enter your Neptun code in the <code>neptun.txt</code> file. The file should contain nothing but 6 characters of the Neptun code in a single line.</p>
+</li>
+<li>
+<p>Enter your ***@edu.bme.hu email address in the <code>eduid.txt</code> file. Do not include anything else in the file except the email address in a single line.</p>
+</li>
+</ol>
+<h3 id="free-power-bi-registration">Free Power BI registration<a class="headerlink" href="#free-power-bi-registration" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p>We will use the free subscription level of Power BI. Use of this is subject to pre-registration. Please visit <a href="https://powerbi.microsoft.com/">Power BI's homepage</a> login with your ***@edu.bme.hu email address and click on the free registration button. Upon successful registration, you will receive the following message:</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-register-licenseassigned.png"><img alt="Registration successful" src="../images/powerbi/pb-register-licenseassigned.png"/></a></p>
+</li>
+<li>
+<p>Registration takes us to <a href="https://app.powerbi.com/">Power BI's Website</a>. Let's try it out.</p>
+</li>
+</ol>
+<h3 id="install-powerbi-desktop">Install PowerBI Desktop<a class="headerlink" href="#install-powerbi-desktop" title="Permanent link">¶</a></h3>
+<p>We will use the Power BI Desktop application to create Power BI reports. It is pre-installed on lab machines, it probably needs to be installed on your own device.</p>
+<ol>
+<li>
+<p>Make sure that you have the Power BI Desktop app installed on your computer, and if you do, you don't need to follow the steps below.</p>
+<p>Power BI Desktop is the most convenient to install from the Microsoft Store. This is also practical in laboratory machines because it does not require administrative privileges. You can also choose <a href="https://www.microsoft.com/en-us/download/details.aspx?id=58494">the downloadable installer</a> for your machine.</p>
+</li>
+<li>
+<p>Open <a href="https://aka.ms/pbidesktopstore">Power Bi Desktop App in the Microsoft Store</a> and choose installation! You do not need to log in to the Store to do the installation.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-install-store.png"><img alt="Setup" src="../images/powerbi/pb-install-store.png"/></a></p>
+</li>
+</ol>
+<h2 id="1-task-spreadsheet-report-5p">1. Task: Spreadsheet Report (5p)<a class="headerlink" href="#1-task-spreadsheet-report-5p" title="Permanent link">¶</a></h2>
+<p>This exercise is solved <strong>together</strong> with the lab instructor.</p>
+<p>Generating Power BI reports usually follows a typical workflow with the following steps:</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-intro-workflow.png"><img alt="Power BI Workflow" src="../images/powerbi/pb-intro-workflow.png"/></a></p>
+<p>In the process, we will use the <strong>Power BI Desktop</strong> application to design the reports, while publishing and sharing the reports will be done with <strong>Power BI Service</strong>.</p>
+<h3 id="create-the-first-dataset">Create the first dataset<a class="headerlink" href="#create-the-first-dataset" title="Permanent link">¶</a></h3>
+<p>In Power BI, we can import data from about 150 different data sources, either for a single load or for continuous queries over a live connection. For the sake of simplicity, the data to be processed in this lab will be obtained from a version of the relational database exported to Excel, which will be registered in the next steps.</p>
+<ol>
+<li>
+<p>Download the database from<a href="AdventureWorksSales.xlsx">AdventureWorksSales.xlsx</a>. Open the file, get acquainted with the data in it!</p>
+</li>
+<li>
+<p>Launch the Power BI desktop application. Log in with your own ***@edu.bme.hu user.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-install-signin.png"><img alt="Belépés" src="../images/powerbi/pb-install-signin.png"/></a></p>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Hint</p>
+</div>
+<p>Power BI Desktop can be used without logging in, but publishing will require a logged in account. If you work on a shared (lab) computer, don't forget to log out at the end of the lab!</p>
+<ol>
+<li>Close the pop-up dialogs and save the project (File/Save) in any directory.<strong>Project name should be your Neptun code</strong>!</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Hint</p>
+</div>
+<p>Everything we do in Power BI Desktop will go into this project file (NEPTUN.pbix). The project file must also be submitted together with screenshots of the solution.</p>
+<ol>
+<li>
+<p>Load the previously downloaded <em>AdventureWorksSales.xlsx</em> file. (<em>Get data</em> /<em>Excel workbook</em>)</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-load-excel.png"><img alt="Loading the database" src="../images/powerbi/pb-load-excel.png"/></a></p>
+</li>
+<li>
+<p>Select all the data tables (no <em>data</em> postfix in the name) and press the <em>Load</em> button.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-load-tables.png"><img alt="Select tables" src="../images/powerbi/pb-load-tables.png"/></a></p>
+</li>
+<li>
+<p>You can check the results in the <em>Data view</em> and <em>Model view</em> views. Note that based on the naming conventions, the loader immediately recognized some of the foreign key relationships.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-load-model.png"><img alt="Model" src="../images/powerbi/pb-load-model.png"/></a></p>
+</li>
+<li>
+<p>Note in the model that for dates, the relationships are not recognized by the loader. Let's create them by hand. Drag and drop the <em>OrderDateKey</em>, <em>ShipDateKey</em>  and <em>DueDateKey</em> fields from the <em>Sales</em> table one by one onto the <em>DateKey</em> column of the <em>Date</em> table.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-load-datekey.png"><img alt="Date relationships" src="../images/powerbi/pb-load-datekey.png"/></a></p>
+</li>
+</ol>
+<h3 id="lets-create-the-first-report">Let's create the first report<a class="headerlink" href="#lets-create-the-first-report" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p>Let's switch to <em>Report view</em>.</p>
+</li>
+<li>
+<p>Add a new table to the current page.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-1streport-addtable.png"><img alt="Add New Table" src="../images/powerbi/pb-1streport-addtable.png"/></a></p>
+</li>
+<li>
+<p>Drag the following columns from the <em>Data</em> toolbar onto the table:</p>
+</li>
+<li>
+<p><em>Product</em>/<em>Category</em>,</p>
+</li>
+<li><em>Product</em>/<em>Model</em></li>
+<li><em>Product</em>/<em>Product</em></li>
+<li>
+<p><em>Sales</em>/<em>Sales Amount</em></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-1streport-addcolumns.png"><img alt="Add New Table" src="../images/powerbi/pb-1streport-addcolumns.png"/></a></p>
+</li>
+<li>
+<p>Note that the <em>Product</em> and <em>Sales</em> tables are in a one-to-many relationships, therefore, results from the <em>Sales</em> table are automatically summed together.</p>
+</li>
+<li>
+<p>Let's format the table. To do this, we use the <em>Format your visual</em> page of the <em>Visualizations</em> toolbar (make sure the table is constantly selected).</p>
+<ol>
+<li>
+<p>Choose the <em>Alternating rows</em> option for <em>Style presets</em>. This will give the table a default formatting.</p>
+</li>
+<li>
+<p>In the <em>Values</em> block, set the font size to 14, and set a custom <em>Text color</em> and <em>Alternate text color</em>.</p>
+</li>
+<li>
+<p>Resize the table so that the content fits nicely with the larger font size.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-1streport-resize.png"><img alt="Resize Table" src="../images/powerbi/pb-1streport-resize.png"/></a></p>
+</li>
+<li>
+<p>Increase the font size of the header (<em>column headers</em>)</p>
+</li>
+<li>
+<p>Turn off the summary (set the switch in the top right corner of <em>Totals</em>/<em>Values</em> to off)</p>
+</li>
+<li>
+<p>Let's Highlight the amount column. To do this, select <em>Sum of Extended Amount</em> column in the <em>Specific column</em> block, set the value of <em>Text color</em> to white, and set <em>Background color</em> to a darker color.</p>
+</li>
+<li>
+<p>At this point, our table looks something like this:</p>
+</li>
+</ol>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-1streport-formattedtable.png"><img alt="Formatted Table" src="../images/powerbi/pb-1streport-formattedtable.png"/></a></p>
+</li>
+</ol>
+<h3 id="creating-and-publishing-filters">Creating and publishing filters<a class="headerlink" href="#creating-and-publishing-filters" title="Permanent link">¶</a></h3>
+<p>Below we define custom filters for the report and then publish our work.</p>
+<ol>
+<li>
+<p>Click the filter icon below the table to bring up the <em>Filters</em> toolbar. You can see that filters have already been created for the 4 columns.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-1streport-filters.png"><img alt="Filters" src="../images/powerbi/pb-1streport-filters.png"/></a></p>
+</li>
+<li>
+<p>Drag the <em>SalesTerritory</em>/<em>Country</em> column to the filters section. Now we can filter by country as needed.</p>
+</li>
+<li>
+<p>Hide the sales price filter. To do this, click the small eye icon inside the <em>Sum of Extended Amount</em> filter. Although the filter will still be visible to us, it will no longer appear as such in the published report.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-1streport-hidefilter.png"><img alt="Hide filter" src="../images/powerbi/pb-1streport-hidefilter.png"/></a></p>
+</li>
+<li>
+<p>Click on a section of the page where there is no table to select the page itself. The formatting in the <em>Visualizations</em> toolbar will then include settings for the entire page (<em>Format page</em>). Within this, we customize the appearance of the filters in the next steps.</p>
+</li>
+<li>
+<p>Set the <em>Filter pane</em>/<em>Search</em> property to a different bright color.</p>
+</li>
+<li>
+<p>Set the <em>Filter pane</em>/<em>Background</em> property to a darker color.</p>
+</li>
+<li>
+<p>Set the <em>Filter</em> <strong>cards</strong>/<em>Background</em> property to the same color as the previous one. The end result could be something like this:</p>
+</li>
+</ol>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-1streport-formattedfilters.png"><img alt="Formatted Filters" src="../images/powerbi/pb-1streport-formattedfilters.png"/></a></p>
+<ol>
+<li>
+<p>Save the changes and publish the completed report to the online service using the <em>Publish</em> button on the <em>Home</em> page.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-1streport-publishbutton.png"><img alt="Publish button" src="../images/powerbi/pb-1streport-publishbutton.png"/></a></p>
+</li>
+<li>
+<p>When publishing, mark the default workspace as the destination (<em>My Workspace</em>)</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-1streport-publishdialog.png"><img alt="Publishing dialog" src="../images/powerbi/pb-1streport-publishdialog.png"/></a></p>
+</li>
+<li>
+<p>After successful publication, click on the link in the dialog to open the report.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-1streport-publishready.png"><img alt="Publish Complete" src="../images/powerbi/pb-1streport-publishready.png"/></a></p>
+</li>
+<li>
+<p>Let's experiment with our final report to see what we've done.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-1streport-online.png"><img alt="Published report" src="../images/powerbi/pb-1streport-online.png"/></a></p>
+</li>
+</ol>
+<div class="admonition example">
+<p class="admonition-title">SUBMISSION</p>
+</div>
+<p>Take a screenshot of the published report. Save the image as f1.png and submit it with the other files of the solution. The image should show the entire screen (browser window, system tray, etc.). Check again that your Neptun code is visible (in the upper gray line)!</p>
+<p>Also upload the updated NEPTUN.pbix file.</p>
+<h2 id="2-task-chart-5p">2. Task: Chart (5p)<a class="headerlink" href="#2-task-chart-5p" title="Permanent link">¶</a></h2>
+<p><strong>This exercise is to be completed individually for 5 points.</strong></p>
+<h3 id="create-chart">Create chart<a class="headerlink" href="#create-chart" title="Permanent link">¶</a></h3>
+<p>The tabular display shows the sales data in detail. However, a chart can be interpreted more quickly. Make a chart showing the sales volumes for each product category.</p>
+<ol>
+<li>
+<p>For this chart, create a new page in the report.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-diagram-addpage.png"><img alt="Add Page" src="../images/powerbi/pb-diagram-addpage.png"/></a></p>
+</li>
+<li>
+<p>Let's use the opportunity to give meaningful names to the pages. Double-click the page names to rename them. Call the first page 'Table' and the new page 'Chart'</p>
+</li>
+<li>
+<p>Add a <em>clustered column chart</em> to the new page.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-diagram-statechart.png"><img alt="Bar Chart" src="../images/powerbi/pb-diagram-statechart.png"/></a></p>
+</li>
+<li>
+<p>In the chart, we want to summarize the number of sales by product category. Here's how we can achieve this.</p>
+</li>
+<li>
+<p>Select the chart.</p>
+</li>
+<li>
+<p>You can specify the parameters on the <em>Visualizations</em> toolbars <em>Build visual</em> page. Drag the <em>Product</em>/<em>Category</em> column onto the <em>X axis</em> field and the <em>Sales</em>/<em>Order quantity</em> column onto the <em>Y axis</em> field.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-diagram-quantities.png"><img alt="Column chart with data" src="../images/powerbi/pb-diagram-quantities.png"/></a></p>
+</li>
+</ol>
+<h3 id="annual-breakdown">Annual breakdown<a class="headerlink" href="#annual-breakdown" title="Permanent link">¶</a></h3>
+<p>As a next step, we would like to look at the previous data in an annual breakdown. Since there are three types of dates in the <em>Sales</em> table (<em>OrderDate</em>,<em>DueDate</em>,<em>ShipDate</em>), we need to decide which one to use. For us, the order date will now be relevant, so we need to make sure that if we filter or group by <em>Date</em> table, the system takes this into account.</p>
+<ol>
+<li>Open the <em>Model view</em>. Notice that there are three connections between the <em>Sales</em> and the <em>Date</em> table, but only one of them is highlighted by a continuous line, and the other two are dashed. The continuous line is the active link and will be the basis for subsequent grouping and filtering. Move the mouse cursor over each link to see which columns are connected. There can be no more than one active relationship between two tables.</li>
+</ol>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-diagram-orderdate.png"><img alt="Dates Connection" src="../images/powerbi/pb-diagram-orderdate.png"/></a></p>
+<ol>
+<li>If the <em>OrderDateKey</em>-<em>DateKey</em> connection is not the active one, we must first terminate the existing active connection. To do this, select it, and turn off the <em>Make this relationship active</em> option, then click <em>Apply changes</em>.</li>
+</ol>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-diagram-relationship.png"><img alt="Active Connection" src="../images/powerbi/pb-diagram-relationship.png"/></a></p>
+<ol>
+<li>Similarly to the previous step sequence, select the line for the <em>OrderDateKey</em>-<em>DateKey</em> connection and make it active. Do not miss the <em>Apply changes</em> step.</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Hint</p>
+</div>
+<p>There could be a situation where we want to categorize based on two types of dates at the same time. In this case, we can bypass the one-relation-one-active-connection limit by duplicating the <em>Date</em> table.</p>
+<ol>
+<li>To return to the report view, drag the <em>Date</em>/<em>Fiscal Year</em> column to the <em>Legend</em> property of the chart.</li>
+</ol>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-diagram-year.png"><img alt="Annual grouping" src="../images/powerbi/pb-diagram-year.png"/></a></p>
+<ol>
+<li>Publish the report in a similar way to the previous task. In the course of publishing, we will see that our previous report with this name is already in the cloud. Feel free to select the <strong>Replace</strong> option if you are asked to overwrite it.</li>
+</ol>
+<div class="admonition example">
+<p class="admonition-title">SUBMISSION</p>
+</div>
+<p>Take a screenshot of the published report. Save the image as f2.png and submit it with the other files of the solution. The image should show the entire screen (browser window, system tray, etc.). Check again that your Neptun code is visible (in the upper gray line)!</p>
+<h2 id="3-task-map-5p">3. Task: Map (5p)<a class="headerlink" href="#3-task-map-5p" title="Permanent link">¶</a></h2>
+<p><strong>This exercise is to be completed individually for 5 points.</strong></p>
+<p>Power BI has a number of spectacular and intelligent diagram models. The following is a world map showing each country's sales by category.</p>
+<ol>
+<li>
+<p>Add a new page with the name <em>Map</em> and fill in its properties as follows</p>
+</li>
+<li>
+<p><em>Location</em> should be set to <em>SalesTerritory</em>/<em>country</em></p>
+</li>
+<li>
+<p><em>Bubble size</em> should be set to <em>Sales</em>/<em>order quantity</em></p>
+</li>
+<li>
+<p>Resize the map to fill in the page</p>
+</li>
+</ol>
+<p>At this point, you can already see the bubbles proportional to the national sales data on the map. In the last step, we will  break down the data by categories, which we can do by using in the <em>Legend</em> field of the bar chart.</p>
+<ol>
+<li>
+<p><em>Legend</em> should be set to <em>Product</em>/<em>category</em></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-diagram-map.png"><img alt="Map" src="../images/powerbi/pb-diagram-map.png"/></a></p>
+</li>
+<li>
+<p>Publish the report in a similar way to the previous task.</p>
+</li>
+</ol>
+<div class="admonition example">
+<p class="admonition-title">SUBMISSION</p>
+</div>
+<p>Take a screenshot of the published report. Save the image as f3.png and submit it with the other files of the solution. The image should show the entire screen (browser window, system tray, etc.). Check again that your Neptun code is visible (in the upper gray line)!</p>
+<h2 id="4-task-sales-reports-5p">4. Task: Sales Reports (5p)<a class="headerlink" href="#4-task-sales-reports-5p" title="Permanent link">¶</a></h2>
+<p><strong>This exercise is to be completed individually for 5 points.</strong></p>
+<p>In this exercise, you will learn about complex filters, line diagrams, and complex data</p>
+<h3 id="content-of-the-report">Content of the report<a class="headerlink" href="#content-of-the-report" title="Permanent link">¶</a></h3>
+<p>Provide a report on how product sales for each category and subcategory have progressed year-on-year, including monthly breakdowns. Also visualize the results in a line chart.</p>
+<p>The final report should be similar to the following:</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-categories-full.png"><img alt="Suggested groups" src="../images/powerbi/pb-categories-full.png"/></a></p>
+<p>The solution steps are described below:</p>
+<h3 id="slicer">Slicer<a class="headerlink" href="#slicer" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p>Create a new page with the name <em>Categories</em>. A report similar to the sample will be achieved by using 3 different <em>Visuals</em></p>
+</li>
+<li>
+<p>Put a <em>Slicer</em> on the report. It will function as a filter, by displaying the filter categories on the UI.</p>
+</li>
+<li>
+<p>Drag the <em>Product</em>/<em>Category</em> and <em>Product</em>/<em>Subcategory</em> columns on the <em>Slicers</em> <em>Field</em> property. (The order matters!). Try out the <em>Slicer</em>!</p>
+</li>
+</ol>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-categories-slicer.png"><img alt="Configure Slicer" src="../images/powerbi/pb-categories-slicer.png"/></a></p>
+<h3 id="table">Table<a class="headerlink" href="#table" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p>Place a <em>Table</em> component next to the <em>Slicer</em>. If necessary, resize both of them so that their heights are aligned.</p>
+</li>
+<li>
+<p>In the table, order times will be grouped by year and month. Here, we take advantage of the system's "understanding" of how dates work so that the <em>Date</em>/<em>date</em> column can be expanded and the <em>Year</em> and <em>Month</em> fields can be used separately. Let's do this.</p>
+</li>
+<li>
+<p>Add the columns <em>Sales</em>/<em>Sales Amount</em> and <em>Sales</em>/<em>Order Quantity</em> to the table.</p>
+</li>
+<li>
+<p>Let's try out how selecting certain categories in the <em>Slicer</em> affects your current data.</p>
+</li>
+</ol>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-categories-table.png"><img alt="Configure Table" src="../images/powerbi/pb-categories-table.png"/></a></p>
+<h3 id="line-chart">Line chart<a class="headerlink" href="#line-chart" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p>Place a <em>Line Chart</em> component under the <em>Slicer</em> and the <em>Table</em>. Resize them as needed so that the width of the chart is the same as the elements above it.</p>
+</li>
+<li>
+<p>In the chart, we will plot the monthly sales data grouped by years.</p>
+</li>
+<li>
+<p>Set the <em>X-Axis</em> field of the chart. Its value should be <em>Date</em>/<em>Date</em>/<em>Month</em> while <em>Y-Axis</em> should be set to <em>Sales</em>/<em>Sales amount</em>.</p>
+</li>
+<li>
+<p>Use the <em>Legend</em> field to categorize the results by year, drag and drop the <em>Date</em>/<em>Date</em>/<em>Year</em> column onto it.</p>
+</li>
+</ol>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-categories-linechart.png"><img alt="Configure a chart" src="../images/powerbi/pb-categories-linechart.png"/></a></p>
+<ol>
+<li>Finally, set the title of the graph. You can do this using the <em>General</em> tab on the <em>Format your visual</em> page in the <em>Visualizations</em> toolbar. Set the value of the <em>Title</em> field to your Neptun code, and in the same block, increase the font size, set the <em>Text color</em> field to red, and center the text (<em>Horizontal alignment</em>:<em>Center</em>)</li>
+</ol>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-categories-charttitle.png"><img alt="Chart title" src="../images/powerbi/pb-categories-charttitle.png"/></a></p>
+<div class="admonition example">
+<p class="admonition-title">SUBMISSION</p>
+</div>
+<p>Take a screenshot of the published report. Save the image as f4.png and submit it with the other files of the solution. The image should show the entire screen (browser window, system tray, etc.). Check again that your Neptun code is visible (in the upper gray line)!</p>
+<h2 id="5-task-optional-task">5. Task: Optional task<a class="headerlink" href="#5-task-optional-task" title="Permanent link">¶</a></h2>
+<p><strong>You can earn 3 IMSc points by completing this task.</strong></p>
+<p>Create a pie chart about the number of transactions in each product category. <strong>Enter your Neptune code in the title of the diagram.</strong>.</p>
+<ul>
+<li>
+<p>Colors of the categories (as shown below) should be red, yellow, green and blue</p>
+</li>
+<li>
+<p>Data labels should be inside the pie chart</p>
+</li>
+<li>
+<p>Upload the completed report to the online Power BI service as well!</p>
+</li>
+<li>
+<p>The title of the chart should be your Neptun code and should be displayed centered and in bold</p>
+</li>
+<li>
+<p>The goal is to create a similar chart to the one below</p>
+</li>
+</ul>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-diagram-piechart.png"><img alt="Expected Pie Chart" src="../images/powerbi/pb-diagram-piechart.png"/></a></p>
+<div class="admonition example">
+<p class="admonition-title">SUBMISSION</p>
+</div>
+<p>Take a screenshot of the published report. Save the image as f5.png and submit it with the other files of the solution. The image should show the entire screen (browser window, system tray, etc.). Check again that your Neptun code is visible (in the upper gray line)!</p>
+<hr/>
+<div class="md-source-file">
+<span class="md-source-file__fact"> <span class="md-icon" title="Last update"> <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z">
+</path>
+</svg>
+</span>
+<span title="March 2, 2023 01:01:54">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-02T01:01:54+01:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-02</span>
+</span>
+</span>
+<span class="md-source-file__fact">
+<span class="md-icon" title="Created"> <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z">
+</path>
+</svg>
+</span>
+<span title="March 2, 2023 00:53:33">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-02T00:53:33+01:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-02</span>
+</span>
+</span>
+<span class="md-source-file__fact">
+<span class="md-icon" title="Szerzők">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z">
+</path>
+</svg>
+</span>
+<span>Szerzők</span>
+<nav><a class="md-author" href="https://github.com/BenceKovari" rel="noopener noreferrer" target="_blank" title="@BenceKovari">
+<img alt="@BenceKovari" src="https://avatars.githubusercontent.com/u/9880411?size=72"/>
+</a></nav>
+</span>
+</div>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+            Back to top
+          </a>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © BME-VIK-AUT
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit"], "search": "../assets/javascripts/workers/search.db81ec45.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../assets/javascripts/bundle.a00a7c5e.min.js"></script>
+<script src="../js/timeago.min.js"></script>
+<script src="../js/timeago_mkdocs_material.js"></script>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
