@@ -177,7 +177,7 @@ Az alábbiakban egyedi szűrőket definiálunk a jelentéshez, majd publikáljuk
 !!! example "BEADANDÓ"
     Készíts egy képernyőképet a **publikált jelentésről**. A képet a megoldásban `f1.png` néven add be. A képen a teljes képernyő (böngésző ablak, tálca stb. látszódjon). Ismét ellenőrizd, hogy a **Neptun kódod** látszódik (a felső szürke sorban)!
 
-    A megváltozottott NEPTUN.pbix fájlt is töltsd fel.
+    A megváltozott NEPTUN.pbix fájlt is töltsd fel.
 
 ## 2. Feladat: Diagram (5p)
 
@@ -234,7 +234,7 @@ Következő lépésként szeretnénk az előbbi adatokat éves bontásban is meg
 !!! example "BEADANDÓ"
     Készíts egy képernyőképet a **publikált jelentésről**. A képet a megoldásban `f2.png` néven add be. A képen a teljes képernyő (böngésző ablak, tálca stb. látszódjon). Ismét ellenőrizd, hogy a **Neptun kódod** látszódik (a felső szürke sorban)!
 
-    A megváltozottott NEPTUN.pbix fájlt is töltsd fel.
+    A megváltozott NEPTUN.pbix fájlt is töltsd fel.
 
 ## 3. Feladat: Térkép (5p)
 
@@ -261,7 +261,7 @@ A Power BI számos látványos és intelligens diagrammodellel rendelkezik. A k�
 !!! example "BEADANDÓ"
     Készíts egy képernyőképet a **publikált jelentésről**. A képet a megoldásban `f3.png` néven add be. A képen a teljes képernyő (böngésző ablak, tálca stb. látszódjon). Ismét ellenőrizd, hogy a **Neptun kódod** látszódik (a felső szürke sorban)!
 
-    A megváltozottott NEPTUN.pbix fájlt is töltsd fel.
+    A megváltozott NEPTUN.pbix fájlt is töltsd fel.
 
 ## 4. Feladat: Értékesítői riport (5p)
 
@@ -320,7 +320,7 @@ A megoldás lépéseit az alábbiakban ismertetjük:
 !!! example "BEADANDÓ"
     Készíts egy képernyőképet a **publikált jelentésről**. A képet a megoldásban `f4.png` néven add be. A képen a teljes képernyő (böngésző ablak, tálca stb. látszódjon). Ismét ellenőrizd, hogy a **Neptun kódod** látszódik (a felső szürke sorban)!
 
-    A megváltozottott NEPTUN.pbix fájlt is töltsd fel.
+    A megváltozott NEPTUN.pbix fájlt is töltsd fel.
 
 ## 5. Feladat: Opcionális feladat
 
@@ -346,4 +346,4 @@ Készíts tortadiagramot az egyes termékkategóriákban létrejövő tranzakci�
 !!! example "BEADANDÓ"
     Készíts egy képernyőképet a **publikált jelentésről**. A képet a megoldásban `f5.png` néven add be. A képen a teljes képernyő (böngésző ablak, tálca stb. látszódjon). Ismét ellenőrizd, hogy a **Neptun kódod** látszódik (a felső szürke sorban)!
 
-    A megváltozottott NEPTUN.pbix fájlt is töltsd fel.
+    A megváltozott NEPTUN.pbix fájlt is töltsd fel.
