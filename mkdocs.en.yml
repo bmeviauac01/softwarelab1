@@ -26,7 +26,7 @@ nav:
       - VisualStudio.md
       - GitHub-credentials.md
   - "Laboratories":
-      - "Reporting Services": Lab-ReportingServices/index.md
+      - "Reporting": Lab-PowerBI/index.md
       - "Query optimization": Lab-QueryOptimization/index.md
       - "MSSQL": Lab-MSSQL/index.md
       - "MongoDB": Lab-MongoDB/index.md

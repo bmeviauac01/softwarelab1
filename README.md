@@ -32,7 +32,7 @@ A repository tartalmaz egy Dockerfile-t, ami at MKDocs keretrendszer és függő
 
 3. <http://localhost:8000> vagy a codespace átirányított címének megnyitása böngészőből.
 4. Markdown szerkesztése és mentése után automatikusan frissül a weboldal.
-
+5. Tipp: VSCode-ban használhatod a CTR+SHIFT+B-vel elérhető build taskokat a fordításhoz és a futtatáshoz.
 
 # ENVIAUAC09 Software Development Laboratory 1
 
