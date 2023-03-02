@@ -106,7 +106,7 @@ A Power BI-ban mintegy 150 féle adatforrásból tudunk adatokat importálni, ak
 
     ![Új táblázat hozzáadása](../images/powerbi/pb-1streport-addtable.png)
 
-1. A _Data_ eszköztárról húzzuk be a táblázatra a _Product_ tábla _Category_, _Model_ és _Product_ oszlopait, továbbá a _Sales_ tábla _Sales Amount_ oszlopát! Az eredmény valahogy így néz ki:
+1. A _Data_ eszköztárról húzzuk be a táblázatra a _Product_ tábla _Category_, _Model_ és _Product_ oszlopait, továbbá a _Sales_ tábla _Extended Amount_ oszlopát! Az eredmény valahogy így néz ki:
 
     ![Új táblázat hozzáadása](../images/powerbi/pb-1streport-addcolumns.png)
 
