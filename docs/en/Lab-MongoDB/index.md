@@ -15,7 +15,7 @@ Required tools to complete the tasks:
         docker run --name swlab1-mongo -p 27017:27017 -d mongo
         ```
         
-- Sample database initialization script: ([mongo.js](https://bmeviauac01.github.io/adatvezerelt/db/mongo.js))
+- Sample database initialization script: ([mongo.js](../db/mongo.js))
 - GitHub account and a git client
 - Microsoft Visual Studio 2022 [with the settings here](../VisualStudio.md)
     - When using Linux or macOS, you can use Visual Studio Code, the .NET SDK, and [dotnet CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/).
