@@ -25,8 +25,8 @@ When solving tasks, do not forget to follow the[task submission process](../GitH
 
 1. Wait until the repository is ready, and then checkout-old out.
 
-    !!! tip ""
-    In university labs, if the system does not ask for a username and password during the checkout, and the checkout fails, then the system probably tried using a previously memorized username on the machine. First, delete the saved login data [see here](../GitHub-credentials.md) and try again.
+    !!! warning "Password in labs"
+        In university labs, if the system does not ask for a username and password during the checkout, and the checkout fails, then the system probably tried using a previously memorized username on the machine. First, delete the saved login data [see here](../GitHub-credentials.md) and try again.
 
 1. Create a new branch called `solution` and work on it.
 
@@ -74,13 +74,13 @@ In Power BI, we can import data from about 150 different data sources, either fo
 
     ![Belépés](../images/powerbi/pb-install-signin.png)
 
-!!! tip "Hint"
-Power BI Desktop can be used without logging in, but publishing will require a logged in account. If you work on a shared (lab) computer, don't forget to log out at the end of the lab!
+    !!! tip "Hint"
+        Power BI Desktop can be used without logging in, but publishing will require a logged in account. If you work on a shared (lab) computer, don't forget to log out at the end of the lab!
 
 1. Close the pop-up dialogs and save the project (File/Save) in any directory.**Project name should be your Neptun code**!
 
-!!! tip "Hint"
-Everything we do in Power BI Desktop will go into this project file (NEPTUN.pbix). The project file must also be submitted together with screenshots of the solution.
+    !!! tip "Hint"
+        Everything we do in Power BI Desktop will go into this project file (NEPTUN.pbix). The project file must also be submitted together with screenshots of the solution.
 
 1. Load the previously downloaded _AdventureWorksSales.xlsx_ file. (_Get data_ /_Excel workbook_)
 
@@ -108,10 +108,10 @@ Everything we do in Power BI Desktop will go into this project file (NEPTUN.pbix
 
 1. Drag the following columns from the _Data_ toolbar onto the table:
 
-- _Product_/_Category_,
-- _Product_/_Model_
-- _Product_/_Product_
-- _Sales_/_Sales Amount_
+    - _Product_/_Category_,
+    - _Product_/_Model_
+    - _Product_/_Product_
+    - _Sales_/_Sales Amount_
 
     ![Add New Table](../images/powerbi/pb-1streport-addcolumns.png)
 
@@ -135,7 +135,7 @@ Everything we do in Power BI Desktop will go into this project file (NEPTUN.pbix
 
     1. At this point, our table looks something like this:
 
-    ![Formatted Table](../images/powerbi/pb-1streport-formattedtable.png)
+        ![Formatted Table](../images/powerbi/pb-1streport-formattedtable.png)
 
 ### Creating and publishing filters
 
@@ -159,7 +159,7 @@ Below we define custom filters for the report and then publish our work.
 
 1. Set the _Filter_ **cards**/_Background_ property to the same color as the previous one. The end result could be something like this:
 
-![Formatted Filters](../images/powerbi/pb-1streport-formattedfilters.png)
+    ![Formatted Filters](../images/powerbi/pb-1streport-formattedfilters.png)
 
 1. Save the changes and publish the completed report to the online service using the _Publish_ button on the _Home_ page.
 
@@ -178,9 +178,9 @@ Below we define custom filters for the report and then publish our work.
     ![Published report](../images/powerbi/pb-1streport-online.png)
 
 !!! example "SUBMISSION"
-Take a screenshot of the published report. Save the image as f1.png and submit it with the other files of the solution. The image should show the entire screen (browser window, system tray, etc.). Check again that your Neptun code is visible (in the upper gray line)!
+    Take a screenshot of the published report. Save the image as `f1.png` and submit it with the other files of the solution. The image should show the entire screen (browser window, system tray, etc.). Check again that your Neptun code is visible (in the upper gray line)!
 
-Also upload the updated NEPTUN.pbix file.
+    Also upload the updated `NEPTUN.pbix` file.
 
 ## 2. Task: Chart (5p)
 
@@ -214,25 +214,25 @@ As a next step, we would like to look at the previous data in an annual breakdow
 
 1. Open the _Model view_. Notice that there are three connections between the _Sales_ and the _Date_ table, but only one of them is highlighted by a continuous line, and the other two are dashed. The continuous line is the active link and will be the basis for subsequent grouping and filtering. Move the mouse cursor over each link to see which columns are connected. There can be no more than one active relationship between two tables.
 
-![Dates Connection](../images/powerbi/pb-diagram-orderdate.png)
+    ![Dates Connection](../images/powerbi/pb-diagram-orderdate.png)
 
 1. If the _OrderDateKey_-_DateKey_ connection is not the active one, we must first terminate the existing active connection. To do this, select it, and turn off the _Make this relationship active_ option, then click _Apply changes_.
 
-![Active Connection](../images/powerbi/pb-diagram-relationship.png)
+    ![Active Connection](../images/powerbi/pb-diagram-relationship.png)
 
 1. Similarly to the previous step sequence, select the line for the _OrderDateKey_-_DateKey_ connection and make it active. Do not miss the _Apply changes_ step.
 
-!!! tip "Hint"
-There could be a situation where we want to categorize based on two types of dates at the same time. In this case, we can bypass the one-relation-one-active-connection limit by duplicating the _Date_ table.
+    !!! tip "Hint"
+        There could be a situation where we want to categorize based on two types of dates at the same time. In this case, we can bypass the one-relation-one-active-connection limit by duplicating the _Date_ table.
 
 1. To return to the report view, drag the _Date_/_Fiscal Year_ column to the _Legend_ property of the chart.
 
-![Annual grouping](../images/powerbi/pb-diagram-year.png)
+    ![Annual grouping](../images/powerbi/pb-diagram-year.png)
 
 1. Publish the report in a similar way to the previous task. In the course of publishing, we will see that our previous report with this name is already in the cloud. Feel free to select the **Replace** option if you are asked to overwrite it.
 
 !!! example "SUBMISSION"
-Take a screenshot of the published report. Save the image as f2.png and submit it with the other files of the solution. The image should show the entire screen (browser window, system tray, etc.). Check again that your Neptun code is visible (in the upper gray line)!
+    Take a screenshot of the published report. Save the image as `f2.png` and submit it with the other files of the solution. The image should show the entire screen (browser window, system tray, etc.). Check again that your Neptun code is visible (in the upper gray line)!
 
 ## 3. Task: Map (5p)
 
@@ -248,7 +248,7 @@ Power BI has a number of spectacular and intelligent diagram models. The followi
 
 1. Resize the map to fill in the page
 
-At this point, you can already see the bubbles proportional to the national sales data on the map. In the last step, we will  break down the data by categories, which we can do by using in the _Legend_ field of the bar chart.
+    At this point, you can already see the bubbles proportional to the national sales data on the map. In the last step, we will  break down the data by categories, which we can do by using in the _Legend_ field of the bar chart.
 
 1. _Legend_ should be set to _Product_/_category_
 
@@ -257,7 +257,7 @@ At this point, you can already see the bubbles proportional to the national sale
 1. Publish the report in a similar way to the previous task.
 
 !!! example "SUBMISSION"
-Take a screenshot of the published report. Save the image as f3.png and submit it with the other files of the solution. The image should show the entire screen (browser window, system tray, etc.). Check again that your Neptun code is visible (in the upper gray line)!
+    Take a screenshot of the published report. Save the image as `f3.png` and submit it with the other files of the solution. The image should show the entire screen (browser window, system tray, etc.). Check again that your Neptun code is visible (in the upper gray line)!
 
 ## 4. Task: Sales Reports (5p)
 
@@ -307,14 +307,14 @@ The solution steps are described below:
 
 1. Use the _Legend_ field to categorize the results by year, drag and drop the _Date_/_Date_/_Year_ column onto it.
 
-![Configure a chart](../images/powerbi/pb-categories-linechart.png)
+    ![Configure a chart](../images/powerbi/pb-categories-linechart.png)
 
 1. Finally, set the title of the graph. You can do this using the _General_ tab on the _Format your visual_ page in the _Visualizations_ toolbar. Set the value of the _Title_ field to your Neptun code, and in the same block, increase the font size, set the _Text color_ field to red, and center the text (_Horizontal alignment_:_Center_)
 
-![Chart title](../images/powerbi/pb-categories-charttitle.png)
+    ![Chart title](../images/powerbi/pb-categories-charttitle.png)
 
 !!! example "SUBMISSION"
-Take a screenshot of the published report. Save the image as f4.png and submit it with the other files of the solution. The image should show the entire screen (browser window, system tray, etc.). Check again that your Neptun code is visible (in the upper gray line)!
+    Take a screenshot of the published report. Save the image as `f4.png` and submit it with the other files of the solution. The image should show the entire screen (browser window, system tray, etc.). Check again that your Neptun code is visible (in the upper gray line)!
 
 ## 5. Task: Optional task
 
@@ -335,4 +335,4 @@ Create a pie chart about the number of transactions in each product category. **
 ![Expected Pie Chart](../images/powerbi/pb-diagram-piechart.png)
 
 !!! example "SUBMISSION"
-Take a screenshot of the published report. Save the image as f5.png and submit it with the other files of the solution. The image should show the entire screen (browser window, system tray, etc.). Check again that your Neptun code is visible (in the upper gray line)!
+    Take a screenshot of the published report. Save the image as `f5.png` and submit it with the other files of the solution. The image should show the entire screen (browser window, system tray, etc.). Check again that your Neptun code is visible (in the upper gray line)!
