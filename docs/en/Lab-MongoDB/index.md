@@ -29,7 +29,7 @@ Required tools to complete the tasks:
 Materials for preparing for this laboratory:
 
 - MongoDB database system and the C# driver
-    - Check the materials of _Data-driven systems_ including the [seminars](https://bmeviauac01.github.io/datadriven-en/)
+    - Check the materials of _Data-driven systems_ including the [seminars](https://bmeviauac01.github.io/datadriven/en/)
 - Official Microsoft tutorial for [WebApi using MongoDB](https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-mongo-app?view=aspnetcore-6.0&tabs=visual-studio)
     - We will not be creating a WebApi in this lab, but the Mongo part is the same.
 
@@ -52,7 +52,7 @@ Keep in mind that you are expected to follow the [submission process](../GitHub.
 
 ### Create the database
 
-Follow the steps in the [seminar material](https://bmeviauac01.github.io/datadriven-en/seminar/mongodb/#exercise-0-create-database-open-starter-code) to start the database server and initialize the database.
+Follow the steps in the [seminar material](https://bmeviauac01.github.io/datadriven/en/seminar/mongodb/#exercise-0-create-database-open-starter-code) to start the database server and initialize the database.
 
 ## Exercise 1: Listing and modifying products
 

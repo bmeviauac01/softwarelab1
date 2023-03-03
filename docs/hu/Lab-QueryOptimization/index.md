@@ -13,14 +13,14 @@ A labor elvégzéséhez szükséges eszközök:
     - MacOS-en Docker-rel futtatható.
 - [Visual Studio Code](https://code.visualstudio.com/) vagy más, markdown kompatibilis szerkesztő
 - [SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms), vagy kipróbálható a platformfüggetlen [Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/download) is
-- Az adatbázist létrehozó script: [mssql.sql](https://raw.githubusercontent.com/bmeviauac01/adatvezerelt/master/docs/db/mssql.sql)
+- Az adatbázist létrehozó script: [mssql.sql](../db/mssql.sql)
 - GitHub account és egy git kliens
 
 A labor elvégzéséhez használható segédanyagok és felkészülési anyagok:
 
 - Markdown formátum [rövid ismertetője](https://guides.github.com/features/mastering-markdown/) és [részletes dokumentációja](https://help.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax)
-- Microsoft SQL Server használata: [leírás](https://bmeviauac01.github.io/adatvezerelt/db/mssql/) és [videó](https://web.microsoftstream.com/video/e3a83d16-b5c4-4fe9-b027-703347951621)
-- Az adatbázis [sémájának leírása](https://bmeviauac01.github.io/adatvezerelt/db/)
+- Microsoft SQL Server használata: [leírás](https://bmeviauac01.github.io/datadriven/hu/db/mssql/)
+- Az adatbázis [sémájának leírása](https://bmeviauac01.github.io/daradriven/hu/db/)
 - Microsoft SQL Server lekérdezés optimalizálása
     - Lásd az Adatvezérelt rendszerek c. tárgy jegyzetei között
 
@@ -71,7 +71,7 @@ A feladatok megoldása során a dokumentációt markdown formátumban készítsd
 
 1. Hozz létre egy új adatbázist (ha még nem létezik). Az adatbázis neve legyen a Neptun kódod: _Object Explorer_-ben Databases-en jobb kattintás, és _Create Database_.
 
-1. Hozd létre a minta adatbázist a [generáló script](https://raw.githubusercontent.com/bmeviauac01/adatvezerelt/master/docs/db/mssql.sql) lefuttatásával. Nyiss egy új _Query_ ablakot, másold be a script tartalmát, és futtasd le. Ügyelj az eszköztáron levő legördülő menüben a megfelelő adatbázis kiválasztására.
+1. Hozd létre a minta adatbázist a [generáló script](../db/mssql.sql) lefuttatásával. Nyiss egy új _Query_ ablakot, másold be a script tartalmát, és futtasd le. Ügyelj az eszköztáron levő legördülő menüben a megfelelő adatbázis kiválasztására.
 
     ![Adatbázis kiválasztása](../images/sql-management-database-dropdown.png)
 
