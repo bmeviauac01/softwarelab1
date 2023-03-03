@@ -126,7 +126,7 @@ A Power BI-ban mintegy 150 féle adatforrásból tudunk adatokat importálni, ak
 
     1. Kapcsoljuk ki az összegzés (_Totals_/_Values_ jobb felső sarkát állítsuk off-ra)
 
-    1. Emeljük ki az összeg oszlopot! Ehhez a _Specific column_ blokkban válasszuk ki a _Sum of Extended Amount_ oszlopot (_Series_ mező), majd a _Text color_ értékét állítsuk fehérre, _Background color_ értékét pedig egy sötétebb színre.
+    1. Emeljük ki az összeg oszlopot! Ehhez a _Specific column_ blokkban válasszuk ki a _Sum of Sales Amount_ oszlopot (_Series_ mező), majd a _Text color_ értékét állítsuk fehérre, _Background color_ értékét pedig egy sötétebb színre.
 
     1. Ezen a ponton a táblázatunk valahogy így néz ki:
 
@@ -136,13 +136,13 @@ A Power BI-ban mintegy 150 féle adatforrásból tudunk adatokat importálni, ak
 
 Az alábbiakban egyedi szűrőket definiálunk a jelentéshez, majd publikáljuk a munkánkat.
 
-1. Kattintsunk a táblázat alatti szűrő ikonra, ami előhozza a _Filters_ eszköztárt. Látható, hogy a 4 oszlophoz eleve létrejöttek szűrők.
+1. Amennyiben a szűrők alapból nem látszanának, kattintsunk a _View_ lap _Filter_ gombjára, ami előhozza a _Filters_ eszköztárt. Látható, hogy a 4 oszlophoz eleve létrejöttek szűrők.
 
     ![Szűrők](../images/powerbi/pb-1streport-filters.png)
 
 1. Húzzuk be a _SalesTerritory_ _Country_ oszlopát a szűrök közé. Most már erre is szűrhetünk igény szerint.
 
-1. Rejtsük el az eladási árra vonatkozó szűrőt. Ehhez kattintsunk a _Sum of Extended Amount_ szűrőn belül a kis szem ikonra. Bár a szűrő számunkra továbbra is látható marad, a publikált jelentésben már nem fog megjelenni így.
+1. Rejtsük el az eladási árra vonatkozó szűrőt. Ehhez kattintsunk a _Sum of Sales Amount_ szűrőn belül a kis szem ikonra. Bár a szűrő számunkra továbbra is látható marad, a publikált jelentésben már nem fog megjelenni így.
 
     ![Szűrő elrejtése](../images/powerbi/pb-1streport-hidefilter.png)
 
@@ -150,7 +150,7 @@ Az alábbiakban egyedi szűrőket definiálunk a jelentéshez, majd publikáljuk
 
 1. Kattintsunk az oldalon egy olyan részre, ahol nincs táblázat, ezzel magát az oldalt (_Page_) kijelölve. A _Visualizations_ eszköztárban ekkor a formázások az egész oldalra vonatkozó beállításokat fognak tartalmazni (_Format page_). Ezen belül szabjuk testre a szűrők megjelenését a következő lépésekben.
 
-1. Állítsuk a _Filter pane_/_Search_ tulajdonságot egy másik világos színre.
+1. Állítsuk a _Filter pane_/_Input_ tulajdonságot egy másik világos színre.
 
 1. Állítsuk a _Filter pane_/_Background_ tulajdonságot egy sötétebb színre.
 
@@ -337,6 +337,8 @@ Készíts tortadiagramot az egyes termékkategóriákban létrejövő tranzakci�
 - A diagram címe középre igazítva, vastag betűkkel a Neptun kódod legyen!
 
 - A cél az alábbi, vagy legalábbis ehhez hasonlító grafikon elkészítése.
+
+- Figyelem, a tranzakciók száma az egyes kategóriákhoz tartozó _Sales_ sorok számával egyezik meg (Tehát nem az _Order Quantity_ összegére, vagyis az eladott termékek számára vagyunk kíváncsiak)
 
 ![Elvárt tortadiagram](../images/powerbi/pb-diagram-piechart.png)
 

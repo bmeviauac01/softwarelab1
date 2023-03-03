@@ -17,22 +17,22 @@ Auxiliary materials and preparation materials that can be used to perform the la
 
 ## Preparation
 
-When solving tasks, do not forget to follow the[task submission process](../GitHub.md).
+Keep in mind that you are expected to follow the [submission process](../GitHub.md).
 
-### Create and Download Git Repository
+### Create and check out your Git repository
 
-1. In Moodle, find the URL of the invitation to the lab and use it to create your own repository.
+1. Create your git repository using the invitation link in Moodle. Each lab has a different URL; make sure to use the right one!
 
-1. Wait until the repository is ready, and then checkout-old out.
+1. Wait for the repository creation to complete, then check out the repository.
 
-    !!! warning "Password in labs"
-        In university labs, if the system does not ask for a username and password during the checkout, and the checkout fails, then the system probably tried using a previously memorized username on the machine. First, delete the saved login data [see here](../GitHub-credentials.md) and try again.
+    !!! tip ""
+        If you are not asked for credentials to log in to GitHub in university computer laboratories when checking out the repository, the operation may fail. This is likely due to the machine using someone else's GitHub credentials. Delete these credentials first (see [here](../GitHub-credentials.md)), then retry the checkout.
 
-1. Create a new branch called `solution` and work on it.
+1. Create a new branch with the name `solution` and work on this branch.
 
-1. Enter your Neptun code in the `neptun.txt` file. The file should contain nothing but 6 characters of the Neptun code in a single line.
+1. Open the checked-out folder and type your Neptun code into the `neptun.txt` file. There should be a single line with the 6 characters of your Neptun code and nothing else in this file.
 
-1. Enter your ***@edu.bme.hu email address in the `eduid.txt` file. Do not include anything else in the file except the email address in a single line.
+1. Type your ***@edu.bme.hu email address in the `eduid.txt` file. Do not include anything else in the file except the email address in a single line.
 
 ### Free Power BI registration
 
@@ -131,7 +131,7 @@ In Power BI, we can import data from about 150 different data sources, either fo
 
     1. Turn off the summary (set the switch in the top right corner of _Totals_/_Values_ to off)
 
-    1. Let's Highlight the amount column. To do this, select _Sum of Extended Amount_ column in the _Specific column_ block, set the value of _Text color_ to white, and set _Background color_ to a darker color.
+    1. Let's Highlight the amount column. To do this, select _Sum of Sales Amount_ column in the _Specific column_ block, set the value of _Text color_ to white, and set _Background color_ to a darker color.
 
     1. At this point, our table looks something like this:
 
@@ -147,7 +147,7 @@ Below we define custom filters for the report and then publish our work.
 
 1. Drag the _SalesTerritory_/_Country_ column to the filters section. Now we can filter by country as needed.
 
-1. Hide the sales price filter. To do this, click the small eye icon inside the _Sum of Extended Amount_ filter. Although the filter will still be visible to us, it will no longer appear as such in the published report.
+1. Hide the sales price filter. To do this, click the small eye icon inside the _Sum of Sales Amount_ filter. Although the filter will still be visible to us, it will no longer appear as such in the published report.
 
     ![Hide filter](../images/powerbi/pb-1streport-hidefilter.png)
 
