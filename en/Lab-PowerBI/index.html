@@ -544,8 +544,10 @@
 </li>
 <li>
 <p>Wait until the repository is ready, and then checkout-old out.</p>
-<div class="admonition tip"></div>
+<div class="admonition warning">
+<p class="admonition-title">Password in labs</p>
 <p>In university labs, if the system does not ask for a username and password during the checkout, and the checkout fails, then the system probably tried using a previously memorized username on the machine. First, delete the saved login data <a href="../GitHub-credentials/">see here</a> and try again.</p>
+</div>
 </li>
 <li>
 <p>Create a new branch called <code>solution</code> and work on it.</p>
@@ -593,20 +595,18 @@
 <li>
 <p>Launch the Power BI desktop application. Log in with your own ***@edu.bme.hu user.</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-install-signin.png"><img alt="Belépés" src="../images/powerbi/pb-install-signin.png"/></a></p>
-</li>
-</ol>
 <div class="admonition tip">
 <p class="admonition-title">Hint</p>
-</div>
 <p>Power BI Desktop can be used without logging in, but publishing will require a logged in account. If you work on a shared (lab) computer, don't forget to log out at the end of the lab!</p>
-<ol>
-<li>Close the pop-up dialogs and save the project (File/Save) in any directory.<strong>Project name should be your Neptun code</strong>!</li>
-</ol>
+</div>
+</li>
+<li>
+<p>Close the pop-up dialogs and save the project (File/Save) in any directory.<strong>Project name should be your Neptun code</strong>!</p>
 <div class="admonition tip">
 <p class="admonition-title">Hint</p>
-</div>
 <p>Everything we do in Power BI Desktop will go into this project file (NEPTUN.pbix). The project file must also be submitted together with screenshots of the solution.</p>
-<ol>
+</div>
+</li>
 <li>
 <p>Load the previously downloaded <em>AdventureWorksSales.xlsx</em> file. (<em>Get data</em> /<em>Excel workbook</em>)</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-load-excel.png"><img alt="Loading the database" src="../images/powerbi/pb-load-excel.png"/></a></p>
@@ -635,14 +635,12 @@
 </li>
 <li>
 <p>Drag the following columns from the <em>Data</em> toolbar onto the table:</p>
-</li>
-<li>
-<p><em>Product</em>/<em>Category</em>,</p>
-</li>
+<ul>
+<li><em>Product</em>/<em>Category</em>,</li>
 <li><em>Product</em>/<em>Model</em></li>
 <li><em>Product</em>/<em>Product</em></li>
-<li>
-<p><em>Sales</em>/<em>Sales Amount</em></p>
+<li><em>Sales</em>/<em>Sales Amount</em></li>
+</ul>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-1streport-addcolumns.png"><img alt="Add New Table" src="../images/powerbi/pb-1streport-addcolumns.png"/></a></p>
 </li>
 <li>
@@ -672,9 +670,9 @@
 </li>
 <li>
 <p>At this point, our table looks something like this:</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-1streport-formattedtable.png"><img alt="Formatted Table" src="../images/powerbi/pb-1streport-formattedtable.png"/></a></p>
 </li>
 </ol>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-1streport-formattedtable.png"><img alt="Formatted Table" src="../images/powerbi/pb-1streport-formattedtable.png"/></a></p>
 </li>
 </ol>
 <h3 id="creating-and-publishing-filters">Creating and publishing filters<a class="headerlink" href="#creating-and-publishing-filters" title="Permanent link">¶</a></h3>
@@ -702,10 +700,8 @@
 </li>
 <li>
 <p>Set the <em>Filter</em> <strong>cards</strong>/<em>Background</em> property to the same color as the previous one. The end result could be something like this:</p>
-</li>
-</ol>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-1streport-formattedfilters.png"><img alt="Formatted Filters" src="../images/powerbi/pb-1streport-formattedfilters.png"/></a></p>
-<ol>
+</li>
 <li>
 <p>Save the changes and publish the completed report to the online service using the <em>Publish</em> button on the <em>Home</em> page.</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-1streport-publishbutton.png"><img alt="Publish button" src="../images/powerbi/pb-1streport-publishbutton.png"/></a></p>
@@ -725,9 +721,9 @@
 </ol>
 <div class="admonition example">
 <p class="admonition-title">SUBMISSION</p>
+<p>Take a screenshot of the published report. Save the image as <code>f1.png</code> and submit it with the other files of the solution. The image should show the entire screen (browser window, system tray, etc.). Check again that your Neptun code is visible (in the upper gray line)!</p>
+<p>Also upload the updated <code>NEPTUN.pbix</code> file.</p>
 </div>
-<p>Take a screenshot of the published report. Save the image as f1.png and submit it with the other files of the solution. The image should show the entire screen (browser window, system tray, etc.). Check again that your Neptun code is visible (in the upper gray line)!</p>
-<p>Also upload the updated NEPTUN.pbix file.</p>
 <h2 id="2-task-chart-5p">2. Task: Chart (5p)<a class="headerlink" href="#2-task-chart-5p" title="Permanent link">¶</a></h2>
 <p><strong>This exercise is to be completed individually for 5 points.</strong></p>
 <h3 id="create-chart">Create chart<a class="headerlink" href="#create-chart" title="Permanent link">¶</a></h3>
@@ -758,31 +754,33 @@
 <h3 id="annual-breakdown">Annual breakdown<a class="headerlink" href="#annual-breakdown" title="Permanent link">¶</a></h3>
 <p>As a next step, we would like to look at the previous data in an annual breakdown. Since there are three types of dates in the <em>Sales</em> table (<em>OrderDate</em>,<em>DueDate</em>,<em>ShipDate</em>), we need to decide which one to use. For us, the order date will now be relevant, so we need to make sure that if we filter or group by <em>Date</em> table, the system takes this into account.</p>
 <ol>
-<li>Open the <em>Model view</em>. Notice that there are three connections between the <em>Sales</em> and the <em>Date</em> table, but only one of them is highlighted by a continuous line, and the other two are dashed. The continuous line is the active link and will be the basis for subsequent grouping and filtering. Move the mouse cursor over each link to see which columns are connected. There can be no more than one active relationship between two tables.</li>
-</ol>
+<li>
+<p>Open the <em>Model view</em>. Notice that there are three connections between the <em>Sales</em> and the <em>Date</em> table, but only one of them is highlighted by a continuous line, and the other two are dashed. The continuous line is the active link and will be the basis for subsequent grouping and filtering. Move the mouse cursor over each link to see which columns are connected. There can be no more than one active relationship between two tables.</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-diagram-orderdate.png"><img alt="Dates Connection" src="../images/powerbi/pb-diagram-orderdate.png"/></a></p>
-<ol>
-<li>If the <em>OrderDateKey</em>-<em>DateKey</em> connection is not the active one, we must first terminate the existing active connection. To do this, select it, and turn off the <em>Make this relationship active</em> option, then click <em>Apply changes</em>.</li>
-</ol>
+</li>
+<li>
+<p>If the <em>OrderDateKey</em>-<em>DateKey</em> connection is not the active one, we must first terminate the existing active connection. To do this, select it, and turn off the <em>Make this relationship active</em> option, then click <em>Apply changes</em>.</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-diagram-relationship.png"><img alt="Active Connection" src="../images/powerbi/pb-diagram-relationship.png"/></a></p>
-<ol>
-<li>Similarly to the previous step sequence, select the line for the <em>OrderDateKey</em>-<em>DateKey</em> connection and make it active. Do not miss the <em>Apply changes</em> step.</li>
-</ol>
+</li>
+<li>
+<p>Similarly to the previous step sequence, select the line for the <em>OrderDateKey</em>-<em>DateKey</em> connection and make it active. Do not miss the <em>Apply changes</em> step.</p>
 <div class="admonition tip">
 <p class="admonition-title">Hint</p>
-</div>
 <p>There could be a situation where we want to categorize based on two types of dates at the same time. In this case, we can bypass the one-relation-one-active-connection limit by duplicating the <em>Date</em> table.</p>
-<ol>
-<li>To return to the report view, drag the <em>Date</em>/<em>Fiscal Year</em> column to the <em>Legend</em> property of the chart.</li>
-</ol>
+</div>
+</li>
+<li>
+<p>To return to the report view, drag the <em>Date</em>/<em>Fiscal Year</em> column to the <em>Legend</em> property of the chart.</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-diagram-year.png"><img alt="Annual grouping" src="../images/powerbi/pb-diagram-year.png"/></a></p>
-<ol>
-<li>Publish the report in a similar way to the previous task. In the course of publishing, we will see that our previous report with this name is already in the cloud. Feel free to select the <strong>Replace</strong> option if you are asked to overwrite it.</li>
+</li>
+<li>
+<p>Publish the report in a similar way to the previous task. In the course of publishing, we will see that our previous report with this name is already in the cloud. Feel free to select the <strong>Replace</strong> option if you are asked to overwrite it.</p>
+</li>
 </ol>
 <div class="admonition example">
 <p class="admonition-title">SUBMISSION</p>
+<p>Take a screenshot of the published report. Save the image as <code>f2.png</code> and submit it with the other files of the solution. The image should show the entire screen (browser window, system tray, etc.). Check again that your Neptun code is visible (in the upper gray line)!</p>
 </div>
-<p>Take a screenshot of the published report. Save the image as f2.png and submit it with the other files of the solution. The image should show the entire screen (browser window, system tray, etc.). Check again that your Neptun code is visible (in the upper gray line)!</p>
 <h2 id="3-task-map-5p">3. Task: Map (5p)<a class="headerlink" href="#3-task-map-5p" title="Permanent link">¶</a></h2>
 <p><strong>This exercise is to be completed individually for 5 points.</strong></p>
 <p>Power BI has a number of spectacular and intelligent diagram models. The following is a world map showing each country's sales by category.</p>
@@ -798,10 +796,8 @@
 </li>
 <li>
 <p>Resize the map to fill in the page</p>
-</li>
-</ol>
 <p>At this point, you can already see the bubbles proportional to the national sales data on the map. In the last step, we will  break down the data by categories, which we can do by using in the <em>Legend</em> field of the bar chart.</p>
-<ol>
+</li>
 <li>
 <p><em>Legend</em> should be set to <em>Product</em>/<em>category</em></p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-diagram-map.png"><img alt="Map" src="../images/powerbi/pb-diagram-map.png"/></a></p>
@@ -812,8 +808,8 @@
 </ol>
 <div class="admonition example">
 <p class="admonition-title">SUBMISSION</p>
+<p>Take a screenshot of the published report. Save the image as <code>f3.png</code> and submit it with the other files of the solution. The image should show the entire screen (browser window, system tray, etc.). Check again that your Neptun code is visible (in the upper gray line)!</p>
 </div>
-<p>Take a screenshot of the published report. Save the image as f3.png and submit it with the other files of the solution. The image should show the entire screen (browser window, system tray, etc.). Check again that your Neptun code is visible (in the upper gray line)!</p>
 <h2 id="4-task-sales-reports-5p">4. Task: Sales Reports (5p)<a class="headerlink" href="#4-task-sales-reports-5p" title="Permanent link">¶</a></h2>
 <p><strong>This exercise is to be completed individually for 5 points.</strong></p>
 <p>In this exercise, you will learn about complex filters, line diagrams, and complex data</p>
@@ -864,17 +860,17 @@
 </li>
 <li>
 <p>Use the <em>Legend</em> field to categorize the results by year, drag and drop the <em>Date</em>/<em>Date</em>/<em>Year</em> column onto it.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-categories-linechart.png"><img alt="Configure a chart" src="../images/powerbi/pb-categories-linechart.png"/></a></p>
+</li>
+<li>
+<p>Finally, set the title of the graph. You can do this using the <em>General</em> tab on the <em>Format your visual</em> page in the <em>Visualizations</em> toolbar. Set the value of the <em>Title</em> field to your Neptun code, and in the same block, increase the font size, set the <em>Text color</em> field to red, and center the text (<em>Horizontal alignment</em>:<em>Center</em>)</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-categories-charttitle.png"><img alt="Chart title" src="../images/powerbi/pb-categories-charttitle.png"/></a></p>
 </li>
 </ol>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-categories-linechart.png"><img alt="Configure a chart" src="../images/powerbi/pb-categories-linechart.png"/></a></p>
-<ol>
-<li>Finally, set the title of the graph. You can do this using the <em>General</em> tab on the <em>Format your visual</em> page in the <em>Visualizations</em> toolbar. Set the value of the <em>Title</em> field to your Neptun code, and in the same block, increase the font size, set the <em>Text color</em> field to red, and center the text (<em>Horizontal alignment</em>:<em>Center</em>)</li>
-</ol>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-categories-charttitle.png"><img alt="Chart title" src="../images/powerbi/pb-categories-charttitle.png"/></a></p>
 <div class="admonition example">
 <p class="admonition-title">SUBMISSION</p>
+<p>Take a screenshot of the published report. Save the image as <code>f4.png</code> and submit it with the other files of the solution. The image should show the entire screen (browser window, system tray, etc.). Check again that your Neptun code is visible (in the upper gray line)!</p>
 </div>
-<p>Take a screenshot of the published report. Save the image as f4.png and submit it with the other files of the solution. The image should show the entire screen (browser window, system tray, etc.). Check again that your Neptun code is visible (in the upper gray line)!</p>
 <h2 id="5-task-optional-task">5. Task: Optional task<a class="headerlink" href="#5-task-optional-task" title="Permanent link">¶</a></h2>
 <p><strong>You can earn 3 IMSc points by completing this task.</strong></p>
 <p>Create a pie chart about the number of transactions in each product category. <strong>Enter your Neptune code in the title of the diagram.</strong>.</p>
@@ -898,8 +894,8 @@
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-diagram-piechart.png"><img alt="Expected Pie Chart" src="../images/powerbi/pb-diagram-piechart.png"/></a></p>
 <div class="admonition example">
 <p class="admonition-title">SUBMISSION</p>
+<p>Take a screenshot of the published report. Save the image as <code>f5.png</code> and submit it with the other files of the solution. The image should show the entire screen (browser window, system tray, etc.). Check again that your Neptun code is visible (in the upper gray line)!</p>
 </div>
-<p>Take a screenshot of the published report. Save the image as f5.png and submit it with the other files of the solution. The image should show the entire screen (browser window, system tray, etc.). Check again that your Neptun code is visible (in the upper gray line)!</p>
 <hr/>
 <div class="md-source-file">
 <span class="md-source-file__fact"> <span class="md-icon" title="Last update"> <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -907,8 +903,8 @@
 </path>
 </svg>
 </span>
-<span title="March 2, 2023 01:01:54">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-02T01:01:54+01:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-02</span>
+<span title="March 3, 2023 09:21:51">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-03T09:21:51+01:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-03</span>
 </span>
 </span>
 <span class="md-source-file__fact">
@@ -931,6 +927,8 @@
 <span>Szerzők</span>
 <nav><a class="md-author" href="https://github.com/BenceKovari" rel="noopener noreferrer" target="_blank" title="@BenceKovari">
 <img alt="@BenceKovari" src="https://avatars.githubusercontent.com/u/9880411?size=72"/>
+</a><a class="md-author" href="https://github.com/tibitoth" rel="noopener noreferrer" target="_blank" title="@tibitoth">
+<img alt="@tibitoth" src="https://avatars.githubusercontent.com/u/8333960?size=72"/>
 </a></nav>
 </span>
 </div>
