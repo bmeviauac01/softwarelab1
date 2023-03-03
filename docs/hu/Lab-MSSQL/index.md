@@ -17,7 +17,7 @@ A labor elvégzéséhez szükséges eszközök:
 
 A labor elvégzéséhez használható segédanyagok és felkészülési anyagok:
 
-- Microsoft SQL Server használata: [leírás](https://bmeviauac01.github.io/datadriven/hu/db/mssql/) és [videó](https://web.microsoftstream.com/video/e3a83d16-b5c4-4fe9-b027-703347951621)
+- Microsoft SQL Server használata: [leírás](https://bmeviauac01.github.io/datadriven/hu/db/mssql/)
 - Az adatbázis [sémájának leírása](https://bmeviauac01.github.io/datadriven/hu/db/)
 - Microsoft SQL Server programozási lehetőségei és az SQL nyelv
     - Lásd az Adatvezérelt rendszerek c. tárgy jegyzetei és [gyakorlati anyagai](https://bmeviauac01.github.io/datadriven/hu/) között
