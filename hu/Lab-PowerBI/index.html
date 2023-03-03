@@ -660,7 +660,7 @@
 <p>Kapcsoljuk ki az összegzés (<em>Totals</em>/<em>Values</em> jobb felső sarkát állítsuk off-ra)</p>
 </li>
 <li>
-<p>Emeljük ki az összeg oszlopot! Ehhez a <em>Specific column</em> blokkban válasszuk ki a <em>Sum of Extended Amount</em> oszlopot (<em>Series</em> mező), majd a <em>Text color</em> értékét állítsuk fehérre, <em>Background color</em> értékét pedig egy sötétebb színre.</p>
+<p>Emeljük ki az összeg oszlopot! Ehhez a <em>Specific column</em> blokkban válasszuk ki a <em>Sum of Sales Amount</em> oszlopot (<em>Series</em> mező), majd a <em>Text color</em> értékét állítsuk fehérre, <em>Background color</em> értékét pedig egy sötétebb színre.</p>
 </li>
 <li>
 <p>Ezen a ponton a táblázatunk valahogy így néz ki:</p>
@@ -673,14 +673,14 @@
 <p>Az alábbiakban egyedi szűrőket definiálunk a jelentéshez, majd publikáljuk a munkánkat.</p>
 <ol>
 <li>
-<p>Kattintsunk a táblázat alatti szűrő ikonra, ami előhozza a <em>Filters</em> eszköztárt. Látható, hogy a 4 oszlophoz eleve létrejöttek szűrők.</p>
+<p>Amennyiben a szűrők alapból nem látszanának, kattintsunk a <em>View</em> lap <em>Filter</em> gombjára, ami előhozza a <em>Filters</em> eszköztárt. Látható, hogy a 4 oszlophoz eleve létrejöttek szűrők.</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-1streport-filters.png"><img alt="Szűrők" src="../images/powerbi/pb-1streport-filters.png"/></a></p>
 </li>
 <li>
 <p>Húzzuk be a <em>SalesTerritory</em> <em>Country</em> oszlopát a szűrök közé. Most már erre is szűrhetünk igény szerint.</p>
 </li>
 <li>
-<p>Rejtsük el az eladási árra vonatkozó szűrőt. Ehhez kattintsunk a <em>Sum of Extended Amount</em> szűrőn belül a kis szem ikonra. Bár a szűrő számunkra továbbra is látható marad, a publikált jelentésben már nem fog megjelenni így.</p>
+<p>Rejtsük el az eladási árra vonatkozó szűrőt. Ehhez kattintsunk a <em>Sum of Sales Amount</em> szűrőn belül a kis szem ikonra. Bár a szűrő számunkra továbbra is látható marad, a publikált jelentésben már nem fog megjelenni így.</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-1streport-hidefilter.png"><img alt="Szűrő elrejtése" src="../images/powerbi/pb-1streport-hidefilter.png"/></a></p>
 </li>
 <li>
@@ -690,7 +690,7 @@
 <p>Kattintsunk az oldalon egy olyan részre, ahol nincs táblázat, ezzel magát az oldalt (<em>Page</em>) kijelölve. A <em>Visualizations</em> eszköztárban ekkor a formázások az egész oldalra vonatkozó beállításokat fognak tartalmazni (<em>Format page</em>). Ezen belül szabjuk testre a szűrők megjelenését a következő lépésekben.</p>
 </li>
 <li>
-<p>Állítsuk a <em>Filter pane</em>/<em>Search</em> tulajdonságot egy másik világos színre.</p>
+<p>Állítsuk a <em>Filter pane</em>/<em>Input</em> tulajdonságot egy másik világos színre.</p>
 </li>
 <li>
 <p>Állítsuk a <em>Filter pane</em>/<em>Background</em> tulajdonságot egy sötétebb színre.</p>
@@ -894,6 +894,9 @@
 <li>
 <p>A cél az alábbi, vagy legalábbis ehhez hasonlító grafikon elkészítése.</p>
 </li>
+<li>
+<p>Figyelem, a tranzakciók száma az egyes kategóriákhoz tartozó <em>Sales</em> sorok számával egyezik meg (Tehát nem az <em>Order Quantity</em> összegére, vagyis az eladott termékek számára vagyunk kíváncsiak)</p>
+</li>
 </ul>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/powerbi/pb-diagram-piechart.png"><img alt="Elvárt tortadiagram" src="../images/powerbi/pb-diagram-piechart.png"/></a></p>
 <div class="admonition tip">
@@ -912,8 +915,8 @@
 </path>
 </svg>
 </span>
-<span title="2023. március 2. 14:37:36">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-02T14:37:36+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-02</span>
+<span title="2023. március 3. 14:11:53">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-03T14:11:53+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-03</span>
 </span>
 </span>
 <span class="md-source-file__fact">
