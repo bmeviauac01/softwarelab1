@@ -24,7 +24,7 @@ A labor elvégzéséhez szükséges eszközök:
 A labor elvégzéséhez használható segédanyagok és felkészülési anyagok:
 
 - Entity Framework Core, REST API, Web API elméleti háttere és mintapéldái, valamint a Postman használata
-    - Lásd az Adatvezérelt rendszerek c. tárgy jegyzetei és [gyakorlati anyagai](https://bmeviauac01.github.io/adatvezerelt/) között
+    - Lásd az Adatvezérelt rendszerek c. tárgy jegyzetei és [gyakorlati anyagai](https://bmeviauac01.github.io/datadriven/hu/) között
 - Hivatalos Microsoft tutorial [Web API készítéséhez](https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-6.0&tabs=visual-studio)
 
 ## Feladat áttekintése

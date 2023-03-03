@@ -12,15 +12,15 @@ Required tools to complete the tasks:
     - A [Linux version](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup) is also available.
     - On macOS, you can use Docker.
 - [SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms), or you may also use the platform-independent [Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/download) is
-- Database initialization script: [mssql.sql](https://raw.githubusercontent.com/bmeviauac01/adatvezerelt/master/docs/db/mssql.sql)
+- Database initialization script: [mssql.sql](../db/mssql.sql)
 - GitHub account and a git client
 
 Materials for preparing for this laboratory:
 
-- Using Microsoft SQL Server: [description](https://bmeviauac01.github.io/datadriven-en/db/mssql/) and [video](https://web.microsoftstream.com/video/98a6697d-daec-4a5f-82b6-8e96f06302e8)
-- The [schema](https://bmeviauac01.github.io/datadriven-en/db/) of the database
+- Using Microsoft SQL Server: [description](https://bmeviauac01.github.io/datadriven/en/db/mssql/)
+- The [schema](https://bmeviauac01.github.io/datadriven/en/db/) of the database
 - Microsoft SQL Server server-side programming and the SQL language
-    - Check the materials of _Data-driven systems_ including the [seminars](https://bmeviauac01.github.io/datadriven-en/)
+    - Check the materials of _Data-driven systems_ including the [seminars](https://bmeviauac01.github.io/datadriven/en/)
 
 ## Initial steps
 
@@ -51,7 +51,7 @@ Keep in mind that you are expected to follow the [submission process](../GitHub.
     !!! warning "IMPORTANT"
         The name of the database must be your **Neptun code**. You will need to submit screenshots that display the database name this way!
 
-1. Create the sample database by executing the [initializer script](https://raw.githubusercontent.com/bmeviauac01/adatvezerelt/master/docs/db/mssql.sql) Open a new _Query_ window, paste the script into the window, then execute it. Make sure to select the correct database in the toolbar dropdown.
+1. Create the sample database by executing the [initializer script](../db/mssql.sql) Open a new _Query_ window, paste the script into the window, then execute it. Make sure to select the correct database in the toolbar dropdown.
 
     ![Selecting the database](../images/sql-management-database-dropdown.png)
 

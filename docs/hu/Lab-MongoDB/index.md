@@ -15,7 +15,7 @@ A labor elvégzéséhez szükséges eszközök:
         ```
 
 - Studio 3T Free ([letöltés](https://studio3t.com/download-studio3t-free))
-- Minta adatbázis kódja ([mongo.js](https://bmeviauac01.github.io/adatvezerelt/db/mongo.js))
+- Minta adatbázis kódja ([mongo.js](../db/mongo.js))
 - GitHub account és egy git kliens
 - Microsoft Visual Studio 2022 [az itt található beállításokkal](../VisualStudio.md)
     - Linux és MacOS esetén Visual Studio Code és a .NET SDK-val települő [dotnet CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/) használható.
@@ -29,7 +29,7 @@ A labor elvégzéséhez szükséges eszközök:
 A labor elvégzéséhez használható segédanyagok és felkészülési anyagok:
 
 - MongoDB adatbáziskezelő rendszer és a C# driver használata
-    - Lásd az Adatvezérelt rendszerek c. tárgy jegyzetei és [gyakorlati anyagai](https://bmeviauac01.github.io/adatvezerelt/) között
+    - Lásd az Adatvezérelt rendszerek c. tárgy jegyzetei és [gyakorlati anyagai](https://bmeviauac01.github.io/datadriven/hu/) között
 - Hivatalos Microsoft tutorial [Mongo-t használó Web API készítéséhez](https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-mongo-app?view=aspnetcore-6.0&tabs=visual-studio)
     - A labor során nem WebAPI-t készítünk, de a Mongo használat azonos formában történik.
 
@@ -52,7 +52,7 @@ A feladatok megoldása során ne felejtsd el követni a [feladat beadás folyama
 
 ### Adatbázis létrehozása
 
-Kövesd a [gyakorlatanyagban](https://bmeviauac01.github.io/adatvezerelt/gyakorlat/mongodb/#feladat-0-adatbazis-letrehozasa-projekt-megnyitasa) leírt utasításokat az adatbáziskezelő rendszer elindításához és az adatbázis létrehozásához.
+Kövesd a [gyakorlatanyagban](https://bmeviauac01.github.io/datadriven/hu/gyakorlat/mongodb/#feladat-0-adatbazis-letrehozasa-projekt-megnyitasa) leírt utasításokat az adatbáziskezelő rendszer elindításához és az adatbázis létrehozásához.
 
 ## 1. Feladat: Termékek lekérdezése és módosítása (7 pont)
 

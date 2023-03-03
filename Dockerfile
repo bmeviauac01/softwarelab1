@@ -1,4 +1,4 @@
-FROM squidfunk/mkdocs-material:9.0.9
+FROM squidfunk/mkdocs-material:9.1.0
 
 # required for mkdocs-git-committers-plugin-2
 RUN apk add --no-cache --virtual .build-deps gcc libc-dev libxslt-dev && \
@@ -17,6 +17,6 @@ RUN git config --global --add safe.directory /github/workspace
 
 EXPOSE 8000
 
-ENTRYPOINT ["mkdocs", "serve", "--dev-addr=127.0.0.1:8000" ]
+ENTRYPOINT ["mkdocs", "serve", "--dev-addr=0.0.0.0:8000" ]
 
 CMD ["--config-file=mkdocs.hu.yml"]
