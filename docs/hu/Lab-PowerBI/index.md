@@ -124,7 +124,7 @@ A Power BI-ban mintegy 150 féle adatforrásból tudunk adatokat importálni, ak
 
     1. Emeljük meg a fejléc betűméretét is (_Column headers_)
 
-    1. Kapcsoljuk ki az összegzés (_Totals_/_Values_ jobb felső sarkát állítsuk off-ra)
+    1. Kapcsoljuk ki az összegzést (_Totals_/_Values_ jobb felső sarkát állítsuk off-ra)
 
     1. Emeljük ki az összeg oszlopot! Ehhez a _Specific column_ blokkban válasszuk ki a _Sum of Sales Amount_ oszlopot (_Series_ mező), majd a _Text color_ értékét állítsuk fehérre, _Background color_ értékét pedig egy sötétebb színre.
 
@@ -191,7 +191,7 @@ A táblázatos megjelenítés részletesen mutatja az eladási adatokat. Egy dia
 
     ![Oldal hozzáadása](../images/powerbi/pb-diagram-addpage.png)
 
-1. Ragadjuk meg az alkalmaz, hogy az oldalaknak beszédesebb neveket adjunk. Az oldalak elnevezésére duplán kattintva átírhatjuk azokat. Legyen az első oldal neve 'Táblázat', az új oldalé 'Diagram'
+1. Ragadjuk meg az alkalmat, hogy az oldalaknak beszédesebb neveket adjunk. Az oldalak elnevezésére duplán kattintva átírhatjuk azokat. Legyen az első oldal neve 'Táblázat', az új oldalé 'Diagram'
 
 1. Adjunk hozzá egy csoportosított oszlop diagrammot (_clustered column chart_) az új oldalhoz.
 
