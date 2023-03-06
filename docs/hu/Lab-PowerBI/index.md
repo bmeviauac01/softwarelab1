@@ -154,7 +154,7 @@ Az alábbiakban egyedi szűrőket definiálunk a jelentéshez, majd publikáljuk
 
 1. Állítsuk a _Filter pane_/_Background_ tulajdonságot egy sötétebb színre.
 
-1. Állítsuk a _Filter **cards**_/_Background_ tulajdonságot az előzővel azonos színre. A végeredmény pl. ilyesmi lehet:
+1. Állítsuk a _Filter **cards**_/_Background_ tulajdonságot a _Filter pane_/_Input_-tal azonos színre. A végeredmény pl. ilyesmi lehet:
 
     ![Formázott szűrők](../images/powerbi/pb-1streport-formattedfilters.png)
 
@@ -242,7 +242,7 @@ Következő lépésként szeretnénk az előbbi adatokat éves bontásban is meg
 
 A Power BI számos látványos és intelligens diagrammodellel rendelkezik. A következőkben megjelenítjük egy világtérképen az egyes országok eladási darabszámait kategóriánkénti bontásban.
 
-1. Vegyünk fel egy új lapot _Térkép_ néven és töltsük ki a tulajdonságait a következők szerint
+1. Vegyünk fel egy új oldalt _Térkép_ néven, adjunk hozzá egy térképet és töltsük ki a tulajdonságait a következők szerint
 
 1. _Location_ mező értéke legyen _SalesTerritory_/_Country_
 
