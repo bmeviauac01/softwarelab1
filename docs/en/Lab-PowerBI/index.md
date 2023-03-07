@@ -157,7 +157,7 @@ Below we define custom filters for the report and then publish our work.
 
 1. Set the _Filter pane_/_Background_ property to a darker color.
 
-1. Set the _Filter_ **cards**/_Background_ property to the same color as the previous one. The end result could be something like this:
+1. Set the _Filter_ **cards**/_Background_ property to the same color as the  _Filter pane_/_Search_ color. The end result could be something like this:
 
     ![Formatted Filters](../images/powerbi/pb-1streport-formattedfilters.png)
 
@@ -240,7 +240,7 @@ As a next step, we would like to look at the previous data in an annual breakdow
 
 Power BI has a number of spectacular and intelligent diagram models. The following is a world map showing each country's sales by category.
 
-1. Add a new page with the name _Map_ and fill in its properties as follows
+1. Add a new page with the name _Map_, add a _Map_ on it and fill in its properties as follows
 
 1. _Location_ should be set to _SalesTerritory_/_country_
 
