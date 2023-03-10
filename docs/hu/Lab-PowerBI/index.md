@@ -244,19 +244,23 @@ A Power BI számos látványos és intelligens diagrammodellel rendelkezik. A k�
 
 1. Vegyünk fel egy új oldalt _Térkép_ néven, adjunk hozzá egy térképet és töltsük ki a tulajdonságait a következők szerint
 
-1. _Location_ mező értéke legyen _SalesTerritory_/_Country_
+1. Adjunk hozzá egy új térképet az aktuális oldalhoz!
 
-1. _Bubble size_ mező értéke legyen _Sales_/_Order quantity_
+    ![Új térkép hozzáadása](../images/powerbi/pb-diagram-addmap.png)
 
-1. Méretezzük át a térképet, hogy szebben kitöltse a lapot
+2. _Location_ mező értéke legyen _SalesTerritory_/_Country_
+
+3. _Bubble size_ mező értéke legyen _Sales_/_Order quantity_
+
+4. Méretezzük át a térképet, hogy szebben kitöltse a lapot
 
     Ezen a ponton láthatjuk már az országos eladási adatokkal arányos buborékokat a térképen. Az utolsó lépésben még a kategóriánkénti bontást kell megvalósítanunk, melyet az oszlopdiagramhoz hasonlóan a _Legend_ mező kitöltésével tudunk megtenni.
 
-1. _Legend_ mező értéke legyen _Product_/_Category_
+5. _Legend_ mező értéke legyen _Product_/_Category_
 
     ![Térkép](../images/powerbi/pb-diagram-map.png)
 
-1. Az előző feladathoz hasonló módon publikáld a jelentést.
+6. Az előző feladathoz hasonló módon publikáld a jelentést.
 
 !!! example "BEADANDÓ"
     Készíts egy képernyőképet a **publikált jelentésről**. A képet a megoldásban `f3.png` néven add be. A képen a teljes képernyő (böngésző ablak, tálca stb. látszódjon). Ismét ellenőrizd, hogy a **Neptun kódod** látszódik (a felső szürke sorban)!
