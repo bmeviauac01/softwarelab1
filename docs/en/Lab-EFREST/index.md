@@ -1,9 +1,9 @@
 ﻿# Entity Framework and REST
 
-!!! danger "!!! MATERIAL IS WORK IN PROGRESS !!!"
+!!! danger "!!! MATERIAL WORK IN PROGRESS !!!"
     !!! DO NOT START THIS LAB YET !!!
 
-    !!! MATERIAL IS WORK IN PROGRESS !!!
+    !!! MATERIAL WORK IN PROGRESS !!!
 
     !!! DO NOT START THIS LAB YET !!!
 
