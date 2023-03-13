@@ -21,7 +21,7 @@ A labor elvégzéséhez használható segédanyagok és felkészülési anyagok:
 - Markdown formátum [rövid ismertetője](https://guides.github.com/features/mastering-markdown/) és [részletes dokumentációja](https://help.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax)
 - Microsoft SQL Server használata: [leírás](https://bmeviauac01.github.io/datadriven/hu/db/mssql/)
 - Az adatbázis [sémájának leírása](https://bmeviauac01.github.io/datadriven/hu/db/)
-- [Microsoft SQL Server lekérdezés optimalizálása](../images/07-Lekerdezes optimalizalas.pdf)
+- [Microsoft SQL Server lekérdezés optimalizálása](../images/07-Lekerdezes_optimalizalas.pdf)
 
 ## Előkészület
 
