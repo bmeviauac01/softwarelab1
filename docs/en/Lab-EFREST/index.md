@@ -1,5 +1,12 @@
 ﻿# Entity Framework and REST
 
+!!! danger "!!! MATERIAL IS WORK IN PROGRESS !!!"
+    !!! DO NOT START THIS LAB YET !!!
+
+    !!! MATERIAL IS WORK IN PROGRESS !!!
+
+    !!! DO NOT START THIS LAB YET !!!
+
 We will build a new REST API (ASP.NET Core Web API) using Entity Framework.
 
 ## Pre-requisites and preparation
