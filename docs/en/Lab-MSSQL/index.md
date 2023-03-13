@@ -32,7 +32,7 @@ Keep in mind that you are expected to follow the [submission process](../GitHub.
 
 1. Wait for the repository creation to complete, then check out the repository.
 
-    !!! tip ""
+    !!! warning "Password in the labs"
         If you are not asked for credentials to log in to GitHub in university computer laboratories when checking out the repository, the operation may fail. This is likely due to the machine using someone else's GitHub credentials. Delete these credentials first (see [here](../GitHub-credentials.md)), then retry the checkout.
 
 1. Create a new branch with the name `solution` and work on this branch.

@@ -32,8 +32,6 @@ A feladatok megoldása során ne felejtsd el követni a [feladat beadás folyama
 
 1. A `neptun.txt` fájlba írd bele a Neptun kódodat. A fájlban semmi más ne szerepeljen, csak egyetlen sorban a Neptun kód 6 karaktere.
 
-1. Az `eduid.txt` fájlba írd bele a ***@edu.bme.hu-s email címedet. A fájlban semmi más ne szerepeljen, csak egyetlen sorban az email cím.
-
 ### Ingyenes Power BI regisztráció
 
 1. A Power BI ingyenes előfizetési szintjét fogjuk használni. Ennek használata előzetes regisztrációhoz kötött, melyhez keresd fel a [Power BI honlapját](https://powerbi.microsoft.com/) jelentkezz be a ***@edu.bme.hu emailcímeddel, majd kattints az ingyenes regisztráció gombra. Sikeres regisztráció esetén az alábbi üzenet fogad:
