@@ -242,6 +242,8 @@ Power BI has a number of spectacular and intelligent diagram models. The followi
 
 1. Add a new page with the name _Map_, add a _Map_ on it and fill in its properties as follows
 
+![Add new map](../images/powerbi/pb-diagram-addmap.png)
+
 1. _Location_ should be set to _SalesTerritory_/_country_
 
 1. _Bubble size_ should be set to _Sales_/_order quantity_
