@@ -151,7 +151,7 @@ Valósítsuk meg az első műveletet, amely minden státuszt listáz.
     }
     ```
 
-    A `_dbContext` változónk a 7, amely a dependency injection keretrendszer használatával injektálásra kerül a konstruktorban.
+    A `_dbContext` változónk az adatbázis, amely a dependency injection keretrendszer használatával injektálásra kerül a konstruktorban.
 
 5. A `ToModel` függvény egy segédfüggvény lesz, amelyet többször használunk. Ez képezi le az adatbázisból érkező C# osztályt a modellként használt másik C# osztályra. Ezt is írjuk meg most ide a service osztályba.
 
