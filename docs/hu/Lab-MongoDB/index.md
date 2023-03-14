@@ -52,7 +52,7 @@ A feladatok megoldása során ne felejtsd el követni a [feladat beadás folyama
 
 ### Adatbázis létrehozása
 
-Kövesd a [gyakorlatanyagban](https://bmeviauac01.github.io/datadriven/hu/gyakorlat/mongodb/#feladat-0-adatbazis-letrehozasa-projekt-megnyitasa) leírt utasításokat az adatbáziskezelő rendszer elindításához és az adatbázis létrehozásához.
+Kövesd a [gyakorlatanyagban](https://bmeviauac01.github.io/datadriven/hu/seminar/mongodb/#feladat-0-adatbazis-letrehozasa-projekt-megnyitasa) leírt utasításokat az adatbáziskezelő rendszer elindításához és az adatbázis létrehozásához.
 
 ## 1. Feladat: Termékek lekérdezése és módosítása (7 pont)
 
