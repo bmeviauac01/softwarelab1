@@ -42,7 +42,7 @@ Keep in mind that you are expected to follow the [submission process](../GitHub.
 
 1. Wait for the repository creation to complete, then check out the repository.
 
-    !!! tip ""
+   !!! warning "Password in the labs"
         If you are not asked for credentials to log in to GitHub in university computer laboratories when checking out the repository, the operation may fail. This is likely due to the machine using someone else's GitHub credentials. Delete these credentials first (see [here](../GitHub-credentials.md)), then retry the checkout.
 
 1. Create a new branch with the name `solution` and work on this branch.
@@ -414,13 +414,14 @@ If we have lots of tasks listing them should not return all of them at once. Imp
 - The two parameters of the http request, `fromId` and `count`, should come as optional query parameters.
 - Paging should be available at the existing address `GET /api/task/neptun/paged`.
 - During paging, only those entities that are really needed should be queried for the answer (so don't needlessly drag the entire table into memory).
+    - You could extend the `ITaskService` interface for this excercise.
 - The paging response should be an instance of the `Dto.PagedTaskList` class. It includes:
     - array of elements on the page (`Items`),
     - the number of elements on the page (`Count`)
     - `fromId` value (`NextId`) required to retrieve the next page,
     - and as a help, the URL with which the next page can be retrieved (`NextUrl`), or `null` if there are no more pages.
 
-        !!! tip ""
+        !!! tip "Generating URLs"
             Use the `Url.Action` helper method to assemble this URL. Do not hardcode "localhost:5000" or "/api/tasks/paged" in the source code! You will _not_ need string operations to achieve this.
 
             `Url.Action` will give you an absolute URL when all parameters (`action`, `controller`, `values`, `protocol`, and `host`) are specified; for the latter ones `this.HttpContext.Request` can provide you the required values.

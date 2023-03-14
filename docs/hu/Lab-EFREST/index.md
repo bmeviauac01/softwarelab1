@@ -43,7 +43,7 @@ A feladatok megoldása során ne felejtsd el követni a [feladat beadás folyama
 
 1. Várd meg, míg elkészül a repository, majd checkout-old ki.
 
-    !!! tip ""
+    !!! warning "Jelszó a laborokban"
         Egyetemi laborokban, ha a checkout során nem kér a rendszer felhasználónevet és jelszót, és nem sikerül a checkout, akkor valószínűleg a gépen korábban megjegyzett felhasználónévvel próbálkozott a rendszer. Először töröld ki a mentett belépési adatokat (lásd [itt](../GitHub-credentials.md)), és próbáld újra.
 
 1. Hozz létre egy új ágat `megoldas` néven, és ezen az ágon dolgozz.
@@ -412,13 +412,14 @@ Amennyiben sok task van, nem célszerű egyszerre mindet visszaadni listázásko
 - A http kérés két paramétere `fromId` és `count` opcionális query paraméterben érkezzen.
 - A lapozás a meglévő `GET /api/task/neptun/paged` címen legyen elérhető.
 - A lapozás során a válaszhoz csak azok az entitások legyenek lekérdezve, amelyekre tényleg szükség is van (tehát ne rántsd be feleslegesen a teljes táblát memóriába).
+    - A megvalósításhoz kiegészítheted az `ITaskService` interfészt is, ne a Controllerbe rakj minden üzleti logikát.
 - A lapozás válasza a `Dto.PagedTaskList` osztály példánya legyen. Ebben szerepel:
     - a lapon található elemek tömbje (`Items`),
     - a lapon található elemek száma (`Count`)
     - a következő lap lekéréséhez szükséges `fromId` érték (`NextId`),
     - és segítségként az URL, amivel a következő lap lekérhető (`NextUrl`), vagy `null`, ha nincs több lap.
 
-        !!! tip ""
+        !!! tip "Url előállítása"
             Az Url előállításához használd a controller osztályon elérhető `Url.Action` segédfüggvényt. Ne égesd be a kódba se a `localhost:5000`, se a `/api/task/neptun/paged` URL részleteket! Az URL előállításához _nem_ string műveletekre lesz szükséged!
 
             Az `Url.Action` akkor fog abszolút URL-t visszaadni, ha minden paraméterét (`action`, `controller`, `values`, `protocol` és `host`) kitöltöd; utóbbiakhoz a `HttpContext.Request` tud adatokat nyújtani.
