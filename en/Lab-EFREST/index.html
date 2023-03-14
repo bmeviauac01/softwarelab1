@@ -552,10 +552,11 @@
 </li>
 <li>
 <p>Wait for the repository creation to complete, then check out the repository.</p>
-<div class="admonition tip">
-<p>If you are not asked for credentials to log in to GitHub in university computer laboratories when checking out the repository, the operation may fail. This is likely due to the machine using someone else's GitHub credentials. Delete these credentials first (see <a href="../GitHub-credentials/">here</a>), then retry the checkout.</p>
-</div>
 </li>
+</ol>
+<p>!!! warning "Password in the labs"
+        If you are not asked for credentials to log in to GitHub in university computer laboratories when checking out the repository, the operation may fail. This is likely due to the machine using someone else's GitHub credentials. Delete these credentials first (see <a href="../GitHub-credentials/">here</a>), then retry the checkout.</p>
+<ol>
 <li>
 <p>Create a new branch with the name <code>solution</code> and work on this branch.</p>
 </li>
@@ -900,7 +901,10 @@
 <li>The next page can be retrieved by declaring an optional <code>fromId</code> value. This <code>fromId</code> is the <strong>identifier</strong> of the next element in the pagination.</li>
 <li>The two parameters of the http request, <code>fromId</code> and <code>count</code>, should come as optional query parameters.</li>
 <li>Paging should be available at the existing address <code>GET /api/task/neptun/paged</code>.</li>
-<li>During paging, only those entities that are really needed should be queried for the answer (so don't needlessly drag the entire table into memory).</li>
+<li>During paging, only those entities that are really needed should be queried for the answer (so don't needlessly drag the entire table into memory).<ul>
+<li>You could extend the <code>ITaskService</code> interface for this excercise.</li>
+</ul>
+</li>
 <li>
 <p>The paging response should be an instance of the <code>Dto.PagedTaskList</code> class. It includes:</p>
 <ul>
@@ -910,6 +914,7 @@
 <li>
 <p>and as a help, the URL with which the next page can be retrieved (<code>NextUrl</code>), or <code>null</code> if there are no more pages.</p>
 <div class="admonition tip">
+<p class="admonition-title">Generating URLs</p>
 <p>Use the <code>Url.Action</code> helper method to assemble this URL. Do not hardcode "localhost:5000" or "/api/tasks/paged" in the source code! You will <em>not</em> need string operations to achieve this.</p>
 <p><code>Url.Action</code> will give you an absolute URL when all parameters (<code>action</code>, <code>controller</code>, <code>values</code>, <code>protocol</code>, and <code>host</code>) are specified; for the latter ones <code>this.HttpContext.Request</code> can provide you the required values.</p>
 </div>
@@ -991,8 +996,8 @@
 </path>
 </svg>
 </span>
-<span title="March 13, 2023 11:01:49">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-13T11:01:49+01:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-13</span>
+<span title="March 14, 2023 09:24:33">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-14T09:24:33+01:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-14</span>
 </span>
 </span>
 <span class="md-source-file__fact">

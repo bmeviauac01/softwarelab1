@@ -553,7 +553,8 @@
 </li>
 <li>
 <p>Várd meg, míg elkészül a repository, majd checkout-old ki.</p>
-<div class="admonition tip">
+<div class="admonition warning">
+<p class="admonition-title">Jelszó a laborokban</p>
 <p>Egyetemi laborokban, ha a checkout során nem kér a rendszer felhasználónevet és jelszót, és nem sikerül a checkout, akkor valószínűleg a gépen korábban megjegyzett felhasználónévvel próbálkozott a rendszer. Először töröld ki a mentett belépési adatokat (lásd <a href="../GitHub-credentials/">itt</a>), és próbáld újra.</p>
 </div>
 </li>
@@ -900,7 +901,10 @@
 <li>A következő lapot egy opcionális <code>fromId</code> érték bemondásával lehessen lekérni. Ezen <code>fromId</code> a lapozásban a soron következő elem <strong>azonosítója</strong>.</li>
 <li>A http kérés két paramétere <code>fromId</code> és <code>count</code> opcionális query paraméterben érkezzen.</li>
 <li>A lapozás a meglévő <code>GET /api/task/neptun/paged</code> címen legyen elérhető.</li>
-<li>A lapozás során a válaszhoz csak azok az entitások legyenek lekérdezve, amelyekre tényleg szükség is van (tehát ne rántsd be feleslegesen a teljes táblát memóriába).</li>
+<li>A lapozás során a válaszhoz csak azok az entitások legyenek lekérdezve, amelyekre tényleg szükség is van (tehát ne rántsd be feleslegesen a teljes táblát memóriába).<ul>
+<li>A megvalósításhoz kiegészítheted az <code>ITaskService</code> interfészt is, ne a Controllerbe rakj minden üzleti logikát.</li>
+</ul>
+</li>
 <li>
 <p>A lapozás válasza a <code>Dto.PagedTaskList</code> osztály példánya legyen. Ebben szerepel:</p>
 <ul>
@@ -910,6 +914,7 @@
 <li>
 <p>és segítségként az URL, amivel a következő lap lekérhető (<code>NextUrl</code>), vagy <code>null</code>, ha nincs több lap.</p>
 <div class="admonition tip">
+<p class="admonition-title">Url előállítása</p>
 <p>Az Url előállításához használd a controller osztályon elérhető <code>Url.Action</code> segédfüggvényt. Ne égesd be a kódba se a <code>localhost:5000</code>, se a <code>/api/task/neptun/paged</code> URL részleteket! Az URL előállításához <em>nem</em> string műveletekre lesz szükséged!</p>
 <p>Az <code>Url.Action</code> akkor fog abszolút URL-t visszaadni, ha minden paraméterét (<code>action</code>, <code>controller</code>, <code>values</code>, <code>protocol</code> és <code>host</code>) kitöltöd; utóbbiakhoz a <code>HttpContext.Request</code> tud adatokat nyújtani.</p>
 </div>
@@ -993,8 +998,8 @@
 </path>
 </svg>
 </span>
-<span title="2023. március 13. 11:01:38">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-13T11:01:38+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-13</span>
+<span title="2023. március 14. 09:24:33">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-14T09:24:33+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-14</span>
 </span>
 </span>
 <span class="md-source-file__fact">
