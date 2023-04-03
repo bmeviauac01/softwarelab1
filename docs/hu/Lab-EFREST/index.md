@@ -69,7 +69,7 @@ Nyisd meg a letöltött repository-ban a Visual Studio solution-t (`.sln` fájl)
 
 A solution struktúrája a többrétegű alkalmazás felépítésének megfelelő:
 
-- A `Controllers` mappa tartalmazza a Web Api controllereket, amik a REST kéréseket kiszolgálják ki.
+- A `Controllers` mappa tartalmazza a Web Api controllereket, amik a REST kéréseket szolgálják ki.
 - A `Dal` mappa tartalmazza az adatelérést, amely az Entity Framework Core Code First modellt tartalmaz.
 - A `Services` mappában az üzleti logikai réteg (BLL) szolgáltatás osztályai találhatóak.
 - A `Dtos` a Data Transfer Object-ek osztályai találhatóak, amik a hálózaton utazó adatot reprezentálják.
@@ -313,7 +313,7 @@ Rétegről rétegre haladva valósítsuk meg a funkciókat.
 
     Figyeljük meg a sikeres és a sikertelen válaszokat is. Ha sikerült a beszúrás, akkor a `CreatedAtAction` segédfüggvény olyan válasszal fog visszatérni, ahol a body tartalmazza az új entitást, a _Location_ header pedig a linket, ahol az entitás lekérdezhető (ezért a hivatkozás a `nameof(Get)`-tel).
 
-    Ha viszont a service-ben eldobott kivétel érkezik, akkor jelezzük a problémát a hívónak. Ebben a válaszban a státuszkód 400 lesz, és itt is lesz body, ami a Problem Details RFC szabvány szerinti formátumot követi. Amennyiben csaj 400-as hibával szeretnénk visszatérni tetszőleges formátumú body-val, használhattuk volna a `BadRequest()` függvényt is.
+    Ha viszont a service-ben eldobott kivétel érkezik, akkor jelezzük a problémát a hívónak. Ebben a válaszban a státuszkód 400 lesz, és itt is lesz body, ami a Problem Details RFC szabvány szerinti formátumot követi. Amennyiben csak 400-as hibával szeretnénk visszatérni tetszőleges formátumú body-val, használhattuk volna a `BadRequest()` függvényt is.
 
     A `CreateStatus` DTO-ban lévő `Name` property-n szerepel a `[Required]` attribútum is. Ezek a validációs attribútumok a kontrolleren lévő `[ApiController]` attribútum miatt az action meghívása előtt kiértékelődnek, és szintén 400-as hibát eredényeznek Problem Details formátumban.
 
