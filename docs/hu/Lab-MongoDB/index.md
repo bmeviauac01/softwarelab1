@@ -72,7 +72,7 @@ Az adatbázis elérése a `Dal.MongoConnectionConfig` osztályban van. Ha szüks
 A projekt minden egyéb tartalma már elő van készítve a munkához, a fentieken kívül máshol **NE** módosítsd!
 
 !!! info "Razor Pages"
-    A webalkalmazás egy un. [_Razor Pages_](https://docs.microsoft.com/en-us/aspnet/core/razor-pages/) típusú ASP.NET Core projekt. Ezt egy szerver oldalon renderelt megjelenítési réteg, ahol tehát a weboldal html kódját C# kód és a Razor template állítja elő. (A megjelenítési réteggel nem lesz feladatod, az már elő van készítve számodra.)
+    A webalkalmazás egy un. [_Razor Pages_](https://docs.microsoft.com/en-us/aspnet/core/razor-pages/) típusú ASP.NET Core projekt. Ez egy szerver oldalon renderelt megjelenítési réteg, ahol tehát a weboldal html kódját C# kód és a Razor template állítja elő. (A megjelenítési réteggel nem lesz feladatod, az már elő van készítve számodra.)
 
 ### Webalkalmazás elindítása
 
