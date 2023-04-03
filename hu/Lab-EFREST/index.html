@@ -578,7 +578,7 @@
 </div>
 <p>A solution struktúrája a többrétegű alkalmazás felépítésének megfelelő:</p>
 <ul>
-<li>A <code>Controllers</code> mappa tartalmazza a Web Api controllereket, amik a REST kéréseket kiszolgálják ki.</li>
+<li>A <code>Controllers</code> mappa tartalmazza a Web Api controllereket, amik a REST kéréseket szolgálják ki.</li>
 <li>A <code>Dal</code> mappa tartalmazza az adatelérést, amely az Entity Framework Core Code First modellt tartalmaz.</li>
 <li>A <code>Services</code> mappában az üzleti logikai réteg (BLL) szolgáltatás osztályai találhatóak.</li>
 <li>A <code>Dtos</code> a Data Transfer Object-ek osztályai találhatóak, amik a hálózaton utazó adatot reprezentálják.</li>
@@ -692,7 +692,7 @@
 </li>
 <li>
 <p>Nyisd meg a Postman-t és küldj a <a href="http://localhost:5000/api/status/neptun">http://localhost:5000/api/status/neptun</a> címre egy GET kérést (a saját Neptun kódodat kell itt is az URL végére írni).</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/efrest/rest-postman-get-statuses.png"><img alt="Státuszok lekérdezése Postman-nel" src="../images/efrest/rest-postman-get-statuses.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/efrest/rest-postman-get-statuses.png"><img alt="Státuszok lekérdezése Postman-nel" src="../images/efrest/rest-postman-get-statuses.png"/></a></p>
 <div class="admonition success">
 <p>Akkor sikeres a hívás, ha a Postman szerint 200 a válaszkód, és üres a válasz. Ha valami hiba lenne, akkor a Visual Studio Output ablakát ill. a futó konzol alkalmazás logját érdemes nézni.</p>
 </div>
@@ -810,7 +810,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>Figyeljük meg a sikeres és a sikertelen válaszokat is. Ha sikerült a beszúrás, akkor a <code>CreatedAtAction</code> segédfüggvény olyan válasszal fog visszatérni, ahol a body tartalmazza az új entitást, a <em>Location</em> header pedig a linket, ahol az entitás lekérdezhető (ezért a hivatkozás a <code>nameof(Get)</code>-tel).</p>
-<p>Ha viszont a service-ben eldobott kivétel érkezik, akkor jelezzük a problémát a hívónak. Ebben a válaszban a státuszkód 400 lesz, és itt is lesz body, ami a Problem Details RFC szabvány szerinti formátumot követi. Amennyiben csaj 400-as hibával szeretnénk visszatérni tetszőleges formátumú body-val, használhattuk volna a <code>BadRequest()</code> függvényt is.</p>
+<p>Ha viszont a service-ben eldobott kivétel érkezik, akkor jelezzük a problémát a hívónak. Ebben a válaszban a státuszkód 400 lesz, és itt is lesz body, ami a Problem Details RFC szabvány szerinti formátumot követi. Amennyiben csak 400-as hibával szeretnénk visszatérni tetszőleges formátumú body-val, használhattuk volna a <code>BadRequest()</code> függvényt is.</p>
 <p>A <code>CreateStatus</code> DTO-ban lévő <code>Name</code> property-n szerepel a <code>[Required]</code> attribútum is. Ezek a validációs attribútumok a kontrolleren lévő <code>[ApiController]</code> attribútum miatt az action meghívása előtt kiértékelődnek, és szintén 400-as hibát eredényeznek Problem Details formátumban.</p>
 </li>
 <li>
@@ -998,8 +998,8 @@
 </path>
 </svg>
 </span>
-<span title="2023. március 14. 09:24:33">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-14T09:24:33+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-14</span>
+<span title="2023. április 3. 09:40:19">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-04-03T09:40:19+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-04-03</span>
 </span>
 </span>
 <span class="md-source-file__fact">
@@ -1026,6 +1026,8 @@
 <img alt="@ialbert-AUT" src="https://avatars.githubusercontent.com/u/61751571?size=72"/>
 </a><a class="md-author" href="https://github.com/tibitoth" rel="noopener noreferrer" target="_blank" title="@tibitoth">
 <img alt="@tibitoth" src="https://avatars.githubusercontent.com/u/8333960?size=72"/>
+</a><a class="md-author" href="https://github.com/vandreas73" rel="noopener noreferrer" target="_blank" title="@vandreas73">
+<img alt="@vandreas73" src="https://avatars.githubusercontent.com/u/113762114?size=72"/>
 </a></nav>
 </span>
 </div>

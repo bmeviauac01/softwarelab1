@@ -680,11 +680,11 @@
 </li>
 <li>
 <p>Hozd létre a minta adatbázist a <a href="../db/mssql.sql">generáló script</a> lefuttatásával. Nyiss egy új <em>Query</em> ablakot, másold be a script tartalmát, és futtasd le. Ügyelj az eszköztáron levő legördülő menüben a megfelelő adatbázis kiválasztására.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/sql-management-database-dropdown.png"><img alt="Adatbázis kiválasztása" src="../images/sql-management-database-dropdown.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/sql-management-database-dropdown.png"><img alt="Adatbázis kiválasztása" src="../images/sql-management-database-dropdown.png"/></a></p>
 </li>
 <li>
 <p>Ellenőrizd, hogy létrejöttek-e a táblák. Ha a <em>Tables</em> mappa ki volt már nyitva, akkor frissíteni kell.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/sql-managment-tablak.png"><img alt="Adatbázis kiválasztása" src="../images/sql-managment-tablak.png"/></a>.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/sql-managment-tablak.png"><img alt="Adatbázis kiválasztása" src="../images/sql-managment-tablak.png"/></a>.</p>
 </li>
 </ol>
 <h3 id="lekerdezesi-terv-bekapcsolasa">Lekérdezési terv bekapcsolása<a class="headerlink" href="#lekerdezesi-terv-bekapcsolasa" title="Permanent link">¶</a></h3>
@@ -693,9 +693,9 @@
 <p>A lekérdezési tervhez alapvetően Microsoft SQL Server Management Studio-t használunk. Ha nem Windows platformon dolgozol, kipróbálhatod az Azure Data Studio-t, ebben is <a href="https://richbenner.com/2019/02/azure-data-studio-execution-plans/">lekérdezhető a végrehajtási terv</a>.</p>
 </div>
 <p>Az összes feladat során szükségünk lesz a legjobb lekérdezési tervre, amit a szerver végeredményben választott. Ezt SQL Server Management Studio-ban a <em>Query</em> menüben az <a href="https://docs.microsoft.com/en-us/sql/relational-databases/performance/display-an-actual-execution-plan"><em>Include Actual Execution Plan</em> opcióval</a> kapcsolhatjuk be.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/queryopt/queryopt-include-plan.png"><img alt="Lekérdezési terv bekapcsolása" src="../images/queryopt/queryopt-include-plan.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/queryopt-include-plan.png"><img alt="Lekérdezési terv bekapcsolása" src="../images/queryopt/queryopt-include-plan.png"/></a></p>
 <p>A tervet a lekérdezés lefuttatása után az ablak alján, az eredmények nézet helyett választható <em>Execution plan</em> lapon találjuk.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/queryopt/queryopt-plan-result.png"><img alt="Lekérdezési terv bekapcsolása" src="../images/queryopt/queryopt-plan-result.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/queryopt-plan-result.png"><img alt="Lekérdezési terv bekapcsolása" src="../images/queryopt/queryopt-plan-result.png"/></a></p>
 <p>A lekérdezési terv diagramot adatfolyamként kell olvasnunk, az adat folyásának iránya a lekérdezés végrehajtása. Az egyes elemek a lekérdezési terv műveletei, a százalékos érték pedig az egész lekérdezéshez viszonyított relatív költség.</p>
 <h2 id="kozos-feladatok">Közös feladatok<a class="headerlink" href="#kozos-feladatok" title="Permanent link">¶</a></h2>
 <div class="admonition example">
@@ -715,7 +715,7 @@
 <p>Amennyiben egyes (rész)feladatok lekérdezési terve és/vagy a magyarázat azonos, vagy legalábbis nagyon hasonló, elég egyszer elkészíteni a lekérdezési tervről a képet, és a magyarázatot is elég egyszer megadni, csak jelezd, hogy ez mely feladatokra vonatkozik.</p>
 <h3 id="1-feladat-2p">1. Feladat (2p)<a class="headerlink" href="#1-feladat-2p" title="Permanent link">¶</a></h3>
 <p>Dobd el a <code>CustomerSite</code> =&gt; <code>Customer</code> idegen kulcsot és a <code>Customer</code> elsődleges kulcs kényszerét. Legegyszerűbb, ha az <em>Object Explorer</em>-ben megkeresed ezeket, és törlöd (a <em>PK...</em> kezdetűek az elsődleges kulcsok, az <em>FK...</em>  kezdetűek a külső kulcsok - két külön táblában kell keresd a törlendőket!):</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/queryopt/queryopt-delete-key.png"><img alt="Kulcs törlése" src="../images/queryopt/queryopt-delete-key.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/queryopt-delete-key.png"><img alt="Kulcs törlése" src="../images/queryopt/queryopt-delete-key.png"/></a></p>
 <p>Vizsgáld meg a következő lekérdezések végrehajtási tervét a <code>Customer</code> táblán – mindig teljes rekordot kérjünk vissza (<code>SELECT *</code>):</p>
 <ul>
 <li>a) teljes tábla lekérdezése</li>
@@ -737,11 +737,11 @@
 </ul>
 <p><strong>a)-d)</strong></p>
 <p>A <strong>lekérdezési terv</strong> mindegyikre nagyon hasonló, mindegyik <em>table scan</em>-t használt:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/queryopt/f1-1.png"><img alt="" src="../images/queryopt/f1-1.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/f1-1.png"><img alt="" src="../images/queryopt/f1-1.png"/></a></p>
 <p><strong>Magyarázat</strong>: az optimalizáló nem tud indexet használni, így minden lekérdezés <em>table scan</em> lesz.</p>
 <p><strong>e)</strong></p>
 <p>Egyedül ez különbözik, az order by miatt még egy sort is lesz benne.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/queryopt/f1-2.png"><img alt="" src="../images/queryopt/f1-2.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/f1-2.png"><img alt="" src="../images/queryopt/f1-2.png"/></a></p>
 <p><strong>Magyarázat</strong>: A <em>table scan</em> marad, és még rendezni is kell, amihez nincs index segítség, tehát külön lépés lesz.</p>
 </details>
 <h3 id="2-feladat-2p">2. Feladat (2p)<a class="headerlink" href="#2-feladat-2p" title="Permanent link">¶</a></h3>
@@ -755,17 +755,17 @@
 <summary>Megoldás</summary>
 <p>A kiadott parancsok megegyeznek az 1.-es feladattal.</p>
 <p><strong>a)</strong></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/queryopt/f2-1.png"><img alt="" src="../images/queryopt/f2-1.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/f2-1.png"><img alt="" src="../images/queryopt/f2-1.png"/></a></p>
 <p>Clustered Index Scan végigmegy a clustered index mentén. Az elsődleges kulcs hatására létrejött egy Clustered Index, azaz innentől a tábla rekordjai ID szerinti sorrendben vannak tárolva. Ha végigmegyünk ezen a struktúrán meglesz az összes sor. Ha van clustered index, már nem fogunk Table Scan-nel találkozni, legrosszabb esetben teljes Clustered Index Scan lesz. Attól, hogy nem Table Scan a neve, a teljes Clustered Index Scan is valójában egy table scan, a teljes tábla adattartalmát felolvassuk. Általános esetben ez probléma, de itt épp ezt kértük a lekérdezésben.</p>
 <p><strong>b)</strong></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/queryopt/f2-2.png"><img alt="" src="../images/queryopt/f2-2.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/f2-2.png"><img alt="" src="../images/queryopt/f2-2.png"/></a></p>
 <p>Ez egy Clustered Index Seek lesz. Mivel a rendezési kulcsra fogalmazunk meg egyezési feltételt, a rendezett tárolású rekordok közül nagyon gyorsan eljuthatunk a keresetthez. Ez egy jó terv, a Clustered Index egyik alapfeladata a rekord gyors megtalálása, erre van optimalizálva.</p>
 <p><strong>c)</strong></p>
 <p>Az előzőhöz nagyon hasonló a terv: ez is Clustered Index Seek lesz két intervallummal (<code>&lt; konstans</code>, <code>&gt; konstans</code>). Az optimalizáló két intervallumra bontja a &lt;&gt;-t. Mivel a feltétel a rendezési kulcsra vonatkozik, megint ki tudja használni a Clustered Indexet. Ez is egy jó terv, a rendezés miatt csak a szükséges rekordokat fogjuk felolvasni.</p>
 <p><strong>d)</strong></p>
 <p>Ez is Clustered Index Seek alapú range scan lesz egy intervallummal. Az előbbihez nagyon hasonló.</p>
 <p><strong>e)</strong></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/queryopt/f2-3.png"><img alt="" src="../images/queryopt/f2-3.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/f2-3.png"><img alt="" src="../images/queryopt/f2-3.png"/></a></p>
 <p>Ismét Clustered Index Seek backward seek order-rel. Megnézhetjük a <em>Properties</em> ablakban a range-et és a Seek Order-t: kikeressük a határon lévő rekordot és onnan visszafelé indulunk el, így eleve rendezve lesz az eredményhalmaz. Ez egy jó terv, a rendezés miatt csak a szükséges rekordokat fogjuk felolvasni és pont a megfelelő sorrendben.</p>
 </details>
 <h3 id="3-feladat-2p">3. Feladat (2p)<a class="headerlink" href="#3-feladat-2p" title="Permanent link">¶</a></h3>
@@ -789,18 +789,18 @@
 <li>j) <code>SELECT * FROM product WHERE price &gt; 800 ORDER BY price DESC</code></li>
 </ul>
 <p><strong>f)-i)</strong></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/queryopt/f3-1.png"><img alt="" src="../images/queryopt/f3-1.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/f3-1.png"><img alt="" src="../images/queryopt/f3-1.png"/></a></p>
 <p>Clustered Index Scan végigmegy a clustered index mentén. Ez továbbra is a teljes tábla felolvasása, hiszen a szűrésre nincs index. Ha van szűrési feltétel, minden soron végig kell menni és ki kell értékelni a feltételt. Mivel van Clusterd Index, így amentén haladunk, de nem sokra megyünk ezzel, lényegében egy Table Scan. Ezek nem hatékony lekérdezések. Mivel nem a Clustered Index rendezési kulcsra fogalmaztuk meg a feltételt, így az index nem sokat segít nekünk (ezért lesz Scan és nem Seek).</p>
 <p><strong>j)</strong></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/queryopt/f3-2.png"><img alt="" src="../images/queryopt/f3-2.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/f3-2.png"><img alt="" src="../images/queryopt/f3-2.png"/></a></p>
 <p>Ez is Clustered Index Scan lesz, de ami az érdekes, hogy a rendezés költsége jelentős (nagyobb mint a kikeresésé). Miután az elég költséges Index Scan-t megcsináltuk, még rendeznünk is kell, hiszen a kiolvasott rekordok ID szerint sorrendezettek nem <code>Price</code> szerint. Ez a lekérdezés nagyon költséges, az amúgy is drága scan után még rendezni is kell. A jó index nem csak a keresést segíti - de most nincs megfelelő indexünk.</p>
 </details>
 <h3 id="4-feladat-2p">4. Feladat (2p)<a class="headerlink" href="#4-feladat-2p" title="Permanent link">¶</a></h3>
 <p>Vegyél fel indexet a <code>Price</code> oszlopra. Hogyan változnak az előbbi lekérdezések végrehajtási tervei?</p>
 <p>Az index felvételéhez használd az <em>Object Explorer</em>-t, a fában a táblát kibontva az <em>Indexes</em>-en jobbklikk -&gt; <em>New index</em> &gt; <em>Non-Clustered Index...</em></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/queryopt/queryopt-add-index.png"><img alt="Index hozzáadása" src="../images/queryopt/queryopt-add-index.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/queryopt-add-index.png"><img alt="Index hozzáadása" src="../images/queryopt/queryopt-add-index.png"/></a></p>
 <p>Adj az indexeknek értelmes, egységes konvenció szerinti nevet, pl. <code>IX_Tablanev_MezoNev</code>. Add a <em>Price</em> oszlopot az <em>Index key columns</em> listához.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/queryopt/queryopt-index-properties.png"><img alt="Index tulajdonságok" src="../images/queryopt/queryopt-index-properties.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/queryopt-index-properties.png"><img alt="Index tulajdonságok" src="../images/queryopt/queryopt-index-properties.png"/></a></p>
 <p>Ismételd meg az előbbi lekérdezéseket, és értelmezd a terveket!</p>
 <details class="success">
 <summary>Megoldás</summary>
@@ -811,7 +811,7 @@
 <p>Clustered Index Scan lesz, lényegében megegyezik a szűréshez elvileg használható index nélküli esettel.</p>
 <p>Miért nem használja az új indexünket? A nem túl nyilvánvaló ok a projekcióban rejlik, azaz, hogy teljes rekordokat kérünk vissza. Az NonClustered Index-ből csak egy halom rekordreferenciát kapnánk, amik alapján még utána fel kellene olvasni a szükséges rekordokat. Az optimalizáló – főleg kis táblák esetén- dönthet úgy, hogy ennek összköltsége nagyobb lenne, mint egy index scan-nek.</p>
 <p><strong>j)</strong></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/queryopt/f4-1.png"><img alt="" src="../images/queryopt/f4-1.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/f4-1.png"><img alt="" src="../images/queryopt/f4-1.png"/></a></p>
 <p>A NonClustered Index Seek-ből kikeresett megfelelő kulcsoknak megfelelő rekordokat kikeressük a Clustered Index-ből. Lényegében egy join a két index között.</p>
 <p>A többi lekérdezésnél is valami ilyet vártunk volna. A Clustered Index-re szükség van, mert teljes rekordokat kérünk vissza, a NonClustered Index csak referenciákat ad. A referenciák sorrendben vannak, így ha ezekhez rendre kigyűjtjük a teljes rekordokat a Clustered Index-ből akkor megspóroljuk az utólagos rendezést. Ha csak a Clustered Index-et használnánk (teljes Clustered Index Scan), akkor kellene utólagos rendezés. Ez egy elfogadható terv, mert a NonClustered Index segítségével megúsztuk a külön rendezést.</p>
 </details>
@@ -835,12 +835,12 @@
 <p><strong>f)</strong></p>
 <p>Megegyezik az előző feladattal.</p>
 <p><strong>g)</strong></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/queryopt/f5-1.png"><img alt="" src="../images/queryopt/f5-1.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/f5-1.png"><img alt="" src="../images/queryopt/f5-1.png"/></a></p>
 <p>A NonClustered Index Seek-ből kikeresett kulcsoknak megfelelő rekordokat kikeressük a Clustered Index-ből. Lényegében egy join a két index között.</p>
 <p>Vessük össze az előző, kis táblás változattal. Miért nem használja most a Clustered Index Scan-t? Nagy tábláknál megnő a <em>szelektivitás</em> szerepe és jelentős a NonClustered Index használatából fakadó előny. A Clustered Index Scan nagy méretnél nagyon drága, ha van esély rá, hogy az NonClustered Index használatával csökkenthető a felolvasható sorok száma, akkor szinte biztosan érdemes használni. A <code>Price</code> statisztikái alapján tudható, hogy az = operátor jól szűr. Fontos! Az <code>=</code> használatából még nem következik a jó szűrés, ha szinte minden sorban ugyanaz az érték van, akkor pl. nem fog jól szűrni - ezért kell a statisztika is!</p>
 <p>Ez a terv elfogadható. Ha a feltételünk jól szűr, akkor tényleg ez lehet a jó irány.</p>
 <p><strong>h)</strong></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/queryopt/f5-2.png"><img alt="" src="../images/queryopt/f5-2.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/f5-2.png"><img alt="" src="../images/queryopt/f5-2.png"/></a></p>
 <p>Clustered Index Scan végigmegy a clustered index mentén, megegyezik a korábban látottakkal.</p>
 <p>Miért nem használjuk az előző módszert? Ha az <code>=</code> ezen tábla esetében jól szűrt, akkor a <code>&lt;&gt;</code> nem fog. Ha ezt tudja a statisztikák alapján az optimalizáló, akkor összességében nem éri meg trükközni, úgyis fel kell olvasni a teljes táblát.</p>
 <p><strong>i)</strong></p>
