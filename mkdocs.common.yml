@@ -72,9 +72,16 @@ plugins:
   search: { } # https://squidfunk.github.io/mkdocs-material/insiders/getting-started/#built-in-plugins key-value syntax
   glightbox: { } # https://squidfunk.github.io/mkdocs-material/insiders/getting-started/#built-in-plugins key-value syntax
   git-revision-date-localized:
-    enable_creation_date: true
+    # override from docker environment variables
+    # not a vanilla yaml syntax, only works with mkdocs.yaml because of pyyaml_env_tag
+    enabled: !ENV [IsRevisionDatePluginEnabled, false]
+    enable_creation_date: false
     type: timeago
     timezone: Europe/Budapest
   git-committers:
+    # override from docker environment variables
+    # not a vanilla yaml syntax, only works with mkdocs.yaml because of pyyaml_env_tag
+    enabled: !ENV [IsAuthorsPluginEnabled, false]
+    github_token: !ENV [GITHUB_TOKEN, '']
     repository: bmeviauac01/softwarelab1
     branch: master
