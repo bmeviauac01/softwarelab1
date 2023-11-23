@@ -14,23 +14,24 @@ A labor elvégzéséhez szükséges eszközök:
         docker run --name swlab1-mongo -p 27017:27017 -d mongo
         ```
 
-- Studio 3T Free ([letöltés](https://studio3t.com/download-studio3t-free))
+- VSCode
+    - MongoDB for VSCode kiegészítő
 - Minta adatbázis kódja ([mongo.js](../db/mongo.js))
 - GitHub account és egy git kliens
 - Microsoft Visual Studio 2022 [az itt található beállításokkal](../VisualStudio.md)
     - Linux és MacOS esetén Visual Studio Code és a .NET SDK-val települő [dotnet CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/) használható.
-- [.NET **6.0** SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+- [.NET **8.0** SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 
-    !!! warning ".NET Core 6.0"
-        A feladat megoldásához **6.0**-es .NET Core SDK telepítése szükséges.
+    !!! warning ".NET 8.0"
+        A feladat megoldásához **8.0**-es .NET SDK telepítése szükséges.
 
-        Windows-on Visual Studio verzió függvényében lehet, hogy telepítve van (lásd [itt](../VisualStudio.md#net-core-sdk-ellenorzese-es-telepitese) az ellenőrzés módját); ha nem, akkor a fenti linkről kell telepíteni (az SDK-t és _nem_ a runtime-ot.) Linux és MacOS esetén telepíteni szükséges.
+        Windows-on Visual Studio verzió függvényében lehet, hogy telepítve van (lásd [itt](../VisualStudio.md#net-sdk-ellenorzese-es-telepitese) az ellenőrzés módját); ha nem, akkor a fenti linkről kell telepíteni (az SDK-t és _nem_ a runtime-ot.) Linux és MacOS esetén telepíteni szükséges.
 
 A labor elvégzéséhez használható segédanyagok és felkészülési anyagok:
 
 - MongoDB adatbáziskezelő rendszer és a C# driver használata
     - Lásd az Adatvezérelt rendszerek c. tárgy jegyzetei és [gyakorlati anyagai](https://bmeviauac01.github.io/datadriven/hu/) között
-- Hivatalos Microsoft tutorial [Mongo-t használó Web API készítéséhez](https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-mongo-app?view=aspnetcore-6.0&tabs=visual-studio)
+- Hivatalos Microsoft tutorial [Mongo-t használó Web API készítéséhez](https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-mongo-app?view=aspnetcore-8.0&tabs=visual-studio)
     - A labor során nem WebAPI-t készítünk, de a Mongo használat azonos formában történik.
 
 ## Előkészület

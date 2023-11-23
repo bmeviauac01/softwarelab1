@@ -8,21 +8,22 @@ Required tools to complete the tasks:
 
 - Windows, Linux, or macOS: All tools are platform-independent, or a platform-independent alternative is available.
 - MongoDB Community Server ([download](https://www.mongodb.com/download-center/community))
-- Robo 3T ([download](https://robomongo.org/download))
     - Without installing you can run the server with the following command using Docker:
-    
-          ```cmd
+
+        ```cmd
         docker run --name swlab1-mongo -p 27017:27017 -d mongo
         ```
-        
+
+- VSCode
+    - MongoDB for VSCode kiegészítő
 - Sample database initialization script: ([mongo.js](../db/mongo.js))
 - GitHub account and a git client
 - Microsoft Visual Studio 2022 [with the settings here](../VisualStudio.md)
     - When using Linux or macOS, you can use Visual Studio Code, the .NET SDK, and [dotnet CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/).
-- [.NET Core **6.0** SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+- [.NET **8.0** SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 
-    !!! warning ".NET 6.0"
-        Mind the version! You need .NET SDK version **6.0** to solve these exercises.
+    !!! warning ".NET 8.0"
+        Mind the version! You need .NET SDK version **8.0** to solve these exercises.
 
         On Windows it might already be installed along with Visual Studio (see [here](../VisualStudio.md#check-and-install-net-core-sdk) how to check it); if not, use the link above to install (the SDK and _not_ the runtime). You need to install it manually when using Linux or macOS.
 

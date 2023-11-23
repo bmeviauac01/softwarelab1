@@ -11,21 +11,19 @@ A labor elvégzéséhez szükséges eszközök:
 - [DB Browser for SQLite](https://sqlitebrowser.org/), ha az adatbázisba szeretnél belezézni (nem feltétlenül szükséges)
 - GitHub account és egy git kliens
 - Microsoft Visual Studio 2022 [az itt található beállításokkal](../VisualStudio.md)
-    - Linux és MacOS esetén Visual Studio Code és a .NET Core SDK-val települő [dotnet CLI](https://learn.microsoft.com/en-us/dotnet/core/tools/) használható.
-- [.NET **6** SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+    - Linux és MacOS esetén Visual Studio Code és a .NET SDK-val települő [dotnet CLI](https://learn.microsoft.com/en-us/dotnet/core/tools/) használható.
+- [.NET **8** SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 
-    !!! warning ".NET 6.0"
-        A feladat megoldásához **6.0**-ás .NET SDK telepítése szükséges.
+    !!! warning ".NET 8.0"
+        A feladat megoldásához **8.0**-ás .NET SDK telepítése szükséges.
 
-        Windows-on Visual Studio verzió függvényében lehet, hogy telepítve van (lásd [itt](../VisualStudio.md#net-core-sdk-ellenorzese-es-telepitese) az ellenőrzés módját); ha nem, akkor a fenti linkről kell telepíteni (az SDK-t és _nem_ a runtime-ot.) Linux és MacOS esetén telepíteni szükséges.
-
-        Az Entity Framework Core viszont **7.0**-ás verzióval szerepel a kiinduló projektben, mivel az nem az SDK része, hanem NuGet csomag, illetve teljes mértékben kompatibilis a .NET 6.0 LTS verzióval.
+        Windows-on Visual Studio verzió függvényében lehet, hogy telepítve van (lásd [itt](../VisualStudio.md#net-sdk-ellenorzese-es-telepitese) az ellenőrzés módját); ha nem, akkor a fenti linkről kell telepíteni (az SDK-t és _nem_ a runtime-ot.) Linux és MacOS esetén telepíteni szükséges.
 
 A labor elvégzéséhez használható segédanyagok és felkészülési anyagok:
 
 - Entity Framework Core, REST API, Web API elméleti háttere és mintapéldái, valamint a Postman használata
     - Lásd az Adatvezérelt rendszerek c. tárgy jegyzetei és [gyakorlati anyagai](https://bmeviauac01.github.io/datadriven/hu/) között
-- Hivatalos Microsoft tutorial [Web API készítéséhez](https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-6.0&tabs=visual-studio)
+- Hivatalos Microsoft tutorial [Web API készítéséhez](https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-8.0&tabs=visual-studio)
 
 ## Feladat áttekintése
 

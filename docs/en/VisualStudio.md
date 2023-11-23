@@ -1,6 +1,6 @@
-﻿# Install Visual Studio & .NET Core SDK
+﻿# Install Visual Studio & .NET SDK
 
-In some of the exercises require Microsoft Visual Studio **version 2019 16.6 or newer**. With the exception of one topic, VS version 2022 is fine too. The free [Community edition](https://visualstudio.microsoft.com/vs/community/) is sufficient for solving these exercises.
+In some of the exercises require Microsoft Visual Studio **version 2022 17.8 or newer**. The free [Community edition](https://visualstudio.microsoft.com/vs/community/) is sufficient for solving these exercises.
 
 You can check the version by starting the _Visual Studio Installer_:
 
@@ -11,25 +11,24 @@ You can check the version by starting the _Visual Studio Installer_:
 
 ## Visual Studio workloads
 
-When installing Visual Studio, the following [workloads](https://docs.microsoft.com/en-us/visualstudio/install/install-visual-studio?view=vs-2019#step-4---choose-workloads) have to be selected:
+When installing Visual Studio, the following [workloads](https://docs.microsoft.com/en-us/visualstudio/install/install-visual-studio?view=vs-2022#step-4---choose-workloads) have to be selected:
 
 - ASP.NET and web development
-- .NET Core cross-platform development
+- Data Storage and Processing
 
 ![Visual Studio workloads](images/visual-studio/vs-workload.png)
 
-An existing installation can be [_modified_](https://docs.microsoft.com/en-us/visualstudio/install/modify-visual-studio?view=vs-2019) using the _Visual Studio Installer_.
+An existing installation can be [_modified_](https://docs.microsoft.com/en-us/visualstudio/install/modify-visual-studio?view=vs-2022) using the _Visual Studio Installer_.
 
 ![Visual Studio install components](images/visual-studio/vs-installer-modify.png)
 
-## Check and install .NET Core SDK
+## Check and install .NET SDK
 
-Visual Studio might install certain versions of the .NET Core SDK. To check if you have the right version, use the `dotnet` CLI: in a console, execute the `dotnet --list-sdks` command. This command works on Linux and Mac too. It will print something similar:
+Visual Studio might install certain versions of the .NET SDK. To check if you have the right version, use the `dotnet` CLI: in a console, execute the `dotnet --list-sdks` command. This command works on Linux and Mac too. It will print something similar:
 
 ```hl_lines="2"
-C:\>dotnet --list-sdks
-3.1.404 [C:\Program Files\dotnet\sdk]
-5.0.101 [C:\Program Files\dotnet\sdk]
+PS C:\Users\toth.tibor> dotnet --list-sdks
+8.0.100 [C:\Program Files\dotnet\sdk]
 ```
 
-If you see version **3.1** in this list, then you are good to go. Otherwise, install the SDK [from here](https://dotnet.microsoft.com/download/dotnet-core/3.1).
+If you see version **8.0.x** in this list, then you are good to go. Otherwise, install the SDK [from here](https://dotnet.microsoft.com/download/dotnet-core/8.0).

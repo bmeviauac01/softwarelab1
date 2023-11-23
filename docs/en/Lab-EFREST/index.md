@@ -11,20 +11,18 @@ Required tools to complete the tasks:
 - [DB Browser for SQLite](https://sqlitebrowser.org/) - if you would like to check the database (not necessary)
 - GitHub account and a git client
 - Microsoft Visual Studio 2022 [with the settings here](../VisualStudio.md)
-    - When using Linux or macOS, you can use Visual Studio Code, the .NET Core SDK, and [dotnet CLI](https://learn.microsoft.com/en-us/dotnet/core/tools/).
-- [.NET **6** SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+    - When using Linux or macOS, you can use Visual Studio Code, the .NET SDK, and [dotnet CLI](https://learn.microsoft.com/en-us/dotnet/core/tools/).
+- [.NET **8** SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 
-    !!! warning ".NET Core 6.0"
-        Mind the version! You need .NET SDK version **6.0** to solve these exercises.
+    !!! warning ".NET 8.0"
+        Mind the version! You need .NET SDK version **8.0** to solve these exercises.
 
         On Windows, it might already be installed along with Visual Studio (see [here](../VisualStudio.md#check-and-install-net-core-sdk) how to check it); if not, use the link above to install (the SDK and _not_ the runtime). You need to install it manually when using Linux or macOS.
-
-Entity Framework Core, on the other hand, is included in the starting project with version **7.0**, since it is not part of the SDK, but a NuGet package, and is fully compatible with the .NET 6.0 LTS version.
 
 Materials for preparing for this laboratory:
 
 - Entity Framework, REST API, Web API, and using Postman
-    - Check the materials of _Data-driven systems_ including the [seminars](https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-6.0&tabs=visual-studio)
+    - Check the materials of _Data-driven systems_ including the [seminars](https://bmeviauac01.github.io/datadriven/en/)
 
 ## Exercise overview
 
@@ -64,7 +62,7 @@ In this exercise, we will implement the basic management of status entities.
 Open the Visual Studio solution (the `.sln`) file in the checked-out repository. If Visual Studio tells you that the project is not supported, you need to install a missing component (see [here](../VisualStudio.md)).
 
 !!! warning "Do NOT upgrade any version"
-    Do not upgrade the project, the .NET Core version, or any Nuget package! If you see such a question, always choose no!
+    Do not upgrade the project, the .NET version, or any Nuget package! If you see such a question, always choose no!
 
 The solution is structured according to a multi-tier architecture:
 
