@@ -24,7 +24,7 @@
     
     
       
-        <title>Visual Studio & .NET Core SDK telepítése - BMEVIAUAC09 Szoftverfejlesztés laboratórium 1</title>
+        <title>Visual Studio & .NET SDK telepítése - BMEVIAUAC09 Szoftverfejlesztés laboratórium 1</title>
       
     
     
@@ -94,7 +94,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#visual-studio-net-core-sdk-telepitese" class="md-skip">
+        <a href="#visual-studio-net-sdk-telepitese" class="md-skip">
           Kihagyás
         </a>
       
@@ -127,7 +127,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Visual Studio & .NET Core SDK telepítése
+              Visual Studio & .NET SDK telepítése
             
           </span>
         </div>
@@ -456,7 +456,7 @@
           
   
   <span class="md-ellipsis">
-    Visual Studio & .NET Core SDK telepítése
+    Visual Studio & .NET SDK telepítése
   </span>
   
 
@@ -467,7 +467,7 @@
         
   
   <span class="md-ellipsis">
-    Visual Studio & .NET Core SDK telepítése
+    Visual Studio & .NET SDK telepítése
   </span>
   
 
@@ -498,9 +498,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#net-core-sdk-ellenorzese-es-telepitese" class="md-nav__link">
+  <a href="#net-sdk-ellenorzese-es-telepitese" class="md-nav__link">
     <span class="md-ellipsis">
-      .NET Core SDK ellenőrzése és telepítése
+      .NET SDK ellenőrzése és telepítése
     </span>
   </a>
   
@@ -724,9 +724,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#net-core-sdk-ellenorzese-es-telepitese" class="md-nav__link">
+  <a href="#net-sdk-ellenorzese-es-telepitese" class="md-nav__link">
     <span class="md-ellipsis">
-      .NET Core SDK ellenőrzése és telepítése
+      .NET SDK ellenőrzése és telepítése
     </span>
   </a>
   
@@ -755,8 +755,8 @@
   
 
 
-<h1 id="visual-studio-net-core-sdk-telepitese">Visual Studio &amp; .NET Core SDK telepítése<a class="headerlink" href="#visual-studio-net-core-sdk-telepitese" title="Permanent link">&para;</a></h1>
-<p>Egyes laborokhoz a Microsoft Visual Studio <strong>2019 16.6 vagy újabb</strong> verziója szükséges. Egy labor kivételével a 2022-es verzió is használható. Az ingyenes, <a href="https://visualstudio.microsoft.com/vs/community/">Community változata</a> is elegendő a feladatok megoldásához.</p>
+<h1 id="visual-studio-net-sdk-telepitese">Visual Studio &amp; .NET SDK telepítése<a class="headerlink" href="#visual-studio-net-sdk-telepitese" title="Permanent link">&para;</a></h1>
+<p>Egyes laborokhoz a Microsoft Visual Studio <strong>2022 17.8 vagy újabb</strong> verziója szükséges. Az ingyenes, <a href="https://visualstudio.microsoft.com/vs/community/">Community változata</a> is elegendő a feladatok megoldásához.</p>
 <p>A verziót a <em>Visual Studio Installer</em> elindításával ellenőrizhetjük:</p>
 <p><a class="glightbox" href="../images/visual-studio/vs-verzio.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Visual Studio verzió" src="../images/visual-studio/vs-verzio.png" /></a></p>
 <div class="admonition info">
@@ -764,21 +764,20 @@
 <p>A laborok Visual Studio nélkül, <strong>Visual Studio Code</strong>-dal is megoldhatóak. A kiadott kód váz Visual Studio-hoz készült, annak konfigurációit tartalmazza. Ha VS Code-dal dolgozol, magadnak kell konfigurálni a környezetet.</p>
 </div>
 <h2 id="visual-studio-workload-ok-telepitese">Visual Studio Workload-ok telepítése<a class="headerlink" href="#visual-studio-workload-ok-telepitese" title="Permanent link">&para;</a></h2>
-<p>A Visual Studio telepítésekor ki kell pipálni az alábbi <a href="https://docs.microsoft.com/en-us/visualstudio/install/install-visual-studio?view=vs-2019#step-4---choose-workloads">workload-okat</a>:</p>
+<p>A Visual Studio telepítésekor ki kell pipálni az alábbi <a href="https://learn.microsoft.com/en-us/visualstudio/install/install-visual-studio?view=vs-2022#step-4---choose-workloads">workload-okat</a>:</p>
 <ul>
 <li>ASP.NET and web development</li>
-<li>.NET Core cross-platform development</li>
+<li>Data Storage and Processing</li>
 </ul>
 <p><a class="glightbox" href="../images/visual-studio/vs-workload.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Visual Studio workloadok" src="../images/visual-studio/vs-workload.png" /></a></p>
-<p>Meglevő telepítés a <em>Visual Studio Installer</em>-ben a <a href="https://docs.microsoft.com/en-us/visualstudio/install/modify-visual-studio?view=vs-2019"><em>Modify</em></a> gombbal módosítható, ill. ellenőrizhető.</p>
+<p>Meglevő telepítés a <em>Visual Studio Installer</em>-ben a <a href="https://docs.microsoft.com/en-us/visualstudio/install/modify-visual-studio?view=vs-2022"><em>Modify</em></a> gombbal módosítható, ill. ellenőrizhető.</p>
 <p><a class="glightbox" href="../images/visual-studio/vs-installer-modify.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Visual Studio komponensek telepítése" src="../images/visual-studio/vs-installer-modify.png" /></a></p>
-<h2 id="net-core-sdk-ellenorzese-es-telepitese">.NET Core SDK ellenőrzése és telepítése<a class="headerlink" href="#net-core-sdk-ellenorzese-es-telepitese" title="Permanent link">&para;</a></h2>
-<p>Visual Studio mellett bizonyos .NET Core SDK-k telepítésre kerülnek. A megfelelő verzió ellenőrzéséhez legegyszerűbb a <code>dotnet</code> CLI-t használni: konzolban add ki a <code>dotnet --list-sdks</code> parancsot. Ez a parancs Linux és Mac esetén is működik. A kimenete hasonló lesz:</p>
-<div class="highlight"><pre><span></span><code>C:\&gt;dotnet --list-sdks
-<span class="hll">3.1.404 [C:\Program Files\dotnet\sdk]
-</span>5.0.101 [C:\Program Files\dotnet\sdk]
-</code></pre></div>
-<p>Ha ebben a listában látsz <strong>3.1</strong>-es verziót, akkor jó. Ha nem, akkor telepíteni kell az SDK-t <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1">innen</a>.</p>
+<h2 id="net-sdk-ellenorzese-es-telepitese">.NET SDK ellenőrzése és telepítése<a class="headerlink" href="#net-sdk-ellenorzese-es-telepitese" title="Permanent link">&para;</a></h2>
+<p>Visual Studio mellett bizonyos .NET SDK-k telepítésre kerülnek. A megfelelő verzió ellenőrzéséhez legegyszerűbb a <code>dotnet</code> CLI-t használni: konzolban add ki a <code>dotnet --list-sdks</code> parancsot. Ez a parancs Linux és Mac esetén is működik. A kimenete hasonló lesz:</p>
+<div class="highlight"><pre><span></span><code>PS C:\Users\toth.tibor&gt; dotnet --list-sdks
+<span class="hll">8.0.100 [C:\Program Files\dotnet\sdk]
+</span></code></pre></div>
+<p>Ha ebben a listában látsz <strong>8.0.x</strong>-es verziót, akkor jó. Ha nem, akkor telepíteni kell az SDK-t <a href="https://dotnet.microsoft.com/en-us/download/dotnet/8.0">innen</a>.</p>
 
     <hr>
   <div class="md-source-file">
@@ -789,8 +788,8 @@
           </path>
         </svg>
       </span>
-      <span title="2023. február 7. 16:10:08">
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-02-07T16:10:08+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-02-07</span>
+      <span title="2023. november 23. 15:30:03">
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-23T15:30:03+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-23</span>
       </span>
     </span>
 
@@ -807,6 +806,8 @@
       <span>Szerzők</span>
       <nav><a href="https://github.com/akosdudas" target="_blank" rel="noopener noreferrer" class="md-author" title="@Akos Dudas">
           <img src="https://avatars.githubusercontent.com/u/11335181?u=9971512094b94810046de53f5c1dee78e9776a4f&v=4?size=72" alt="@Akos Dudas">
+        </a><a href="https://github.com/tibitoth" target="_blank" rel="noopener noreferrer" class="md-author" title="@Tibor Tóth">
+          <img src="https://avatars.githubusercontent.com/u/8333960?u=d26653213d265ecdceeaf20a896d74f479d35450&v=4?size=72" alt="@Tibor Tóth">
         </a></nav>      
     </span>
   </div>

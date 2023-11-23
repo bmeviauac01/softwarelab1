@@ -24,7 +24,7 @@
     
     
       
-        <title>Install Visual Studio & .NET Core SDK - BMEVIAUAC09 Software development laboratory 1</title>
+        <title>Install Visual Studio & .NET SDK - BMEVIAUAC09 Software development laboratory 1</title>
       
     
     
@@ -94,7 +94,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#install-visual-studio-net-core-sdk" class="md-skip">
+        <a href="#install-visual-studio-net-sdk" class="md-skip">
           Skip to content
         </a>
       
@@ -127,7 +127,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Install Visual Studio & .NET Core SDK
+              Install Visual Studio & .NET SDK
             
           </span>
         </div>
@@ -456,7 +456,7 @@
           
   
   <span class="md-ellipsis">
-    Install Visual Studio & .NET Core SDK
+    Install Visual Studio & .NET SDK
   </span>
   
 
@@ -467,7 +467,7 @@
         
   
   <span class="md-ellipsis">
-    Install Visual Studio & .NET Core SDK
+    Install Visual Studio & .NET SDK
   </span>
   
 
@@ -498,9 +498,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#check-and-install-net-core-sdk" class="md-nav__link">
+  <a href="#check-and-install-net-sdk" class="md-nav__link">
     <span class="md-ellipsis">
-      Check and install .NET Core SDK
+      Check and install .NET SDK
     </span>
   </a>
   
@@ -724,9 +724,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#check-and-install-net-core-sdk" class="md-nav__link">
+  <a href="#check-and-install-net-sdk" class="md-nav__link">
     <span class="md-ellipsis">
-      Check and install .NET Core SDK
+      Check and install .NET SDK
     </span>
   </a>
   
@@ -755,8 +755,8 @@
   
 
 
-<h1 id="install-visual-studio-net-core-sdk">Install Visual Studio &amp; .NET Core SDK<a class="headerlink" href="#install-visual-studio-net-core-sdk" title="Permanent link">&para;</a></h1>
-<p>In some of the exercises require Microsoft Visual Studio <strong>version 2019 16.6 or newer</strong>. With the exception of one topic, VS version 2022 is fine too. The free <a href="https://visualstudio.microsoft.com/vs/community/">Community edition</a> is sufficient for solving these exercises.</p>
+<h1 id="install-visual-studio-net-sdk">Install Visual Studio &amp; .NET SDK<a class="headerlink" href="#install-visual-studio-net-sdk" title="Permanent link">&para;</a></h1>
+<p>In some of the exercises require Microsoft Visual Studio <strong>version 2022 17.8 or newer</strong>. The free <a href="https://visualstudio.microsoft.com/vs/community/">Community edition</a> is sufficient for solving these exercises.</p>
 <p>You can check the version by starting the <em>Visual Studio Installer</em>:</p>
 <p><a class="glightbox" href="../images/visual-studio/vs-verzio.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Visual Studio version" src="../images/visual-studio/vs-verzio.png" /></a></p>
 <div class="admonition info">
@@ -764,21 +764,20 @@
 <p>The exercises can also be solved using the platform-independent <strong>Visual Studio Code</strong>. The skeletons of the exercises are prepared for Visual Studio. If you are working with VS Code, you need to configure your environment.</p>
 </div>
 <h2 id="visual-studio-workloads">Visual Studio workloads<a class="headerlink" href="#visual-studio-workloads" title="Permanent link">&para;</a></h2>
-<p>When installing Visual Studio, the following <a href="https://docs.microsoft.com/en-us/visualstudio/install/install-visual-studio?view=vs-2019#step-4---choose-workloads">workloads</a> have to be selected:</p>
+<p>When installing Visual Studio, the following <a href="https://docs.microsoft.com/en-us/visualstudio/install/install-visual-studio?view=vs-2022#step-4---choose-workloads">workloads</a> have to be selected:</p>
 <ul>
 <li>ASP.NET and web development</li>
-<li>.NET Core cross-platform development</li>
+<li>Data Storage and Processing</li>
 </ul>
 <p><a class="glightbox" href="../images/visual-studio/vs-workload.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Visual Studio workloads" src="../images/visual-studio/vs-workload.png" /></a></p>
-<p>An existing installation can be <a href="https://docs.microsoft.com/en-us/visualstudio/install/modify-visual-studio?view=vs-2019"><em>modified</em></a> using the <em>Visual Studio Installer</em>.</p>
+<p>An existing installation can be <a href="https://docs.microsoft.com/en-us/visualstudio/install/modify-visual-studio?view=vs-2022"><em>modified</em></a> using the <em>Visual Studio Installer</em>.</p>
 <p><a class="glightbox" href="../images/visual-studio/vs-installer-modify.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Visual Studio install components" src="../images/visual-studio/vs-installer-modify.png" /></a></p>
-<h2 id="check-and-install-net-core-sdk">Check and install .NET Core SDK<a class="headerlink" href="#check-and-install-net-core-sdk" title="Permanent link">&para;</a></h2>
-<p>Visual Studio might install certain versions of the .NET Core SDK. To check if you have the right version, use the <code>dotnet</code> CLI: in a console, execute the <code>dotnet --list-sdks</code> command. This command works on Linux and Mac too. It will print something similar:</p>
-<div class="highlight"><pre><span></span><code>C:\&gt;dotnet --list-sdks
-<span class="hll">3.1.404 [C:\Program Files\dotnet\sdk]
-</span>5.0.101 [C:\Program Files\dotnet\sdk]
-</code></pre></div>
-<p>If you see version <strong>3.1</strong> in this list, then you are good to go. Otherwise, install the SDK <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1">from here</a>.</p>
+<h2 id="check-and-install-net-sdk">Check and install .NET SDK<a class="headerlink" href="#check-and-install-net-sdk" title="Permanent link">&para;</a></h2>
+<p>Visual Studio might install certain versions of the .NET SDK. To check if you have the right version, use the <code>dotnet</code> CLI: in a console, execute the <code>dotnet --list-sdks</code> command. This command works on Linux and Mac too. It will print something similar:</p>
+<div class="highlight"><pre><span></span><code>PS C:\Users\toth.tibor&gt; dotnet --list-sdks
+<span class="hll">8.0.100 [C:\Program Files\dotnet\sdk]
+</span></code></pre></div>
+<p>If you see version <strong>8.0.x</strong> in this list, then you are good to go. Otherwise, install the SDK <a href="https://dotnet.microsoft.com/download/dotnet-core/8.0">from here</a>.</p>
 
     <hr>
   <div class="md-source-file">
@@ -789,8 +788,8 @@
           </path>
         </svg>
       </span>
-      <span title="February 7, 2023 16:35:42">
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-02-07T16:35:42+01:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-02-07</span>
+      <span title="November 23, 2023 15:30:03">
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-23T15:30:03+01:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-23</span>
       </span>
     </span>
 
@@ -807,6 +806,8 @@
       <span>Szerzők</span>
       <nav><a href="https://github.com/akosdudas" target="_blank" rel="noopener noreferrer" class="md-author" title="@Akos Dudas">
           <img src="https://avatars.githubusercontent.com/u/11335181?u=9971512094b94810046de53f5c1dee78e9776a4f&v=4?size=72" alt="@Akos Dudas">
+        </a><a href="https://github.com/tibitoth" target="_blank" rel="noopener noreferrer" class="md-author" title="@Tibor Tóth">
+          <img src="https://avatars.githubusercontent.com/u/8333960?u=d26653213d265ecdceeaf20a896d74f479d35450&v=4?size=72" alt="@Tibor Tóth">
         </a></nav>      
     </span>
   </div>
