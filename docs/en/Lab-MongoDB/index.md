@@ -25,7 +25,7 @@ Required tools to complete the tasks:
     !!! warning ".NET 8.0"
         Mind the version! You need .NET SDK version **8.0** to solve these exercises.
 
-        On Windows it might already be installed along with Visual Studio (see [here](../VisualStudio.md#check-and-install-net-core-sdk) how to check it); if not, use the link above to install (the SDK and _not_ the runtime). You need to install it manually when using Linux or macOS.
+        On Windows it might already be installed along with Visual Studio (see [here](../VisualStudio.md#check-and-install-net-sdk) how to check it); if not, use the link above to install (the SDK and _not_ the runtime). You need to install it manually when using Linux or macOS.
 
 Materials for preparing for this laboratory:
 
