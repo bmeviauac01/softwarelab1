@@ -1,599 +1,1243 @@
 
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="István Albert, Tibor Tóth">
+      
+      
+        <link rel="canonical" href="https://bmeviauac01.github.io/softwarelab1/en/Lab-QueryOptimization/">
+      
+      
+        <link rel="prev" href="../Lab-PowerBI/">
+      
+      
+        <link rel="next" href="../Lab-MSSQL/">
+      
+      
+      <link rel="icon" href="../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.11">
+    
+    
+      
+        <title>Query optimization - BMEVIAUAC09 Software development laboratory 1</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.fad675c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
+      
+      
 
-<html class="no-js" lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="István Albert, Tibor Tóth" name="author"/>
-<link href="https://bmeviauac01.github.io/softwarelab1/en/Lab-QueryOptimization/" rel="canonical"/>
-<link href="../Lab-PowerBI/" rel="prev"/>
-<link href="../Lab-MSSQL/" rel="next"/>
-<link href="../img/favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.4.2, mkdocs-material-9.1.0" name="generator"/>
-<title>Query optimization - BMEVIAUAC09 Software development laboratory 1</title>
-<link href="../assets/stylesheets/main.402914a4.min.css" rel="stylesheet"/>
-<link href="../assets/stylesheets/palette.a0c5b2b5.min.css" rel="stylesheet"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
-<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
-<link href="../css/timeago.css" rel="stylesheet"/>
-<link href="../extra-material-theme.css" rel="stylesheet"/>
-<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-<link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
-            html.glightbox-open { overflow: initial; height: 100%; }
-            .gslide-title { margin-top: 0px; user-select: text; }
-            .gslide-desc { color: #666; user-select: text; }
-            .gslide-image img { background: white; }
-            
-                .gscrollbar-fixer { padding-right: 15px; }
-                .gdesc-inner { font-size: 0.75rem; }
-                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
-                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-                </style><script src="../assets/javascripts/glightbox.min.js"></script></head>
-<body data-md-color-accent="red" data-md-color-primary="aut" data-md-color-scheme="aut" dir="ltr">
-<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
-<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
-<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
-<label class="md-overlay" for="__drawer"></label>
-<div data-md-component="skip">
-<a class="md-skip" href="#query-optimization">
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/timeago.css">
+    
+      <link rel="stylesheet" href="../extra-material-theme.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="aut" data-md-color-primary="aut" data-md-color-accent="red">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#query-optimization" class="md-skip">
           Skip to content
         </a>
-</div>
-<div data-md-component="announce">
-</div>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
 <header class="md-header" data-md-component="header">
-<nav aria-label="Header" class="md-header__inner md-grid">
-<a aria-label="BMEVIAUAC09 Software development laboratory 1" class="md-header__button md-logo" data-md-component="logo" href=".." title="BMEVIAUAC09 Software development laboratory 1">
-<img alt="logo" src="../img/logo-bme-aut.png"/>
-</a>
-<label class="md-header__button md-icon" for="__drawer">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
-</label>
-<div class="md-header__title" data-md-component="header-title">
-<div class="md-header__ellipsis">
-<div class="md-header__topic">
-<span class="md-ellipsis">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="BMEVIAUAC09 Software development laboratory 1" class="md-header__button md-logo" aria-label="BMEVIAUAC09 Software development laboratory 1" data-md-component="logo">
+      
+  <img src="../img/logo-bme-aut.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
             BMEVIAUAC09 Software development laboratory 1
           </span>
-</div>
-<div class="md-header__topic" data-md-component="header-topic">
-<span class="md-ellipsis">
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
             
               Query optimization
             
           </span>
-</div>
-</div>
-</div>
-<form class="md-header__option" data-md-component="palette">
-<input aria-label="Switch to Dark Mode" class="md-option" data-md-color-accent="red" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="aut" data-md-color-scheme="aut" id="__palette_1" name="__palette" type="radio"/>
-<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to Dark Mode">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"></path></svg>
-</label>
-<input aria-label="Switch to Light Mode" class="md-option" data-md-color-accent="" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="red" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
-<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to Light Mode">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"></path></svg>
-</label>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="aut" data-md-color-primary="aut" data-md-color-accent="red"  aria-label="Switch to Dark Mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to Dark Mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="indigo"  aria-label="Switch to Light Mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to Light Mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+      </label>
+    
+  
 </form>
-<div class="md-header__option">
-<div class="md-select">
-<button aria-label="Select language" class="md-header__button md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"></path></svg>
-</button>
-<div class="md-select__inner">
-<ul class="md-select__list">
-<li class="md-select__item">
-<a class="md-select__link" href="https://bmeviauac01.github.io/softwarelab1/en/" hreflang="en">
-                    English
-                  </a>
-</li>
-<li class="md-select__item">
-<a class="md-select__link" href="https://bmeviauac01.github.io/softwarelab1/hu/" hreflang="hu">
-                    Magyar
-                  </a>
-</li>
-</ul>
+      
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="https://bmeviauac01.github.io/softwarelab1/en/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="https://bmeviauac01.github.io/softwarelab1/hu/" hreflang="hu" class="md-select__link">
+              Magyar
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
 </div>
-</div>
-</div>
-<label class="md-header__button md-icon" for="__search">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
-</label>
-<div class="md-search" data-md-component="search" role="dialog">
-<label class="md-search__overlay" for="__search"></label>
-<div class="md-search__inner" role="search">
-<form class="md-search__form" name="search">
-<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
-<label class="md-search__icon md-icon" for="__search">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
-</label>
-<nav aria-label="Search" class="md-search__options">
-<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
-</button>
-</nav>
-<div class="md-search__suggest" data-md-component="search-suggest"></div>
-</form>
-<div class="md-search__output">
-<div class="md-search__scrollwrap" data-md-scrollfix="">
-<div class="md-search-result" data-md-component="search-result">
-<div class="md-search-result__meta">
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
             Initializing search
           </div>
-<ol class="md-search-result__list" role="presentation"></ol>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="md-header__source">
-<a class="md-source" data-md-component="source" href="https://github.com/bmeviauac01/softwarelab1" title="Go to repository">
-<div class="md-source__icon md-icon">
-<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
-</div>
-<div class="md-source__repository">
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/bmeviauac01/softwarelab1" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
     bmeviauac01/softwarelab1
   </div>
 </a>
-</div>
-</nav>
+      </div>
+    
+  </nav>
+  
 </header>
-<div class="md-container" data-md-component="container">
-<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
-<div class="md-grid">
-<ul class="md-tabs__list">
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="..">
-        Software development laboratory 1
-      </a>
-</li>
-<li class="md-tabs__item">
-<a class="md-tabs__link md-tabs__link--active" href="../Lab-PowerBI/">
-        Laboratories
-      </a>
-</li>
-</ul>
-</div>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href=".." class="md-tabs__link">
+          
+  
+  Software development laboratory 1
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Lab-PowerBI/" class="md-tabs__link">
+          
+  
+  Laboratories
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
 </nav>
-<main class="md-main" data-md-component="main">
-<div class="md-main__inner md-grid">
-<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
-<div class="md-sidebar__scrollwrap">
-<div class="md-sidebar__inner">
-<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
-<label class="md-nav__title" for="__drawer">
-<a aria-label="BMEVIAUAC09 Software development laboratory 1" class="md-nav__button md-logo" data-md-component="logo" href=".." title="BMEVIAUAC09 Software development laboratory 1">
-<img alt="logo" src="../img/logo-bme-aut.png"/>
-</a>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="BMEVIAUAC09 Software development laboratory 1" class="md-nav__button md-logo" aria-label="BMEVIAUAC09 Software development laboratory 1" data-md-component="logo">
+      
+  <img src="../img/logo-bme-aut.png" alt="logo">
+
+    </a>
     BMEVIAUAC09 Software development laboratory 1
   </label>
-<div class="md-nav__source">
-<a class="md-source" data-md-component="source" href="https://github.com/bmeviauac01/softwarelab1" title="Go to repository">
-<div class="md-source__icon md-icon">
-<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
-</div>
-<div class="md-source__repository">
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/bmeviauac01/softwarelab1" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
     bmeviauac01/softwarelab1
   </div>
 </a>
-</div>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_1" type="checkbox"/>
-<label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
-          Software development laboratory 1
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Software development laboratory 1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Software development laboratory 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GitHub/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Submitting your work (GitHub)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GitHub-Actions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using GitHub Actions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VisualStudio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install Visual Studio & .NET Core SDK
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GitHub-credentials/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    In university laboratories: GitHub access
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Laboratories
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Laboratories
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lab-PowerBI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reporting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Query optimization
+  </span>
+  
+
           <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="false" aria-labelledby="__nav_1_label" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_1">
-<span class="md-nav__icon md-icon"></span>
-          Software development laboratory 1
         </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="..">
-        Course overview
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Query optimization
+  </span>
+  
+
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../GitHub/">
-        Submitting your work (GitHub)
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../GitHub-Actions/">
-        Using GitHub Actions
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../VisualStudio/">
-        Install Visual Studio &amp; .NET Core SDK
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../GitHub-credentials/">
-        In university laboratories: GitHub access
-      </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
-          Laboratories
-          <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_2">
-<span class="md-nav__icon md-icon"></span>
-          Laboratories
-        </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../Lab-PowerBI/">
-        Reporting
-      </a>
-</li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-          Query optimization
-          <span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
-        Query optimization
-      </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#pre-requisites-and-preparation">
-    Pre-requisites and preparation
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisites-and-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-requisites and preparation
+    </span>
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#initial-steps">
-    Initial steps
+      
+        <li class="md-nav__item">
+  <a href="#initial-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initial steps
+    </span>
   </a>
-<nav aria-label="Initial steps" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#create-and-check-out-your-git-repository">
-    Create and check out your Git repository
+  
+    <nav class="md-nav" aria-label="Initial steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-and-check-out-your-git-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create and check out your Git repository
+    </span>
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#open-the-markdown-file">
-    Open the markdown file
+        
+          <li class="md-nav__item">
+  <a href="#open-the-markdown-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open the markdown file
+    </span>
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#create-the-database">
-    Create the database
+        
+          <li class="md-nav__item">
+  <a href="#create-the-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create the database
+    </span>
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#getting-the-actual-execution-plan">
-    Getting the actual execution plan
+        
+          <li class="md-nav__item">
+  <a href="#getting-the-actual-execution-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting the actual execution plan
+    </span>
   </a>
+  
 </li>
-</ul>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises-solved-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercises solved together
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercises solved together">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1-2p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 1 (2p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2-2p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 2 (2p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3-2p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 3 (2p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4-2p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 4 (2p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-5-2p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 5 (2p)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#individual-exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      Individual exercises
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Individual exercises">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-6-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 6 (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-7-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 7 (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-8-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 8 (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-9-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 9 (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-10-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 10 (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-11-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 11 (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-12-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 12 (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-13-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 13 (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-14-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 14 (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-15-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 15 (1p)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional exercises
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Optional exercises">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-16" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 16
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-17" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 17
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercises-solved-together">
-    Exercises solved together
-  </a>
-<nav aria-label="Exercises solved together" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-1-2p">
-    Exercise 1 (2p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-2-2p">
-    Exercise 2 (2p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-3-2p">
-    Exercise 3 (2p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-4-2p">
-    Exercise 4 (2p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-5-2p">
-    Exercise 5 (2p)
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#individual-exercises">
-    Individual exercises
-  </a>
-<nav aria-label="Individual exercises" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-6-1p">
-    Exercise 6 (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-7-1p">
-    Exercise 7 (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-8-1p">
-    Exercise 8 (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-9-1p">
-    Exercise 9 (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-10-1p">
-    Exercise 10 (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-11-1p">
-    Exercise 11 (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-12-1p">
-    Exercise 12 (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-13-1p">
-    Exercise 13 (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-14-1p">
-    Exercise 14 (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-15-1p">
-    Exercise 15 (1p)
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#optional-exercises">
-    Optional exercises
-  </a>
-<nav aria-label="Optional exercises" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-16">
-    Exercise 16
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-17">
-    Exercise 17
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../Lab-MSSQL/">
-        MSSQL
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lab-MSSQL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MSSQL
+  </span>
+  
+
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../Lab-MongoDB/">
-        MongoDB
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lab-MongoDB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MongoDB
+  </span>
+  
+
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../Lab-EFREST/">
-        Entity Framework &amp; REST
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lab-EFREST/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entity Framework & REST
+  </span>
+  
+
       </a>
-</li>
-</ul>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
 </nav>
-</li>
-</ul>
-</nav>
-</div>
-</div>
-</div>
-<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
-<div class="md-sidebar__scrollwrap">
-<div class="md-sidebar__inner">
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#pre-requisites-and-preparation">
-    Pre-requisites and preparation
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisites-and-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-requisites and preparation
+    </span>
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#initial-steps">
-    Initial steps
+      
+        <li class="md-nav__item">
+  <a href="#initial-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initial steps
+    </span>
   </a>
-<nav aria-label="Initial steps" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#create-and-check-out-your-git-repository">
-    Create and check out your Git repository
+  
+    <nav class="md-nav" aria-label="Initial steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-and-check-out-your-git-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create and check out your Git repository
+    </span>
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#open-the-markdown-file">
-    Open the markdown file
+        
+          <li class="md-nav__item">
+  <a href="#open-the-markdown-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open the markdown file
+    </span>
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#create-the-database">
-    Create the database
+        
+          <li class="md-nav__item">
+  <a href="#create-the-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create the database
+    </span>
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#getting-the-actual-execution-plan">
-    Getting the actual execution plan
+        
+          <li class="md-nav__item">
+  <a href="#getting-the-actual-execution-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting the actual execution plan
+    </span>
   </a>
+  
 </li>
-</ul>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises-solved-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercises solved together
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercises solved together">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1-2p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 1 (2p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2-2p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 2 (2p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3-2p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 3 (2p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4-2p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 4 (2p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-5-2p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 5 (2p)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#individual-exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      Individual exercises
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Individual exercises">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-6-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 6 (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-7-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 7 (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-8-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 8 (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-9-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 9 (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-10-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 10 (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-11-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 11 (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-12-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 12 (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-13-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 13 (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-14-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 14 (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-15-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 15 (1p)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional exercises
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Optional exercises">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-16" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 16
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-17" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 17
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercises-solved-together">
-    Exercises solved together
-  </a>
-<nav aria-label="Exercises solved together" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-1-2p">
-    Exercise 1 (2p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-2-2p">
-    Exercise 2 (2p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-3-2p">
-    Exercise 3 (2p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-4-2p">
-    Exercise 4 (2p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-5-2p">
-    Exercise 5 (2p)
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#individual-exercises">
-    Individual exercises
-  </a>
-<nav aria-label="Individual exercises" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-6-1p">
-    Exercise 6 (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-7-1p">
-    Exercise 7 (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-8-1p">
-    Exercise 8 (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-9-1p">
-    Exercise 9 (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-10-1p">
-    Exercise 10 (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-11-1p">
-    Exercise 11 (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-12-1p">
-    Exercise 12 (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-13-1p">
-    Exercise 13 (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-14-1p">
-    Exercise 14 (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-15-1p">
-    Exercise 15 (1p)
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#optional-exercises">
-    Optional exercises
-  </a>
-<nav aria-label="Optional exercises" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-16">
-    Exercise 16
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#exercise-17">
-    Exercise 17
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
-</nav>
-</div>
-</div>
-</div>
-<div class="md-content" data-md-component="content">
-<article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/bmeviauac01/softwarelab1/blob/master/docs/en/Lab-QueryOptimization/index.md" title="Edit this page">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"></path></svg>
-</a>
-<h1 id="query-optimization">Query optimization<a class="headerlink" href="#query-optimization" title="Permanent link">¶</a></h1>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/bmeviauac01/softwarelab1/blob/master/docs/en/Lab-QueryOptimization/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="query-optimization">Query optimization<a class="headerlink" href="#query-optimization" title="Permanent link">&para;</a></h1>
 <p>We will examine the query optimization behavior of Microsoft SQL Server. To properly understand the optimizer's behavior, in the <strong>first 5 exercises</strong>, we will explain the queries and the behavior too. The <strong>rest of the exercises is individual work</strong> where it is your task to infer the reason for a specific plan. Your task is to document the behavior and submit the documentation of all exercises.</p>
-<h2 id="pre-requisites-and-preparation">Pre-requisites and preparation<a class="headerlink" href="#pre-requisites-and-preparation" title="Permanent link">¶</a></h2>
+<h2 id="pre-requisites-and-preparation">Pre-requisites and preparation<a class="headerlink" href="#pre-requisites-and-preparation" title="Permanent link">&para;</a></h2>
 <p>Required tools to complete the tasks:</p>
 <ul>
 <li>Windows, Linux, or macOS: All tools are platform-independent, or a platform-independent alternative is available.</li>
@@ -618,9 +1262,9 @@
 </ul>
 </li>
 </ul>
-<h2 id="initial-steps">Initial steps<a class="headerlink" href="#initial-steps" title="Permanent link">¶</a></h2>
+<h2 id="initial-steps">Initial steps<a class="headerlink" href="#initial-steps" title="Permanent link">&para;</a></h2>
 <p>Keep in mind that you are expected to follow the <a href="../GitHub/">submission process</a>.</p>
-<h3 id="create-and-check-out-your-git-repository">Create and check out your Git repository<a class="headerlink" href="#create-and-check-out-your-git-repository" title="Permanent link">¶</a></h3>
+<h3 id="create-and-check-out-your-git-repository">Create and check out your Git repository<a class="headerlink" href="#create-and-check-out-your-git-repository" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p>Create your git repository using the invitation link in Moodle. Each lab has a different URL; make sure to use the right one!</p>
@@ -639,7 +1283,7 @@
 <p>Open the checked-out folder and type your Neptun code into the <code>neptun.txt</code> file. There should be a single line with the 6 characters of your Neptun code and nothing else in this file.</p>
 </li>
 </ol>
-<h3 id="open-the-markdown-file">Open the markdown file<a class="headerlink" href="#open-the-markdown-file" title="Permanent link">¶</a></h3>
+<h3 id="open-the-markdown-file">Open the markdown file<a class="headerlink" href="#open-the-markdown-file" title="Permanent link">&para;</a></h3>
 <p>Create the documentation in a markdown file. Open the checked-out git repository with a markdown editor. We recommend using Visual Studio Code:</p>
 <ol>
 <li>
@@ -669,7 +1313,7 @@
 <p class="admonition-title">Alternative editor</p>
 <p>If you do not like VS code, you can also use the <a href="https://help.github.com/en/github/managing-files-in-a-repository/editing-files-in-your-repository">GitHub web interface</a> to edit the markdown; you also have a preview here. <a href="https://help.github.com/en/github/managing-files-in-a-repository/adding-a-file-to-a-repository">File upload</a> will be trickier.</p>
 </div>
-<h3 id="create-the-database">Create the database<a class="headerlink" href="#create-the-database" title="Permanent link">¶</a></h3>
+<h3 id="create-the-database">Create the database<a class="headerlink" href="#create-the-database" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p>Connect to Microsoft SQL Server using SQL Server Management Studio. Start Management Studio and use the following connection details:</p>
@@ -683,24 +1327,24 @@
 </li>
 <li>
 <p>Create the sample database by executing the <a href="../db/mssql.sql">initializer script</a> Open a new <em>Query</em> window, paste the script into the window, then execute it. Make sure to select the correct database in the toolbar dropdown.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/sql-management-database-dropdown.png"><img alt="Selecting the database" src="../images/sql-management-database-dropdown.png"/></a></p>
+<p><a class="glightbox" href="../images/sql-management-database-dropdown.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Selecting the database" src="../images/sql-management-database-dropdown.png" /></a></p>
 </li>
 <li>
 <p>Verify that the tables are created. If the <em>Tables</em> folder was open before, you need to refresh it.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/sql-managment-tablak.png"><img alt="Listing tables" src="../images/sql-managment-tablak.png"/></a>.</p>
+<p><a class="glightbox" href="../images/sql-managment-tablak.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Listing tables" src="../images/sql-managment-tablak.png" /></a>.</p>
 </li>
 </ol>
-<h3 id="getting-the-actual-execution-plan">Getting the actual execution plan<a class="headerlink" href="#getting-the-actual-execution-plan" title="Permanent link">¶</a></h3>
+<h3 id="getting-the-actual-execution-plan">Getting the actual execution plan<a class="headerlink" href="#getting-the-actual-execution-plan" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">If you are not using Windows</p>
 <p>We are primarily using SQL Server Management Studio to get the execution plans. If you are not using Windows, you can also use Azure Data Studio-t to <a href="https://richbenner.com/2019/02/azure-data-studio-execution-plans/">obtain the query plan</a>.</p>
 </div>
 <p>We will check the query plan the optimizer chose and the server executed in the following exercises. In SQL Server Management Studio, open the <em>Query</em> menu and check <a href="https://docs.microsoft.com/en-us/sql/relational-databases/performance/display-an-actual-execution-plan"><em>Include Actual Execution Plan</em></a>.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/queryopt-include-plan.png"><img alt="Enable query plan" src="../images/queryopt/queryopt-include-plan.png"/></a></p>
+<p><a class="glightbox" href="../images/queryopt/queryopt-include-plan.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Enable query plan" src="../images/queryopt/queryopt-include-plan.png" /></a></p>
 <p>The plan will be displayed after the query is completed at the bottom of the window on the <em>Execution plan</em> pane.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/queryopt-plan-result.png"><img alt="View query plan" src="../images/queryopt/queryopt-plan-result.png"/></a></p>
+<p><a class="glightbox" href="../images/queryopt/queryopt-plan-result.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="View query plan" src="../images/queryopt/queryopt-plan-result.png" /></a></p>
 <p>The plan is a data flow diagram where the query execution is the flow of the data. The items are the individual steps, and the percentages are the relative cost of each step with regards to the whole query.</p>
-<h2 id="exercises-solved-together">Exercises solved together<a class="headerlink" href="#exercises-solved-together" title="Permanent link">¶</a></h2>
+<h2 id="exercises-solved-together">Exercises solved together<a class="headerlink" href="#exercises-solved-together" title="Permanent link">&para;</a></h2>
 <div class="admonition example">
 <p class="admonition-title">SUBMISSION</p>
 <p>The submission shall be a documentation written in the <code>README.md</code> file:</p>
@@ -716,9 +1360,9 @@
 <p>Even though the solutions are provided below, you are required to execute the queries, get the execution plan, think about it, and document it with your own words. Copying the explanations from below is not acceptable!</p>
 </div>
 <p>If the query plan or the explanation of subsequent exercises is the same, or at least very similar, it is enough to document everything once (one screenshot and one reasoning); and list which (sub)exercises it is the solution for.</p>
-<h3 id="exercise-1-2p">Exercise 1 (2p)<a class="headerlink" href="#exercise-1-2p" title="Permanent link">¶</a></h3>
+<h3 id="exercise-1-2p">Exercise 1 (2p)<a class="headerlink" href="#exercise-1-2p" title="Permanent link">&para;</a></h3>
 <p>Drop the <code>CustomerSite</code> =&gt; <code>Customer</code> foreign key and the <code>Customer</code> table primary key constraint. Find these in the <em>Object Explorer</em> and delete them (the <em>PK...</em> is the primary key while the <em>FK...</em> is the foreign key - the ones you need to delete are in two different tables!):</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/queryopt-delete-key.png"><img alt="Delete constraint" src="../images/queryopt/queryopt-delete-key.png"/></a></p>
+<p><a class="glightbox" href="../images/queryopt/queryopt-delete-key.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Delete constraint" src="../images/queryopt/queryopt-delete-key.png" /></a></p>
 <p>Execute the following queries on the <code>Customer</code> table and examine the execution plans (always fetch the entire records using <code>select *</code>):</p>
 <ul>
 <li>a) query the whole table</li>
@@ -740,14 +1384,14 @@
 </ul>
 <p><strong>a)-d)</strong></p>
 <p>The <strong>execution plan</strong> is indentical for all, it uses a <em>table scan</em> each time:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/f1-1.png"><img alt="" src="../images/queryopt/f1-1.png"/></a></p>
+<p><a class="glightbox" href="../images/queryopt/f1-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/queryopt/f1-1.png" /></a></p>
 <p><strong>Explanation</strong>: the optimizer cannot use any index, as there is none. Thus there is no other choice but to use a <em>table scan</em>.</p>
 <p><strong>e)</strong></p>
 <p>This one is a little different due to the order by there is a sort stage too.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/f1-2.png"><img alt="" src="../images/queryopt/f1-2.png"/></a></p>
+<p><a class="glightbox" href="../images/queryopt/f1-2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/queryopt/f1-2.png" /></a></p>
 <p><strong>Explanation</strong>: The <em>table scan</em> is the same, and after that, there is still a need for sorting - without any index, it is a separate stage.</p>
 </details>
-<h3 id="exercise-2-2p">Exercise 2 (2p)<a class="headerlink" href="#exercise-2-2p" title="Permanent link">¶</a></h3>
+<h3 id="exercise-2-2p">Exercise 2 (2p)<a class="headerlink" href="#exercise-2-2p" title="Permanent link">&para;</a></h3>
 <p>Re-create the primary key of the <code>Customer</code> table:</p>
 <ul>
 <li>Right-click the table &gt; Design &gt; then right-click the ID column "Set Primary Key " then Save,</li>
@@ -758,20 +1402,20 @@
 <summary>Solution</summary>
 <p>The commands are the same as before.</p>
 <p><strong>a)</strong></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/f2-1.png"><img alt="" src="../images/queryopt/f2-1.png"/></a></p>
+<p><a class="glightbox" href="../images/queryopt/f2-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/queryopt/f2-1.png" /></a></p>
 <p>The Clustered Index Scan iterates the table. We have a Clustered Index automatically created for the primary key, which has the records sorted by ID. By iterating through this index, all records are visited. This is almost identical to a Table Scan, though, not efficient. However, this is what we asked for here.</p>
 <p><strong>b)</strong></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/f2-2.png"><img alt="" src="../images/queryopt/f2-2.png"/></a></p>
+<p><a class="glightbox" href="../images/queryopt/f2-2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/queryopt/f2-2.png" /></a></p>
 <p>A Clustered Index Seek is enough. Since the filter criteria is for the ID, for which there is an index available, the matching record can be found quickly. This is an efficient plan; the Clustered Index is used for the exact purpose we created it for.</p>
 <p><strong>c)</strong></p>
 <p>Similar to the previous one, a Clustered Index Seek between two intervals (<code>&lt; constant</code>, <code>&gt; constant</code>). Since the filter criteria still references the ID field with a Clustered Index, the query will use this index. This is an efficient query.</p>
 <p><strong>d)</strong></p>
 <p>Very similar to the previous one with a range filter.</p>
 <p><strong>e)</strong></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/f2-3.png"><img alt="" src="../images/queryopt/f2-3.png"/></a></p>
+<p><a class="glightbox" href="../images/queryopt/f2-3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/queryopt/f2-3.png" /></a></p>
 <p>Clustered Index Seek with a backward seek order. The <em>Properties</em> window shows the Seek Order-t: find the last matching record, and walk the index backward, which will yield a sorted result set.</p>
 </details>
-<h3 id="exercise-3-2p">Exercise 3 (2p)<a class="headerlink" href="#exercise-3-2p" title="Permanent link">¶</a></h3>
+<h3 id="exercise-3-2p">Exercise 3 (2p)<a class="headerlink" href="#exercise-3-2p" title="Permanent link">&para;</a></h3>
 <p>Execute the following queries on the <code>Product</code> table.</p>
 <ul>
 <li>f) query the whole table</li>
@@ -792,18 +1436,18 @@
 <li>j) <code>select * from product where price &gt; 800 order by price desc</code></li>
 </ul>
 <p><strong>f)-i)</strong></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/f3-1.png"><img alt="" src="../images/queryopt/f3-1.png"/></a></p>
+<p><a class="glightbox" href="../images/queryopt/f3-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/queryopt/f3-1.png" /></a></p>
 <p>A Clustered Index Scan iterates through the contents of the index. This is still equal to reading the entire table since there is no index to match the filter criteria. Although a Clustered Index is used, it does not serve any purpose in filtering; all records are visited, and the filter is evaluated for each. These are not efficient queries, as the existing index is of no use.</p>
 <p><strong>j)</strong></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/f3-2.png"><img alt="" src="../images/queryopt/f3-2.png"/></a></p>
+<p><a class="glightbox" href="../images/queryopt/f3-2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/queryopt/f3-2.png" /></a></p>
 <p>Still a Clustered Index Scan, but what is interesting is that cost of the sorting stage is quite large. Even after executing a costly Index Scan, we still have further sorting to do. A good index would help, but there is no index for the sorted column.</p>
 </details>
-<h3 id="exercise-4-2p">Exercise 4 (2p)<a class="headerlink" href="#exercise-4-2p" title="Permanent link">¶</a></h3>
+<h3 id="exercise-4-2p">Exercise 4 (2p)<a class="headerlink" href="#exercise-4-2p" title="Permanent link">&para;</a></h3>
 <p>Add a new non-clustered index on column <code>Price</code>. How do the execution plans change?</p>
 <p>To add the index use <em>Object Explorer</em>, find the table, expand it, and right-click <em>Indexes</em> -&gt; <em>New index</em> &gt; <em>Non-Clustered Index...</em></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/queryopt-add-index.png"><img alt="Create index" src="../images/queryopt/queryopt-add-index.png"/></a></p>
+<p><a class="glightbox" href="../images/queryopt/queryopt-add-index.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Create index" src="../images/queryopt/queryopt-add-index.png" /></a></p>
 <p>Indices should have meaningful names, e.g., <code>IX_Tablename_Fieldname</code>. Add <em>Price</em> column to the <em>Index key columns</em> list.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/queryopt-index-properties.png"><img alt="Index properties" src="../images/queryopt/queryopt-index-properties.png"/></a></p>
+<p><a class="glightbox" href="../images/queryopt/queryopt-index-properties.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Index properties" src="../images/queryopt/queryopt-index-properties.png" /></a></p>
 <p>Repeat the queries from the previous exercise and explain the plans!</p>
 <details class="success">
 <summary>Solution</summary>
@@ -814,11 +1458,11 @@
 <p>Clustered Index Scan iterating through the entire table, just as if there was no index available for the filtered column.</p>
 <p>Why does it not use the new index? The reason is the projection; that is, we query the entire record. The NonClustered Index could yield a set of record identifiers, after which the records themselves would still need to be queried. The optimizer decides that it is not worth doing so; an Index Scan is more efficient.</p>
 <p><strong>j)</strong></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/f4-1.png"><img alt="" src="../images/queryopt/f4-1.png"/></a></p>
+<p><a class="glightbox" href="../images/queryopt/f4-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/queryopt/f4-1.png" /></a></p>
 <p>The NonClustered Index Seek yields keys, which are looked up in the Clustered Index, just like joining the two indices.</p>
 <p>We would have expected something similar in the previous queries too. The Clustered Index is needed as entire records are fetched as the NonClustered Index only provides references. However, these references are in the correct order (the NonClustered Index ensures it); so after the lookup in the Clustered Index, there is no further need to do the sorting. If only the Clustered Index were used (Clustered Index Scan), the sorting would have to be performed in a separate stage. This is an acceptable query, as the NonClustered Index helps in avoiding a costly sorting step.</p>
 </details>
-<h3 id="exercise-5-2p">Exercise 5 (2p)<a class="headerlink" href="#exercise-5-2p" title="Permanent link">¶</a></h3>
+<h3 id="exercise-5-2p">Exercise 5 (2p)<a class="headerlink" href="#exercise-5-2p" title="Permanent link">&para;</a></h3>
 <p>Generate new records into the <em>Product</em> table with the script below. How do the execution plans change?</p>
 <p>When repeating the query for sub-exercise i), choose a constant value that will yield few resulting records, then choose a value that returns almost all records. Explain the differences!</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">TOP</span><span class="w"> </span><span class="p">(</span><span class="mi">1000000</span><span class="p">)</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">ABS</span><span class="p">(</span><span class="n">CHECKSUM</span><span class="p">(</span><span class="n">NEWID</span><span class="p">()))</span>
@@ -831,7 +1475,7 @@
 
 
 <span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">Product</span><span class="p">(</span><span class="n">Name</span><span class="p">,</span><span class="w"> </span><span class="n">Price</span><span class="p">,</span><span class="w"> </span><span class="n">Stock</span><span class="p">,</span><span class="w"> </span><span class="n">VATID</span><span class="p">,</span><span class="w"> </span><span class="n">CategoryID</span><span class="p">)</span>
-<span class="k">SELECT</span><span class="w"> </span><span class="s1">'Apple'</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="o">%</span><span class="mi">50000</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="o">%</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Apple&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="o">%</span><span class="mi">50000</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="o">%</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">Numbers</span>
 </code></pre></div>
 <details class="success">
@@ -840,12 +1484,12 @@
 <p><strong>f)</strong></p>
 <p>Same as before.</p>
 <p><strong>g)</strong></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/f5-1.png"><img alt="" src="../images/queryopt/f5-1.png"/></a></p>
+<p><a class="glightbox" href="../images/queryopt/f5-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/queryopt/f5-1.png" /></a></p>
 <p>References from the NonClustered Index Seek are looked up in the Clustered Index, just like joining the two indices.</p>
 <p>Let us compare this plan to the one from before having a smaller table. Why is the Clustered Index Scan not used now? In the case of larger tables, the <em>selectivity</em> (i.e., how many records match the filtering) is more important, hence the use of the NonClustered Index. The Clustered Index Scan would be too costly in a large table. The NonClustered Index can reduce the number of records, hence its role here. Based on the statistics of the <code>Price</code> column, it can be derived that the <code>=</code> operator will match few records. Important! Just because it is an <code>=</code> comparison, it does not directly follow that there are few matches; imagine the column having the same value in all records. Hence the need for the statistics!</p>
 <p>This is an acceptable query. Since the filtering reduces the number of records, it is worth using the index.</p>
 <p><strong>h)</strong></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/f5-2.png"><img alt="" src="../images/queryopt/f5-2.png"/></a></p>
+<p><a class="glightbox" href="../images/queryopt/f5-2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/queryopt/f5-2.png" /></a></p>
 <p>Clustered Index Scan as before.</p>
 <p>Why the difference compared to the previous case? If the <code>=</code> operator yields few matches, then <code>&lt;&gt;</code> will yield many. This is derived from the statistics too. So no use in doing the same as in the previous case; a Clustered Index Scan is probably more efficient.</p>
 <p><strong>i)</strong></p>
@@ -853,29 +1497,29 @@
 <p><strong>j)</strong></p>
 <p>Just like for g). Does the <code>order by desc</code> matter here? The optimizer tries to avoid sorting, and this is the only way to do so. This is an acceptable plan; by using the NonClustered Index there is no separate sorting stage.</p>
 </details>
-<h2 id="individual-exercises">Individual exercises<a class="headerlink" href="#individual-exercises" title="Permanent link">¶</a></h2>
+<h2 id="individual-exercises">Individual exercises<a class="headerlink" href="#individual-exercises" title="Permanent link">&para;</a></h2>
 <div class="admonition example">
 <p class="admonition-title">SUBMISSION</p>
 <p>Continue documenting the results the same way.</p>
 <p>Keep in mind that the documentation should correctly display with the images in the web interface of GitHub! You need to verify this during the submission: open the repository in the browser and switch to your branch; GitHub will automatically render the <code>README.md</code> file with the images.</p>
 </div>
-<h3 id="exercise-6-1p">Exercise 6 (1p)<a class="headerlink" href="#exercise-6-1p" title="Permanent link">¶</a></h3>
+<h3 id="exercise-6-1p">Exercise 6 (1p)<a class="headerlink" href="#exercise-6-1p" title="Permanent link">&para;</a></h3>
 <p>Repeat the queries on the <code>Product</code> table, but instead of fetching the entire record, only get the <code>ID</code> and the <code>Price</code> columns. How do the execution plans change? Explain the differences!</p>
-<h3 id="exercise-7-1p">Exercise 7 (1p)<a class="headerlink" href="#exercise-7-1p" title="Permanent link">¶</a></h3>
+<h3 id="exercise-7-1p">Exercise 7 (1p)<a class="headerlink" href="#exercise-7-1p" title="Permanent link">&para;</a></h3>
 <p>Analyze the following queries executed on the <code>Product</code> table:</p>
 <ul>
 <li>k) query records where the primary key is between two values (use the <code>BETWEEN</code> operator)</li>
 <li>l) query records where the primary key is between two values (use the <code>BETWEEN</code> operator), <strong>or</strong> it is equal to a value that falls outside of this range</li>
 </ul>
 <p>Document the SQL commands you used and explain the actual query execution plan!</p>
-<h3 id="exercise-8-1p">Exercise 8 (1p)<a class="headerlink" href="#exercise-8-1p" title="Permanent link">¶</a></h3>
+<h3 id="exercise-8-1p">Exercise 8 (1p)<a class="headerlink" href="#exercise-8-1p" title="Permanent link">&para;</a></h3>
 <p>In exercise 6, <code>WHERE Price=</code> compared an integer and a floating-point number. Let us experiment with other comparisons: query records from the <code>Product</code> table with the following filter criteria.</p>
 <ul>
 <li>m) <code>where cast(Price as int) = integer number</code></li>
 <li>n) <code>where Price BETWEEN integer number-0.0001 AND integer number+0.0001</code></li>
 </ul>
 <p>Choose a random integer number in these queries and fetch <strong>only the primary key</strong>. Analyze the execution plans.</p>
-<h3 id="exercise-9-1p">Exercise 9 (1p)<a class="headerlink" href="#exercise-9-1p" title="Permanent link">¶</a></h3>
+<h3 id="exercise-9-1p">Exercise 9 (1p)<a class="headerlink" href="#exercise-9-1p" title="Permanent link">&para;</a></h3>
 <p>Analyze the following queries execute on the <code>Product</code> table:</p>
 <ul>
 <li>o) query entire records where <code>Price</code> is less than a constant value (the filter should yield few matches), ordered by ID descending</li>
@@ -884,7 +1528,7 @@
 <li>r) the same, but fetch only <code>ID</code> and <code>Price</code></li>
 </ul>
 <p>Document the SQL commands you used and explain the actual query execution plan!</p>
-<h3 id="exercise-10-1p">Exercise 10 (1p)<a class="headerlink" href="#exercise-10-1p" title="Permanent link">¶</a></h3>
+<h3 id="exercise-10-1p">Exercise 10 (1p)<a class="headerlink" href="#exercise-10-1p" title="Permanent link">&para;</a></h3>
 <p>Create a new index for the <code>Name</code> column and analyze the following queries executed on the <code>Product</code> table:</p>
 <ul>
 <li>s) query names and IDs where the name begins with B - use function <a href="https://docs.microsoft.com/en-us/sql/t-sql/functions/substring-transact-sql"><code>SUBSTRING</code></a></li>
@@ -894,37 +1538,37 @@
 <li>w) the same, but now compare case-insensitively using <a href="https://docs.microsoft.com/en-us/sql/t-sql/functions/upper-transact-sql?view=sql-server-ver15"><code>UPPER</code></a></li>
 </ul>
 <p>Document the SQL commands you used and explain the actual query execution plan!</p>
-<h3 id="exercise-11-1p">Exercise 11 (1p)<a class="headerlink" href="#exercise-11-1p" title="Permanent link">¶</a></h3>
+<h3 id="exercise-11-1p">Exercise 11 (1p)<a class="headerlink" href="#exercise-11-1p" title="Permanent link">&para;</a></h3>
 <p>Analyze the following queries executed on the <code>Product</code> table:</p>
 <ul>
 <li>x) get the maximum of <code>Id</code></li>
 <li>y) get the minimum of <code>Price</code></li>
 </ul>
 <p>Document the SQL commands you used and explain the actual query execution plan!</p>
-<h3 id="exercise-12-1p">Exercise 12 (1p)<a class="headerlink" href="#exercise-12-1p" title="Permanent link">¶</a></h3>
+<h3 id="exercise-12-1p">Exercise 12 (1p)<a class="headerlink" href="#exercise-12-1p" title="Permanent link">&para;</a></h3>
 <p>Query the number of products per category (<code>CategoryId</code>).</p>
 <p>Document the SQL commands you used and explain the actual query execution plan!</p>
-<h3 id="exercise-13-1p">Exercise 13 (1p)<a class="headerlink" href="#exercise-13-1p" title="Permanent link">¶</a></h3>
+<h3 id="exercise-13-1p">Exercise 13 (1p)<a class="headerlink" href="#exercise-13-1p" title="Permanent link">&para;</a></h3>
 <p>How could we improve on the performance of the previous query? Explain and implement the solution and repeat the previous query.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>You need to add a new index. The question is: to which column?</p>
 </div>
-<h3 id="exercise-14-1p">Exercise 14 (1p)<a class="headerlink" href="#exercise-14-1p" title="Permanent link">¶</a></h3>
+<h3 id="exercise-14-1p">Exercise 14 (1p)<a class="headerlink" href="#exercise-14-1p" title="Permanent link">&para;</a></h3>
 <p>List the <code>Name</code> of each <code>Product</code> where <code>CategoryId</code> equals 2.</p>
 <p>Document the SQL commands you used and explain the actual query execution plan! Explain whether the index added in the previous exercises helps the performance.</p>
-<h3 id="exercise-15-1p">Exercise 15 (1p)<a class="headerlink" href="#exercise-15-1p" title="Permanent link">¶</a></h3>
+<h3 id="exercise-15-1p">Exercise 15 (1p)<a class="headerlink" href="#exercise-15-1p" title="Permanent link">&para;</a></h3>
 <p>Improve the performance of the previous query. Extend the index added before by including the name: right-click the index -&gt; <em>Properties</em> -&gt; and add <code>Name</code> to <em>Included columns</em>.</p>
 <p>Repeat the previous query and analyze the plan.</p>
-<h2 id="optional-exercises">Optional exercises<a class="headerlink" href="#optional-exercises" title="Permanent link">¶</a></h2>
+<h2 id="optional-exercises">Optional exercises<a class="headerlink" href="#optional-exercises" title="Permanent link">&para;</a></h2>
 <p><strong>You can earn an additional +3 points with the completion of this exercise.</strong></p>
-<h3 id="exercise-16">Exercise 16<a class="headerlink" href="#exercise-16" title="Permanent link">¶</a></h3>
+<h3 id="exercise-16">Exercise 16<a class="headerlink" href="#exercise-16" title="Permanent link">&para;</a></h3>
 <p>Compare the following <code>Invoice</code>-<code>InvoiceItem</code> query: for each invoice item get the customer name.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">CustomerName</span><span class="p">,</span><span class="w"> </span><span class="n">Name</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">Invoice</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">InvoiceItem</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">Invoice</span><span class="p">.</span><span class="n">ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InvoiceItem</span><span class="p">.</span><span class="n">InvoiceID</span>
 </code></pre></div>
 <p>Which <em>join</em> strategy was chosen? Explain why the system chose it!</p>
-<h3 id="exercise-17">Exercise 17<a class="headerlink" href="#exercise-17" title="Permanent link">¶</a></h3>
+<h3 id="exercise-17">Exercise 17<a class="headerlink" href="#exercise-17" title="Permanent link">&para;</a></h3>
 <p>Compare the various JOIN strategies when querying all <code>Product</code>-<code>Category</code> record pairs.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -932,74 +1576,96 @@
 <p>Put the 3 queries (each with a different join strategy) into one execution unit (execute them together). This will give you the relative cost of each option.</p>
 </div>
 <p>Document the SQL commands you used and explain the actual query execution plan!</p>
-<hr/>
-<div class="md-source-file">
-<span class="md-source-file__fact"> <span class="md-icon" title="Last update"> <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z">
-</path>
-</svg>
-</span>
-<span title="March 13, 2023 09:04:47">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-13T09:04:47+01:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-13</span>
-</span>
-</span>
-<span class="md-source-file__fact">
-<span class="md-icon" title="Created"> <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z">
-</path>
-</svg>
-</span>
-<span title="July 6, 2020 08:06:03">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2020-07-06T08:06:03+02:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2020-07-06</span>
-</span>
-</span>
-<span class="md-source-file__fact">
-<span class="md-icon" title="Szerzők">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z">
-</path>
-</svg>
-</span>
-<span>Szerzők</span>
-<nav><a class="md-author" href="https://github.com/akosdudas" rel="noopener noreferrer" target="_blank" title="@akosdudas">
-<img alt="@akosdudas" src="https://avatars.githubusercontent.com/u/11335181?size=72"/>
-</a><a class="md-author" href="https://github.com/tibitoth" rel="noopener noreferrer" target="_blank" title="@tibitoth">
-<img alt="@tibitoth" src="https://avatars.githubusercontent.com/u/8333960?size=72"/>
-</a></nav>
-</span>
-</div>
-</article>
-</div>
-</div>
-<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
-            Back to top
-          </a>
-</main>
-<footer class="md-footer">
-<div class="md-footer-meta md-typeset">
-<div class="md-footer-meta__inner md-grid">
-<div class="md-copyright">
-<div class="md-copyright__highlight">
-      Copyright © BME-VIK-AUT
+
+    <hr>
+  <div class="md-source-file">
+    <span class="md-source-file__fact"> <span class="md-icon" title="Last update"> <svg
+          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path
+            d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z">
+          </path>
+        </svg>
+      </span>
+      <span title="March 13, 2023 09:04:47">
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-13T09:04:47+01:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-13</span>
+      </span>
+    </span>
+
+    
+
+    <span class="md-source-file__fact">
+      <span class="md-icon" title="Szerzők">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path
+            d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z">
+          </path>
+        </svg>
+      </span>
+      <span>Szerzők</span>
+      <nav><a href="https://github.com/akosdudas" target="_blank" rel="noopener noreferrer" class="md-author" title="@Akos Dudas">
+          <img src="https://avatars.githubusercontent.com/u/11335181?u=9971512094b94810046de53f5c1dee78e9776a4f&v=4?size=72" alt="@Akos Dudas">
+        </a><a href="https://github.com/tibitoth" target="_blank" rel="noopener noreferrer" class="md-author" title="@Tibor Tóth">
+          <img src="https://avatars.githubusercontent.com/u/8333960?u=d26653213d265ecdceeaf20a896d74f479d35450&v=4?size=72" alt="@Tibor Tóth">
+        </a></nav>      
+    </span>
+  </div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; BME-VIK-AUT
     </div>
   
   
     Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
       Material for MkDocs
     </a>
+  
 </div>
-</div>
-</div>
+      
+    </div>
+  </div>
 </footer>
-</div>
-<div class="md-dialog" data-md-component="dialog">
-<div class="md-dialog__inner md-typeset"></div>
-</div>
-<script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
-<script src="../assets/javascripts/bundle.ce72ebac.min.js"></script>
-<script src="../js/timeago.min.js"></script>
-<script src="../js/timeago_mkdocs_material.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6c14ae12.min.js"></script>
+      
+        <script src="../js/timeago.min.js"></script>
+      
+        <script src="../js/timeago_mkdocs_material.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

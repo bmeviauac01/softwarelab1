@@ -1,599 +1,1243 @@
 
-<!DOCTYPE html>
+<!doctype html>
+<html lang="hu" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Albert István, Tóth Tibor">
+      
+      
+        <link rel="canonical" href="https://bmeviauac01.github.io/softwarelab1/hu/Lab-QueryOptimization/">
+      
+      
+        <link rel="prev" href="../Lab-PowerBI/">
+      
+      
+        <link rel="next" href="../Lab-MSSQL/">
+      
+      
+      <link rel="icon" href="../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.11">
+    
+    
+      
+        <title>Lekérdezés optimalizálás - BMEVIAUAC09 Szoftverfejlesztés laboratórium 1</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.fad675c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
+      
+      
 
-<html class="no-js" lang="hu">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="Albert István, Tóth Tibor" name="author"/>
-<link href="https://bmeviauac01.github.io/softwarelab1/hu/Lab-QueryOptimization/" rel="canonical"/>
-<link href="../Lab-PowerBI/" rel="prev"/>
-<link href="../Lab-MSSQL/" rel="next"/>
-<link href="../img/favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.4.2, mkdocs-material-9.1.0" name="generator"/>
-<title>Lekérdezés optimalizálás - BMEVIAUAC09 Szoftverfejlesztés laboratórium 1</title>
-<link href="../assets/stylesheets/main.402914a4.min.css" rel="stylesheet"/>
-<link href="../assets/stylesheets/palette.a0c5b2b5.min.css" rel="stylesheet"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
-<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
-<link href="../css/timeago.css" rel="stylesheet"/>
-<link href="../extra-material-theme.css" rel="stylesheet"/>
-<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-<link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
-            html.glightbox-open { overflow: initial; height: 100%; }
-            .gslide-title { margin-top: 0px; user-select: text; }
-            .gslide-desc { color: #666; user-select: text; }
-            .gslide-image img { background: white; }
-            
-                .gscrollbar-fixer { padding-right: 15px; }
-                .gdesc-inner { font-size: 0.75rem; }
-                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
-                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-                </style><script src="../assets/javascripts/glightbox.min.js"></script></head>
-<body data-md-color-accent="red" data-md-color-primary="aut" data-md-color-scheme="aut" dir="ltr">
-<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
-<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
-<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
-<label class="md-overlay" for="__drawer"></label>
-<div data-md-component="skip">
-<a class="md-skip" href="#lekerdezes-optimalizalas">
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/timeago.css">
+    
+      <link rel="stylesheet" href="../extra-material-theme.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="aut" data-md-color-primary="aut" data-md-color-accent="red">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lekerdezes-optimalizalas" class="md-skip">
           Kihagyás
         </a>
-</div>
-<div data-md-component="announce">
-</div>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
 <header class="md-header" data-md-component="header">
-<nav aria-label="Élőfej" class="md-header__inner md-grid">
-<a aria-label="BMEVIAUAC09 Szoftverfejlesztés laboratórium 1" class="md-header__button md-logo" data-md-component="logo" href=".." title="BMEVIAUAC09 Szoftverfejlesztés laboratórium 1">
-<img alt="logo" src="../img/logo-bme-aut.png"/>
-</a>
-<label class="md-header__button md-icon" for="__drawer">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
-</label>
-<div class="md-header__title" data-md-component="header-title">
-<div class="md-header__ellipsis">
-<div class="md-header__topic">
-<span class="md-ellipsis">
+  <nav class="md-header__inner md-grid" aria-label="Élőfej">
+    <a href=".." title="BMEVIAUAC09 Szoftverfejlesztés laboratórium 1" class="md-header__button md-logo" aria-label="BMEVIAUAC09 Szoftverfejlesztés laboratórium 1" data-md-component="logo">
+      
+  <img src="../img/logo-bme-aut.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
             BMEVIAUAC09 Szoftverfejlesztés laboratórium 1
           </span>
-</div>
-<div class="md-header__topic" data-md-component="header-topic">
-<span class="md-ellipsis">
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
             
               Lekérdezés optimalizálás
             
           </span>
-</div>
-</div>
-</div>
-<form class="md-header__option" data-md-component="palette">
-<input aria-label="Switch to Dark Mode" class="md-option" data-md-color-accent="red" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="aut" data-md-color-scheme="aut" id="__palette_1" name="__palette" type="radio"/>
-<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to Dark Mode">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"></path></svg>
-</label>
-<input aria-label="Switch to Light Mode" class="md-option" data-md-color-accent="" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="red" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
-<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to Light Mode">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"></path></svg>
-</label>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="aut" data-md-color-primary="aut" data-md-color-accent="red"  aria-label="Switch to Dark Mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to Dark Mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="indigo"  aria-label="Switch to Light Mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to Light Mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+      </label>
+    
+  
 </form>
-<div class="md-header__option">
-<div class="md-select">
-<button aria-label="Nyelvváltás" class="md-header__button md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"></path></svg>
-</button>
-<div class="md-select__inner">
-<ul class="md-select__list">
-<li class="md-select__item">
-<a class="md-select__link" href="https://bmeviauac01.github.io/softwarelab1/en/" hreflang="en">
-                    English
-                  </a>
-</li>
-<li class="md-select__item">
-<a class="md-select__link" href="https://bmeviauac01.github.io/softwarelab1/hu/" hreflang="hu">
-                    Magyar
-                  </a>
-</li>
-</ul>
+      
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Nyelvváltás">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="https://bmeviauac01.github.io/softwarelab1/en/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="https://bmeviauac01.github.io/softwarelab1/hu/" hreflang="hu" class="md-select__link">
+              Magyar
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
 </div>
-</div>
-</div>
-<label class="md-header__button md-icon" for="__search">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
-</label>
-<div class="md-search" data-md-component="search" role="dialog">
-<label class="md-search__overlay" for="__search"></label>
-<div class="md-search__inner" role="search">
-<form class="md-search__form" name="search">
-<input aria-label="Keresés" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Keresés" required="" spellcheck="false" type="text"/>
-<label class="md-search__icon md-icon" for="__search">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
-</label>
-<nav aria-label="Keresés" class="md-search__options">
-<button aria-label="Törlés" class="md-search__icon md-icon" tabindex="-1" title="Törlés" type="reset">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
-</button>
-</nav>
-<div class="md-search__suggest" data-md-component="search-suggest"></div>
-</form>
-<div class="md-search__output">
-<div class="md-search__scrollwrap" data-md-scrollfix="">
-<div class="md-search-result" data-md-component="search-result">
-<div class="md-search-result__meta">
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Keresés" placeholder="Keresés" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Keresés">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Törlés" aria-label="Törlés" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
             Keresés inicializálása
           </div>
-<ol class="md-search-result__list" role="presentation"></ol>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="md-header__source">
-<a class="md-source" data-md-component="source" href="https://github.com/bmeviauac01/softwarelab1" title="Főoldalra ugrás">
-<div class="md-source__icon md-icon">
-<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
-</div>
-<div class="md-source__repository">
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/bmeviauac01/softwarelab1" title="Főoldalra ugrás" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
     bmeviauac01/softwarelab1
   </div>
 </a>
-</div>
-</nav>
+      </div>
+    
+  </nav>
+  
 </header>
-<div class="md-container" data-md-component="container">
-<nav aria-label="Lapok" class="md-tabs" data-md-component="tabs">
-<div class="md-grid">
-<ul class="md-tabs__list">
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="..">
-        Szoftverfejlesztés laboratórium 1
-      </a>
-</li>
-<li class="md-tabs__item">
-<a class="md-tabs__link md-tabs__link--active" href="../Lab-PowerBI/">
-        Laborok
-      </a>
-</li>
-</ul>
-</div>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Lapok" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href=".." class="md-tabs__link">
+          
+  
+  Szoftverfejlesztés laboratórium 1
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Lab-PowerBI/" class="md-tabs__link">
+          
+  
+  Laborok
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
 </nav>
-<main class="md-main" data-md-component="main">
-<div class="md-main__inner md-grid">
-<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
-<div class="md-sidebar__scrollwrap">
-<div class="md-sidebar__inner">
-<nav aria-label="Navigáció" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
-<label class="md-nav__title" for="__drawer">
-<a aria-label="BMEVIAUAC09 Szoftverfejlesztés laboratórium 1" class="md-nav__button md-logo" data-md-component="logo" href=".." title="BMEVIAUAC09 Szoftverfejlesztés laboratórium 1">
-<img alt="logo" src="../img/logo-bme-aut.png"/>
-</a>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigáció" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="BMEVIAUAC09 Szoftverfejlesztés laboratórium 1" class="md-nav__button md-logo" aria-label="BMEVIAUAC09 Szoftverfejlesztés laboratórium 1" data-md-component="logo">
+      
+  <img src="../img/logo-bme-aut.png" alt="logo">
+
+    </a>
     BMEVIAUAC09 Szoftverfejlesztés laboratórium 1
   </label>
-<div class="md-nav__source">
-<a class="md-source" data-md-component="source" href="https://github.com/bmeviauac01/softwarelab1" title="Főoldalra ugrás">
-<div class="md-source__icon md-icon">
-<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
-</div>
-<div class="md-source__repository">
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/bmeviauac01/softwarelab1" title="Főoldalra ugrás" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
     bmeviauac01/softwarelab1
   </div>
 </a>
-</div>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_1" type="checkbox"/>
-<label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
-          Szoftverfejlesztés laboratórium 1
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Szoftverfejlesztés laboratórium 1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Szoftverfejlesztés laboratórium 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tárgy ismertető
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GitHub/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feladatok beadása (GitHub)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GitHub-Actions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GitHub Actions ismertető
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VisualStudio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Visual Studio & .NET Core SDK telepítése
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GitHub-credentials/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Egyetemi laborokban: GitHub belépés
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Laborok
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Laborok
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lab-PowerBI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reporting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Lekérdezés optimalizálás
+  </span>
+  
+
           <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="false" aria-labelledby="__nav_1_label" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_1">
-<span class="md-nav__icon md-icon"></span>
-          Szoftverfejlesztés laboratórium 1
         </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="..">
-        Tárgy ismertető
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Lekérdezés optimalizálás
+  </span>
+  
+
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../GitHub/">
-        Feladatok beadása (GitHub)
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../GitHub-Actions/">
-        GitHub Actions ismertető
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../VisualStudio/">
-        Visual Studio &amp; .NET Core SDK telepítése
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../GitHub-credentials/">
-        Egyetemi laborokban: GitHub belépés
-      </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
-          Laborok
-          <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_2">
-<span class="md-nav__icon md-icon"></span>
-          Laborok
-        </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../Lab-PowerBI/">
-        Reporting
-      </a>
-</li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-          Lekérdezés optimalizálás
-          <span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
-        Lekérdezés optimalizálás
-      </a>
-<nav aria-label="Tartalomjegyzék" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
       Tartalomjegyzék
     </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#elofeltetelek-felkeszules">
-    Előfeltételek, felkészülés
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#elofeltetelek-felkeszules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Előfeltételek, felkészülés
+    </span>
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#elokeszulet">
-    Előkészület
+      
+        <li class="md-nav__item">
+  <a href="#elokeszulet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Előkészület
+    </span>
   </a>
-<nav aria-label="Előkészület" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#git-repository-letrehozasa-es-letoltese">
-    Git repository létrehozása és letöltése
+  
+    <nav class="md-nav" aria-label="Előkészület">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git-repository-letrehozasa-es-letoltese" class="md-nav__link">
+    <span class="md-ellipsis">
+      Git repository létrehozása és letöltése
+    </span>
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#markdown-fajl-megnyitasa">
-    Markdown fájl megnyitása
+        
+          <li class="md-nav__item">
+  <a href="#markdown-fajl-megnyitasa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Markdown fájl megnyitása
+    </span>
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#adatbazis-letrehozasa">
-    Adatbázis létrehozása
+        
+          <li class="md-nav__item">
+  <a href="#adatbazis-letrehozasa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adatbázis létrehozása
+    </span>
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#lekerdezesi-terv-bekapcsolasa">
-    Lekérdezési terv bekapcsolása
+        
+          <li class="md-nav__item">
+  <a href="#lekerdezesi-terv-bekapcsolasa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lekérdezési terv bekapcsolása
+    </span>
   </a>
+  
 </li>
-</ul>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kozos-feladatok" class="md-nav__link">
+    <span class="md-ellipsis">
+      Közös feladatok
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Közös feladatok">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-feladat-2p" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Feladat (2p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-feladat-2p" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Feladat (2p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-feladat-2p" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Feladat (2p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-feladat-2p" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Feladat (2p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-feladat-2p" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Feladat (2p)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#onallo-feladatok" class="md-nav__link">
+    <span class="md-ellipsis">
+      Önálló feladatok
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Önálló feladatok">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#6-feladat-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Feladat (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-feladat-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Feladat (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-feladat-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Feladat (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-feladat-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Feladat (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-feladat-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Feladat (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-feladat-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Feladat (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-feladat-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Feladat (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-feladat-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. Feladat (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-feladat-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. Feladat (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-feladat-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      15. Feladat (1p)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opcionalis-feladatok" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opcionális feladatok
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Opcionális feladatok">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#16-feladat-1-imsc-pont" class="md-nav__link">
+    <span class="md-ellipsis">
+      16. Feladat (1 iMSc pont)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-feladat-2-imsc-pont" class="md-nav__link">
+    <span class="md-ellipsis">
+      17. Feladat (2 iMSc pont)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#kozos-feladatok">
-    Közös feladatok
-  </a>
-<nav aria-label="Közös feladatok" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#1-feladat-2p">
-    1. Feladat (2p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#2-feladat-2p">
-    2. Feladat (2p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#3-feladat-2p">
-    3. Feladat (2p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#4-feladat-2p">
-    4. Feladat (2p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#5-feladat-2p">
-    5. Feladat (2p)
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#onallo-feladatok">
-    Önálló feladatok
-  </a>
-<nav aria-label="Önálló feladatok" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#6-feladat-1p">
-    6. Feladat (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#7-feladat-1p">
-    7. Feladat (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#8-feladat-1p">
-    8. Feladat (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#9-feladat-1p">
-    9. Feladat (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#10-feladat-1p">
-    10. Feladat (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#11-feladat-1p">
-    11. Feladat (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#12-feladat-1p">
-    12. Feladat (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#13-feladat-1p">
-    13. Feladat (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#14-feladat-1p">
-    14. Feladat (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#15-feladat-1p">
-    15. Feladat (1p)
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#opcionalis-feladatok">
-    Opcionális feladatok
-  </a>
-<nav aria-label="Opcionális feladatok" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#16-feladat-1-imsc-pont">
-    16. Feladat (1 iMSc pont)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#17-feladat-2-imsc-pont">
-    17. Feladat (2 iMSc pont)
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../Lab-MSSQL/">
-        MSSQL
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lab-MSSQL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MSSQL
+  </span>
+  
+
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../Lab-MongoDB/">
-        MongoDB
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lab-MongoDB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MongoDB
+  </span>
+  
+
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../Lab-EFREST/">
-        Entity Framework &amp; REST
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lab-EFREST/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entity Framework & REST
+  </span>
+  
+
       </a>
-</li>
-</ul>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
 </nav>
-</li>
-</ul>
-</nav>
-</div>
-</div>
-</div>
-<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
-<div class="md-sidebar__scrollwrap">
-<div class="md-sidebar__inner">
-<nav aria-label="Tartalomjegyzék" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
       Tartalomjegyzék
     </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#elofeltetelek-felkeszules">
-    Előfeltételek, felkészülés
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#elofeltetelek-felkeszules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Előfeltételek, felkészülés
+    </span>
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#elokeszulet">
-    Előkészület
+      
+        <li class="md-nav__item">
+  <a href="#elokeszulet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Előkészület
+    </span>
   </a>
-<nav aria-label="Előkészület" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#git-repository-letrehozasa-es-letoltese">
-    Git repository létrehozása és letöltése
+  
+    <nav class="md-nav" aria-label="Előkészület">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git-repository-letrehozasa-es-letoltese" class="md-nav__link">
+    <span class="md-ellipsis">
+      Git repository létrehozása és letöltése
+    </span>
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#markdown-fajl-megnyitasa">
-    Markdown fájl megnyitása
+        
+          <li class="md-nav__item">
+  <a href="#markdown-fajl-megnyitasa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Markdown fájl megnyitása
+    </span>
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#adatbazis-letrehozasa">
-    Adatbázis létrehozása
+        
+          <li class="md-nav__item">
+  <a href="#adatbazis-letrehozasa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adatbázis létrehozása
+    </span>
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#lekerdezesi-terv-bekapcsolasa">
-    Lekérdezési terv bekapcsolása
+        
+          <li class="md-nav__item">
+  <a href="#lekerdezesi-terv-bekapcsolasa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lekérdezési terv bekapcsolása
+    </span>
   </a>
+  
 </li>
-</ul>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kozos-feladatok" class="md-nav__link">
+    <span class="md-ellipsis">
+      Közös feladatok
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Közös feladatok">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-feladat-2p" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Feladat (2p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-feladat-2p" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Feladat (2p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-feladat-2p" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Feladat (2p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-feladat-2p" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Feladat (2p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-feladat-2p" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Feladat (2p)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#onallo-feladatok" class="md-nav__link">
+    <span class="md-ellipsis">
+      Önálló feladatok
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Önálló feladatok">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#6-feladat-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Feladat (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-feladat-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Feladat (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-feladat-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Feladat (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-feladat-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Feladat (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-feladat-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Feladat (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-feladat-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Feladat (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-feladat-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Feladat (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-feladat-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. Feladat (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-feladat-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. Feladat (1p)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-feladat-1p" class="md-nav__link">
+    <span class="md-ellipsis">
+      15. Feladat (1p)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opcionalis-feladatok" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opcionális feladatok
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Opcionális feladatok">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#16-feladat-1-imsc-pont" class="md-nav__link">
+    <span class="md-ellipsis">
+      16. Feladat (1 iMSc pont)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-feladat-2-imsc-pont" class="md-nav__link">
+    <span class="md-ellipsis">
+      17. Feladat (2 iMSc pont)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#kozos-feladatok">
-    Közös feladatok
-  </a>
-<nav aria-label="Közös feladatok" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#1-feladat-2p">
-    1. Feladat (2p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#2-feladat-2p">
-    2. Feladat (2p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#3-feladat-2p">
-    3. Feladat (2p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#4-feladat-2p">
-    4. Feladat (2p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#5-feladat-2p">
-    5. Feladat (2p)
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#onallo-feladatok">
-    Önálló feladatok
-  </a>
-<nav aria-label="Önálló feladatok" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#6-feladat-1p">
-    6. Feladat (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#7-feladat-1p">
-    7. Feladat (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#8-feladat-1p">
-    8. Feladat (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#9-feladat-1p">
-    9. Feladat (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#10-feladat-1p">
-    10. Feladat (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#11-feladat-1p">
-    11. Feladat (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#12-feladat-1p">
-    12. Feladat (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#13-feladat-1p">
-    13. Feladat (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#14-feladat-1p">
-    14. Feladat (1p)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#15-feladat-1p">
-    15. Feladat (1p)
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#opcionalis-feladatok">
-    Opcionális feladatok
-  </a>
-<nav aria-label="Opcionális feladatok" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#16-feladat-1-imsc-pont">
-    16. Feladat (1 iMSc pont)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#17-feladat-2-imsc-pont">
-    17. Feladat (2 iMSc pont)
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
-</nav>
-</div>
-</div>
-</div>
-<div class="md-content" data-md-component="content">
-<article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/bmeviauac01/softwarelab1/blob/master/docs/hu/Lab-QueryOptimization/index.md" title="Oldal szerkesztése">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"></path></svg>
-</a>
-<h1 id="lekerdezes-optimalizalas">Lekérdezés optimalizálás<a class="headerlink" href="#lekerdezes-optimalizalas" title="Permanent link">¶</a></h1>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/bmeviauac01/softwarelab1/blob/master/docs/hu/Lab-QueryOptimization/index.md" title="Oldal szerkesztése" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="lekerdezes-optimalizalas">Lekérdezés optimalizálás<a class="headerlink" href="#lekerdezes-optimalizalas" title="Permanent link">&para;</a></h1>
 <p>A labor során a lekérdezés optimalizálást vizsgáljuk Microsoft SQL Server platformon. Azért, hogy a feladatok során megfelelően megértsük a működést, és dokumentálni is tudjuk, az <strong>első 5 feladat</strong> során megadjuk a megoldást és a magyarázatot is. A <strong>továbbiak önálló feladatok</strong>, ahol a magyarázat kitalálása a feladat része. A közös feladatmegoldás és az önálló feladatmegoldás eredményét is dokumentálni kell és be kell adni.</p>
-<h2 id="elofeltetelek-felkeszules">Előfeltételek, felkészülés<a class="headerlink" href="#elofeltetelek-felkeszules" title="Permanent link">¶</a></h2>
+<h2 id="elofeltetelek-felkeszules">Előfeltételek, felkészülés<a class="headerlink" href="#elofeltetelek-felkeszules" title="Permanent link">&para;</a></h2>
 <p>A labor elvégzéséhez szükséges eszközök:</p>
 <ul>
 <li>Windows, Linux vagy MacOS: Minden szükséges program platform független, vagy van platformfüggetlen alternatívája.</li>
@@ -615,9 +1259,9 @@
 <li>Az adatbázis <a href="https://bmeviauac01.github.io/datadriven/hu/db/">sémájának leírása</a></li>
 <li><a href="../images/queryopt/07-Lekerdezes_optimalizalas.pdf">Microsoft SQL Server lekérdezés optimalizálása</a></li>
 </ul>
-<h2 id="elokeszulet">Előkészület<a class="headerlink" href="#elokeszulet" title="Permanent link">¶</a></h2>
+<h2 id="elokeszulet">Előkészület<a class="headerlink" href="#elokeszulet" title="Permanent link">&para;</a></h2>
 <p>A feladatok megoldása során ne felejtsd el követni a <a href="../GitHub/">feladat beadás folyamatát</a>.</p>
-<h3 id="git-repository-letrehozasa-es-letoltese">Git repository létrehozása és letöltése<a class="headerlink" href="#git-repository-letrehozasa-es-letoltese" title="Permanent link">¶</a></h3>
+<h3 id="git-repository-letrehozasa-es-letoltese">Git repository létrehozása és letöltése<a class="headerlink" href="#git-repository-letrehozasa-es-letoltese" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p>Moodle-ben keresd meg a laborhoz tartozó meghívó URL-jét és annak segítségével hozd létre a saját repository-dat.</p>
@@ -636,7 +1280,7 @@
 <p>A <code>neptun.txt</code> fájlba írd bele a Neptun kódodat. A fájlban semmi más ne szerepeljen, csak egyetlen sorban a Neptun kód 6 karaktere.</p>
 </li>
 </ol>
-<h3 id="markdown-fajl-megnyitasa">Markdown fájl megnyitása<a class="headerlink" href="#markdown-fajl-megnyitasa" title="Permanent link">¶</a></h3>
+<h3 id="markdown-fajl-megnyitasa">Markdown fájl megnyitása<a class="headerlink" href="#markdown-fajl-megnyitasa" title="Permanent link">&para;</a></h3>
 <p>A feladatok megoldása során a dokumentációt markdown formátumban készítsd. Az előbb letöltött git repository-t nyisd meg egy markdown kompatibilis szerkesztővel. Javasolt a Visual Studio Code használata:</p>
 <ol>
 <li>
@@ -666,7 +1310,7 @@
 <p class="admonition-title">Más szerkesztőeszköz</p>
 <p>Ha nem szimpatikus ez a szerkesztő, használhatod a <a href="https://help.github.com/en/github/managing-files-in-a-repository/editing-files-in-your-repository">GitHub webes felületét is</a> a dokumentáció szerkesztéséhez, itt is van előnézet. Ekkor a <a href="https://help.github.com/en/github/managing-files-in-a-repository/adding-a-file-to-a-repository">fájlok feltöltése</a> kicsit körülményesebb lesz.</p>
 </div>
-<h3 id="adatbazis-letrehozasa">Adatbázis létrehozása<a class="headerlink" href="#adatbazis-letrehozasa" title="Permanent link">¶</a></h3>
+<h3 id="adatbazis-letrehozasa">Adatbázis létrehozása<a class="headerlink" href="#adatbazis-letrehozasa" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p>Kapcsolódj Microsoft SQL Serverhez SQL Server Management Studio Segítségével. Indítsd el az alkalmazást, és az alábbi adatokkal kapcsolódj.</p>
@@ -680,24 +1324,24 @@
 </li>
 <li>
 <p>Hozd létre a minta adatbázist a <a href="../db/mssql.sql">generáló script</a> lefuttatásával. Nyiss egy új <em>Query</em> ablakot, másold be a script tartalmát, és futtasd le. Ügyelj az eszköztáron levő legördülő menüben a megfelelő adatbázis kiválasztására.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/sql-management-database-dropdown.png"><img alt="Adatbázis kiválasztása" src="../images/sql-management-database-dropdown.png"/></a></p>
+<p><a class="glightbox" href="../images/sql-management-database-dropdown.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Adatbázis kiválasztása" src="../images/sql-management-database-dropdown.png" /></a></p>
 </li>
 <li>
 <p>Ellenőrizd, hogy létrejöttek-e a táblák. Ha a <em>Tables</em> mappa ki volt már nyitva, akkor frissíteni kell.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/sql-managment-tablak.png"><img alt="Adatbázis kiválasztása" src="../images/sql-managment-tablak.png"/></a>.</p>
+<p><a class="glightbox" href="../images/sql-managment-tablak.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Adatbázis kiválasztása" src="../images/sql-managment-tablak.png" /></a>.</p>
 </li>
 </ol>
-<h3 id="lekerdezesi-terv-bekapcsolasa">Lekérdezési terv bekapcsolása<a class="headerlink" href="#lekerdezesi-terv-bekapcsolasa" title="Permanent link">¶</a></h3>
+<h3 id="lekerdezesi-terv-bekapcsolasa">Lekérdezési terv bekapcsolása<a class="headerlink" href="#lekerdezesi-terv-bekapcsolasa" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">Nem Windows platformon</p>
 <p>A lekérdezési tervhez alapvetően Microsoft SQL Server Management Studio-t használunk. Ha nem Windows platformon dolgozol, kipróbálhatod az Azure Data Studio-t, ebben is <a href="https://richbenner.com/2019/02/azure-data-studio-execution-plans/">lekérdezhető a végrehajtási terv</a>.</p>
 </div>
 <p>Az összes feladat során szükségünk lesz a legjobb lekérdezési tervre, amit a szerver végeredményben választott. Ezt SQL Server Management Studio-ban a <em>Query</em> menüben az <a href="https://docs.microsoft.com/en-us/sql/relational-databases/performance/display-an-actual-execution-plan"><em>Include Actual Execution Plan</em> opcióval</a> kapcsolhatjuk be.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/queryopt-include-plan.png"><img alt="Lekérdezési terv bekapcsolása" src="../images/queryopt/queryopt-include-plan.png"/></a></p>
+<p><a class="glightbox" href="../images/queryopt/queryopt-include-plan.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Lekérdezési terv bekapcsolása" src="../images/queryopt/queryopt-include-plan.png" /></a></p>
 <p>A tervet a lekérdezés lefuttatása után az ablak alján, az eredmények nézet helyett választható <em>Execution plan</em> lapon találjuk.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/queryopt-plan-result.png"><img alt="Lekérdezési terv bekapcsolása" src="../images/queryopt/queryopt-plan-result.png"/></a></p>
+<p><a class="glightbox" href="../images/queryopt/queryopt-plan-result.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Lekérdezési terv bekapcsolása" src="../images/queryopt/queryopt-plan-result.png" /></a></p>
 <p>A lekérdezési terv diagramot adatfolyamként kell olvasnunk, az adat folyásának iránya a lekérdezés végrehajtása. Az egyes elemek a lekérdezési terv műveletei, a százalékos érték pedig az egész lekérdezéshez viszonyított relatív költség.</p>
-<h2 id="kozos-feladatok">Közös feladatok<a class="headerlink" href="#kozos-feladatok" title="Permanent link">¶</a></h2>
+<h2 id="kozos-feladatok">Közös feladatok<a class="headerlink" href="#kozos-feladatok" title="Permanent link">&para;</a></h2>
 <div class="admonition example">
 <p class="admonition-title">BEADANDÓ</p>
 <p>A feladatok megoldása során dokumentáld a <code>README.md</code> markdown fájlba:</p>
@@ -713,9 +1357,9 @@
 <p>Annak ellenére, hogy a megoldások megtalálhatóak alább, az SQL utasítások kiadása, a lekérdezési terv képernyőkép elkészítése és a saját magyarázattal együtt való dokumentálás szükséges része a feladatnak. A lentebb található magyarázatok bemásolása nem elfogadható megoldás!</p>
 </div>
 <p>Amennyiben egyes (rész)feladatok lekérdezési terve és/vagy a magyarázat azonos, vagy legalábbis nagyon hasonló, elég egyszer elkészíteni a lekérdezési tervről a képet, és a magyarázatot is elég egyszer megadni, csak jelezd, hogy ez mely feladatokra vonatkozik.</p>
-<h3 id="1-feladat-2p">1. Feladat (2p)<a class="headerlink" href="#1-feladat-2p" title="Permanent link">¶</a></h3>
+<h3 id="1-feladat-2p">1. Feladat (2p)<a class="headerlink" href="#1-feladat-2p" title="Permanent link">&para;</a></h3>
 <p>Dobd el a <code>CustomerSite</code> =&gt; <code>Customer</code> idegen kulcsot és a <code>Customer</code> elsődleges kulcs kényszerét. Legegyszerűbb, ha az <em>Object Explorer</em>-ben megkeresed ezeket, és törlöd (a <em>PK...</em> kezdetűek az elsődleges kulcsok, az <em>FK...</em>  kezdetűek a külső kulcsok - két külön táblában kell keresd a törlendőket!):</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/queryopt-delete-key.png"><img alt="Kulcs törlése" src="../images/queryopt/queryopt-delete-key.png"/></a></p>
+<p><a class="glightbox" href="../images/queryopt/queryopt-delete-key.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Kulcs törlése" src="../images/queryopt/queryopt-delete-key.png" /></a></p>
 <p>Vizsgáld meg a következő lekérdezések végrehajtási tervét a <code>Customer</code> táblán – mindig teljes rekordot kérjünk vissza (<code>SELECT *</code>):</p>
 <ul>
 <li>a) teljes tábla lekérdezése</li>
@@ -737,14 +1381,14 @@
 </ul>
 <p><strong>a)-d)</strong></p>
 <p>A <strong>lekérdezési terv</strong> mindegyikre nagyon hasonló, mindegyik <em>table scan</em>-t használt:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/f1-1.png"><img alt="" src="../images/queryopt/f1-1.png"/></a></p>
+<p><a class="glightbox" href="../images/queryopt/f1-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/queryopt/f1-1.png" /></a></p>
 <p><strong>Magyarázat</strong>: az optimalizáló nem tud indexet használni, így minden lekérdezés <em>table scan</em> lesz.</p>
 <p><strong>e)</strong></p>
 <p>Egyedül ez különbözik, az order by miatt még egy sort is lesz benne.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/f1-2.png"><img alt="" src="../images/queryopt/f1-2.png"/></a></p>
+<p><a class="glightbox" href="../images/queryopt/f1-2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/queryopt/f1-2.png" /></a></p>
 <p><strong>Magyarázat</strong>: A <em>table scan</em> marad, és még rendezni is kell, amihez nincs index segítség, tehát külön lépés lesz.</p>
 </details>
-<h3 id="2-feladat-2p">2. Feladat (2p)<a class="headerlink" href="#2-feladat-2p" title="Permanent link">¶</a></h3>
+<h3 id="2-feladat-2p">2. Feladat (2p)<a class="headerlink" href="#2-feladat-2p" title="Permanent link">&para;</a></h3>
 <p>Hozd létre újra az elsődleges kulcsot a <code>Customer</code> táblán:</p>
 <ul>
 <li>Job kattintás a táblán &gt; Design &gt; az ID oszlopon "Set Primary Key " és Mentés gomb,</li>
@@ -755,20 +1399,20 @@
 <summary>Megoldás</summary>
 <p>A kiadott parancsok megegyeznek az 1.-es feladattal.</p>
 <p><strong>a)</strong></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/f2-1.png"><img alt="" src="../images/queryopt/f2-1.png"/></a></p>
+<p><a class="glightbox" href="../images/queryopt/f2-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/queryopt/f2-1.png" /></a></p>
 <p>Clustered Index Scan végigmegy a clustered index mentén. Az elsődleges kulcs hatására létrejött egy Clustered Index, azaz innentől a tábla rekordjai ID szerinti sorrendben vannak tárolva. Ha végigmegyünk ezen a struktúrán meglesz az összes sor. Ha van clustered index, már nem fogunk Table Scan-nel találkozni, legrosszabb esetben teljes Clustered Index Scan lesz. Attól, hogy nem Table Scan a neve, a teljes Clustered Index Scan is valójában egy table scan, a teljes tábla adattartalmát felolvassuk. Általános esetben ez probléma, de itt épp ezt kértük a lekérdezésben.</p>
 <p><strong>b)</strong></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/f2-2.png"><img alt="" src="../images/queryopt/f2-2.png"/></a></p>
+<p><a class="glightbox" href="../images/queryopt/f2-2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/queryopt/f2-2.png" /></a></p>
 <p>Ez egy Clustered Index Seek lesz. Mivel a rendezési kulcsra fogalmazunk meg egyezési feltételt, a rendezett tárolású rekordok közül nagyon gyorsan eljuthatunk a keresetthez. Ez egy jó terv, a Clustered Index egyik alapfeladata a rekord gyors megtalálása, erre van optimalizálva.</p>
 <p><strong>c)</strong></p>
 <p>Az előzőhöz nagyon hasonló a terv: ez is Clustered Index Seek lesz két intervallummal (<code>&lt; konstans</code>, <code>&gt; konstans</code>). Az optimalizáló két intervallumra bontja a &lt;&gt;-t. Mivel a feltétel a rendezési kulcsra vonatkozik, megint ki tudja használni a Clustered Indexet. Ez is egy jó terv, a rendezés miatt csak a szükséges rekordokat fogjuk felolvasni.</p>
 <p><strong>d)</strong></p>
 <p>Ez is Clustered Index Seek alapú range scan lesz egy intervallummal. Az előbbihez nagyon hasonló.</p>
 <p><strong>e)</strong></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/f2-3.png"><img alt="" src="../images/queryopt/f2-3.png"/></a></p>
+<p><a class="glightbox" href="../images/queryopt/f2-3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/queryopt/f2-3.png" /></a></p>
 <p>Ismét Clustered Index Seek backward seek order-rel. Megnézhetjük a <em>Properties</em> ablakban a range-et és a Seek Order-t: kikeressük a határon lévő rekordot és onnan visszafelé indulunk el, így eleve rendezve lesz az eredményhalmaz. Ez egy jó terv, a rendezés miatt csak a szükséges rekordokat fogjuk felolvasni és pont a megfelelő sorrendben.</p>
 </details>
-<h3 id="3-feladat-2p">3. Feladat (2p)<a class="headerlink" href="#3-feladat-2p" title="Permanent link">¶</a></h3>
+<h3 id="3-feladat-2p">3. Feladat (2p)<a class="headerlink" href="#3-feladat-2p" title="Permanent link">&para;</a></h3>
 <p>Futtasd az alábbi lekérdezéseket a <code>Product</code> táblán megfogalmazva.</p>
 <ul>
 <li>f) teljes tábla lekérdezése</li>
@@ -789,18 +1433,18 @@
 <li>j) <code>SELECT * FROM product WHERE price &gt; 800 ORDER BY price DESC</code></li>
 </ul>
 <p><strong>f)-i)</strong></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/f3-1.png"><img alt="" src="../images/queryopt/f3-1.png"/></a></p>
+<p><a class="glightbox" href="../images/queryopt/f3-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/queryopt/f3-1.png" /></a></p>
 <p>Clustered Index Scan végigmegy a clustered index mentén. Ez továbbra is a teljes tábla felolvasása, hiszen a szűrésre nincs index. Ha van szűrési feltétel, minden soron végig kell menni és ki kell értékelni a feltételt. Mivel van Clusterd Index, így amentén haladunk, de nem sokra megyünk ezzel, lényegében egy Table Scan. Ezek nem hatékony lekérdezések. Mivel nem a Clustered Index rendezési kulcsra fogalmaztuk meg a feltételt, így az index nem sokat segít nekünk (ezért lesz Scan és nem Seek).</p>
 <p><strong>j)</strong></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/f3-2.png"><img alt="" src="../images/queryopt/f3-2.png"/></a></p>
+<p><a class="glightbox" href="../images/queryopt/f3-2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/queryopt/f3-2.png" /></a></p>
 <p>Ez is Clustered Index Scan lesz, de ami az érdekes, hogy a rendezés költsége jelentős (nagyobb mint a kikeresésé). Miután az elég költséges Index Scan-t megcsináltuk, még rendeznünk is kell, hiszen a kiolvasott rekordok ID szerint sorrendezettek nem <code>Price</code> szerint. Ez a lekérdezés nagyon költséges, az amúgy is drága scan után még rendezni is kell. A jó index nem csak a keresést segíti - de most nincs megfelelő indexünk.</p>
 </details>
-<h3 id="4-feladat-2p">4. Feladat (2p)<a class="headerlink" href="#4-feladat-2p" title="Permanent link">¶</a></h3>
+<h3 id="4-feladat-2p">4. Feladat (2p)<a class="headerlink" href="#4-feladat-2p" title="Permanent link">&para;</a></h3>
 <p>Vegyél fel indexet a <code>Price</code> oszlopra. Hogyan változnak az előbbi lekérdezések végrehajtási tervei?</p>
 <p>Az index felvételéhez használd az <em>Object Explorer</em>-t, a fában a táblát kibontva az <em>Indexes</em>-en jobbklikk -&gt; <em>New index</em> &gt; <em>Non-Clustered Index...</em></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/queryopt-add-index.png"><img alt="Index hozzáadása" src="../images/queryopt/queryopt-add-index.png"/></a></p>
+<p><a class="glightbox" href="../images/queryopt/queryopt-add-index.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Index hozzáadása" src="../images/queryopt/queryopt-add-index.png" /></a></p>
 <p>Adj az indexeknek értelmes, egységes konvenció szerinti nevet, pl. <code>IX_Tablanev_MezoNev</code>. Add a <em>Price</em> oszlopot az <em>Index key columns</em> listához.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/queryopt-index-properties.png"><img alt="Index tulajdonságok" src="../images/queryopt/queryopt-index-properties.png"/></a></p>
+<p><a class="glightbox" href="../images/queryopt/queryopt-index-properties.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Index tulajdonságok" src="../images/queryopt/queryopt-index-properties.png" /></a></p>
 <p>Ismételd meg az előbbi lekérdezéseket, és értelmezd a terveket!</p>
 <details class="success">
 <summary>Megoldás</summary>
@@ -811,11 +1455,11 @@
 <p>Clustered Index Scan lesz, lényegében megegyezik a szűréshez elvileg használható index nélküli esettel.</p>
 <p>Miért nem használja az új indexünket? A nem túl nyilvánvaló ok a projekcióban rejlik, azaz, hogy teljes rekordokat kérünk vissza. Az NonClustered Index-ből csak egy halom rekordreferenciát kapnánk, amik alapján még utána fel kellene olvasni a szükséges rekordokat. Az optimalizáló – főleg kis táblák esetén- dönthet úgy, hogy ennek összköltsége nagyobb lenne, mint egy index scan-nek.</p>
 <p><strong>j)</strong></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/f4-1.png"><img alt="" src="../images/queryopt/f4-1.png"/></a></p>
+<p><a class="glightbox" href="../images/queryopt/f4-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/queryopt/f4-1.png" /></a></p>
 <p>A NonClustered Index Seek-ből kikeresett megfelelő kulcsoknak megfelelő rekordokat kikeressük a Clustered Index-ből. Lényegében egy join a két index között.</p>
 <p>A többi lekérdezésnél is valami ilyet vártunk volna. A Clustered Index-re szükség van, mert teljes rekordokat kérünk vissza, a NonClustered Index csak referenciákat ad. A referenciák sorrendben vannak, így ha ezekhez rendre kigyűjtjük a teljes rekordokat a Clustered Index-ből akkor megspóroljuk az utólagos rendezést. Ha csak a Clustered Index-et használnánk (teljes Clustered Index Scan), akkor kellene utólagos rendezés. Ez egy elfogadható terv, mert a NonClustered Index segítségével megúsztuk a külön rendezést.</p>
 </details>
-<h3 id="5-feladat-2p">5. Feladat (2p)<a class="headerlink" href="#5-feladat-2p" title="Permanent link">¶</a></h3>
+<h3 id="5-feladat-2p">5. Feladat (2p)<a class="headerlink" href="#5-feladat-2p" title="Permanent link">&para;</a></h3>
 <p>Szaporítsd meg a <em>Product</em> tábla sorait az alábbi SQL szkripttel. Hogyan változnak az előbbi végrehajtási tervek?</p>
 <p>Az i) típusú lekérdezést próbáld ki úgy is, hogy a választott konstans miatt kicsi legyen az eredményhalmaz, és úgy is, hogy lényegében a teljes tábla benne legyen. Adj magyarázatot is a változásokra.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">TOP</span><span class="w"> </span><span class="p">(</span><span class="mi">1000000</span><span class="p">)</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">ABS</span><span class="p">(</span><span class="n">CHECKSUM</span><span class="p">(</span><span class="n">NEWID</span><span class="p">()))</span>
@@ -826,7 +1470,7 @@
 <span class="k">CREATE</span><span class="w"> </span><span class="n">CLUSTERED</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">dbo</span><span class="p">.</span><span class="n">Numbers</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
 
 <span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">Product</span><span class="p">(</span><span class="n">Name</span><span class="p">,</span><span class="w"> </span><span class="n">Price</span><span class="p">,</span><span class="w"> </span><span class="n">Stock</span><span class="p">,</span><span class="w"> </span><span class="n">VATID</span><span class="p">,</span><span class="w"> </span><span class="n">CategoryID</span><span class="p">)</span>
-<span class="k">SELECT</span><span class="w"> </span><span class="s1">'Apple'</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="o">%</span><span class="mi">50000</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="o">%</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Apple&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="o">%</span><span class="mi">50000</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="o">%</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">Numbers</span>
 </code></pre></div>
 <details class="success">
@@ -835,12 +1479,12 @@
 <p><strong>f)</strong></p>
 <p>Megegyezik az előző feladattal.</p>
 <p><strong>g)</strong></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/f5-1.png"><img alt="" src="../images/queryopt/f5-1.png"/></a></p>
+<p><a class="glightbox" href="../images/queryopt/f5-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/queryopt/f5-1.png" /></a></p>
 <p>A NonClustered Index Seek-ből kikeresett kulcsoknak megfelelő rekordokat kikeressük a Clustered Index-ből. Lényegében egy join a két index között.</p>
 <p>Vessük össze az előző, kis táblás változattal. Miért nem használja most a Clustered Index Scan-t? Nagy tábláknál megnő a <em>szelektivitás</em> szerepe és jelentős a NonClustered Index használatából fakadó előny. A Clustered Index Scan nagy méretnél nagyon drága, ha van esély rá, hogy az NonClustered Index használatával csökkenthető a felolvasható sorok száma, akkor szinte biztosan érdemes használni. A <code>Price</code> statisztikái alapján tudható, hogy az = operátor jól szűr. Fontos! Az <code>=</code> használatából még nem következik a jó szűrés, ha szinte minden sorban ugyanaz az érték van, akkor pl. nem fog jól szűrni - ezért kell a statisztika is!</p>
 <p>Ez a terv elfogadható. Ha a feltételünk jól szűr, akkor tényleg ez lehet a jó irány.</p>
 <p><strong>h)</strong></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/queryopt/f5-2.png"><img alt="" src="../images/queryopt/f5-2.png"/></a></p>
+<p><a class="glightbox" href="../images/queryopt/f5-2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/queryopt/f5-2.png" /></a></p>
 <p>Clustered Index Scan végigmegy a clustered index mentén, megegyezik a korábban látottakkal.</p>
 <p>Miért nem használjuk az előző módszert? Ha az <code>=</code> ezen tábla esetében jól szűrt, akkor a <code>&lt;&gt;</code> nem fog. Ha ezt tudja a statisztikák alapján az optimalizáló, akkor összességében nem éri meg trükközni, úgyis fel kell olvasni a teljes táblát.</p>
 <p><strong>i)</strong></p>
@@ -848,29 +1492,29 @@
 <p><strong>j)</strong></p>
 <p>Mint a g) esetében. Számít itt az <code>order by desc</code>? Az optimalizáló megpróbálja elkerülni a rendezést, azt pedig csak ezzel a módszerrel tudja. Ez egy elfogadható terv. Az NonClustered Index segítségével itt is megúsztuk a rendezést.</p>
 </details>
-<h2 id="onallo-feladatok">Önálló feladatok<a class="headerlink" href="#onallo-feladatok" title="Permanent link">¶</a></h2>
+<h2 id="onallo-feladatok">Önálló feladatok<a class="headerlink" href="#onallo-feladatok" title="Permanent link">&para;</a></h2>
 <div class="admonition example">
 <p class="admonition-title">BEADANDÓ</p>
 <p>A feladatok megoldása során a közös feladatoknak megfelelő dokumentálást kérjük.</p>
 <p>Ne felejtsd, hogy a dokumentációnak a képekkel együtt helyesen kell megjelenniük a GitHub webes felületén is! Ezt ellenőrizd a beadás során: nyisd meg a repository-d webes felületét, váltsd át a megfelelő ágra, és a GitHub automatikusan renderelni fogja a <code>README.md</code> fájlt a képekkel együtt.</p>
 </div>
-<h3 id="6-feladat-1p">6. Feladat (1p)<a class="headerlink" href="#6-feladat-1p" title="Permanent link">¶</a></h3>
+<h3 id="6-feladat-1p">6. Feladat (1p)<a class="headerlink" href="#6-feladat-1p" title="Permanent link">&para;</a></h3>
 <p>Ismételd meg a <code>Product</code> kereséseket, de ezúttal ne a teljes sort, csak a <code>Price</code> és az elsődleges kulcs értékét kérd vissza a lekérdezésben. Hogyan változnak a végrehajtási tervek? Adj magyarázatot is a változásokra.</p>
-<h3 id="7-feladat-1p">7. Feladat (1p)<a class="headerlink" href="#7-feladat-1p" title="Permanent link">¶</a></h3>
+<h3 id="7-feladat-1p">7. Feladat (1p)<a class="headerlink" href="#7-feladat-1p" title="Permanent link">&para;</a></h3>
 <p>Elemezd a következő két, <code>Product</code> táblából történő lekérdezés végrehajtási tervét:</p>
 <ul>
 <li>k) olyan rekordok lekérdezése, ahol az elsődleges kulcs értéke két érték között van (használd a <code>BETWEEN</code> operátort)</li>
 <li>l) olyan rekordok lekérdezése, ahol az elsődleges kulcs értéke két érték között van (itt is használd a <code>BETWEEN</code>-t), <strong>vagy</strong> megegyezik egy intervallumon kívüli értékkel</li>
 </ul>
 <p>Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és adj magyarázatot rájuk!</p>
-<h3 id="8-feladat-1p">8. Feladat (1p)<a class="headerlink" href="#8-feladat-1p" title="Permanent link">¶</a></h3>
+<h3 id="8-feladat-1p">8. Feladat (1p)<a class="headerlink" href="#8-feladat-1p" title="Permanent link">&para;</a></h3>
 <p>A 6-os feladatban <code>WHERE Price =</code> feltétel egy egész és egy lebegőpontos szám egyenlőségét vizsgálja. Nézzük meg máshogy is a számkezelést: kérdezd le a <code>Product</code> táblából az alábbi feltéteknek megfelelő rekordokat.</p>
 <ul>
 <li>m) <code>WHERE CAST(Price AS INT) = egész szám</code></li>
 <li>n) <code>WHERE Price BETWEEN egész szám - 0.0001 AND egész szám + 0.0001</code></li>
 </ul>
 <p>Válassz egy tetszőleges egész számot a lekérdezésekhez, és így kérd le <strong>csak az elsődleges kulcs értéket</strong>. Elemezd a végrehajtási terveket.</p>
-<h3 id="9-feladat-1p">9. Feladat (1p)<a class="headerlink" href="#9-feladat-1p" title="Permanent link">¶</a></h3>
+<h3 id="9-feladat-1p">9. Feladat (1p)<a class="headerlink" href="#9-feladat-1p" title="Permanent link">&para;</a></h3>
 <p>Elemezd a következő, <code>Product</code> táblából történő lekérdezések végrehajtási tervét:</p>
 <ul>
 <li>o) olyan teljes rekordok lekérdezése, ahol a <code>Price</code> kisebb, mint egy kis konstans érték (legyen az érték jól szűrő, azaz kevés rekordot adjon vissza), elsődleges kulcs szerint csökkenő sorrendbe rendezve</li>
@@ -879,7 +1523,7 @@
 <li>r) mint az előző, de csak az <code>Id</code> és <code>Price</code> adatokat kérjük vissza</li>
 </ul>
 <p>Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és adj magyarázatot rájuk!</p>
-<h3 id="10-feladat-1p">10. Feladat (1p)<a class="headerlink" href="#10-feladat-1p" title="Permanent link">¶</a></h3>
+<h3 id="10-feladat-1p">10. Feladat (1p)<a class="headerlink" href="#10-feladat-1p" title="Permanent link">&para;</a></h3>
 <p>Rakj indexet a <code>Name</code> oszlopra, majd elemezd a következő, <code>Product</code> táblából történő lekérdezések végrehajtási tervét:</p>
 <ul>
 <li>s) olyan név-azonosító párok lekérdezése, ahol a termék neve B-vel kezdődik, <a href="https://docs.microsoft.com/en-us/sql/t-sql/functions/substring-transact-sql"><code>SUBSTRING</code></a>-et használva</li>
@@ -889,36 +1533,36 @@
 <li>w) mint az előző, de kisbetű-nagybetű-érzéketlenül (<a href="https://docs.microsoft.com/en-us/sql/t-sql/functions/upper-transact-sql?view=sql-server-ver15"><code>UPPER</code></a> használatával)</li>
 </ul>
 <p>Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és adj magyarázatot rájuk!</p>
-<h3 id="11-feladat-1p">11. Feladat (1p)<a class="headerlink" href="#11-feladat-1p" title="Permanent link">¶</a></h3>
+<h3 id="11-feladat-1p">11. Feladat (1p)<a class="headerlink" href="#11-feladat-1p" title="Permanent link">&para;</a></h3>
 <p>Elemezd a következő, <code>Product</code> táblából történő lekérdezések végrehajtási tervét:</p>
 <ul>
 <li>x) a maximális <code>Id</code> lekérdezése</li>
 <li>y) a minimális <code>Price</code> lekérdezése</li>
 </ul>
 <p>Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és adj magyarázatot rájuk!</p>
-<h3 id="12-feladat-1p">12. Feladat (1p)<a class="headerlink" href="#12-feladat-1p" title="Permanent link">¶</a></h3>
+<h3 id="12-feladat-1p">12. Feladat (1p)<a class="headerlink" href="#12-feladat-1p" title="Permanent link">&para;</a></h3>
 <p>Kérd le termék kategóriánként (<code>CategoryId</code>) a kategóriához tartozó termékek (<code>Product</code>) számát.</p>
 <p>Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és adj magyarázatot rájuk!</p>
-<h3 id="13-feladat-1p">13. Feladat (1p)<a class="headerlink" href="#13-feladat-1p" title="Permanent link">¶</a></h3>
+<h3 id="13-feladat-1p">13. Feladat (1p)<a class="headerlink" href="#13-feladat-1p" title="Permanent link">&para;</a></h3>
 <p>Hogyan javítható az előző feladat lekérdezéseinek teljesítménye? Add meg a megoldást, és utána elemezd újra az előző lekérdezés tervét.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tipp</p>
 <p>Fel kell venni egy új indexet. De vajon mire?</p>
 </div>
-<h3 id="14-feladat-1p">14. Feladat (1p)<a class="headerlink" href="#14-feladat-1p" title="Permanent link">¶</a></h3>
+<h3 id="14-feladat-1p">14. Feladat (1p)<a class="headerlink" href="#14-feladat-1p" title="Permanent link">&para;</a></h3>
 <p>Listázd a 2-es <code>CategoryId</code>-val rendelkező <code>Product</code> rekordokból a nevet (<code>Name</code>). </p>
 <p>Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és adj magyarázatot rájuk! Térj ki arra, hogy az előző feladatban felvett index segített-e, és miért?</p>
-<h3 id="15-feladat-1p">15. Feladat (1p)<a class="headerlink" href="#15-feladat-1p" title="Permanent link">¶</a></h3>
+<h3 id="15-feladat-1p">15. Feladat (1p)<a class="headerlink" href="#15-feladat-1p" title="Permanent link">&para;</a></h3>
 <p>Javíts az előző feladat lekérdezésének teljesítményén. Az előbb felvett indexet bővítsük a névvel: indexen jobbklikk -&gt; <em>Properties</em> -&gt; a táblázatban az <em>Included Columns</em> fül alatt vegyük fel a <code>Name</code> oszlopot.</p>
 <p>Így ismételd meg az előző lekérdezést, és elemezd a tervet.</p>
-<h2 id="opcionalis-feladatok">Opcionális feladatok<a class="headerlink" href="#opcionalis-feladatok" title="Permanent link">¶</a></h2>
-<h3 id="16-feladat-1-imsc-pont">16. Feladat (1 iMSc pont)<a class="headerlink" href="#16-feladat-1-imsc-pont" title="Permanent link">¶</a></h3>
+<h2 id="opcionalis-feladatok">Opcionális feladatok<a class="headerlink" href="#opcionalis-feladatok" title="Permanent link">&para;</a></h2>
+<h3 id="16-feladat-1-imsc-pont">16. Feladat (1 iMSc pont)<a class="headerlink" href="#16-feladat-1-imsc-pont" title="Permanent link">&para;</a></h3>
 <p>Elemezd a következő <code>Invoice</code>-<code>InvoiceItem</code> táblákból történő lekérdezés végrehajtási tervét: minden számlatétel névhez kérdezzük le a megrendelő nevét.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">CustomerName</span><span class="p">,</span><span class="w"> </span><span class="n">Name</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">Invoice</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">InvoiceItem</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">Invoice</span><span class="p">.</span><span class="n">ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InvoiceItem</span><span class="p">.</span><span class="n">InvoiceID</span>
 </code></pre></div>
 <p>Mutasd meg, milyen <em>join</em> stratégiát választott a rendszer. Adj magyarázatot, miért választhatta ezt!</p>
-<h3 id="17-feladat-2-imsc-pont">17. Feladat (2 iMSc pont)<a class="headerlink" href="#17-feladat-2-imsc-pont" title="Permanent link">¶</a></h3>
+<h3 id="17-feladat-2-imsc-pont">17. Feladat (2 iMSc pont)<a class="headerlink" href="#17-feladat-2-imsc-pont" title="Permanent link">&para;</a></h3>
 <p>Hasonlítsd össze a különböző JOIN stratégiák költségét a következő lekérdezés esetében: összetartozó <code>Product</code>-<code>Category</code> rekordpárok lekérdezése.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tipp</p>
@@ -926,74 +1570,96 @@
 <p>Tedd a 3 lekérdezést (3 fajta join stratégia) egy végrehajtási egységbe (egyszerre futtasd őket). Így látni fogod az egymáshoz viszonyított költségüket.</p>
 </div>
 <p>Add meg a használt SQL utasításokat, majd vizsgáld meg a lekérdezési terveket, és magyarázd el a látottakat!</p>
-<hr/>
-<div class="md-source-file">
-<span class="md-source-file__fact"> <span class="md-icon" title="Utolsó frissítés"> <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z">
-</path>
-</svg>
-</span>
-<span title="2023. március 13. 12:23:02">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-13T12:23:02+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-13</span>
-</span>
-</span>
-<span class="md-source-file__fact">
-<span class="md-icon" title="Létrehozva"> <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z">
-</path>
-</svg>
-</span>
-<span title="2020. július 6. 08:06:03">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2020-07-06T08:06:03+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2020-07-06</span>
-</span>
-</span>
-<span class="md-source-file__fact">
-<span class="md-icon" title="Szerzők">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z">
-</path>
-</svg>
-</span>
-<span>Szerzők</span>
-<nav><a class="md-author" href="https://github.com/akosdudas" rel="noopener noreferrer" target="_blank" title="@akosdudas">
-<img alt="@akosdudas" src="https://avatars.githubusercontent.com/u/11335181?size=72"/>
-</a><a class="md-author" href="https://github.com/tibitoth" rel="noopener noreferrer" target="_blank" title="@tibitoth">
-<img alt="@tibitoth" src="https://avatars.githubusercontent.com/u/8333960?size=72"/>
-</a></nav>
-</span>
-</div>
-</article>
-</div>
-</div>
-<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
-            Vissza a tetejére
-          </a>
-</main>
-<footer class="md-footer">
-<div class="md-footer-meta md-typeset">
-<div class="md-footer-meta__inner md-grid">
-<div class="md-copyright">
-<div class="md-copyright__highlight">
-      Copyright © BME-VIK-AUT
+
+    <hr>
+  <div class="md-source-file">
+    <span class="md-source-file__fact"> <span class="md-icon" title="Utolsó frissítés"> <svg
+          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path
+            d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z">
+          </path>
+        </svg>
+      </span>
+      <span title="2023. március 13. 12:23:02">
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-13T12:23:02+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-13</span>
+      </span>
+    </span>
+
+    
+
+    <span class="md-source-file__fact">
+      <span class="md-icon" title="Szerzők">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path
+            d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z">
+          </path>
+        </svg>
+      </span>
+      <span>Szerzők</span>
+      <nav><a href="https://github.com/akosdudas" target="_blank" rel="noopener noreferrer" class="md-author" title="@Akos Dudas">
+          <img src="https://avatars.githubusercontent.com/u/11335181?u=9971512094b94810046de53f5c1dee78e9776a4f&v=4?size=72" alt="@Akos Dudas">
+        </a><a href="https://github.com/tibitoth" target="_blank" rel="noopener noreferrer" class="md-author" title="@Tibor Tóth">
+          <img src="https://avatars.githubusercontent.com/u/8333960?u=d26653213d265ecdceeaf20a896d74f479d35450&v=4?size=72" alt="@Tibor Tóth">
+        </a></nav>      
+    </span>
+  </div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Vissza a tetejére
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; BME-VIK-AUT
     </div>
   
   
     Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
       Material for MkDocs
     </a>
+  
 </div>
-</div>
-</div>
+      
+    </div>
+  </div>
 </footer>
-</div>
-<div class="md-dialog" data-md-component="dialog">
-<div class="md-dialog__inner md-typeset"></div>
-</div>
-<script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}}</script>
-<script src="../assets/javascripts/bundle.ce72ebac.min.js"></script>
-<script src="../js/timeago.min.js"></script>
-<script src="../js/timeago_mkdocs_material.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6c14ae12.min.js"></script>
+      
+        <script src="../js/timeago.min.js"></script>
+      
+        <script src="../js/timeago_mkdocs_material.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>
