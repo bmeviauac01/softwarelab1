@@ -15,7 +15,7 @@ Required tools to complete the tasks:
         ```
 
 - VSCode
-    - MongoDB for VSCode kiegészítő
+    - MongoDB for VSCode extension
 - Sample database initialization script: ([mongo.js](../db/mongo.js))
 - GitHub account and a git client
 - Microsoft Visual Studio 2022 [with the settings here](../VisualStudio.md)
