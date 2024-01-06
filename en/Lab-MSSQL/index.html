@@ -1083,11 +1083,11 @@
 </li>
 <li>
 <p>Create the sample database by executing the <a href="../db/mssql.sql">initializer script</a> Open a new <em>Query</em> window, paste the script into the window, then execute it. Make sure to select the correct database in the toolbar dropdown.</p>
-<p><a class="glightbox" href="../images/sql-management-database-dropdown.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Selecting the database" src="../images/sql-management-database-dropdown.png" /></a></p>
+<p><a class="glightbox" href="../images/sql-management-database-dropdown.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Selecting the database" src="../images/sql-management-database-dropdown.png" /></a></p>
 </li>
 <li>
 <p>Verify that the tables are created. If the <em>Tables</em> folder was open before, you need to refresh it.</p>
-<p><a class="glightbox" href="../images/sql-managment-tablak.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Listing tables" src="../images/sql-managment-tablak.png" /></a>.</p>
+<p><a class="glightbox" href="../images/sql-managment-tablak.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Listing tables" src="../images/sql-managment-tablak.png" /></a>.</p>
 </li>
 </ol>
 <h2 id="exercise-1-category-view-and-data-insertion">Exercise 1: Category view and data insertion<a class="headerlink" href="#exercise-1-category-view-and-data-insertion" title="Permanent link">&para;</a></h2>
@@ -1102,7 +1102,7 @@
 <span class="k">left</span><span class="w"> </span><span class="k">outer</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">ParentCategoryId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">ID</span>
 </code></pre></div>
 <p>Check the contents of the view!</p>
-<p><a class="glightbox" href="../images/sql-management-query-view.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="List the view" src="../images/sql-management-query-view.png" /></a></p>
+<p><a class="glightbox" href="../images/sql-management-query-view.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="List the view" src="../images/sql-management-query-view.png" /></a></p>
 <h3 id="insert-via-the-view">Insert via the view<a class="headerlink" href="#insert-via-the-view" title="Permanent link">&para;</a></h3>
 <p>Create a trigger with the name <code>InsertCategoryWithParent</code> that allows inserting a new category through the view (that is, by specifying the category name and the parent category name). It is not necessary to set a parent category. Still, if it is specified and there is no category with the provided name, an error should be raised, and the operation aborted.</p>
 <p>You will need an <em>instead of</em> trigger that allows us to define how to insert the data. The skeleton of the trigger is provided below.</p>
