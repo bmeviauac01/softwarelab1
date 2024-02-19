@@ -144,7 +144,7 @@ Az alábbiakban egyedi szűrőket definiálunk a jelentéshez, majd publikáljuk
 
     ![Szűrő elrejtése](../images/powerbi/pb-1streport-hidefilter.png)
 
-1. Nevezzük át magyarra a megmaradt szűrőket jobb egérgombbal rájuk kattintva és a _rename_ opciót választva. Az új magyar nevek:_Kategória_, _Model_, _Ország_, _Termék_
+1. Nevezzük át magyarra a megmaradt szűrőket jobb egérgombbal rájuk kattintva és a _rename_ opciót választva. Az új magyar nevek:_Kategória_, _Modell_, _Ország_, _Termék_
 
 1. Kattintsunk az oldalon egy olyan részre, ahol nincs táblázat, ezzel magát az oldalt (_Page_) kijelölve. A _Visualizations_ eszköztárban ekkor a formázások az egész oldalra vonatkozó beállításokat fognak tartalmazni (_Format page_). Ezen belül szabjuk testre a szűrők megjelenését a következő lépésekben.
 
