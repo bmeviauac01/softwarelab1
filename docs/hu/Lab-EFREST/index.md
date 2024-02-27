@@ -8,7 +8,7 @@ A labor elvégzéséhez szükséges eszközök:
 
 - Windows, Linux, vagy MacOS: Minden szükséges program platform független, vagy van platformfüggetlen alternatívája.
 - [Postman](https://www.getpostman.com/)
-- [DB Browser for SQLite](https://sqlitebrowser.org/), ha az adatbázisba szeretnél belezézni (nem feltétlenül szükséges)
+- [DB Browser for SQLite](https://sqlitebrowser.org/), ha az adatbázisba szeretnél belenézni (nem feltétlenül szükséges)
 - GitHub account és egy git kliens
 - Microsoft Visual Studio 2022 [az itt található beállításokkal](../VisualStudio.md)
     - Linux és MacOS esetén Visual Studio Code és a .NET SDK-val települő [dotnet CLI](https://learn.microsoft.com/en-us/dotnet/core/tools/) használható.
