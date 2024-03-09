@@ -340,7 +340,7 @@ Első lépésként az Entity Framework modellt kell elkészítened:
 
 ### Műveletek service szinten
 
-Készíts a `Dal` mappában egy új osztályt `TaskService` néven, amely implementálja a már létező `ITaskService` interfészt. Valósítsd meg az alábbi műveleteit:
+Készíts a `Services` mappában egy új osztályt `TaskService` néven, amely implementálja a már létező `ITaskService` interfészt. Valósítsd meg az alábbi műveleteit:
 
 - `IReadOnlyCollection<Task> List()`: listázza az összes task-ot
 - `Task FindById(int taskId)`: adja vissza azt a task-ot, melynek illeszkedik az id-ja a paraméterre; vagy térjen vissza `null` értékkel, ha nincs ilyen
