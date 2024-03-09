@@ -249,7 +249,7 @@ A megvalósítás lépései a következők.
     ```csharp
     var productCounts = _productCollection
         .Aggregate()
-        .Group(t => t.CategoryID, g => new { CategoryID = g.Key, NumberOfProducts = g.Count() })
+        .Group(t => t.CategoryId, g => new { CategoryID = g.Key, NumberOfProducts = g.Count() })
         .ToList();
     ```
 
