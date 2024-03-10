@@ -1434,7 +1434,7 @@
 <p>Ezután kérdezzük le, hogy az egyes <code>CategoryId</code>-khez hány darab termék tartozik. Ehhez aggregációs pipeline-t kell használnunk, azon belül pedig a <a href="https://docs.mongodb.com/manual/reference/operator/aggregation/group/"><code>$group</code></a> lépést.</p>
 <div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">productCounts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_productCollection</span>
 <span class="w">    </span><span class="p">.</span><span class="n">Aggregate</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="n">Group</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">CategoryID</span><span class="p">,</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">CategoryID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g</span><span class="p">.</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">NumberOfProducts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g</span><span class="p">.</span><span class="n">Count</span><span class="p">()</span><span class="w"> </span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="n">Group</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">CategoryId</span><span class="p">,</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">CategoryID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g</span><span class="p">.</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">NumberOfProducts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g</span><span class="p">.</span><span class="n">Count</span><span class="p">()</span><span class="w"> </span><span class="p">})</span>
 <span class="w">    </span><span class="p">.</span><span class="n">ToList</span><span class="p">();</span>
 </code></pre></div>
 <p>Ez az utasítás egy olyan listával tér vissza, melyben minden elem egy <code>CategoryID</code> értéket tartalmaz a hozzá tartozó termékek számával együtt.</p>
@@ -1644,8 +1644,8 @@
           </path>
         </svg>
       </span>
-      <span title="2023. november 23. 15:30:03">
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-23T15:30:03+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-23</span>
+      <span title="2024. március 9. 21:53:02">
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-03-09T21:53:02+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-09</span>
       </span>
     </span>
 
@@ -1664,6 +1664,8 @@
           <img src="https://avatars.githubusercontent.com/u/11335181?u=9971512094b94810046de53f5c1dee78e9776a4f&v=4?size=72" alt="@Akos Dudas">
         </a><a href="https://github.com/ialbert-AUT" target="_blank" rel="noopener noreferrer" class="md-author" title="@István Albert">
           <img src="https://avatars.githubusercontent.com/u/61751571?v=4?size=72" alt="@István Albert">
+        </a><a href="https://github.com/norbertkurcsi" target="_blank" rel="noopener noreferrer" class="md-author" title="@Kurcsi Norbert">
+          <img src="https://avatars.githubusercontent.com/u/90260479?u=5dc2891fae39aac8292aedfc0a555941ee742a61&v=4?size=72" alt="@Kurcsi Norbert">
         </a><a href="https://github.com/tibitoth" target="_blank" rel="noopener noreferrer" class="md-author" title="@Tibor Tóth">
           <img src="https://avatars.githubusercontent.com/u/8333960?u=d26653213d265ecdceeaf20a896d74f479d35450&v=4?size=72" alt="@Tibor Tóth">
         </a><a href="https://github.com/vandreas73" target="_blank" rel="noopener noreferrer" class="md-author" title="@None">
