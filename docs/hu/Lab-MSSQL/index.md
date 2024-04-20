@@ -200,7 +200,7 @@ Készíts triggert `InvoiceItemCountMaintenance` néven, amely a számla tartalm
     Ne felejtsd, hogy a trigger **utasítás szintű**, azaz nem soronként fut le, így pontenciálisan több változás is lehet az implicit táblákban! Az `inserted` és `deleted` **tábla**, és mindenképpen ennek megfelelően kell őket kezelni.
 
 !!! example "BEADANDÓ"
-    A kódot az `f3-trigger.sql` fájlba írd. A fájlban csak egyetlen `create trigger` utasítás legyen, és ne legyen a kódban se `[use]` se `go` utasítás. A feladatrész 4 pontot ér. Helyesség függvényében részpontszám is kapható.
+    A kódot az `f3-trigger.sql` fájlba írd. A fájlban csak egyetlen `create trigger` utasítás legyen, és ne legyen a kódban se `[use]` se `go` utasítás. A feladatrész 5 pontot ér. Helyesség függvényében részpontszám is kapható.
 
 Próbáld ki, jól működik-e a trigger. A teszteléshez használt utasításokat nem kell beadnod a megoldásban, de fontos, hogy ellenőrizd a viselkedést. Ellenőrizd olyan utasítással is a trigger működését, amely egyszerre több rekordot érint (pl. `where` feltétel nélküli `update` a tábla teljes tartalmára)!
 
