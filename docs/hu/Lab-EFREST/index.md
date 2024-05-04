@@ -1,6 +1,6 @@
 # Entity Framework és REST
 
-A labor során egy Entity Framework Core adatelérésre épülő REST API (ASP.NET Core Web Api) alkalmazást készítésünk.
+A labor során egy Entity Framework Core adatelérésre épülő REST API (ASP.NET Core Web Api) alkalmazást készítünk.
 
 ## Előfeltételek, felkészülés
 
