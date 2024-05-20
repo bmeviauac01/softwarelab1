@@ -1465,6 +1465,10 @@
 <li><code>404 Not found</code>, ha nem létezik a task</li>
 <li><code>200 OK</code> ha sikeres a művelet - a body-ban adja vissza a módosítás utáni task entitást.</li>
 </ul>
+<div class="admonition tip">
+<p class="admonition-title">Tipp</p>
+<p>A hálózaton utazó adat struktúrájának definiálásához egy új DTO osztály létrehozására lehet szükség.</p>
+</div>
 <div class="admonition example">
 <p class="admonition-title">BEADANDÓ</p>
 <p>Készíts egy <strong>képernyőképet</strong> Postman-ből (avagy más, hasonló eszközből, ha nem Postman-t használtál), amely a fentiek közül egy <strong>tetszőleges</strong> kérést és válaszát mutatja. A képet a megoldásban <code>f3.png</code> néven add be. A képernyőképen látszódjon a <strong>kimenő kérés és a válasz is minden részletével</strong> (URL, body, válasz kód, válasz body). Ellenőrizd, hogy a <strong>Neptun kódod</strong> az URL-ben szerepel-e! A képernyőkép szükséges feltétele a pontszám megszerzésének.</p>
@@ -1577,8 +1581,8 @@
           </path>
         </svg>
       </span>
-      <span title="2024. május 4. 19:05:43">
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-04T19:05:43+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-04</span>
+      <span title="2024. május 19. 21:51:17">
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-19T21:51:17+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-19</span>
       </span>
     </span>
 
@@ -1668,5 +1672,7 @@
         <script src="../js/timeago_mkdocs_material.js"></script>
       
     
-  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>
