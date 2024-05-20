@@ -397,6 +397,9 @@ Válasz:
 - `404 Not found`, ha nem létezik a task
 - `200 OK` ha sikeres a művelet - a body-ban adja vissza a módosítás utáni task entitást.
 
+!!! tip "Tipp"
+    A hálózaton utazó adat struktúrájának definiálásához egy új DTO osztály létrehozására lehet szükség.
+
 !!! example "BEADANDÓ"
     Készíts egy **képernyőképet** Postman-ből (avagy más, hasonló eszközből, ha nem Postman-t használtál), amely a fentiek közül egy **tetszőleges** kérést és válaszát mutatja. A képet a megoldásban `f3.png` néven add be. A képernyőképen látszódjon a **kimenő kérés és a válasz is minden részletével** (URL, body, válasz kód, válasz body). Ellenőrizd, hogy a **Neptun kódod** az URL-ben szerepel-e! A képernyőkép szükséges feltétele a pontszám megszerzésének.
 
